@@ -10,33 +10,47 @@ import edu.wpi.first.wpilibj.*;
  * @author Owner
  *
  */
-public class DriveTrain extends Subsystem {
+public class DriveTrain extends Subsystem 
+{
 	CANJaguar CANJag;
-	Joystick driverStick;
+	Joystick driverStick = new Joystick(1);
+
+
+	protected void initDefaultCommand() 
+	{ 
+		driveWithStick();
 	
-
-	protected void initDefaultCommand() {
-		driverStick = new Joystick (1);
 		
-		try {
-			CANJag = new CANJaguar (1);
-			} 
-		catch (CANTimeoutException ex) {
-            ex.printStackTrace();
+		
 		// TODO Auto-generated method stub
-      
-        
-
+		
+	}
+	
+	public void driveWithStick()
+	{
+	
+		try 
+		{
+			CANJag = new CANJaguar (1);
+		} 
+		catch (CANTimeoutException ex) 
+		{
+	        ex.printStackTrace();
 		}
+        
 
 
 		 driverStick.getRawAxis(2);
 		 
-		try {CANJag.setX(1);
-			 } 
-		catch (CANTimeoutException ex) {
+		try 
+		{
+			CANJag.setX(1);
+		} 
+		catch (CANTimeoutException ex) 
+		{
 				 ex.printStackTrace ();
-			 }
 		}
+	
 	}
+}
 
