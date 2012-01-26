@@ -14,11 +14,12 @@ public class DriveTrain extends Subsystem
 {
 	CANJaguar CANJag;
 	Joystick driverStick = new Joystick(1);
+	
 
 
 	protected void initDefaultCommand() 
 	{ 
-		driveWithStick();
+		setDefaultCommand(new driveWithStick());
 	
 		
 		
