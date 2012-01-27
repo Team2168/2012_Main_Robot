@@ -21,16 +21,17 @@ public class RobotMap {
 	// public static final int rangefinderPort = 1;
 	// public static final int rangefinderModule = 1;
 	/*
-	_____________
-	|			|
-	|           |
-	|           |
-	|
-	|
-	|
-	|
-	|
-	|____________
+	  Imagine this to be the chasis, so the R1, L1 etc is supposed to represent the motors that are on each side._
+	  ____________ 
+	  |			  |
+	L1|           |R1
+	  |           |
+	L2|           |R2
+	  |           |
+	L3|           |R3
+	  |           |
+	L4|           |R4
+	  |___________|
 	 */
 
 	//Creating Static CAN IDs for DriveTrain Motors
