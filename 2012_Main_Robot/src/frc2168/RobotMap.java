@@ -33,6 +33,7 @@ public class RobotMap {
 	|____________
 	 */
 
+	//Creating Static CAN IDs for DriveTrain Motors
 	public static final int  R1 = 11, 
 		    R2=1, //CAN ID = 1
 			R3=2, //CAN ID = 2
