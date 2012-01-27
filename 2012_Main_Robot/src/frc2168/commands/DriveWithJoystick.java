@@ -16,6 +16,8 @@ public class DriveWithJoystick extends CommandBase {
 	}
 	
 	protected void execute() {
+		oi.getLeftSpeed();
+		oi.getRightSpeed();
 		// TODO Auto-generated method stub
 
 	}
