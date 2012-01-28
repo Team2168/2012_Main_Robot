@@ -1,27 +1,22 @@
 package frc2168.commands;
 
-import edu.wpi.first.wpilibj.command.Command;
-import edu.wpi.first.wpilibj.command.Subsystem;
-import frc2168.subsystems.DriveTrain;
-
 public class DriveWithJoystick extends CommandBase {
 
 	public DriveWithJoystick()
 	{
-		requires(drivetrain);
+		//requires the driveTrain subsystems 
+		requires(driveTrain);
 	}
 	
 	protected void initialize() {
 		// TODO Auto-generated method stub
 	}
 	
-	protected void execute() {
-		oi.getLeftSpeed();
-		oi.getRightSpeed();
-		drivetrain.TankDrive(oi.getLeftSpeed(), oi.getRightSpeed());
-		
-		// TODO Auto-generated method stub
-
+	protected void execute() 
+	{
+		//every time this command is called we drive the
+		//driveTrain with tank drive
+		driveTrain.TankDrive(oi.getLeftSpeed(), oi.getRightSpeed());
 	}
 
 	protected boolean isFinished() {

@@ -2,7 +2,6 @@ package frc2168.subsystems;
 
 import edu.wpi.first.wpilibj.can.CANTimeoutException;
 
-
 import edu.wpi.first.wpilibj.command.Subsystem;
 import edu.wpi.first.wpilibj.CANJaguar;
 import edu.wpi.first.wpilibj.CANJaguar.ControlMode;
@@ -11,67 +10,68 @@ import edu.wpi.first.wpilibj.RobotDrive;
 import frc2168.RobotMap;
 import frc2168.commands.DriveWithJoystick;
 
-public class DriveTrain extends Subsystem {
-	CANJaguar leftMotor;
-	CANJaguar rightMotor;
-	//RobotDrive drive;
-	
-	protected void initDefaultCommand()
-	{  
-		//drive = new RobotDrive(RobotMap.leftmotor, RobotMap.rightmotor);
-		
-		
-		
-		
-		try 
+public class DriveTrain extends Subsystem
+{
+
+	// Declare all CAN Motors associated with the Drive Train
+	// We use two motors for each side of our drive train
+
+	CANJaguar leftMotor1;
+	CANJaguar rightMotor1;
+
+	// CANJaguar leftMotor2;
+	// CANJaguar rightMotor2;
+
+	/**
+	 * Default Contstuctor for DriveTrain Subsystem. This Constructor enables
+	 * CAN Jaguar motors for the Drivetrain
+	 */
+	public DriveTrain()
+	{
+		// enable CAN Jag Motors using constant motor IDs specified in RobotMap
+		try
 		{
-			 leftMotor = new CANJaguar (RobotMap.leftmotor); //CAN ID = 
-			
-			 rightMotor = new CANJaguar (RobotMap.rightmotor); //CAN ID = 
-
-//			CANJaguar R1 = new CANJaguar (RobotMap.R3); //CAN ID = 
-//
-//			CANJaguar R2 = new CANJaguar (RobotMap.R4); //CAN ID = 
-//
-//			CANJaguar L1 = new CANJaguar (RobotMap.R5); //CAN ID = 
-//
-//			CANJaguar L2 = new CANJaguar (RobotMap.R6); //CAN ID = 
-//
-
-			
-
-		}
-		catch (CANTimeoutException e) {
+			leftMotor1 = new CANJaguar(RobotMap.leftmotor1);
+			rightMotor1 = new CANJaguar(RobotMap.rightmotor1);
+			// leftMotor2 = new CANJaguar (RobotMap.leftmotor2);
+			// rightMotor2 = new CANJaguar (RobotMap.rightmotor2);
+		} catch (CANTimeoutException e)
+		{
 			e.printStackTrace();
 		}
 	}
-	
-	public void initDefaultCommand1() {
+
+	/**
+	 * Set the default command of this DriveTrain to drive with sticks
+	 */
+	protected void initDefaultCommand()
+	{
 		setDefaultCommand(new DriveWithJoystick());
 	}
-		// TODO Auto-generated method stub
 
-	public DriveTrain() {
-		
-		/*This might not be right but the reason I did this is 
-		 * because there's no constructor in RobotDrive, 
-		 * that lets me put in all 8 motors.
-		*/
-	}
-	
-	public void TankDrive(double leftSpeed, double rightSpeed) {
-		//Driving in Percent V Bus mode
+	/**
+	 * TankDrive Method commands the DriveTrain subsystem with TankDrive style
+	 * control
+	 * 
+	 * @param leftSpeed
+	 *            represents the %Voltage to command the left side motors
+	 * @param rightSpeed
+	 *            represents the %Voltage to command the right side motors
+	 */
+	public void TankDrive(double leftSpeed, double rightSpeed)
+	{
+		// Driving in Percent V Bus mode
 		try
 		{
-			leftMotor.setX(leftSpeed);
-			rightMotor.setX(rightSpeed);
+			leftMotor1.setX(leftSpeed);
+			// leftMotor2.setX(leftSpeed);
+			rightMotor1.setX(rightSpeed);
+			// rightMotor2.setX(rightSpeed);
 		} catch (CANTimeoutException e)
 		{
 			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
-		
-		
 	}
 
 }

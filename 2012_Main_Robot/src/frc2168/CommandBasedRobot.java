@@ -30,8 +30,6 @@ public class CommandBasedRobot extends IterativeRobot {
      */
     public void robotInit() {
         // instantiate the command used for the autonomous period
-      
-
         // Initialize all subsystems
         CommandBase.init();
     }

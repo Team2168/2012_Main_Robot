@@ -1,8 +1,5 @@
 package frc2168;
 
-import edu.wpi.first.wpilibj.CANJaguar;
-import edu.wpi.first.wpilibj.Joystick;
-import edu.wpi.first.wpilibj.can.CANTimeoutException;
 
 /**
  * The RobotMap is a mapping from the ports sensors and actuators are wired into
@@ -11,42 +8,44 @@ import edu.wpi.first.wpilibj.can.CANTimeoutException;
  * floating around.
  */
 public class RobotMap {
-	// For example to map the left and right motors, you could define the
-	// following variables to use with your drivetrain subsystem.
-	// public static final int leftMotor = 1;
-	// public static final int rightMotor = 2;
 
-	// If you are using multiple modules, make sure to define both the port
-	// number and the module. For example you with a rangefinder:
-	// public static final int rangefinderPort = 1;
-	// public static final int rangefinderModule = 1;
 	/*
+	 *Drivetrain motors
 	  Imagine this to be the chasis, so the R1, L1 etc is supposed to represent the motors that are on each side._
 	  ____________ 
 	  |			  |
+	  |    FWD    |
+	  |           |
 	L1|           |R1
 	  |           |
 	L2|           |R2
 	  |           |
-	L3|           |R3
-	  |           |
-	L4|           |R4
-	  |___________|
+	  |    AFT    |
+	  |___________| 
 	 */
 
-	//Creating Static CAN IDs for DriveTrain Motors
-	public static final int  
-		leftmotor = 2,
-		rightmotor = 10;
 	
-		/**	
-			R1 = 11, 
-		    R2=1, //CAN ID = 1
-			R3=2, //CAN ID = 2
-			R4=3, //CAN ID = 3
-			L1=4, //CAN ID = 4
-			L2=5, //CAN ID = 5
-			L3=6, //CAN ID = 6
-			L4=7; //CAN ID = 7
-		 */
+	//Joystick Maps
+	
+	public static final int driverJoyStick=1;
+	public static final int auxJoystick=2;
+	
+	//Creating Static CAN IDs for DriveTrain Motors
+	public static final int leftmotor1 = 2, rightmotor1 = 10;
+
+	public static final int leftmotor2 = 2, rightmotor2 = 10;
+	
+
+	
+	
+	//create other sensor maps below
+	//Digital Map
+	
+	/*
+	leftDriveTrainEncoder_A=1;
+	leftDriveTrainEncoder_B=2;
+	rightDriveTrainEncoder_A=1;
+	rightDriveTrainEncoder_B=2;
+	 
+	 */
 }
