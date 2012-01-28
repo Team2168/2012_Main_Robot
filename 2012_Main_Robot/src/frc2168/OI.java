@@ -13,14 +13,8 @@ public class OI {
 	 }
 	 
 	 public double getRightSpeed() {
-		 return drivestick.getRawAxis(5); //this is supposed to be the right axis stick
-		 
+		 return drivestick.getRawAxis(5); //this is supposed to be the righ axis stick
 	 }
-	 
-	 public double setLeftSpeed(){
-		 return 
-	 }
-	 
 	 
 }
 

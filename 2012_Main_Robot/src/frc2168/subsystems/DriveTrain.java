@@ -2,16 +2,18 @@ package frc2168.subsystems;
 
 import edu.wpi.first.wpilibj.can.CANTimeoutException;
 
+
 import edu.wpi.first.wpilibj.command.Subsystem;
 import edu.wpi.first.wpilibj.CANJaguar;
 import edu.wpi.first.wpilibj.CANJaguar.ControlMode;
 import edu.wpi.first.wpilibj.RobotDrive;
+
 import frc2168.RobotMap;
 import frc2168.commands.DriveWithJoystick;
 
 public class DriveTrain extends Subsystem {
-	CANJaguar leftmotor;
-	CANJaguar rightmotor;
+	CANJaguar leftMotor;
+	CANJaguar rightMotor;
 	//RobotDrive drive;
 	
 	protected void initDefaultCommand()
@@ -23,9 +25,9 @@ public class DriveTrain extends Subsystem {
 		
 		try 
 		{
-			CANJaguar leftmotor = new CANJaguar (RobotMap.leftmotor); //CAN ID = 
+			 leftMotor = new CANJaguar (RobotMap.leftmotor); //CAN ID = 
 			
-			CANJaguar rightmotor = new CANJaguar (RobotMap.rightmotor); //CAN ID = 
+			 rightMotor = new CANJaguar (RobotMap.rightmotor); //CAN ID = 
 
 //			CANJaguar R1 = new CANJaguar (RobotMap.R3); //CAN ID = 
 //
@@ -61,8 +63,8 @@ public class DriveTrain extends Subsystem {
 		//Driving in Percent V Bus mode
 		try
 		{
-			leftmotor.setX(leftSpeed);
-			rightmotor.setX(rightSpeed);
+			leftMotor.setX(leftSpeed);
+			rightMotor.setX(rightSpeed);
 		} catch (CANTimeoutException e)
 		{
 			// TODO Auto-generated catch block
