@@ -31,9 +31,9 @@ public class RobotMap {
 	public static final int auxJoystick=2;
 	
 	//Creating Static CAN IDs for DriveTrain Motors
-	public static final int leftmotor1 = 2, rightmotor1 = 10;
+	public static final int leftmotor1 = 11, rightmotor1 = 12;
 
-	public static final int leftmotor2 = 2, rightmotor2 = 10;
+	//public static final int leftmotor2 = 2, rightmotor2 = 10;
 	
 
 	

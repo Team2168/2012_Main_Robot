@@ -7,7 +7,9 @@
 
 package frc2168;
 
-
+/**
+ * Working Command Base Robot Code Template with CAN Drive
+ */
 import edu.wpi.first.wpilibj.IterativeRobot;
 import edu.wpi.first.wpilibj.command.Command;
 import edu.wpi.first.wpilibj.command.Scheduler;
@@ -23,15 +25,20 @@ import frc2168.commands.*;
 public class CommandBasedRobot extends IterativeRobot {
 
     Command TeleopCommand;
+    //Command autonomousCommand;
 
     /**
      * This function is run when the robot is first started up and should be
      * used for any initialization code.
      */
     public void robotInit() {
-        // instantiate the command used for the autonomous period
+        
+    	CommandBase.init();
+    	// instantiate the command used for the autonomous period
         // Initialize all subsystems
-        CommandBase.init();
+    	TeleopCommand = new DriveWithJoystick();
+    	//Autonomous = new commandGRoup Class
+        
     }
 
     public void autonomousInit() {

@@ -5,6 +5,7 @@ import edu.wpi.first.wpilibj.can.CANTimeoutException;
 import edu.wpi.first.wpilibj.command.Subsystem;
 import edu.wpi.first.wpilibj.CANJaguar;
 import edu.wpi.first.wpilibj.CANJaguar.ControlMode;
+import edu.wpi.first.wpilibj.DriverStationLCD;
 import edu.wpi.first.wpilibj.RobotDrive;
 
 import frc2168.RobotMap;
@@ -18,6 +19,7 @@ public class DriveTrain extends Subsystem
 
 	CANJaguar leftMotor1;
 	CANJaguar rightMotor1;
+	DriverStationLCD driverstation;
 
 	// CANJaguar leftMotor2;
 	// CANJaguar rightMotor2;
@@ -38,6 +40,9 @@ public class DriveTrain extends Subsystem
 		} catch (CANTimeoutException e)
 		{
 			e.printStackTrace();
+			driverstation.println(DriverStationLCD.Line.kMain6, 1, "Error initializing Jag");
+            driverstation.updateLCD();
+			
 		}
 	}
 
@@ -71,6 +76,8 @@ public class DriveTrain extends Subsystem
 		{
 			// TODO Auto-generated catch block
 			e.printStackTrace();
+			driverstation.println(DriverStationLCD.Line.kMain6, 1, "Error setting Jag");
+            driverstation.updateLCD();
 		}
 	}
 
