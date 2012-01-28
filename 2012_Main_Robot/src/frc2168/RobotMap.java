@@ -35,7 +35,12 @@ public class RobotMap {
 	 */
 
 	//Creating Static CAN IDs for DriveTrain Motors
-	public static final int  R1 = 11, 
+	public static final int  
+		leftmotor = 2,
+		rightmotor = 10;
+	
+		/**	
+			R1 = 11, 
 		    R2=1, //CAN ID = 1
 			R3=2, //CAN ID = 2
 			R4=3, //CAN ID = 3
@@ -43,5 +48,5 @@ public class RobotMap {
 			L2=5, //CAN ID = 5
 			L3=6, //CAN ID = 6
 			L4=7; //CAN ID = 7
-			
+		 */
 }

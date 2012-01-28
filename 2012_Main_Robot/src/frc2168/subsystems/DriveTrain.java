@@ -4,39 +4,44 @@ import edu.wpi.first.wpilibj.can.CANTimeoutException;
 
 import edu.wpi.first.wpilibj.command.Subsystem;
 import edu.wpi.first.wpilibj.CANJaguar;
+import edu.wpi.first.wpilibj.CANJaguar.ControlMode;
 import edu.wpi.first.wpilibj.RobotDrive;
 import frc2168.RobotMap;
 import frc2168.commands.DriveWithJoystick;
 
 public class DriveTrain extends Subsystem {
+	CANJaguar leftmotor;
+	CANJaguar rightmotor;
+	//RobotDrive drive;
 	
 	protected void initDefaultCommand()
-	{
+	{  
+		//drive = new RobotDrive(RobotMap.leftmotor, RobotMap.rightmotor);
+		
+		
+		
 		
 		try 
 		{
-			CANJaguar R1 = new CANJaguar (RobotMap.R1); //CAN ID = 
+			CANJaguar leftmotor = new CANJaguar (RobotMap.leftmotor); //CAN ID = 
 			
-			/*CANJaguar R2 = new CANJaguar (RobotMap.R2); //CAN ID = 
+			CANJaguar rightmotor = new CANJaguar (RobotMap.rightmotor); //CAN ID = 
 
-			CANJaguar R3 = new CANJaguar (RobotMap.R3); //CAN ID = 
+//			CANJaguar R1 = new CANJaguar (RobotMap.R3); //CAN ID = 
+//
+//			CANJaguar R2 = new CANJaguar (RobotMap.R4); //CAN ID = 
+//
+//			CANJaguar L1 = new CANJaguar (RobotMap.R5); //CAN ID = 
+//
+//			CANJaguar L2 = new CANJaguar (RobotMap.R6); //CAN ID = 
+//
 
-			CANJaguar R4 = new CANJaguar (RobotMap.R4); //CAN ID = 
-
-			CANJaguar L1 = new CANJaguar (RobotMap.R5); //CAN ID = 
-
-			CANJaguar L2 = new CANJaguar (RobotMap.R6); //CAN ID = 
-
-			CANJaguar L3 = new CANJaguar (RobotMap.R7); //CAN ID = 
-
-			CANJaguar L4 = new CANJaguar (RobotMap.R8); //CAN ID = 
-			*/
+			
 
 		}
 		catch (CANTimeoutException e) {
 			e.printStackTrace();
 		}
-		
 	}
 	
 	public void initDefaultCommand1() {
@@ -45,14 +50,26 @@ public class DriveTrain extends Subsystem {
 		// TODO Auto-generated method stub
 
 	public DriveTrain() {
-		RobotDrive drive = new RobotDrive(RobotMap.R1, RobotMap.L1);
-		RobotDrive drive2 = new RobotDrive(RobotMap.R2, RobotMap.L2);
-		RobotDrive drive3 = new RobotDrive(RobotMap.R3, RobotMap.L3);
-		RobotDrive drive4 = new RobotDrive(RobotMap.R4, RobotMap.L3);
+		
 		/*This might not be right but the reason I did this is 
 		 * because there's no constructor in RobotDrive, 
 		 * that lets me put in all 8 motors.
 		*/
+	}
+	
+	public void TankDrive(double leftSpeed, double rightSpeed) {
+		//Driving in Percent V Bus mode
+		try
+		{
+			leftmotor.setX(leftSpeed);
+			rightmotor.setX(rightSpeed);
+		} catch (CANTimeoutException e)
+		{
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		
+		
 	}
 
 }
