@@ -11,8 +11,7 @@ package frc2168;
 import edu.wpi.first.wpilibj.IterativeRobot;
 import edu.wpi.first.wpilibj.command.Command;
 import edu.wpi.first.wpilibj.command.Scheduler;
-import frc2168.commands.CommandBase;
-import frc2168.commands.ExampleCommand;
+import frc2168.commands.*;
 
 /**
  * The VM is configured to automatically run this class, and to call the
@@ -23,7 +22,7 @@ import frc2168.commands.ExampleCommand;
  */
 public class CommandBasedRobot extends IterativeRobot {
 
-    Command autonomousCommand;
+    Command TeleopCommand;
 
     /**
      * This function is run when the robot is first started up and should be
@@ -31,7 +30,7 @@ public class CommandBasedRobot extends IterativeRobot {
      */
     public void robotInit() {
         // instantiate the command used for the autonomous period
-        autonomousCommand = new ExampleCommand();
+      
 
         // Initialize all subsystems
         CommandBase.init();
@@ -39,7 +38,7 @@ public class CommandBasedRobot extends IterativeRobot {
 
     public void autonomousInit() {
         // schedule the autonomous command (example)
-        autonomousCommand.start();
+        //autonomousCommand.start();
     }
 
     /**
@@ -54,7 +53,8 @@ public class CommandBasedRobot extends IterativeRobot {
 		// teleop starts running. If you want the autonomous to 
 		// continue until interrupted by another command, remove
 		// this line or comment it out.
-		autonomousCommand.cancel();
+		//autonomousCommand.cancel();
+    	TeleopCommand.start();
     }
 
     /**
@@ -62,5 +62,6 @@ public class CommandBasedRobot extends IterativeRobot {
      */
     public void teleopPeriodic() {
         Scheduler.getInstance().run();
+       
     }
 }
