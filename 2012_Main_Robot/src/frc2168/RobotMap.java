@@ -11,7 +11,7 @@ public class RobotMap {
 
 	/*
 	 *Drivetrain motors
-	  Imagine this to be the chasis, so the R1, L1 etc is supposed to represent the motors that are on each side._
+	  Imagine this to be the chassis, so the R1, L1 etc is supposed to represent the motors that are on each side._
 	  ____________ 
 	  |			  |
 	  |    FWD    |
@@ -29,6 +29,7 @@ public class RobotMap {
 	
 	public static final int driverJoyStick=1;
 	public static final int auxJoystick=2;
+	
 	
 	//Creating Static CAN IDs for DriveTrain Motors
 	public static final int leftmotor1 = 11, rightmotor1 = 12;
