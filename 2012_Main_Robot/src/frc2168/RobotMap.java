@@ -36,8 +36,10 @@ public class RobotMap {
 
 	//public static final int leftmotor2 = 2, rightmotor2 = 10;
 	
-
+	public static final boolean invertRight = false;	//if true invert signal to right motors
+	public static final boolean invertLeft = true;		//if true invert signal to left motors
 	
+	public static final double mod = 0.125;		// Low minimum/modifier for the "Falcon Claw Function" or James' "Super Secret" Idea
 	
 	//create other sensor maps below
 	//Digital Map
