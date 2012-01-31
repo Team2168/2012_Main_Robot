@@ -27,8 +27,8 @@ public class RobotMap {
 	
 	//Joystick Maps
 	
-	public static final int driverJoyStick=1;
-	public static final int auxJoystick=2;
+	public static final int driverJoyStick = 1;
+	public static final int auxJoystick = 2;
 	
 	
 	//Creating Static CAN IDs for DriveTrain Motors
