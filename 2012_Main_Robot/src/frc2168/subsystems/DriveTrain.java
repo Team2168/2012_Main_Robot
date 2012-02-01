@@ -23,9 +23,9 @@ public class DriveTrain extends Subsystem
 	DriverStationLCD driverstation;
 	
 	CANJaguar leftMotor1;
-//	CANJaguar rightMotor1;
-//	CANJaguar leftMotor2;
-//	CANJaguar rightMotor2;
+	CANJaguar rightMotor1;
+	CANJaguar leftMotor2;
+	CANJaguar rightMotor2;
 
 	/**
 	 * Default Constructor for DriveTrain Subsystem. This Constructor enables
@@ -39,9 +39,9 @@ public class DriveTrain extends Subsystem
 		try
 		{
 			 leftMotor1 = new CANJaguar(RobotMap.leftmotor1);
-			// rightMotor1 = new CANJaguar(RobotMap.rightmotor1);
-			// leftMotor2 = new CANJaguar (RobotMap.leftmotor2);
-			// rightMotor2 = new CANJaguar (RobotMap.rightmotor2);
+			 rightMotor1 = new CANJaguar(RobotMap.rightmotor1);
+			 leftMotor2 = new CANJaguar (RobotMap.leftmotor2);
+			 rightMotor2 = new CANJaguar (RobotMap.rightmotor2);
 		} catch (CANTimeoutException e)
 		{
 			e.printStackTrace();
@@ -70,11 +70,14 @@ public class DriveTrain extends Subsystem
 	 */
 	public void TankDrive(double leftSpeed, double rightSpeed)
 	{
-		if (RobotMap.invertLeft){
+		final boolean invertRight = false;	//if true invert signal to right motors
+		final boolean invertLeft = true;		//if true invert signal to left motors
+		
+		if (invertLeft){
 			leftSpeed = -leftSpeed; 	//Implementing the inversion of the left.
 		} 
 		
-		if (RobotMap.invertRight){
+		if (invertRight){
 			rightSpeed = -rightSpeed;
 		}
 		
@@ -83,9 +86,9 @@ public class DriveTrain extends Subsystem
 		try
 		{
 			leftMotor1.setX(leftSpeed);
-			// leftMotor2.setX(leftSpeed);
-			// rightMotor1.setX(rightSpeed);
-			// rightMotor2.setX(rightSpeed);
+			leftMotor2.setX(leftSpeed);
+			rightMotor1.setX(rightSpeed);
+			rightMotor2.setX(rightSpeed);
 		} catch (CANTimeoutException e)
 		{
 			// TODO Auto-generated catch block

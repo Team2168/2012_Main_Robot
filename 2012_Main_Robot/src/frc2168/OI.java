@@ -11,7 +11,7 @@ public class OI {
 	 public double getLeftSpeed() 
 	 {
 		 if (drivestick.getRawAxis(3)<0){
-			 return ((((-RobotMap.mod+1)*drivestick.getRawAxis(3))+1) * drivestick.getRawAxis(2)); 	//James' "Super Secret" Idea implemented on the left
+			 return ((((-RobotMap.falconClawMod+1)*drivestick.getRawAxis(3))+1) * drivestick.getRawAxis(2)); 	//James' "Super Secret" Idea implemented on the left
 			 
 		 }
 		 else {
@@ -24,7 +24,7 @@ public class OI {
 	 public double getRightSpeed() 
 	 {
 		 if (drivestick.getRawAxis(3)<0){
-			 return ((((-RobotMap.mod+1)*drivestick.getRawAxis(3))+1) * drivestick.getRawAxis(5)); 	//James' "Super Secret" Idea implemented on the right
+			 return ((((-RobotMap.falconClawMod+1)*drivestick.getRawAxis(3))+1) * drivestick.getRawAxis(5)); 	//James' "Super Secret" Idea implemented on the right
 			 
 		 }
 		 else {

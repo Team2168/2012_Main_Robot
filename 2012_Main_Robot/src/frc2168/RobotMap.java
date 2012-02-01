@@ -32,14 +32,12 @@ public class RobotMap {
 	
 	
 	//Creating Static CAN IDs for DriveTrain Motors
-	public static final int leftmotor1 = 11, rightmotor1 = 12;
-
-	//public static final int leftmotor2 = 2, rightmotor2 = 10;
+	public static final int leftmotor1 = 13, rightmotor1 = 2;
+	public static final int leftmotor2 = 17, rightmotor2 = 10;
 	
-	public static final boolean invertRight = false;	//if true invert signal to right motors
-	public static final boolean invertLeft = true;		//if true invert signal to left motors
 	
-	public static final double mod = 0.125;		// Low minimum/modifier for the "Falcon Claw Function" or James' "Super Secret" Idea
+	
+	public static final double falconClawMod = 0.125;		// Low minimum/modifier for the "Falcon Claw Function" or James' "Super Secret" Idea
 	
 	//create other sensor maps below
 	//Digital Map
