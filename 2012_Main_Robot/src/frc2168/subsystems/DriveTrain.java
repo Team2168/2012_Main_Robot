@@ -1,16 +1,13 @@
 package frc2168.subsystems;
 
-import edu.wpi.first.wpilibj.can.CANTimeoutException;
-
-import edu.wpi.first.wpilibj.command.Subsystem;
 import edu.wpi.first.wpilibj.CANJaguar;
-import edu.wpi.first.wpilibj.CANJaguar.ControlMode;
 import edu.wpi.first.wpilibj.DriverStationLCD;
-import edu.wpi.first.wpilibj.RobotDrive;
-
+import edu.wpi.first.wpilibj.Encoder;
+import edu.wpi.first.wpilibj.can.CANTimeoutException;
+import edu.wpi.first.wpilibj.command.Subsystem;
 import frc2168.RobotMap;
+import frc2168.testthread;
 import frc2168.commands.DriveWithJoystick;
-import edu.wpi.first.wpilibj.Victor;
 
 public class DriveTrain extends Subsystem
 {
@@ -26,6 +23,8 @@ public class DriveTrain extends Subsystem
 //	CANJaguar rightMotor1;
 //	CANJaguar leftMotor2;
 //	CANJaguar rightMotor2;
+	
+	Encoder motorEncoder;
 
 	/**
 	 * Default Constructor for DriveTrain Subsystem. This Constructor enables
@@ -33,6 +32,10 @@ public class DriveTrain extends Subsystem
 	 */
 	public DriveTrain()
 	{
+		motorEncoder = new Encoder(13,14);
+		motorEncoder.setDistancePerPulse((Math.PI*2*4)/500);
+		motorEncoder.setMinRate(10);
+		motorEncoder.setMaxPeriod(10);
 		
 		
 		// enable CAN Jag Motors using constant motor IDs specified in RobotMap
@@ -47,6 +50,13 @@ public class DriveTrain extends Subsystem
 			e.printStackTrace();
 			driverstation.println(DriverStationLCD.Line.kMain6, 1, "Error initializing Jag");
             driverstation.updateLCD();
+            
+            
+            //spawn new threads
+    		// TODO Auto-generated method stub
+
+    		testthread timer = new testthread(1,motorEncoder);
+    		 //timer = new testthread(2);
 			
 		} 
 	}
