@@ -1,41 +1,53 @@
 package frc2168.subsystems;
 
 import edu.wpi.first.wpilibj.CANJaguar;
+import edu.wpi.first.wpilibj.CounterBase;
 import edu.wpi.first.wpilibj.DriverStationLCD;
 import edu.wpi.first.wpilibj.Encoder;
 import edu.wpi.first.wpilibj.can.CANTimeoutException;
 import edu.wpi.first.wpilibj.command.Subsystem;
+import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;
 import frc2168.RobotMap;
 import frc2168.testthread;
 import frc2168.commands.DriveWithJoystick;
 
 public class DriveTrain extends Subsystem
 {
-
+	//We instantiate all parameters to interface with the hardware of the DriveTrain
+	
+	//////////////////////////////////////////////////////////////////////
 	// Declare all CAN Motors associated with the Drive Train
 	// We use two motors for each side of our drive train
+		CANJaguar leftMotor1;
+	//	CANJaguar rightMotor1;
+	//	CANJaguar leftMotor2;
+	//	CANJaguar rightMotor2;
+	
+	//////////////////////////////////////////////////////////////////////
+	//Declare Sensors
+		Encoder leftMotorEncoder;	
+		Encoder	rightMotorEncoder;
+	
+	//Enable smartDashboard	
+		DriverStationLCD driverstation;
+		SmartDashboard smartdashboard;
+	
 
 	
 	
-	DriverStationLCD driverstation;
-	
-	CANJaguar leftMotor1;
-//	CANJaguar rightMotor1;
-//	CANJaguar leftMotor2;
-//	CANJaguar rightMotor2;
-	
-	Encoder motorEncoder;
 
 	/**
-	 * Default Constructor for DriveTrain Subsystem. This Constructor enables
-	 * CAN Jaguar motors for the Drivetrain
+	 * Default Constructor for DriveTrain Subsystem. This Constructor instantiates
+	 * the CAN Jaguar motors for the Drivetrain and all the sensors;
 	 */
 	public DriveTrain()
 	{
-		motorEncoder = new Encoder(13,14);
-		motorEncoder.setDistancePerPulse((Math.PI*2*4)/500);
-		motorEncoder.setMinRate(10);
-		motorEncoder.setMaxPeriod(10);
+		//enable left and right encoders
+		leftMotorEncoder = new Encoder(RobotMap.leftDriveTrainEncoder_A,
+				RobotMap.leftDriveTrainEncoder_B,false,CounterBase.EncodingType.k1X);
+		leftMotorEncoder.setDistancePerPulse(RobotMap.driveEencoderDistPerTick);
+		leftMotorEncoder.setMinRate(RobotMap.driveEncoderMinRate);
+		leftMotorEncoder.setMaxPeriod(RobotMap.driveEncoderMinPeriod);
 		
 		
 		// enable CAN Jag Motors using constant motor IDs specified in RobotMap
@@ -48,6 +60,7 @@ public class DriveTrain extends Subsystem
 		} catch (CANTimeoutException e)
 		{
 			e.printStackTrace();
+			driverstation = DriverStationLCD.getInstance();
 			driverstation.println(DriverStationLCD.Line.kMain6, 1, "Error initializing Jag");
             driverstation.updateLCD();
             
@@ -55,7 +68,7 @@ public class DriveTrain extends Subsystem
             //spawn new threads
     		// TODO Auto-generated method stub
 
-    		testthread timer = new testthread(1,motorEncoder);
+    		testthread timer = new testthread(1,leftMotorEncoder);
     		 //timer = new testthread(2);
 			
 		} 

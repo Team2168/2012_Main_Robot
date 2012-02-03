@@ -15,7 +15,7 @@ public class DriveWithJoystick extends CommandBase {
 	protected void execute() 
 	{
 		//every time this command is called we drive the
-		//driveTrain with tank drive
+		//driveTrain with tank drive using the Driver Joysticks
 		driveTrain.TankDrive(oi.getLeftSpeed(), oi.getRightSpeed());
 	}
 

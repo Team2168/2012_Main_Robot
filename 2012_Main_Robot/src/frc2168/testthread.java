@@ -73,7 +73,7 @@ class testTimer extends TimerTask
 		test=classtest;
 	}
 
-	@Override
+	//@Override
 	public void run()
 	{
 		// TODO Auto-generated method stub
