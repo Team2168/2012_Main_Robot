@@ -7,6 +7,7 @@ import edu.wpi.first.wpilibj.Encoder;
 import edu.wpi.first.wpilibj.can.CANTimeoutException;
 import edu.wpi.first.wpilibj.command.Subsystem;
 import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;
+import frc2168.PIDSpeed;
 import frc2168.RobotMap;
 import frc2168.testthread;
 import frc2168.commands.DriveWithJoystick;
@@ -32,6 +33,10 @@ public class DriveTrain extends Subsystem
 		DriverStationLCD driverstation;
 		SmartDashboard smartdashboard;
 	
+	//PID Controller
+		PIDSpeed speedController;
+		
+		long period =40;//40ms loop
 
 	
 	
@@ -47,7 +52,9 @@ public class DriveTrain extends Subsystem
 				RobotMap.leftDriveTrainEncoder_B,false,CounterBase.EncodingType.k1X);
 		leftMotorEncoder.setDistancePerPulse(RobotMap.driveEencoderDistPerTick);
 		leftMotorEncoder.setMinRate(RobotMap.driveEncoderMinRate);
-		leftMotorEncoder.setMaxPeriod(RobotMap.driveEncoderMinPeriod);
+		leftMotorEncoder.start();
+		
+		speedController=new PIDSpeed("LeftSpeedController",1,2,3, leftMotorEncoder,period);
 		
 		
 		// enable CAN Jag Motors using constant motor IDs specified in RobotMap
@@ -67,11 +74,12 @@ public class DriveTrain extends Subsystem
             
             //spawn new threads
     		// TODO Auto-generated method stub
-
-    		testthread timer = new testthread(1,leftMotorEncoder);
-    		 //timer = new testthread(2);
-			
+	
 		} 
+		
+		
+
+		
 	}
 
 	/**
@@ -80,6 +88,8 @@ public class DriveTrain extends Subsystem
 	protected void initDefaultCommand()
 	{
 		setDefaultCommand(new DriveWithJoystick());
+		speedController.enDebug();
+		speedController.Enable();
 	}
 
 	/**
