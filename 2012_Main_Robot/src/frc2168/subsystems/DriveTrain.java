@@ -9,9 +9,34 @@ import edu.wpi.first.wpilibj.command.Subsystem;
 import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;
 import frc2168.PIDSpeed;
 import frc2168.RobotMap;
-import frc2168.testthread;
 import frc2168.commands.DriveWithJoystick;
 
+
+
+/**
+ * 
+ * @author Kevin Harrilal, First Robotics Team 2168
+ *<br><br>
+ *The DriveTrain class is a Subsystem apart of a CommandBase Robot.
+ *The purpose of this class is to interface with the hardware used to drive
+ *a robot and give methods which can be used to command the base in different ways
+ *<br><br>
+ *This DriveTrain object is driven by 4 Jaguar motor controller connected to 4 CIM motors. There are
+ *two CIM motors on each side of this skid-steer Chassis. This DriveTrain was intended to be driven
+ *using Tank Drive style control, where each side (left and right) of the wheel base are commanded
+ *Independently.
+ *<br><br>
+ *The DriveTrain also implements different sensors for use such as an encoder on each side, and an ultrasonic
+ *sensor to detect objects in-front and behind.
+ *<br><br>
+ *The methods this object implements are essentially the core abilities this DriveTrain has. These methods
+ *are designed to be called by Command Objects to create more complex instructions to control the driveTrain.
+ *The default mechanism to control this driveTrain is via Joystick Control.
+ *<br><br>
+ *This DriveTrain also instantiates PID Control Loops which run in separate threads, and can be used
+ *to command the DriveTrain to drive at a set Speed, or to Drive to a linear position and stop.
+ *
+ */
 public class DriveTrain extends Subsystem
 {
 	//We instantiate all parameters to interface with the hardware of the DriveTrain
@@ -20,40 +45,53 @@ public class DriveTrain extends Subsystem
 	// Declare all CAN Motors associated with the Drive Train
 	// We use two motors for each side of our drive train
 		CANJaguar leftMotor1;
-	//	CANJaguar rightMotor1;
-	//	CANJaguar leftMotor2;
-	//	CANJaguar rightMotor2;
+		CANJaguar rightMotor1;
+		CANJaguar leftMotor2;
+		CANJaguar rightMotor2;
 	
 	//////////////////////////////////////////////////////////////////////
 	//Declare Sensors
 		Encoder leftMotorEncoder;	
 		Encoder	rightMotorEncoder;
-	
+		
+	/////////////////////////////////////////////////////////////////////
 	//Enable smartDashboard	
 		DriverStationLCD driverstation;
 	
-	//PID Controller
+	/////////////////////////////////////////////////////////////////////	
+	//PID Controllers
 		public PIDSpeed speedController;
-		
 		long period =40;//40ms loop
 
-	
+	////////////////////////////////////////////////////////////////////
 	
 
 	/**
 	 * Default Constructor for DriveTrain Subsystem. This Constructor instantiates
-	 * the CAN Jaguar motors for the Drivetrain and all the sensors;
+	 * the CAN Jaguar motors for the DriveTrain and all the sensors based on the Parameters specified
+	 * in {@link RobotMap}.
+	 * <br><br>
+	 * If the CAN Jaguars can not be initialized a CANTimeOut Exception is thrown and an error will be printed
+	 * to the User Message window of the Driver Station.
+	 * <br><br>
+	 * This Constructor also instantiates multiple PID Control Threads which are used by the core
+	 * PID methods for autonomous driving. The Gains of The PID controller are specified in {@link RobotMap}
+	 * 
 	 */
 	public DriveTrain()
 	{
 		//enable left and right encoders
 		leftMotorEncoder = new Encoder(RobotMap.leftDriveTrainEncoder_A,
 				RobotMap.leftDriveTrainEncoder_B,false,CounterBase.EncodingType.k1X);
+	
+		//Set Encoder Paramters
 		leftMotorEncoder.setDistancePerPulse(RobotMap.driveEencoderDistPerTick);
 		leftMotorEncoder.setMinRate(RobotMap.driveEncoderMinRate);
 		//leftMotorEncoder.setReverseDirection(true);
+
 		leftMotorEncoder.start();
 		
+		//Spawn New PID Speed Controller with PID Gains as specified in ROBOT MAP
 		speedController=new PIDSpeed("LeftSpeedController",RobotMap.P,RobotMap.I,RobotMap.D, leftMotorEncoder,period);
 		
 		
@@ -84,12 +122,15 @@ public class DriveTrain extends Subsystem
 		System.out.println("init complete");
 		
 		
-
-		
 	}
 
 	/**
-	 * Set the default command of this DriveTrain to drive with sticks
+	 * This method is called when there is no other command which requires the DriveTrain
+	 * subsystem. This Method is used  to set the default command of this DriveTrain. Essentially command
+	 * of the driveTrain will be given to the command called from this method when no other command requires 
+	 * the DriveTrain subsystem.
+	 * <br><br> 
+	 * The Default command is set to drive with JoySticks using the {@link DriveWithSticks} command.
 	 */
 	protected void initDefaultCommand()
 	{
@@ -100,25 +141,32 @@ public class DriveTrain extends Subsystem
 
 	/**
 	 * TankDrive Method commands the DriveTrain subsystem with TankDrive style
-	 * control
+	 * control. This method takes care of inverting the motors so that same direction
+	 * control can be applied to both motors (i.e +1 to both motors for forward and -1 to both motors for reverse). 
+	 * <br><br>
+	 * This method determines which motors to invert by reading the Invert parameters set in {@link RobotMap}
+	 * <br><br>
+	 * If the CAN Jaguars can not be commanded a CANTimeOut Exception is thrown and an error will be printed
+	 * to the User Message window of the Driver Station.
 	 * 
 	 * @param leftSpeed
-	 *            represents the %Voltage to command the left side motors
+	 *            represents the %Voltage to command the left side motors (Range = -1 to +1)
 	 * @param rightSpeed
-	 *            represents the %Voltage to command the right side motors
+	 *            represents the %Voltage to command the right side motors (Range = -1 to +1)
 	 */
 	public void TankDrive(double leftSpeed, double rightSpeed)
 	{
-		if (RobotMap.invertLeft){
+		//Determine which Motors need to be inverted
+		if (RobotMap.invertLeft)
+		{
 			leftSpeed = -leftSpeed; 	//Implementing the inversion of the left.
 		} 
-		
-		if (RobotMap.invertRight){
+		if (RobotMap.invertRight)
+		{
 			rightSpeed = -rightSpeed;
 		}
 		
-		
-		// Driving in Percent V Bus mode
+		// Driving CAN motors in Percent V Bus mode
 		try
 		{
 			leftMotor1.setX(leftSpeed);
@@ -129,12 +177,17 @@ public class DriveTrain extends Subsystem
 		{
 			// TODO Auto-generated catch block
 			e.printStackTrace();
+			driverstation = DriverStationLCD.getInstance();			
 			driverstation.println(DriverStationLCD.Line.kMain6, 1, "Error setting Jag");
             driverstation.updateLCD();
 		} 
 	}
 	
-    public void usePIDOutput(double output) 
+	/**
+	 * This method is intended to be called by a Command which reads from a PID Controller. 
+	 * @param output represents the %Voltage to command the left side motors (Range = -1 to +1). Both Left and Right side motors of the DriveTrain are commanded to the value represented by this Parameter. 
+	 */
+    public void PIDSpeedOutput(double output) 
     {
     	TankDrive(output, output);
     }
