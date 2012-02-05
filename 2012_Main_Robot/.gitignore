@@ -2,3 +2,7 @@
 /suite
 /build.xml
 /build.properties
+/bin
+/image.suite
+/image.sym
+/build
