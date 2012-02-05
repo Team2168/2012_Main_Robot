@@ -18,8 +18,8 @@ import frc2168.commands.DriveWithJoystick;
  * @author Kevin Harrilal, First Robotics Team 2168
  *<br><br>
  *The DriveTrain class is a Subsystem apart of a CommandBase Robot.
- *The purpose of this class is to interface with the hardware used to drive
- *a robot and give methods which can be used to command the base in different ways
+ *The purpose of this class is to be a single static object which interface with the hardware used to drive
+ *a robot and give methods which can be used to command the DriveTrain in different ways.
  *<br><br>
  *This DriveTrain object is driven by 4 Jaguar motor controller connected to 4 CIM motors. There are
  *two CIM motors on each side of this skid-steer Chassis. This DriveTrain was intended to be driven
