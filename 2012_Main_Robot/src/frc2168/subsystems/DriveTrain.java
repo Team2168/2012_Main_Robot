@@ -31,10 +31,9 @@ public class DriveTrain extends Subsystem
 	
 	//Enable smartDashboard	
 		DriverStationLCD driverstation;
-		SmartDashboard smartdashboard;
 	
 	//PID Controller
-		PIDSpeed speedController;
+		public PIDSpeed speedController;
 		
 		long period =40;//40ms loop
 
@@ -52,9 +51,10 @@ public class DriveTrain extends Subsystem
 				RobotMap.leftDriveTrainEncoder_B,false,CounterBase.EncodingType.k1X);
 		leftMotorEncoder.setDistancePerPulse(RobotMap.driveEencoderDistPerTick);
 		leftMotorEncoder.setMinRate(RobotMap.driveEncoderMinRate);
+		//leftMotorEncoder.setReverseDirection(true);
 		leftMotorEncoder.start();
 		
-		speedController=new PIDSpeed("LeftSpeedController",1,2,3, leftMotorEncoder,period);
+		speedController=new PIDSpeed("LeftSpeedController",RobotMap.P,RobotMap.I,RobotMap.D, leftMotorEncoder,period);
 		
 		
 		// enable CAN Jag Motors using constant motor IDs specified in RobotMap
@@ -77,6 +77,12 @@ public class DriveTrain extends Subsystem
 	
 		} 
 		
+		System.out.println("entering command init");
+		speedController.enDebug();
+		speedController.Enable();
+		speedController.setSp(50);
+		System.out.println("init complete");
+		
 		
 
 		
@@ -87,9 +93,9 @@ public class DriveTrain extends Subsystem
 	 */
 	protected void initDefaultCommand()
 	{
+
 		setDefaultCommand(new DriveWithJoystick());
-		speedController.enDebug();
-		speedController.Enable();
+		
 	}
 
 	/**
@@ -127,5 +133,10 @@ public class DriveTrain extends Subsystem
             driverstation.updateLCD();
 		} 
 	}
+	
+    public void usePIDOutput(double output) 
+    {
+    	TankDrive(output, output);
+    }
 
 }

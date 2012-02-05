@@ -62,7 +62,11 @@ public class RobotMap {
 	public static final int driveEncoderMinRate=10; 
 	public static final int driveEncoderMinPeriod=10;
 	
+	//PID Gains for Left Side
 	
+	public static final double P = 0.00574562908722711;
+	public static final double I = 0.000308064641742337; 
+	public static final double D = -0.000130778888124088;
 	////////////////////////////////////////////////////////////////////
 	
 	//ADD OTHER SUBSYSTEM CONSTANTS HERE

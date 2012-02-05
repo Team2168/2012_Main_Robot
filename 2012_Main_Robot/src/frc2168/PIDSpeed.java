@@ -5,6 +5,7 @@ import java.util.TimerTask;
 import edu.wpi.first.wpilibj.Encoder;
 import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;
 
+
 /**
  * The PID Speed class implements a PID controller used to perform speed control
  * on a DC motor.
@@ -87,6 +88,7 @@ public class PIDSpeed
 
 	// Name of Thread
 	String name;
+	
 
 
 /**
@@ -164,7 +166,6 @@ public class PIDSpeed
 		//reset encoder
 		this.encoder.reset();
 		
-
 		this.executor = new java.util.Timer();
 		this.executor.schedule(new PIDSpeedTask(this), 0L, this.period);
 
@@ -554,8 +555,24 @@ public class PIDSpeed
 		this.encoder = encoder;
 	}
 	
+	/**
+	 * @return the name
+	 */
+	public synchronized String getName() {
+		return name;
+	}
+
+	/**
+	 * @param name the name to set
+	 */
+	public synchronized void setName(String name) {
+		this.name = name;
+	}
+
 	private synchronized void debug()
 	{
+	
+		
 		SmartDashboard.putDouble(this.name+"_expected Period", this.period);
 		SmartDashboard.putDouble(this.name+"_execcution Time", this.executionTime);
 		SmartDashboard.putDouble(this.name+"_output", this.co);
@@ -578,17 +595,13 @@ public class PIDSpeed
 		SmartDashboard.putDouble(this.name+"_min Neg Output", this.minNegOutput);
 		
 		SmartDashboard.putDouble(this.name+"_deriv Filter Constant", this.r);
-		
+		SmartDashboard.putDouble(this.name+"_acceptable Err", this.acceptErrorDiff);
 		
 		//boolean dashboard
 		SmartDashboard.putBoolean(this.name+"_PID Enabled", this.enable);
 		SmartDashboard.putBoolean(this.name+"_debug Enabled", this.debugEnabled);
 		SmartDashboard.putBoolean(this.name+"_deriv Filter Enabled", this.enDerivFilter);
-		SmartDashboard.putBoolean(this.name+"_Gain Sched Enabled", this.enGainSched);
-		
-		;
-		
-		
+		SmartDashboard.putBoolean(this.name+"_Gain Sched Enabled", this.enGainSched);		
 	}
 	
 
@@ -599,6 +612,7 @@ public class PIDSpeed
 	 */
 	private synchronized void calculate()
 	{
+		
 
 		if (enable)
 		{
@@ -609,8 +623,9 @@ public class PIDSpeed
 			}
 			cp = encoder.getRate();// cp is in units distance per second (i.e
 									// inches/sec)
-			System.out.println(cp);
-			SmartDashboard.putDouble(name + "_Rate:", cp);
+			//System.out.println(cp);
+			//SmartDashboard.putDouble(name + "_Rate:", cp);
+			//System.out.println("I am a thread" + name + " and execution # " + count++ + " and clock is " + executionTime + " encoder rate: " + encoder.getRate());
 
 
 			// if setpoint is 0, set output to zero
@@ -653,13 +668,15 @@ public class PIDSpeed
 
 				// prevent divide by zero error, by disabiling deriv term
 				// if execution time is zero.
-				if (executionTime != 0)
+				if (executionTime >= 0)
+				{
 					deriv = d * ((err - olderr) / (executionTime)); // delta
 																	// error/delta
-																	// time
+				}													// time
 				else
+				{
 					deriv = 0;
-
+				}
 				// update clock with current time for next loop
 				clock = System.currentTimeMillis();
 
@@ -705,6 +722,7 @@ public class PIDSpeed
 					// generate new control output based on min and max and
 					// integral windup.
 					co = prop + integ + deriv;
+					olderrsum=errsum;
 				} else
 				{
 					// no integral term so no need to prevent windup
@@ -720,10 +738,10 @@ public class PIDSpeed
 				// if current value is within exceptable range make control
 				// output last
 				// output value and stop integrating error
-				if (Math.abs(err) <= acceptErrorDiff)
+ 				if (Math.abs(err) <= acceptErrorDiff)
 				{
 					co = coOld;
-					errsum = olderrsum;
+					olderrsum = errsum;
 				} else
 				{
 					// there is still a significant error
@@ -732,7 +750,7 @@ public class PIDSpeed
 					// output above deadband
 					// to drive the motor
 
-					if (err > 0 && coNotSaturated < maxPosOutput// this used to
+					if (err > 0 && coNotSaturated < minPosOutput// this used to
 																// be min?
 							&& co < (maxPosOutput - minPosOutput))
 						co = coOld + prop + integ + deriv;
@@ -744,10 +762,10 @@ public class PIDSpeed
 				}
 				coOld = co;
 				
-				if (debugEnabled)
-				debug();
-
 			}
+			
+			if (debugEnabled)
+				this.debug();
 		}
 	}
 
