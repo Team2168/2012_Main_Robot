@@ -4,6 +4,7 @@ import edu.wpi.first.wpilibj.command.Command;
 import edu.wpi.first.wpilibj.networktables.NetworkTableKeyNotDefined;
 import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;
 
+
 public class DriveToSpeed extends CommandBase {
 
 	public DriveToSpeed(){
@@ -21,7 +22,7 @@ public class DriveToSpeed extends CommandBase {
 
 		try {
 			
-			//read values from dashboard
+			//set SpeedController Inputs Based on values from the DashBoard
 			driveTrain.speedController.setSp(SmartDashboard.getDouble(driveTrain.speedController.getName()+"_setPoint"));
 			driveTrain.speedController.setMaxPosOutput(SmartDashboard.getDouble(driveTrain.speedController.getName()+"_max Pos Output"));
 			driveTrain.speedController.setMaxNegOutput(SmartDashboard.getDouble(driveTrain.speedController.getName()+"_max Neg Output"));
@@ -36,7 +37,7 @@ public class DriveToSpeed extends CommandBase {
 		}
 		
 		//lets try changing setpoint first
-		driveTrain.usePIDOutput(driveTrain.speedController.getCo());
+		driveTrain.PIDSpeedOutput(driveTrain.speedController.getCo());
 	}
 
 	protected boolean isFinished() {

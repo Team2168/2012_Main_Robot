@@ -39,7 +39,10 @@ public class PIDSpeed
 	
 	//enable debug mode
 	private boolean debugEnabled;
-
+	
+	//isFinished
+	private boolean isFinished;
+	
 	// create local PID portions
 	double prop;
 	double integ;
@@ -568,8 +571,14 @@ public class PIDSpeed
 	public synchronized void setName(String name) {
 		this.name = name;
 	}
+	
+	public boolean isFinished()
+	{
+		return isFinished;
+	}
+	
 
-	private synchronized void debug()
+	private void debug()
 	{
 	
 		
@@ -601,7 +610,8 @@ public class PIDSpeed
 		SmartDashboard.putBoolean(this.name+"_PID Enabled", this.enable);
 		SmartDashboard.putBoolean(this.name+"_debug Enabled", this.debugEnabled);
 		SmartDashboard.putBoolean(this.name+"_deriv Filter Enabled", this.enDerivFilter);
-		SmartDashboard.putBoolean(this.name+"_Gain Sched Enabled", this.enGainSched);		
+		SmartDashboard.putBoolean(this.name+"_Gain Sched Enabled", this.enGainSched);
+		SmartDashboard.putBoolean(this.name+"_is Finished", this.isFinished);	
 	}
 	
 
@@ -742,16 +752,17 @@ public class PIDSpeed
 				{
 					co = coOld;
 					olderrsum = errsum;
+					isFinished=true;
 				} else
 				{
+					isFinished=false;
 					// there is still a significant error
 					// we now check if output signal is below
 					// the deadband, if it is, we increase the
 					// output above deadband
 					// to drive the motor
 
-					if (err > 0 && coNotSaturated < minPosOutput// this used to
-																// be min?
+					if (err > 0 && coNotSaturated < minPosOutput
 							&& co < (maxPosOutput - minPosOutput))
 						co = coOld + prop + integ + deriv;
 
@@ -760,6 +771,9 @@ public class PIDSpeed
 						co = coOld + prop + integ + deriv;
 
 				}
+ 				
+ 				if (co< && )
+ 				
 				coOld = co;
 				
 			}
