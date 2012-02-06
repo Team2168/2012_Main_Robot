@@ -1,4 +1,4 @@
-package frc2168;
+package frc2168.PIDController;
 
 import java.util.TimerTask;
 
@@ -772,12 +772,11 @@ public class PIDSpeed
 
 				}
  				
- 				if (co< && )
- 				
+
 				coOld = co;
 				
 			}
-			
+			//output to SmartDashboard if deBug field is enabled
 			if (debugEnabled)
 				this.debug();
 		}
