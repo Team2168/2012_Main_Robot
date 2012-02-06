@@ -2,6 +2,9 @@
 package frc2168;
 
 import edu.wpi.first.wpilibj.Joystick;
+import edu.wpi.first.wpilibj.command.Scheduler;
+import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;
+import frc2168.subsystems.Lift;
 
 public class OI {
 	 Joystick drivestick = new Joystick(RobotMap.driverJoyStick);
@@ -31,6 +34,18 @@ public class OI {
 		 
 		  return drivestick.getRawAxis(5); //this is supposed to be the right axis stick
 		 }
+	 }
+	 
+	 public static void smartDashData(){
+	    	SmartDashboard.putData("SchedulerData", Scheduler.getInstance());
+	    	SmartDashboard.putDouble("falconClawMod", RobotMap.falconClawMod);
+	        SmartDashboard.getDouble("falconClawMod", RobotMap.falconClawMod);
+	        SmartDashboard.putBoolean("invertRight", RobotMap.invertRight);
+	        SmartDashboard.putBoolean("invertLeft", RobotMap.invertLeft);
+	        SmartDashboard.getBoolean("invertRight", RobotMap.invertRight);
+	        SmartDashboard.getBoolean("invertLeft", RobotMap.invertLeft);
+	        SmartDashboard.putDouble("BallPresent",Lift.BallPresent());
+	        SmartDashboard.getDouble("BallPresent",Lift.BallPresent());
 	 }
 	 
 }

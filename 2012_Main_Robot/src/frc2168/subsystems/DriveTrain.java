@@ -10,7 +10,6 @@ import edu.wpi.first.wpilibj.RobotDrive;
 
 import frc2168.RobotMap;
 import frc2168.commands.DriveWithJoystick;
-import edu.wpi.first.wpilibj.Victor;
 
 public class DriveTrain extends Subsystem
 {
@@ -22,10 +21,10 @@ public class DriveTrain extends Subsystem
 	
 	DriverStationLCD driverstation;
 	
-	CANJaguar leftMotor1;
-	CANJaguar rightMotor1;
-	CANJaguar leftMotor2;
-	CANJaguar rightMotor2;
+//	CANJaguar leftMotor1;
+//	CANJaguar rightMotor1;
+//	CANJaguar leftMotor2;
+//	CANJaguar rightMotor2;
 
 	/**
 	 * Default Constructor for DriveTrain Subsystem. This Constructor enables
@@ -36,19 +35,19 @@ public class DriveTrain extends Subsystem
 		
 		
 		// enable CAN Jag Motors using constant motor IDs specified in RobotMap
-		try
-		{
-			 leftMotor1 = new CANJaguar(RobotMap.leftmotor1);
-			 rightMotor1 = new CANJaguar(RobotMap.rightmotor1);
-			 leftMotor2 = new CANJaguar (RobotMap.leftmotor2);
-			 rightMotor2 = new CANJaguar (RobotMap.rightmotor2);
-		} catch (CANTimeoutException e)
-		{
-			e.printStackTrace();
-			driverstation.println(DriverStationLCD.Line.kMain6, 1, "Error initializing Jag");
-            driverstation.updateLCD();
-			
-		} 
+//		try
+//		{
+//			 leftMotor1 = new CANJaguar(RobotMap.leftmotor1);
+//			 rightMotor1 = new CANJaguar(RobotMap.rightmotor1);
+//			 leftMotor2 = new CANJaguar (RobotMap.leftmotor2);
+//			 rightMotor2 = new CANJaguar (RobotMap.rightmotor2);
+//		} catch (CANTimeoutException e)
+//		{
+//			e.printStackTrace();
+//			driverstation.println(DriverStationLCD.Line.kMain6, 1, "Error initializing Jag");
+//            driverstation.updateLCD();
+//			
+//		} 
 	}
 
 	/**
@@ -70,32 +69,32 @@ public class DriveTrain extends Subsystem
 	 */
 	public void TankDrive(double leftSpeed, double rightSpeed)
 	{
-		final boolean invertRight = false;	//if true invert signal to right motors
-		final boolean invertLeft = true;		//if true invert signal to left motors
+		// final boolean invertRight = false;	//if true invert signal to right motors
+		// final boolean invertLeft = true;		//if true invert signal to left motors
 		
-		if (invertLeft){
+		if (RobotMap.invertLeft){
 			leftSpeed = -leftSpeed; 	//Implementing the inversion of the left.
 		} 
 		
-		if (invertRight){
+		if (RobotMap.invertRight){
 			rightSpeed = -rightSpeed;
 		}
 		
 		
 		// Driving in Percent V Bus mode
-		try
-		{
-			leftMotor1.setX(leftSpeed);
-			leftMotor2.setX(leftSpeed);
-			rightMotor1.setX(rightSpeed);
-			rightMotor2.setX(rightSpeed);
-		} catch (CANTimeoutException e)
-		{
-			// TODO Auto-generated catch block
-			e.printStackTrace();
-			driverstation.println(DriverStationLCD.Line.kMain6, 1, "Error setting Jag");
-            driverstation.updateLCD();
-		} 
+//		try
+//		{
+//			leftMotor1.setX(leftSpeed);
+//			leftMotor2.setX(leftSpeed);
+//			rightMotor1.setX(rightSpeed);
+//			rightMotor2.setX(rightSpeed);
+//		} catch (CANTimeoutException e)
+//		{
+//			// TODO Auto-generated catch block
+//			e.printStackTrace();
+//			driverstation.println(DriverStationLCD.Line.kMain6, 1, "Error setting Jag");
+//            driverstation.updateLCD();
+//		} 
 	}
 
 }

@@ -11,9 +11,12 @@ package frc2168;
  * Working Command Base Robot Code Template with CAN Drive
  */
 import edu.wpi.first.wpilibj.IterativeRobot;
+import edu.wpi.first.wpilibj.Timer;
 import edu.wpi.first.wpilibj.command.Command;
 import edu.wpi.first.wpilibj.command.Scheduler;
 import frc2168.commands.*;
+
+
 
 /**
  * The VM is configured to automatically run this class, and to call the
@@ -38,6 +41,7 @@ public class CommandBasedRobot extends IterativeRobot {
         // Initialize all subsystems
     	TeleopCommand = new DriveWithJoystick();
     	//Autonomous = new commandGRoup Class
+
         
     }
 
@@ -51,6 +55,7 @@ public class CommandBasedRobot extends IterativeRobot {
      */
     public void autonomousPeriodic() {
         Scheduler.getInstance().run();
+        
     }
 
     public void teleopInit() {
@@ -67,6 +72,9 @@ public class CommandBasedRobot extends IterativeRobot {
      */
     public void teleopPeriodic() {
         Scheduler.getInstance().run();
-       
+        OI.smartDashData();
+        Timer.delay(.01);
+        
+        
     }
 }
