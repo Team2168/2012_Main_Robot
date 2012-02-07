@@ -29,6 +29,7 @@ public class DriveToSpeed extends CommandBase {
 	
 	protected void initialize() {
 		// TODO Auto-generated method stub
+		driveTrain.speedController.Enable();
 
 	}
 
@@ -67,7 +68,7 @@ public class DriveToSpeed extends CommandBase {
 	 */
 	protected boolean isFinished() {
 		// TODO Auto-generated method stub
-		return false;
+		return oi.drivestick.getRawButton(2);
 	}
 
 	/**
@@ -75,6 +76,7 @@ public class DriveToSpeed extends CommandBase {
 	 */
 	protected void end() {
 		// TODO Auto-generated method stub
+		driveTrain.speedController.Pause();
 
 	}
 

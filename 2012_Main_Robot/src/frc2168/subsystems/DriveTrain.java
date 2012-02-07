@@ -117,8 +117,6 @@ public class DriveTrain extends Subsystem
 		
 		System.out.println("entering command init");
 		speedController.enDebug();
-		speedController.Enable();
-		speedController.setSp(50);
 		System.out.println("init complete");
 		
 		
