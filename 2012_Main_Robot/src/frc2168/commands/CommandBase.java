@@ -6,10 +6,12 @@ import frc2168.OI;
 import frc2168.subsystems.DriveTrain;
 
 /**
+ * @author Kevin Harrilal, First Robotics Team 2168
+ * <br><br>
  * The base for all commands. All atomic commands should subclass CommandBase.
- * CommandBase stores creates and stores each control system. To access a
+ * CommandBase creates and stores each Control Object. To access a
  * subsystem elsewhere in your code in your code use CommandBase.exampleSubsystem
- * @author Author
+ * 
  */
 public abstract class CommandBase extends Command {
 
