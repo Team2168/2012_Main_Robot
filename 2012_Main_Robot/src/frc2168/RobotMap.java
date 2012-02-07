@@ -62,6 +62,12 @@ public class RobotMap {
 	public static final int driveEncoderMinRate=10; 
 	public static final int driveEncoderMinPeriod=10;
 	
+	
+	//Compressor switch and relay
+	public static final int compressorSwitch = 1; //switch channel for the compressor
+	public static final int compressorRelay = 1; //relay channel for the compressor
+	
+	
 	//PID Gains for Left Side
 	
 	public static final double P = 0.00574562908722711;

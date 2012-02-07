@@ -10,6 +10,7 @@ package frc2168;
 /**
  * Working Command Base Robot Code Template with CAN Drive
  */
+import edu.wpi.first.wpilibj.Compressor;
 import edu.wpi.first.wpilibj.IterativeRobot;
 import edu.wpi.first.wpilibj.command.Command;
 import edu.wpi.first.wpilibj.command.Scheduler;
@@ -23,6 +24,8 @@ import frc2168.commands.*;
  * directory.
  */
 public class CommandBasedRobot extends IterativeRobot {
+
+    Compressor compressor;
 
 	//Create commands for Atonomous and Teleop Periods
     Command TeleopCommand;
@@ -40,9 +43,12 @@ public class CommandBasedRobot extends IterativeRobot {
     	// This init() function basically calls OI.Java
     	CommandBase.init();
     	
+    	//start compressor
+    	compressor = new Compressor(RobotMap.compressorSwitch, RobotMap.compressorRelay);
+        compressor.start();
     	
     	// instantiate the command used for the autonomous period
-    		//Autonomous = new commandGRoup Class
+    	//Autonomous = new commandGRoup Class
     	
     	// instantiate the command used for the teleop period
     	TeleopCommand = new DriveWithJoystick();
