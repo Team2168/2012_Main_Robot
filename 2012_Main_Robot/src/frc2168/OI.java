@@ -5,7 +5,9 @@ import edu.wpi.first.wpilibj.buttons.Button;
 import edu.wpi.first.wpilibj.buttons.JoystickButton;
 import frc2168.commands.DriveShooterWheel;
 import frc2168.commands.DriveToSpeed;
+import frc2168.commands.LowerBridge;
 import frc2168.commands.LowerHood;
+import frc2168.commands.RaiseBridge;
 import frc2168.commands.RaiseHood;
 
 /**
@@ -21,14 +23,14 @@ import frc2168.commands.RaiseHood;
 public class OI
 {
 	public Joystick drivestick = new Joystick(RobotMap.driverJoystick);
-	public Button button1 = new JoystickButton(drivestick, 1),
-			button2 = new JoystickButton(drivestick, 2),
-			button3 = new JoystickButton(drivestick, 3),
-			button4 = new JoystickButton(drivestick, 4),
-			button5 = new JoystickButton(drivestick, 5),
-			button6 = new JoystickButton(drivestick, 6),
-			button7 = new JoystickButton(drivestick, 7),
-			button8 = new JoystickButton(drivestick, 8);
+	public Button driveButtonA = new JoystickButton(drivestick, 1),
+			driveButtonB = new JoystickButton(drivestick, 2),
+			driveButtonX = new JoystickButton(drivestick, 3),
+			driveButtonY = new JoystickButton(drivestick, 4),
+			driveButtonLeftBumper = new JoystickButton(drivestick, 5),
+			driveButtonRightBumper = new JoystickButton(drivestick, 6),
+			driveButtonReset = new JoystickButton(drivestick, 7),
+			driveButtonStart = new JoystickButton(drivestick, 8);
 	
 	public Joystick auxstick = new Joystick(RobotMap.auxJoystick);
 	public Button auxButtonA = new JoystickButton(auxstick, 1),
@@ -42,7 +44,10 @@ public class OI
 
 	public OI()
 	{
-		button1.whenPressed(new DriveToSpeed());
+		driveButtonA.whenPressed(new DriveToSpeed());
+		driveButtonX.whenPressed(new LowerBridge());
+		driveButtonY.whenPressed(new RaiseBridge());
+		
 		auxButtonA.whenPressed(new LowerHood());
 		auxButtonB.whenPressed(new RaiseHood());
 	}

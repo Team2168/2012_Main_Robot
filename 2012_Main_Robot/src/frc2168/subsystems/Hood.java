@@ -1,6 +1,7 @@
 package frc2168.subsystems;
 
 import frc2168.RobotMap;
+import frc2168.commands.DriveShooterWheel;
 import edu.wpi.first.wpilibj.CANJaguar;
 import edu.wpi.first.wpilibj.DriverStationLCD;
 import edu.wpi.first.wpilibj.Encoder;
@@ -35,7 +36,7 @@ public class Hood extends Subsystem {
 	}
 	
 	protected void initDefaultCommand() {
-		
+		setDefaultCommand(new DriveShooterWheel());
 	}
 	
 	public void spinMotor(double speed){
