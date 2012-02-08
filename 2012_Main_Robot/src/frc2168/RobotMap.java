@@ -12,7 +12,7 @@ public class RobotMap {
 	///////////////////////////////////////////////////////////////////
 	//JOYSTICK MAPS
 	
-	public static final int driverJoyStick=1; //USB Port 1
+	public static final int driverJoystick=1; //USB Port 1
 	public static final int auxJoystick=2; //USB Port 2
 	
 

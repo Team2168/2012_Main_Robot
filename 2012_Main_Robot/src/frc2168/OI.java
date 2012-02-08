@@ -3,7 +3,10 @@ package frc2168;
 import edu.wpi.first.wpilibj.Joystick;
 import edu.wpi.first.wpilibj.buttons.Button;
 import edu.wpi.first.wpilibj.buttons.JoystickButton;
+import frc2168.commands.DriveShooterWheel;
 import frc2168.commands.DriveToSpeed;
+import frc2168.commands.LowerHood;
+import frc2168.commands.RaiseHood;
 
 /**
  * 
@@ -17,7 +20,7 @@ import frc2168.commands.DriveToSpeed;
  */
 public class OI
 {
-	public Joystick drivestick = new Joystick(RobotMap.driverJoyStick);
+	public Joystick drivestick = new Joystick(RobotMap.driverJoystick);
 	public Button button1 = new JoystickButton(drivestick, 1),
 			button2 = new JoystickButton(drivestick, 2),
 			button3 = new JoystickButton(drivestick, 3),
@@ -26,11 +29,22 @@ public class OI
 			button6 = new JoystickButton(drivestick, 6),
 			button7 = new JoystickButton(drivestick, 7),
 			button8 = new JoystickButton(drivestick, 8);
+	
+	public Joystick auxstick = new Joystick(RobotMap.auxJoystick);
+	public Button auxButtonA = new JoystickButton(auxstick, 1),
+			auxButtonB = new JoystickButton(auxstick, 2),
+			auxButtonX = new JoystickButton(auxstick, 3),
+			auxButtonY = new JoystickButton(auxstick, 4),
+			auxButtonLeftBumper = new JoystickButton(auxstick, 5),
+			auxButtonRightBumper = new JoystickButton(auxstick, 6),
+			auxButtonReset = new JoystickButton(auxstick, 7),
+			auxButtonStart = new JoystickButton(auxstick, 8);
 
 	public OI()
 	{
 		button1.whenPressed(new DriveToSpeed());
-
+		auxButtonA.whenPressed(new LowerHood());
+		auxButtonB.whenPressed(new RaiseHood());
 	}
 
 	/**
@@ -73,4 +87,19 @@ public class OI
 		}
 	}
 
+	
+	public double getAuxLeftSpeed()
+	{
+		return auxstick.getRawAxis(2); // this is supposed to be the left
+	}
+
+	/**
+	 * Returns the axis value of the Right Auxillary Stick
+	 * 
+	 * @return
+	 */
+	public double getAuxRightSpeed()
+	{
+		return auxstick.getRawAxis(5); // this is supposed to be the right
+	}
 }

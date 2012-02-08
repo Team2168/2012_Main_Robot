@@ -47,8 +47,11 @@ public class Hood extends Subsystem {
 		}
 	}
 	
-	public void actuateHood(){
-		
+	public void lowerHood(){
+		hoodActuator.set(true);
 	}
 
+	public void raiseHood(){
+		hoodActuator.set(false);
+	}
 }
