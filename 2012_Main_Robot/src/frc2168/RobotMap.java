@@ -16,7 +16,7 @@ public class RobotMap {
 	public static final int auxJoystick=2; //USB Port 2
 	
 
-	///////////////////////////////////////////////////////////////////
+	///////////////////////////////DRIVETRAIN////////////////////////////////////
 	//DRIVE TRAIN SUBSYSTEM CONSTANTS
 	
 	/*
@@ -35,6 +35,9 @@ public class RobotMap {
 	  |___________| 
 	 */
 
+	//gear shifting solenoid ports
+	public static final int shiftForwardChannel = 7;
+	public static final int shiftReverseChannel = 8;
 	
 	//Creating Static CAN IDs for DriveTrain Motors
 	public static final int leftmotor1 = 11, rightmotor1 = 12;

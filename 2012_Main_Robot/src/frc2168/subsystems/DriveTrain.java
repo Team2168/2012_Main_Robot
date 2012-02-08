@@ -2,6 +2,7 @@ package frc2168.subsystems;
 
 import edu.wpi.first.wpilibj.CANJaguar;
 import edu.wpi.first.wpilibj.CounterBase;
+import edu.wpi.first.wpilibj.DoubleSolenoid;
 import edu.wpi.first.wpilibj.DriverStationLCD;
 import edu.wpi.first.wpilibj.Encoder;
 import edu.wpi.first.wpilibj.can.CANTimeoutException;
@@ -63,7 +64,10 @@ public class DriveTrain extends Subsystem
 		long period =40;//40ms loop
 
 	////////////////////////////////////////////////////////////////////
-	
+	//Shifting solenoids
+		DoubleSolenoid gearShifter;
+		
+	////////////////////////////////////////////////////////////////////
 
 	/**
 	 * Default Constructor for DriveTrain Subsystem. This Constructor instantiates
@@ -79,9 +83,12 @@ public class DriveTrain extends Subsystem
 	 */
 	public DriveTrain()
 	{
+		//enable shifting solenoids
+		gearShifter = new DoubleSolenoid(RobotMap.shiftForwardChannel, RobotMap.shiftReverseChannel);
+		
 		//enable left and right encoders
 		leftMotorEncoder = new Encoder(RobotMap.leftDriveTrainEncoder_A,
-				RobotMap.leftDriveTrainEncoder_B,false,CounterBase.EncodingType.k1X);
+		RobotMap.leftDriveTrainEncoder_B,false,CounterBase.EncodingType.k1X);
 	
 		//Set Encoder Paramters
 		leftMotorEncoder.setDistancePerPulse(RobotMap.driveEencoderDistPerTick);
@@ -189,4 +196,11 @@ public class DriveTrain extends Subsystem
     	TankDrive(output, output);
     }
 
+    public void shiftGearsHighToLow(){
+    	gearShifter.set(DoubleSolenoid.Value.kForward);
+    }
+
+    public void shiftGearsLowToHigh(){
+    	gearShifter.set(DoubleSolenoid.Value.kReverse);
+    }
 }

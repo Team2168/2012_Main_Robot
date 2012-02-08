@@ -8,6 +8,8 @@ import frc2168.commands.LowerBridge;
 import frc2168.commands.LowerHood;
 import frc2168.commands.RaiseBridge;
 import frc2168.commands.RaiseHood;
+import frc2168.commands.ShiftGearsHighToLow;
+import frc2168.commands.ShiftGearsLowToHigh;
 
 /**
  * 
@@ -46,6 +48,8 @@ public class OI
 		driveButtonA.whenPressed(new DriveToSpeed());
 		driveButtonX.whenPressed(new LowerBridge());
 		driveButtonY.whenPressed(new RaiseBridge());
+		driveButtonLeftBumper.whenPressed(new ShiftGearsLowToHigh());
+		driveButtonRightBumper.whenPressed(new ShiftGearsHighToLow());
 		
 		auxButtonA.whenPressed(new LowerHood());
 		auxButtonB.whenPressed(new RaiseHood());
