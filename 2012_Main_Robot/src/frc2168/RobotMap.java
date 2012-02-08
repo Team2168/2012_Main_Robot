@@ -73,12 +73,22 @@ public class RobotMap {
 	public static final double P = 0.00574562908722711;
 	public static final double I = 0.000308064641742337; 
 	public static final double D = -0.000130778888124088;
+	
+	
 	////////////////////////////ELEVATOR////////////////////////////////////////
 	
-	//ADD OTHER SUBSYSTEM CONSTANTS HERE
 	public static final int shooterWheelCANID = 6, shooterWheel2CANID = 9;
 	public static final int shooterWheelEncoderID_A = 0, shooterWheelEncoderID_B = 1;
 	public static final int hoodSolenoidPort = 69;
+	
+	//Hood Wheel Radius
+	public static final int shooterWheelRadius=4;
+	
+	//HoodEncoder Parameters
+	public static final int shooterEncoderPulsePerRot=500;
+	public static final double shooterEncoderDistPerTick=(Math.PI*2*shooterWheelRadius)/shooterEncoderPulsePerRot;
+	public static final int shooterEncoderMinRate=10; 
+	public static final int shooterEncoderMinPeriod=10;
 	
 	////////////////////////////////////////////////////////////////////
 }

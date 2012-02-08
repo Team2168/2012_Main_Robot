@@ -11,6 +11,7 @@ package frc2168;
  * Working Command Base Robot Code Template with CAN Drive
  */
 import edu.wpi.first.wpilibj.Compressor;
+import edu.wpi.first.wpilibj.DriverStationLCD;
 import edu.wpi.first.wpilibj.IterativeRobot;
 import edu.wpi.first.wpilibj.command.Command;
 import edu.wpi.first.wpilibj.command.Scheduler;
@@ -40,6 +41,7 @@ public class CommandBasedRobot extends IterativeRobot {
     	//Add all functions which should start when the robot is enabled here
     	//such as compressor..etc
         
+    	
     	// This init() function basically calls OI.Java
     	CommandBase.init();
     	
