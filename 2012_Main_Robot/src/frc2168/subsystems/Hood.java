@@ -3,7 +3,6 @@ package frc2168.subsystems;
 import frc2168.RobotMap;
 import frc2168.commands.DriveShooterWheel;
 import edu.wpi.first.wpilibj.CANJaguar;
-import edu.wpi.first.wpilibj.DriverStationLCD;
 import edu.wpi.first.wpilibj.Encoder;
 import edu.wpi.first.wpilibj.Solenoid;
 import edu.wpi.first.wpilibj.can.CANTimeoutException;

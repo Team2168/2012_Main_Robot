@@ -1,6 +1,5 @@
 package frc2168.commands;
 
-import edu.wpi.first.wpilibj.command.Command;
 import edu.wpi.first.wpilibj.networktables.NetworkTableKeyNotDefined;
 import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;
 

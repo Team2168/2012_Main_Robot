@@ -3,7 +3,6 @@ package frc2168;
 import edu.wpi.first.wpilibj.Joystick;
 import edu.wpi.first.wpilibj.buttons.Button;
 import edu.wpi.first.wpilibj.buttons.JoystickButton;
-import frc2168.commands.DriveShooterWheel;
 import frc2168.commands.DriveToSpeed;
 import frc2168.commands.LowerBridge;
 import frc2168.commands.LowerHood;
