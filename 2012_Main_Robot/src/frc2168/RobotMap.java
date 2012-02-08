@@ -80,8 +80,8 @@ public class RobotMap {
 	
 	////////////////////////////ELEVATOR////////////////////////////////////////
 	
-	public static final int shooterWheelCANID = 6, shooterWheel2CANID = 9;
-	public static final int shooterWheelEncoderID_A = 0, shooterWheelEncoderID_B = 1;
+	public static final int shooterWheelCANID = 2, shooterWheel2CANID = 5;
+	public static final int shooterWheelEncoderID_A = 7, shooterWheelEncoderID_B = 8;
 	public static final int hoodSolenoidPort = 1, hoodSolenoidPortReverse = 2;
 	
 	//Hood Wheel Radius
@@ -93,12 +93,12 @@ public class RobotMap {
 	public static final int shooterEncoderMinRate=10; 
 	public static final int shooterEncoderMinPeriod=10;
 	
-	////////////////////////////////////////////////////////////////////
+	////////////////////////////////////////////////////////////////////////////
 	
 	///////////////////////////////BRIDGE ARM/////////////////////////////////////
 	
-	public static final int bridgeArmSolenoidForwardChannel = 3;
-	public static final int bridgeArmSolenoidReverseChannel = 4;
+	public static final int bridgeArmSolenoidForwardChannel = 5;
+	public static final int bridgeArmSolenoidReverseChannel = 6;
 	
 	
 	////////////////////////////////////////////////////////////////////
