@@ -73,10 +73,12 @@ public class RobotMap {
 	public static final double P = 0.00574562908722711;
 	public static final double I = 0.000308064641742337; 
 	public static final double D = -0.000130778888124088;
-	////////////////////////////////////////////////////////////////////
+	////////////////////////////ELEVATOR////////////////////////////////////////
 	
 	//ADD OTHER SUBSYSTEM CONSTANTS HERE
-	
+	public static final int shooterWheelCANID = 6, shooterWheel2CANID = 9;
+	public static final int shooterWheelEncoderID_A = 0, shooterWheelEncoderID_B = 1;
+	public static final int hoodSolenoidPort = 69;
 	
 	////////////////////////////////////////////////////////////////////
 }
