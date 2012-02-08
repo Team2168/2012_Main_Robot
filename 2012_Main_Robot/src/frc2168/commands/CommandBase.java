@@ -4,6 +4,7 @@ import edu.wpi.first.wpilibj.command.Command;
 import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;
 import frc2168.OI;
 import frc2168.subsystems.DriveTrain;
+import frc2168.subsystems.ElevatorWithFlap;
 
 /**
  * @author Kevin Harrilal, First Robotics Team 2168
@@ -18,6 +19,8 @@ public abstract class CommandBase extends Command {
     public static OI oi;
     // Create a single static instance of all of your subsystems
     public static DriveTrain driveTrain = new DriveTrain ();
+    public static ElevatorWithFlap elevatorFlap = new ElevatorWithFlap ();
+    
     
     public static void init() {
         // This MUST be here. If the OI creates Commands (which it very likely
