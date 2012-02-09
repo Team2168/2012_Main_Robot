@@ -42,22 +42,24 @@ public class DriveToSpeed extends CommandBase {
 	protected void execute() {
 		// TODO Auto-generated method stub
 
-		try {
+		if(driveTrain.speedController.isDebugEnabled())
+		{
+			try {
+				
+				//set SpeedController Inputs Based on values from the DashBoard
+				driveTrain.speedController.setSp(SmartDashboard.getDouble(driveTrain.speedController.getName()+"_setPoint"));
+				driveTrain.speedController.setMaxPosOutput(SmartDashboard.getDouble(driveTrain.speedController.getName()+"_max Pos Output"));
+				driveTrain.speedController.setMaxNegOutput(SmartDashboard.getDouble(driveTrain.speedController.getName()+"_max Neg Output"));
+				driveTrain.speedController.setMinPosOutput(SmartDashboard.getDouble(driveTrain.speedController.getName()+"_min Pos Output"));
+				driveTrain.speedController.setMinNegOutput(SmartDashboard.getDouble(driveTrain.speedController.getName()+"_min Neg Output"));
+				driveTrain.speedController.setR(SmartDashboard.getDouble(driveTrain.speedController.getName()+"_deriv Filter Constant"));
+				driveTrain.speedController.setAcceptErrorDiff(SmartDashboard.getDouble(driveTrain.speedController.getName()+"_acceptable Err"));
 			
-			//set SpeedController Inputs Based on values from the DashBoard
-			driveTrain.speedController.setSp(SmartDashboard.getDouble(driveTrain.speedController.getName()+"_setPoint"));
-			driveTrain.speedController.setMaxPosOutput(SmartDashboard.getDouble(driveTrain.speedController.getName()+"_max Pos Output"));
-			driveTrain.speedController.setMaxNegOutput(SmartDashboard.getDouble(driveTrain.speedController.getName()+"_max Neg Output"));
-			driveTrain.speedController.setMinPosOutput(SmartDashboard.getDouble(driveTrain.speedController.getName()+"_min Pos Output"));
-			driveTrain.speedController.setMinNegOutput(SmartDashboard.getDouble(driveTrain.speedController.getName()+"_min Neg Output"));
-			driveTrain.speedController.setR(SmartDashboard.getDouble(driveTrain.speedController.getName()+"_deriv Filter Constant"));
-			driveTrain.speedController.setAcceptErrorDiff(SmartDashboard.getDouble(driveTrain.speedController.getName()+"_acceptable Err"));
-		
-		} catch (NetworkTableKeyNotDefined e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
+			} catch (NetworkTableKeyNotDefined e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
+			}
 		}
-		
 		//lets try changing setpoint first
 		driveTrain.PIDSpeedOutput(driveTrain.speedController.getCo());
 	}
