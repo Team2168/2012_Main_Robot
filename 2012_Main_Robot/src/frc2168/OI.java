@@ -3,6 +3,8 @@ package frc2168;
 import edu.wpi.first.wpilibj.Joystick;
 import edu.wpi.first.wpilibj.buttons.Button;
 import edu.wpi.first.wpilibj.buttons.JoystickButton;
+import frc2168.commands.BackFlapClose;
+import frc2168.commands.BackFlapOpen;
 import frc2168.commands.DriveToSpeed;
 import frc2168.commands.LowerBridge;
 import frc2168.commands.LowerHood;
@@ -53,6 +55,8 @@ public class OI
 		
 		auxButtonA.whenPressed(new LowerHood());
 		auxButtonB.whenPressed(new RaiseHood());
+		auxButtonX.whenPressed(new BackFlapOpen());
+		auxButtonY.whenPressed(new BackFlapClose());
 	}
 
 	/**
