@@ -3,6 +3,7 @@ package frc2168.subsystems;
 import frc2168.RobotMap;
 import frc2168.commands.DriveShooterWheel;
 import edu.wpi.first.wpilibj.CANJaguar;
+import edu.wpi.first.wpilibj.DoubleSolenoid;
 import edu.wpi.first.wpilibj.Encoder;
 import edu.wpi.first.wpilibj.Solenoid;
 import edu.wpi.first.wpilibj.can.CANTimeoutException;
@@ -12,7 +13,7 @@ public class Hood extends Subsystem {
 	
 	CANJaguar shooterWheel;
 	CANJaguar shooterWheel2;
-	Solenoid hoodActuator;
+	DoubleSolenoid hoodActuator;
 	Encoder shooterWheelEncoder;
 	
 	public Hood(){
@@ -48,10 +49,10 @@ public class Hood extends Subsystem {
 	}
 	
 	public void lowerHood(){
-		hoodActuator.set(true);
+		hoodActuator.set(DoubleSolenoid.Value.kForward);
 	}
 
 	public void raiseHood(){
-		hoodActuator.set(false);
+		hoodActuator.set(DoubleSolenoid.Value.kReverse);
 	}
 }

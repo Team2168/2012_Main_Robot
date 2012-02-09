@@ -40,8 +40,8 @@ public class RobotMap {
 	public static final int shiftReverseChannel = 8;
 	
 	//Creating Static CAN IDs for DriveTrain Motors
-	public static final int leftmotor1 = 11, rightmotor1 = 12;
-	public static final int leftmotor2 = 2, rightmotor2 = 10;
+	public static final int leftmotor1 = 4, rightmotor1 = 8;
+	public static final int leftmotor2 = 3, rightmotor2 = 10;
 	
 	//Motor Invert Direction 
 	public static final boolean invertRight = false;	//if true invert signal to right motors
