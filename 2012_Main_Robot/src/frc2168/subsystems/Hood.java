@@ -30,7 +30,7 @@ public class Hood extends Subsystem {
 		catch(CANTimeoutException e){
 			e.printStackTrace();
 			driverstation = DriverStationLCD.getInstance();
-			driverstation.println(DriverStationLCD.Line.kMain6, 1, "Error initializing Jag");
+			driverstation.println(DriverStationLCD.Line.kMain6, 1, "Error initializing Jag in hood");
 			driverstation.updateLCD();
 		}
 		shooterWheelEncoder = new Encoder(RobotMap.shooterWheelEncoderID_A, RobotMap.shooterWheelEncoderID_B);
@@ -51,6 +51,9 @@ public class Hood extends Subsystem {
 			shooterWheel2.setX(speed);
 		} catch (CANTimeoutException e) {
 			e.printStackTrace();
+			driverstation = DriverStationLCD.getInstance();
+			driverstation.println(DriverStationLCD.Line.kMain6, 1, "Error setting Jag in hood");
+			driverstation.updateLCD();
 		}
 	}
 	
