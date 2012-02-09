@@ -6,3 +6,9 @@
 /image.suite
 /image.sym
 /build
+*.class
+
+# Package Files #
+*.jar
+*.war
+*.ear
