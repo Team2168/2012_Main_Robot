@@ -6,6 +6,8 @@ import frc2168.OI;
 import frc2168.subsystems.BridgeArm;
 import frc2168.subsystems.DriveTrain;
 import frc2168.subsystems.Hood;
+import frc2168.subsystems.ElevatorWithFlap;
+
 
 /**
  * @author Kevin Harrilal, First Robotics Team 2168
@@ -22,7 +24,8 @@ public abstract class CommandBase extends Command {
     public static DriveTrain driveTrain = new DriveTrain ();
     public static Hood hood = new Hood();
     public static BridgeArm bridgeArm = new BridgeArm();
-    
+    public static ElevatorWithFlap elevatorFlap = new ElevatorWithFlap ();
+
     public static void init() {
         // This MUST be here. If the OI creates Commands (which it very likely
         // will), constructing it during the construction of CommandBase (from
@@ -33,6 +36,9 @@ public abstract class CommandBase extends Command {
        
         // Show what command your subsystem is running on the SmartDashboard
         SmartDashboard.putData(driveTrain);
+        SmartDashboard.putData(hood);
+        SmartDashboard.putData(bridgeArm);
+        SmartDashboard.putData(elevatorFlap);
     }
 
     public CommandBase(String name) 
