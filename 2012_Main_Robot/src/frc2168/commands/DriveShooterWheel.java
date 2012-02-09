@@ -11,7 +11,7 @@ public class DriveShooterWheel extends CommandBase {
 	}
 
 	protected void execute(){
-		hood.spinMotor(oi.getAuxLeftSpeed());
+		hood.spinMotor(oi.getAuxLeftStick());
 	}
 
 	protected boolean isFinished() {

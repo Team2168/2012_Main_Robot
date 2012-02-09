@@ -58,7 +58,7 @@ public class OI
 	/**
 	 * Returns the axis value of the Left DriverStick
 	 */
-	public double getLeftSpeed()
+	public double getDriveLeftAxis()
 	{
 		if (drivestick.getRawAxis(3) < 0)
 		{
@@ -79,7 +79,7 @@ public class OI
 	 * 
 	 * @return
 	 */
-	public double getRightSpeed()
+	public double getDriveRightAxis()
 	{
 		if (drivestick.getRawAxis(3) < 0)
 		{
@@ -96,7 +96,7 @@ public class OI
 	}
 
 	
-	public double getAuxLeftSpeed()
+	public double getAuxLeftStick()
 	{
 		return auxstick.getRawAxis(2); // this is supposed to be the left
 	}
@@ -106,7 +106,7 @@ public class OI
 	 * 
 	 * @return
 	 */
-	public double getAuxRightSpeed()
+	public double getAuxRightStick()
 	{
 		return auxstick.getRawAxis(5); // this is supposed to be the right
 	}

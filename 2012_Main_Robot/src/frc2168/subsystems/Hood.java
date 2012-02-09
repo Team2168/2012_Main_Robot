@@ -4,6 +4,8 @@ import frc2168.RobotMap;
 import frc2168.commands.DriveShooterWheel;
 import edu.wpi.first.wpilibj.CANJaguar;
 import edu.wpi.first.wpilibj.DoubleSolenoid;
+import edu.wpi.first.wpilibj.DriverStation;
+import edu.wpi.first.wpilibj.DriverStationLCD;
 import edu.wpi.first.wpilibj.Encoder;
 import edu.wpi.first.wpilibj.Solenoid;
 import edu.wpi.first.wpilibj.can.CANTimeoutException;
@@ -15,17 +17,21 @@ public class Hood extends Subsystem {
 	CANJaguar shooterWheel2;
 	DoubleSolenoid hoodActuator;
 	Encoder shooterWheelEncoder;
+	DriverStationLCD driverstation;
 	
 	public Hood(){
+		
+		hoodActuator = new DoubleSolenoid(RobotMap.hoodSolenoidPortFwd,RobotMap.hoodSolenoidPortReverse); 
+		
 		try{
 			shooterWheel = new CANJaguar(RobotMap.shooterWheelCANID);
 			shooterWheel2 = new CANJaguar(RobotMap.shooterWheel2CANID);
 		}
 		catch(CANTimeoutException e){
 			e.printStackTrace();
-//			driverstation = DriverStationLCD.getInstance();
-//			driverstation.println(DriverStationLCD.Line.kMain6, 1, "Error initializing Jag");
-//            driverstation.updateLCD();
+			driverstation = DriverStationLCD.getInstance();
+			driverstation.println(DriverStationLCD.Line.kMain6, 1, "Error initializing Jag");
+			driverstation.updateLCD();
 		}
 		shooterWheelEncoder = new Encoder(RobotMap.shooterWheelEncoderID_A, RobotMap.shooterWheelEncoderID_B);
 		
@@ -51,8 +57,18 @@ public class Hood extends Subsystem {
 	public void lowerHood(){
 		hoodActuator.set(DoubleSolenoid.Value.kForward);
 	}
+	
+	public boolean isLow()
+	{
+		return hoodActuator.get()==DoubleSolenoid.Value.kForward;
+	}
 
 	public void raiseHood(){
 		hoodActuator.set(DoubleSolenoid.Value.kReverse);
+	}
+	
+	public boolean isRaise()
+	{
+		return hoodActuator.get()==DoubleSolenoid.Value.kReverse;
 	}
 }

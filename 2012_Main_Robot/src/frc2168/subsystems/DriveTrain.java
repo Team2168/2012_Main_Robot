@@ -56,7 +56,7 @@ public class DriveTrain extends Subsystem
 		
 	/////////////////////////////////////////////////////////////////////
 	//Enable smartDashboard	
-		DriverStationLCD driverstation;
+		
 	
 	/////////////////////////////////////////////////////////////////////	
 	//PID Controllers
@@ -111,20 +111,15 @@ public class DriveTrain extends Subsystem
 		} catch (CANTimeoutException e)
 		{
 			e.printStackTrace();
-			driverstation = DriverStationLCD.getInstance();
-			driverstation.println(DriverStationLCD.Line.kMain6, 1, "Error initializing Jag");
-            driverstation.updateLCD();
+			RobotMap.driverstation = DriverStationLCD.getInstance();
+			RobotMap.driverstation.println(DriverStationLCD.Line.kMain6, 1, "Error initializing Jag");
+			RobotMap.driverstation.updateLCD();
             
             
             //spawn new threads
     		// TODO Auto-generated method stub
 	
 		} 
-		
-		System.out.println("entering command init");
-		speedController.enDebug();
-		System.out.println("init complete");
-		
 		
 	}
 
@@ -181,9 +176,9 @@ public class DriveTrain extends Subsystem
 		{
 			// TODO Auto-generated catch block
 			e.printStackTrace();
-			driverstation = DriverStationLCD.getInstance();			
-			driverstation.println(DriverStationLCD.Line.kMain6, 1, "Error setting Jag");
-            driverstation.updateLCD();
+			RobotMap.driverstation = DriverStationLCD.getInstance();			
+			RobotMap.driverstation.println(DriverStationLCD.Line.kMain6, 1, "Error setting Jag");
+			RobotMap.driverstation.updateLCD();
 		} 
 	}
 	
@@ -199,8 +194,18 @@ public class DriveTrain extends Subsystem
     public void shiftGearsHighToLow(){
     	gearShifter.set(DoubleSolenoid.Value.kForward);
     }
-
+    
+    public boolean gearIsHigh()
+    {
+    	return gearShifter.get()==DoubleSolenoid.Value.kForward;
+    }
+    
     public void shiftGearsLowToHigh(){
     	gearShifter.set(DoubleSolenoid.Value.kReverse);
+    }
+    
+    public boolean gearIsLow()
+    {
+    	return gearShifter.get()==DoubleSolenoid.Value.kReverse;
     }
 }

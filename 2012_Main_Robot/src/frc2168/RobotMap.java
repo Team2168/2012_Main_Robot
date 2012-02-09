@@ -1,5 +1,7 @@
 package frc2168;
 
+import edu.wpi.first.wpilibj.DriverStationLCD;
+
 
 /**
  * The RobotMap is a mapping from the ports sensors and actuators are wired into
@@ -9,6 +11,10 @@ package frc2168;
  */
 public class RobotMap {
 
+	//////////////////////////////////////////////////////////////////
+	//DriverStation LCD
+	public static DriverStationLCD driverstation;
+	
 	///////////////////////////////////////////////////////////////////
 	//JOYSTICK MAPS
 	
@@ -60,7 +66,7 @@ public class RobotMap {
 	public static final int driveWheelRadius=4; //Colson wheel radius
 	
 	//DriveTraincEncoder Parameters
-	public static final int driveEncoderPulsePerRot=500;
+	public static final int driveEncoderPulsePerRot=250;
 	public static final double driveEencoderDistPerTick=(Math.PI*2*driveWheelRadius)/driveEncoderPulsePerRot;
 	public static final int driveEncoderMinRate=10; 
 	public static final int driveEncoderMinPeriod=10;
@@ -82,13 +88,13 @@ public class RobotMap {
 	
 	public static final int shooterWheelCANID = 2, shooterWheel2CANID = 5;
 	public static final int shooterWheelEncoderID_A = 7, shooterWheelEncoderID_B = 8;
-	public static final int hoodSolenoidPort = 1, hoodSolenoidPortReverse = 2;
+	public static final int hoodSolenoidPortFwd = 1, hoodSolenoidPortReverse = 2;
 	
 	//Hood Wheel Radius
 	public static final int shooterWheelRadius=4;
 	
 	//HoodEncoder Parameters
-	public static final int shooterEncoderPulsePerRot=500;
+	public static final int shooterEncoderPulsePerRot=250;
 	public static final double shooterEncoderDistPerTick=(Math.PI*2*shooterWheelRadius)/shooterEncoderPulsePerRot;
 	public static final int shooterEncoderMinRate=10; 
 	public static final int shooterEncoderMinPeriod=10;
