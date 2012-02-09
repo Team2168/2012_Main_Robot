@@ -13,7 +13,7 @@ public class RaiseHood extends CommandBase {
 
 	protected boolean isFinished() {
 		// TODO Auto-generated method stub
-		return false;
+		return hood.isRaise();
 	}
 
 	protected void end() {
