@@ -36,7 +36,7 @@ public class DriveWithJoystick extends CommandBase {
 	{
 		//every time this command is called we drive the
 		//driveTrain with tank drive using the Driver Joysticks
-		driveTrain.TankDrive(oi.getLeftSpeed(), oi.getRightSpeed());
+		driveTrain.TankDrive(oi.getDriveLeftAxis(), oi.getDriveRightAxis());
 	}
 
 	/**
