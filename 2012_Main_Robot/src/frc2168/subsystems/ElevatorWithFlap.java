@@ -17,7 +17,6 @@ public class ElevatorWithFlap extends Subsystem {
 		lift1 = new Victor(RobotMap.lift1Victor);
 		lift2 = new Victor(RobotMap.lift2Victor);
 		backFlap = new DoubleSolenoid(RobotMap.backFlapSolenoidClose , RobotMap.backFlapSolenoidOpen);
-		ballExitSensor = new DigitalInput(RobotMap.ballExitSensor);
 	}
 	
 	protected void initDefaultCommand() {
@@ -45,6 +44,11 @@ public class ElevatorWithFlap extends Subsystem {
 		
 	}
 	
+	public boolean isClose(){
+		return backFlap.get()==DoubleSolenoid.Value.kReverse;
+	}
+	
+	
 	/**
 	 * open the flap to prevent balls from going up the lift
 	 */
@@ -52,12 +56,10 @@ public class ElevatorWithFlap extends Subsystem {
 		backFlap.set(DoubleSolenoid.Value.kForward);
 	}
 
-	/**
-	 * Tells us whether a ball is at the top of the lift
-	 * 
-	 * @return true if there is a ball at the top of the lift
-	 */
-	public boolean ballAtExit(){
-		return ballExitSensor.get();
+	
+	public boolean isOpen(){
+		return backFlap.get()==DoubleSolenoid.Value.kForward;
 	}
+	
+
 }
