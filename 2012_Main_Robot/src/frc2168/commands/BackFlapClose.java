@@ -14,10 +14,6 @@ public class BackFlapClose extends CommandBase {
 	}
 
 	protected void execute() {
-		/*
-		 * if aux button1 is pressed then Close flap
-		 */
-		if (oi.auxButton1.get()){
 			elevatorFlap.backFlapClose();
 		}
 			
@@ -27,7 +23,7 @@ public class BackFlapClose extends CommandBase {
 
 	protected boolean isFinished() {
 		// TODO Auto-generated method stub
-		return false;
+		return elevatorFlap.isClose();
 	}
 
 	protected void end() {
