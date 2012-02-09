@@ -12,7 +12,7 @@ public class RaiseBridge extends CommandBase {
 
 	protected boolean isFinished() {
 		// TODO Auto-generated method stub
-		return false;
+		return bridgeArm.isRaise();
 	}
 
 	protected void end() {
