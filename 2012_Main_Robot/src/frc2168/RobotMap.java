@@ -83,6 +83,5 @@ public class RobotMap {
 	public static final int lift2Victor = 4;
 	public static final int backFlapSolenoidClose = 5;
 	public static final int backFlapSolenoidOpen = 6;
-	public static final int ballExitSensor = 3;
 	////////////////////////////////////////////////////////////////////
 }

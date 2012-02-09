@@ -3,9 +3,9 @@ package frc2168.commands;
 import edu.wpi.first.wpilibj.command.Command;
 import frc2168.RobotMap;
 
-public class backFlapClose extends CommandBase {
+public class BackFlapClose extends CommandBase {
 
-	public backFlapClose(){
+	public BackFlapClose(){
 		requires(elevatorFlap);
 	}
 	protected void initialize() {
