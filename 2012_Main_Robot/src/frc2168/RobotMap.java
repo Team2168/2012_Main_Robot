@@ -99,18 +99,17 @@ public class RobotMap {
 	public static final int shooterEncoderMinRate=10; 
 	public static final int shooterEncoderMinPeriod=10;
 	
-	////////////////////////////////////////////////////////////////////////////
-	
+
 	///////////////////////////////BRIDGE ARM/////////////////////////////////////
 	
 	public static final int bridgeArmSolenoidForwardChannel = 5;
 	public static final int bridgeArmSolenoidReverseChannel = 6;
 	
-	//ElevatorWithFlap
+	///////////////////////////////Elevator////////////////////////////////////
 	
 	public static final int lift1Victor = 3;
 	public static final int lift2Victor = 4;
 	public static final int backFlapSolenoidClose = 5;
 	public static final int backFlapSolenoidOpen = 6;
-	////////////////////////////////////////////////////////////////////
+	////////////////////////////////////////////////////////////////////////////
 }
