@@ -20,8 +20,17 @@ public class BridgeArm extends Subsystem {
 		raiseLowerSolenoid.set(DoubleSolenoid.Value.kForward);
 	}
 	
+	public boolean isLow()
+	{
+		return raiseLowerSolenoid.get()==DoubleSolenoid.Value.kForward;
+	}
+	
 	public void raiseArm(){
 		raiseLowerSolenoid.set(DoubleSolenoid.Value.kReverse);
+	}
+	public boolean isRaise()
+	{
+		return raiseLowerSolenoid.get()==DoubleSolenoid.Value.kReverse;
 	}
 
 }
