@@ -12,7 +12,7 @@ public class LowerBridge extends CommandBase {
 
 	protected boolean isFinished() {
 		// TODO Auto-generated method stub
-		return false;
+		return bridgeArm.isLow();
 	}
 
 	protected void end() {
