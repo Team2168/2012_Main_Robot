@@ -19,7 +19,7 @@ public class ShiftGearsLowToHigh extends CommandBase {
 
 	protected boolean isFinished() {
 		// TODO Auto-generated method stub
-		return false;
+		return driveTrain.gearIsHigh();
 	}
 
 	protected void end() {
