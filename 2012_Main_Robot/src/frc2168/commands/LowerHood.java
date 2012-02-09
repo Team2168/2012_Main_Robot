@@ -13,7 +13,7 @@ public class LowerHood extends CommandBase {
 
 	protected boolean isFinished() {
 		// TODO Auto-generated method stub
-		return false;
+		return hood.isLow();
 	}
 
 	protected void end() {
