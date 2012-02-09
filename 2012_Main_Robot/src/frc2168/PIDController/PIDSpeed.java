@@ -243,6 +243,14 @@ public class PIDSpeed
 	}
 
 	/**
+	 * @return the debugEnabled
+	 */
+	public synchronized boolean isDebugEnabled()
+	{
+		return debugEnabled;
+	}
+
+	/**
 	 * @return the enDerivFilter
 	 */
 	public synchronized boolean isEnDerivFilter()
