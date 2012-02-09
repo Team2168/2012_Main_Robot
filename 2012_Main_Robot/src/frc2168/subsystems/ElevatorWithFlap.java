@@ -29,7 +29,7 @@ public class ElevatorWithFlap extends Subsystem {
 	 * set the speed of the lift motors
 	 * @param speed is the speed of the motor
 	 */
-	public void liftBallsElevator(double speed){
+	public void setBallElevatorSpeed(double speed){
 		
 		lift1.set(speed);
 		lift2.set(speed);

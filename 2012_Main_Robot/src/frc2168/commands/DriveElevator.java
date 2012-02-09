@@ -23,7 +23,7 @@ public class DriveElevator extends CommandBase {
 	
 	protected void execute() {
 		
-		elevatorFlap.liftBallsElevator(oi.auxstick.getRawAxis(RobotMap.auxJoystick));
+		elevatorFlap.liftBallsElevator(oi.));
 
 	}
 
