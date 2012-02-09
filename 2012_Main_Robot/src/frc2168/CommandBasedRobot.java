@@ -30,6 +30,7 @@ public class CommandBasedRobot extends IterativeRobot {
 	//Create commands for Atonomous and Teleop Periods
     Command TeleopHoodDefault;
     Command TeleopDriveTrainDefault;
+    Command TeleopDriveElevator;
     //Command autonomousCommand;
 
     /**
@@ -55,6 +56,7 @@ public class CommandBasedRobot extends IterativeRobot {
     	// instantiate the command used for the teleop period
         TeleopHoodDefault = new DriveShooterWheel();
         TeleopDriveTrainDefault = new DriveWithJoystick();
+        TeleopDriveElevator = new DriveElevator();
     	
     }
 
@@ -80,6 +82,7 @@ public class CommandBasedRobot extends IterativeRobot {
 		//autonomousCommand.cancel();
     	TeleopHoodDefault.start();
     	TeleopDriveTrainDefault.start();
+    	TeleopDriveElevator.start();
     }
 
     /**
