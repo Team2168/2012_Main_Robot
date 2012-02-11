@@ -28,9 +28,16 @@ public class DriveToSpeed extends CommandBase {
 	
 	protected void initialize() {
 		// TODO Auto-generated method stub
+<<<<<<< OURS
 		driveTrain.speedController.enDebug();
 		driveTrain.speedController.Enable();
 
+=======
+		driveTrain.leftSpeedController.Enable();
+		driveTrain.rightSpeedController.Enable();
+		driveTrain.leftSpeedController.enDebug();
+		driveTrain.rightSpeedController.enDebug();
+>>>>>>> THEIRS
 	}
 
 	/**
@@ -56,13 +63,40 @@ public class DriveToSpeed extends CommandBase {
 				driveTrain.speedController.setR(SmartDashboard.getDouble(driveTrain.speedController.getName()+"_deriv Filter Constant"));
 				driveTrain.speedController.setAcceptErrorDiff(SmartDashboard.getDouble(driveTrain.speedController.getName()+"_acceptable Err"));
 			
+
 			} catch (NetworkTableKeyNotDefined e) {
 				// TODO Auto-generated catch block
 				e.printStackTrace();
 			}
+
+			//set SpeedController Inputs Based on values from the DashBoard
+			driveTrain.leftSpeedController.setSp(SmartDashboard.getDouble(driveTrain.leftSpeedController.getName()+"_setPoint"));
+			driveTrain.leftSpeedController.setMaxPosOutput(SmartDashboard.getDouble(driveTrain.leftSpeedController.getName()+"_max Pos Output"));
+			driveTrain.leftSpeedController.setMaxNegOutput(SmartDashboard.getDouble(driveTrain.leftSpeedController.getName()+"_max Neg Output"));
+			driveTrain.leftSpeedController.setMinPosOutput(SmartDashboard.getDouble(driveTrain.leftSpeedController.getName()+"_min Pos Output"));
+			driveTrain.leftSpeedController.setMinNegOutput(SmartDashboard.getDouble(driveTrain.leftSpeedController.getName()+"_min Neg Output"));
+			driveTrain.leftSpeedController.setR(SmartDashboard.getDouble(driveTrain.leftSpeedController.getName()+"_deriv Filter Constant"));
+			driveTrain.leftSpeedController.setAcceptErrorDiff(SmartDashboard.getDouble(driveTrain.leftSpeedController.getName()+"_acceptable Err"));
+		
+			//copy values from left to right
+			driveTrain.rightSpeedController.setSp(driveTrain.leftSpeedController.getSp());
+			driveTrain.rightSpeedController.setMaxPosOutput(driveTrain.leftSpeedController.getMaxPosOutput());
+			driveTrain.rightSpeedController.setMaxNegOutput(driveTrain.leftSpeedController.getMaxNegOutput());
+			driveTrain.rightSpeedController.setMinPosOutput(driveTrain.leftSpeedController.getMinPosOutput());
+			driveTrain.rightSpeedController.setMinNegOutput(driveTrain.leftSpeedController.getMinNegOutput());
+			driveTrain.rightSpeedController.setR(driveTrain.leftSpeedController.getR());
+			driveTrain.rightSpeedController.setAcceptErrorDiff(driveTrain.leftSpeedController.getAcceptErrorDiff());
+			
+			
+		} catch (NetworkTableKeyNotDefined e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+
 		}
-		//lets try changing setpoint first
-		driveTrain.PIDSpeedOutput(driveTrain.speedController.getCo());
+
+		//drive based on PID loop
+		driveTrain.TankDrive(driveTrain.leftSpeedController.getCo(),driveTrain.rightSpeedController.getCo());
+
 	}
 
 	/**
@@ -78,8 +112,8 @@ public class DriveToSpeed extends CommandBase {
 	 */
 	protected void end() {
 		// TODO Auto-generated method stub
-		driveTrain.speedController.Pause();
-
+		driveTrain.leftSpeedController.Pause();
+		driveTrain.rightSpeedController.Pause();
 	}
 
 	/**

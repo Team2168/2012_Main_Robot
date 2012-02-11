@@ -60,7 +60,8 @@ public class DriveTrain extends Subsystem
 	
 	/////////////////////////////////////////////////////////////////////	
 	//PID Controllers
-		public PIDSpeed speedController;
+		public PIDSpeed leftSpeedController;
+		public PIDSpeed rightSpeedController;		
 		long period =40;//40ms loop
 
 	////////////////////////////////////////////////////////////////////
@@ -90,16 +91,23 @@ public class DriveTrain extends Subsystem
 		leftMotorEncoder = new Encoder(RobotMap.leftDriveTrainEncoder_A,
 		RobotMap.leftDriveTrainEncoder_B,false,CounterBase.EncodingType.k1X);
 	
+		rightMotorEncoder = new Encoder(RobotMap.rightDriveTrainEncoder_A,
+				RobotMap.rightDriveTrainEncoder_B,false,CounterBase.EncodingType.k1X);
+		
 		//Set Encoder Paramters
 		leftMotorEncoder.setDistancePerPulse(RobotMap.driveEencoderDistPerTick);
 		leftMotorEncoder.setMinRate(RobotMap.driveEncoderMinRate);
+		rightMotorEncoder.setDistancePerPulse(RobotMap.driveEencoderDistPerTick);
+		rightMotorEncoder.setMinRate(RobotMap.driveEncoderMinRate);
+		
 		//leftMotorEncoder.setReverseDirection(true);
 
 		leftMotorEncoder.start();
+		rightMotorEncoder.start();
 		
 		//Spawn New PID Speed Controller with PID Gains as specified in ROBOT MAP
-		speedController=new PIDSpeed("LeftSpeedController",RobotMap.P,RobotMap.I,RobotMap.D, leftMotorEncoder,period);
-		
+		leftSpeedController=new PIDSpeed("LeftSpeedController",RobotMap.P,RobotMap.I,RobotMap.D, leftMotorEncoder,period);
+		rightSpeedController=new PIDSpeed("RightSpeedController",RobotMap.P,RobotMap.I,RobotMap.D, rightMotorEncoder,period);
 		
 		// enable CAN Jag Motors using constant motor IDs specified in RobotMap
 		try
@@ -117,7 +125,7 @@ public class DriveTrain extends Subsystem
 			RobotMap.driverstation.updateLCD();
             
 		} 
-		
+	
 	}
 
 	/**
