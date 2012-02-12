@@ -169,9 +169,9 @@ public class DriveTrain extends Subsystem
 		try
 		{
 			leftMotor1.setX(leftSpeed);
-			// leftMotor2.setX(leftSpeed);
-			// rightMotor1.setX(rightSpeed);
-			// rightMotor2.setX(rightSpeed);
+			leftMotor2.setX(leftSpeed);
+			rightMotor1.setX(rightSpeed);
+			rightMotor2.setX(rightSpeed);
 		} catch (CANTimeoutException e)
 		{
 			// TODO Auto-generated catch block

@@ -46,8 +46,8 @@ public class RobotMap {
 	public static final int shiftReverseChannel = 8;
 	
 	//Creating Static CAN IDs for DriveTrain Motors
-	public static final int leftmotor1 = 4, rightmotor1 = 8;
-	public static final int leftmotor2 = 3, rightmotor2 = 10;
+	public static final int leftmotor1 = 12, rightmotor1 = 2;
+	public static final int leftmotor2 = 17, rightmotor2 = 10;
 	
 	//Motor Invert Direction 
 	public static final boolean invertRight = false;	//if true invert signal to right motors
@@ -57,10 +57,10 @@ public class RobotMap {
 	public static final double mod = 0.125;	// Low minimum/modifier for the "Falcon Claw Function" or James' "Super Secret" Idea
 	
 	//Encoder Digital IO Channels;
-	public static final int leftDriveTrainEncoder_A=13;
-	public static final int leftDriveTrainEncoder_B=14;
-	public static final int rightDriveTrainEncoder_A=1;
-	public static final int rightDriveTrainEncoder_B=2;
+	public static final int leftDriveTrainEncoder_A=1;
+	public static final int leftDriveTrainEncoder_B=2;
+	public static final int rightDriveTrainEncoder_A=3;
+	public static final int rightDriveTrainEncoder_B=4;
 	
 	//Wheel Radius
 	public static final int driveWheelRadius=4; //Colson wheel radius
@@ -73,7 +73,7 @@ public class RobotMap {
 	
 	
 	//Compressor switch and relay
-	public static final int compressorSwitch = 1; //switch channel for the compressor
+	public static final int compressorSwitch = 8; //switch channel for the compressor
 	public static final int compressorRelay = 1; //relay channel for the compressor
 	
 	
@@ -87,7 +87,7 @@ public class RobotMap {
 	////////////////////////////ELEVATOR////////////////////////////////////////
 	
 	public static final int shooterWheelCANID = 2, shooterWheel2CANID = 5;
-	public static final int shooterWheelEncoderID_A = 7, shooterWheelEncoderID_B = 8;
+	public static final int shooterWheelEncoderID_A = 5, shooterWheelEncoderID_B = 6;
 	public static final int hoodSolenoidPortFwd = 1, hoodSolenoidPortReverse = 2;
 	
 	//Hood Wheel Radius
@@ -102,13 +102,13 @@ public class RobotMap {
 
 	///////////////////////////////BRIDGE ARM/////////////////////////////////////
 	
-	public static final int bridgeArmSolenoidForwardChannel = 5;
-	public static final int bridgeArmSolenoidReverseChannel = 6;
+	public static final int bridgeArmSolenoidForwardChannel = 7;
+	public static final int bridgeArmSolenoidReverseChannel = 8;
 	
 	///////////////////////////////Elevator////////////////////////////////////
 	
-	public static final int lift1Victor = 3;
-	public static final int lift2Victor = 4;
+	public static final int lift1Victor = 1;
+	public static final int lift2Victor = 2;
 	public static final int backFlapSolenoidClose = 5;
 	public static final int backFlapSolenoidOpen = 6;
 	////////////////////////////////////////////////////////////////////////////
