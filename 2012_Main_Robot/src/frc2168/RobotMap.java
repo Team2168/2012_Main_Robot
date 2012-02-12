@@ -42,8 +42,8 @@ public class RobotMap {
 	 */
 
 	//gear shifting solenoid ports
-	public static final int shiftForwardChannel = 7;
-	public static final int shiftReverseChannel = 8;
+	public static final int shiftForwardChannel = 7; //Port 7, Solenoid Card
+	public static final int shiftReverseChannel = 8; //Port 8, Solenoid Card
 	
 	//Creating Static CAN IDs for DriveTrain Motors
 	public static final int leftmotor1 = 12, rightmotor1 = 2;
@@ -56,11 +56,11 @@ public class RobotMap {
 	//Falcon Claw Brake Modifier
 	public static final double mod = 0.125;	// Low minimum/modifier for the "Falcon Claw Function" or James' "Super Secret" Idea
 	
-	//Encoder Digital IO Channels;
-	public static final int leftDriveTrainEncoder_A=1;
-	public static final int leftDriveTrainEncoder_B=2;
-	public static final int rightDriveTrainEncoder_A=3;
-	public static final int rightDriveTrainEncoder_B=4;
+	//Encoder Digital IO Channels for Drivetrain;
+	public static final int leftDriveTrainEncoder_A=1; //DIO 1, Digital Card
+	public static final int leftDriveTrainEncoder_B=2; //DIO 2, Digital Card
+	public static final int rightDriveTrainEncoder_A=3; //DIO 3, Digital Card
+	public static final int rightDriveTrainEncoder_B=4; //DIO 4, Digital Card
 	
 	//Wheel Radius
 	public static final int driveWheelRadius=4; //Colson wheel radius
@@ -73,8 +73,8 @@ public class RobotMap {
 	
 	
 	//Compressor switch and relay
-	public static final int compressorSwitch = 8; //switch channel for the compressor
-	public static final int compressorRelay = 1; //relay channel for the compressor
+	public static final int compressorSwitch = 8; //DIO 8, Digital Card
+	public static final int compressorRelay = 1; //Relay Port 1, Digital Card
 	
 	
 	//PID Gains for Left Side
@@ -86,9 +86,16 @@ public class RobotMap {
 	
 	////////////////////////////ELEVATOR////////////////////////////////////////
 	
-	public static final int shooterWheelCANID = 2, shooterWheel2CANID = 5;
-	public static final int shooterWheelEncoderID_A = 5, shooterWheelEncoderID_B = 6;
-	public static final int hoodSolenoidPortFwd = 1, hoodSolenoidPortReverse = 2;
+	public static final int shooterWheelCANID = 2, shooterWheel2CANID = 5; //Can Motor IDs
+	
+	//Encoder Digital IO Channels for Drivetrain;
+	public static final int shooterWheelEncoderID_A = 5; //DIO 5, Digital Card
+	public static final int shooterWheelEncoderID_B = 6; //DIO 6, Digital Card
+	
+	
+	//Solenoid Control of hood
+	public static final int hoodSolenoidPortFwd = 1; //Port 1, Solenoid Card
+	public static final int hoodSolenoidPortReverse = 2; //Port 2, Solenoid Card
 	
 	//Hood Wheel Radius
 	public static final int shooterWheelRadius=4;
@@ -102,14 +109,18 @@ public class RobotMap {
 
 	///////////////////////////////BRIDGE ARM/////////////////////////////////////
 	
-	public static final int bridgeArmSolenoidForwardChannel = 7;
-	public static final int bridgeArmSolenoidReverseChannel = 8;
+	//Solenoid Control of Bridge Arm
+	public static final int bridgeArmSolenoidForwardChannel = 3; //Port 7, Solenoid Card
+	public static final int bridgeArmSolenoidReverseChannel = 4; //Port 8, Solenoid Card
 	
 	///////////////////////////////Elevator////////////////////////////////////
 	
-	public static final int lift1Victor = 1;
-	public static final int lift2Victor = 2;
-	public static final int backFlapSolenoidClose = 5;
-	public static final int backFlapSolenoidOpen = 6;
+	//Victors for driving elevator motors
+	public static final int lift1Victor = 1; //PWM 1, Digital Card
+	public static final int lift2Victor = 2; //PWM 2, Digital Card
+	
+	Solenoid to Open/Close flap
+	public static final int backFlapSolenoidClose = 5; //Port 5, Solenoid Card
+	public static final int backFlapSolenoidOpen = 6; //Port 6, Solenoid Card
 	////////////////////////////////////////////////////////////////////////////
 }
