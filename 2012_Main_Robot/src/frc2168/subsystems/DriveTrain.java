@@ -105,9 +105,9 @@ public class DriveTrain extends Subsystem
 		try
 		{
 			 leftMotor1 = new CANJaguar(RobotMap.leftmotor1);
-			// rightMotor1 = new CANJaguar(RobotMap.rightmotor1);
-			// leftMotor2 = new CANJaguar (RobotMap.leftmotor2);
-			// rightMotor2 = new CANJaguar (RobotMap.rightmotor2);
+			 rightMotor1 = new CANJaguar(RobotMap.rightmotor1);
+			 leftMotor2 = new CANJaguar (RobotMap.leftmotor2);
+			 rightMotor2 = new CANJaguar (RobotMap.rightmotor2);
 		} catch (CANTimeoutException e)
 		{
 			e.printStackTrace();
