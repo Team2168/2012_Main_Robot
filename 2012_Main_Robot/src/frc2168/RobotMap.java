@@ -119,7 +119,7 @@ public class RobotMap {
 	public static final int lift1Victor = 1; //PWM 1, Digital Card
 	public static final int lift2Victor = 2; //PWM 2, Digital Card
 	
-	Solenoid to Open/Close flap
+	//Solenoid to Open/Close flap
 	public static final int backFlapSolenoidClose = 5; //Port 5, Solenoid Card
 	public static final int backFlapSolenoidOpen = 6; //Port 6, Solenoid Card
 	////////////////////////////////////////////////////////////////////////////
