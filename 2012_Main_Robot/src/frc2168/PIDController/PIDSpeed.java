@@ -42,7 +42,7 @@ import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;
  * leftEncoder.reset(); //reset the encoder (not needed but usefull)<br>
  * <br><br>
  * PIDSpeed speedController = new PIDSpeed("DriveTrain Speed Controller", P, I, D, leftEncoder, period); //launch the PID thread <br>
- * speedController.enable(); //start the PID thread<br>
+ * speedController.Enable(); //start the PID thread<br>
  * 
  * 
  * <br><br>
@@ -105,15 +105,13 @@ public class PIDSpeed
 
 	// deriv filters
 	private double filterDerivOld;
-	private double r;
+	private double r; // between 0 and 1
 
 	// max and min limit variables
 	private double maxPosOutput; // max positive output (+1)
 	private double maxNegOutput; // max negative output (-1)
-	private double minPosOutput; // max negative output, use to get rid of
-									// deadband
-	private double minNegOutput; // max negative output, use to get rid of
-									// deadband
+	private double minPosOutput; // min positive output, use to get rid of deadband
+	private double minNegOutput; // min negative output, use to get rid of deadband
 
 	// acceptable steadyState error
 	private double acceptErrorDiff; // allowable error (in units of setpoint)
@@ -141,12 +139,12 @@ public class PIDSpeed
  *
  * @param name - type String used to identify this PID Instance and thread i.e "LeftDrivePID"
  * @param P - type double which represents Proportional Gain for the Speed Controller
- * @param I - type double Iterative Gain for the Speed Controller
- * @param D - type double Derivative Gain for the Speed Controller
+ * @param I - type double which represents Integral Gain for the Speed Controller
+ * @param D - type double which represents Derivative Gain for the Speed Controller
  * @param currentPos - type Encoder Object which is used to reference the encoder object this PID loop will use as feedback
- * @param period - type long which represents the time between loops the thread will execute at in milliseconds. i.e 40 means the loop will execute every 40ms.
+ * @param period - type long which represents the time the thread will execute at in milliseconds. i.e 40 means the loop will execute every 40ms.
  * 
- * @throws NullPointerException if the Encoder object passed to the {@link setpoint} is null;
+ * @throws NullPointerException if the Encoder object passed to the {@link currentPos} is null;
  */
 	public PIDSpeed(String name, double P, double I, double D,
 			Encoder currentPos, long period)
@@ -211,14 +209,38 @@ public class PIDSpeed
 
 	}
 
+	/**
+	 * This constructor for the {@link PIDSpeed} class allows the user to set PID gains for gainScheduling.<br><br>
+	 * This is handy for when one would like to have separate gains when the Error between the setpoint and the CurrentValue 
+	 * is Positive verse Negative. For example this would be useful if one wished to have separate gains to go forward and reverse on a drivetrain.<br><br>
+	 * This constructor also instantiates the new thread for the PID loop will run in. Although the 
+	 * PID loop thread has been created, the PID loop will not start running until a call to {@link enable} 
+	 * has been made.
+	 * 
+	 *
+	 * @param name - type String used to identify this PID Instance and thread i.e "LeftDrivePID"
+	 * @param pUp - type double which represents Proportional Gain for the Speed Controller to use when the Error is greater than zero.
+	 * @param iUp - type double which represents Integral Gain for the Speed Controller to use when the Error is greater than zero.
+	 * @param dUp - type double which represents Derivative Gain for the Speed Controller to use when the Error is greater than zero.
+	 * @param pDown - type double which represents Proportional Gain for the Speed Controller to use when the Error is less than zero.
+	 * @param iDown - type double which represents Integral Gain for the Speed Controller to use when the Error is less than zero.
+	 * @param dDown - type double which represents Derivative Gain for the Speed Controller to use when the Error is less than zero.
+
+	 * @param currentPos - type Encoder Object which is used to reference the encoder object this PID loop will use as feedback
+	 * @param period - type long which represents the time the thread will execute at in milliseconds. i.e 40 means the loop will execute every 40ms.
+	 * 
+	 * @throws NullPointerException if the Encoder object passed to the {@link currentPos} is null;
+	 */
+	
 	public PIDSpeed(String name, double pUp, double iUp, double dUp,
-			double pDown, double iDown, double dDown, Encoder setPoint,
+			double pDown, double iDown, double dDown, Encoder currentPos,
 			long period)
 	{
-		this(name, pUp, iUp, dUp, setPoint, period);
+		this(name, pUp, iUp, dUp, currentPos, period);
 		this.pGain2 = pDown;
 		this.iGain2 = iDown;
 		this.dGain2 = dDown;
+		this.enGainSched=true;
 
 	}
 
@@ -686,8 +708,8 @@ public class PIDSpeed
 			if (sp == 0)
 			{
 				co = 0;
-			} else
-			// setpoint is not zero... so we do PID calc
+			} 
+			else // setpoint is not zero... so we do PID calc
 			{
 
 				// calculate error between current position and setpoint
