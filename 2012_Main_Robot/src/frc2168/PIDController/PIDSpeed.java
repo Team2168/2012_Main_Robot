@@ -7,16 +7,51 @@ import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;
 
 
 /**
+ * @author Kevin Harrilal, First Robotics Team 2168
+ * <br><br>
  * The PID Speed class implements a PID controller used to perform speed control
- * on a DC motor.
- * 
+ * on a DC motor. The purpose of this class is to keep a DC motor rotating at a constant
+ * speed when the correct P, I, and D gains have been chosen.
+ * <br><br>
  * The controller implements the parallel form the PID controller.
+ * <br><br>
+ * In addition to a parallel form PID Controller. This class also
+ * implements the following features: Derivative Filtering, Integral Windup
+ * Prevention, Gain Scheduling, Dead Band Removal, Error Tolerance, Output Coercion,
+ * and many other features to allow for a stable controller.
+ * <br><br>
+ * This class was intended to work with the 2012 FRC Java Library developed by WPI. This class
+ * will not run if the WPI libraries are not installed on the local machine.
+ * <br><br>
+ * <u>Precondition:</u> An Encoder of the WPI class is instantiated. Proportial, Derivative, and Integral gains are set,
+ * and a period in miliseconds in known.
+ * <br><br>
+ * <u>PostCondition:</u> Once Constructed, a new thread will be spawned which will have a periodic execution rate as specified
+ * by the period value. The new thread will be paused and a call to the Objects start() method will allow the thread to start executing
+ * the PID loop.
+ * <br><br>
+ * To use this class is simple, an example is below <br><br>
  * 
- * In addition to a standard parallel form PID Controller. This class also
- * implements the following features: Derivative filtering, Integral Windup
- * prevention, Gain Scheduling, Dead Band Removal, Error Tolerance.
+ * Encoder leftEncoder= new Encoder(1,2) //Encoder on DIO ports 1 and 2 <br>
+ * double P = 1; //P gain <br>
+ * double I = 2; //I gain <br>
+ * double D = 3; //D gain <br>
+ * long period = 40; // 40 millisecond period (note: Type is Long)
+ * <br><br>
+ * leftEncoder.start(); //start the encoder<br>
+ * leftEncoder.reset(); //reset the encoder (not needed but usefull)<br>
+ * <br><br>
+ * PIDSpeed speedController = new PIDSpeed("DriveTrain Speed Controller", P, I, D, leftEncoder, period); //launch the PID thread <br>
+ * speedController.enable(); //start the PID thread<br>
  * 
- * @author HarrilalEngineering
+ * 
+ * <br><br>
+ * Multiple instances of the PIDSpeed Object can be created for multiple PID loops to run. Each loop will run in its own thread at the
+ * period specified in its constructor.
+ *
+ * 
+ * }
+ * 
  * 
  */
 public class PIDSpeed
@@ -34,6 +69,7 @@ public class PIDSpeed
 	private double p;
 	private double i;
 	private double d;
+	
 	// enable
 	private boolean enable;
 	
@@ -59,9 +95,9 @@ public class PIDSpeed
 	private double cp; // current position
 	private double co; // control output
 	private double coNotSaturated; // control output unmodified for graphing
-	private double coOld;
-	private double errsum;
-	private double olderrsum;
+	private double coOld; //Control Output of last iteration
+	private double errsum; //total of all errors this loop iteration
+	private double olderrsum; //total of all errors last loop iteration
 
 	// timers
 	private double clock;
@@ -107,16 +143,16 @@ public class PIDSpeed
  * @param P - type double which represents Proportional Gain for the Speed Controller
  * @param I - type double Iterative Gain for the Speed Controller
  * @param D - type double Derivative Gain for the Speed Controller
- * @param setPoint - type Encoder Object which is used to reference the encoder object this PID loop will use as feedback
+ * @param currentPos - type Encoder Object which is used to reference the encoder object this PID loop will use as feedback
  * @param period - type long which represents the time between loops the thread will execute at in milliseconds. i.e 40 means the loop will execute every 40ms.
  * 
  * @throws NullPointerException if the Encoder object passed to the {@link setpoint} is null;
  */
 	public PIDSpeed(String name, double P, double I, double D,
-			Encoder setPoint, long period)
+			Encoder currentPos, long period)
 	{
 
-		if (setPoint == null)
+		if (currentPos == null)
 			throw new NullPointerException("Encoder Object of " + name + " is null");
 
 		//copy values
@@ -124,7 +160,7 @@ public class PIDSpeed
 		this.pGain = P;
 		this.iGain = I;
 		this.dGain = D;
-		this.encoder = setPoint; //point to reference of encoder instead of creating new
+		this.encoder = currentPos; //point to reference of encoder instead of creating new
 		this.period = period;
 		this.pGain2 = P;
 		this.iGain2 = I;
