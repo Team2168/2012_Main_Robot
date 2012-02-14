@@ -245,7 +245,7 @@ public class PIDSpeed
 	}
 
 	/**
-	 * @return the pGain
+	 * @return the Propotional Gain in type double
 	 */
 	public synchronized double getpGain()
 	{
@@ -253,7 +253,7 @@ public class PIDSpeed
 	}
 
 	/**
-	 * @return the iGain
+	 * @return the Integral Gain in type double
 	 */
 	public synchronized double getiGain()
 	{
@@ -261,7 +261,7 @@ public class PIDSpeed
 	}
 
 	/**
-	 * @return the dGain
+	 * @return the Integral Gain in type double
 	 */
 	public synchronized double getdGain()
 	{
@@ -269,7 +269,7 @@ public class PIDSpeed
 	}
 
 	/**
-	 * @return the pGain2
+	 * @return If Gain Scheduling is enabled this will return the Proportional Gain to be used when the error is less than zero
 	 */
 	public synchronized double getpGain2()
 	{
@@ -277,7 +277,7 @@ public class PIDSpeed
 	}
 
 	/**
-	 * @return the iGain2
+	 * @return If Gain Scheduling is enabled this will return the Integral Gain to be used when the error is less than zero
 	 */
 	public synchronized double getiGain2()
 	{
@@ -285,7 +285,7 @@ public class PIDSpeed
 	}
 
 	/**
-	 * @return the dGain2
+	 * @return If Gain Scheduling is enabled this will return the Derivative Gain to be used when the error is less than zero
 	 */
 	public synchronized double getdGain2()
 	{
@@ -293,7 +293,7 @@ public class PIDSpeed
 	}
 
 	/**
-	 * @return the enGainSched
+	 * @return the boolean flag indicating if gain Scheduling is enabled. Gain scheduling is enabled when true, if false gain scheduling is not enabled. Gain Scheduling is set to false by default.
 	 */
 	public synchronized boolean isEnGainSched()
 	{
@@ -301,7 +301,7 @@ public class PIDSpeed
 	}
 
 	/**
-	 * @return the debugEnabled
+	 * @return the boolean flag indicating if debugged output is enabled. debugging is enabled when true, if false debugging is not enabled. debugging is set to false by default.
 	 */
 	public synchronized boolean isDebugEnabled()
 	{
@@ -309,7 +309,7 @@ public class PIDSpeed
 	}
 
 	/**
-	 * @return the enDerivFilter
+	 * @return the boolean flag indicating if Derivative filtering is enabled. Derivative filtering is enabled when true, if false Derivative filtering is not enabled. Derivative filtering is set to false by default.
 	 */
 	public synchronized boolean isEnDerivFilter()
 	{
@@ -317,7 +317,7 @@ public class PIDSpeed
 	}
 
 	/**
-	 * @return the err
+	 * @return the current Error between the current velocity and the setpoint velocity
 	 */
 	public synchronized double getErr()
 	{
@@ -325,7 +325,7 @@ public class PIDSpeed
 	}
 
 	/**
-	 * @return the sp
+	 * @return the current setpoint the PID controller is to achieve
 	 */
 	public synchronized double getSp()
 	{
@@ -333,7 +333,7 @@ public class PIDSpeed
 	}
 
 	/**
-	 * @return the cp
+	 * @return the encoder rate which represents the current speed of the device being controllerd
 	 */
 	public synchronized double getCp()
 	{
@@ -341,7 +341,7 @@ public class PIDSpeed
 	}
 
 	/**
-	 * @return the controller output value.
+	 * @return The controller output value. This is the output to use to drive the motors based on the PID control.
 	 */
 	public synchronized double getCo()
 	{
@@ -349,7 +349,9 @@ public class PIDSpeed
 	}
 
 	/**
-	 * @return the coNotSaturated
+	 * @return This is for debugging purposed only and should not be used to drive an actual device. This returns the raw controller
+	 * output before any filtering is done. The values returned may very well be higher than the values your device can handle and
+	 * can command it to dangerous levels. This is for debugging purposes only. <br><br> Use {@link getCo} method to drive a device based on controller output.
 	 */
 	public synchronized double getCoNotSaturated()
 	{
@@ -357,7 +359,7 @@ public class PIDSpeed
 	}
 
 	/**
-	 * @return the clock
+	 * @return the clock value
 	 */
 	public synchronized double getClock()
 	{
