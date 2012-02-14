@@ -28,6 +28,7 @@ public class DriveToSpeed extends CommandBase {
 	
 	protected void initialize() {
 		// TODO Auto-generated method stub
+		driveTrain.speedController.enDebug();
 		driveTrain.speedController.Enable();
 
 	}

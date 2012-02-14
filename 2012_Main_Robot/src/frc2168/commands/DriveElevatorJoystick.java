@@ -4,9 +4,9 @@ import edu.wpi.first.wpilibj.command.Command;
 import frc2168.RobotMap;
 import frc2168.subsystems.*;
 
-public class DriveElevator extends CommandBase {
+public class DriveElevatorJoystick extends CommandBase {
 
-	public DriveElevator(){
+	public DriveElevatorJoystick(){
 		requires(elevatorFlap);
 	}
 	

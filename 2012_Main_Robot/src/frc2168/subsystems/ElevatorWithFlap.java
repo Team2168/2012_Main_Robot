@@ -5,8 +5,7 @@ import edu.wpi.first.wpilibj.DoubleSolenoid;
 import edu.wpi.first.wpilibj.Victor;
 import edu.wpi.first.wpilibj.command.Subsystem;
 import frc2168.RobotMap;
-import frc2168.commands.DriveElevator;
-import frc2168.commands.DriveShooterWheel;
+import frc2168.commands.DriveElevatorJoystick;
 
 public class ElevatorWithFlap extends Subsystem {
 	Victor lift1;   //2 motors on the lift that get balls and move them up
@@ -14,17 +13,17 @@ public class ElevatorWithFlap extends Subsystem {
 	DoubleSolenoid backFlap; //opens and closes flap at the back bottom end of the elevator
 	DigitalInput ballExitSensor;  //sensor that detects ball at the top of the elevator
 	
-	
+
 	public ElevatorWithFlap() {
 		lift1 = new Victor(RobotMap.lift1Victor);
 		lift2 = new Victor(RobotMap.lift2Victor);
-		backFlap = new DoubleSolenoid(RobotMap.backFlapSolenoidClose , RobotMap.backFlapSolenoidOpen);
+		backFlap = new DoubleSolenoid(RobotMap.backFlapSolenoidClose , RobotMap.backFlapSolenoidOpen);	
 	}
 	
 	protected void initDefaultCommand() {
 		
 		// TODO Auto-generated method stub
-		setDefaultCommand(new DriveElevator());
+		setDefaultCommand(new DriveElevatorJoystick());
 
 	}
 	

@@ -1,8 +1,10 @@
 package frc2168.subsystems;
 
 import frc2168.RobotMap;
-import frc2168.commands.DriveShooterWheel;
+import frc2168.PIDController.PIDSpeed;
+import frc2168.commands.ShooterWheelJoystick;
 import edu.wpi.first.wpilibj.CANJaguar;
+import edu.wpi.first.wpilibj.CounterBase;
 import edu.wpi.first.wpilibj.DoubleSolenoid;
 import edu.wpi.first.wpilibj.DriverStation;
 import edu.wpi.first.wpilibj.DriverStationLCD;
@@ -17,6 +19,9 @@ public class Hood extends Subsystem {
 	CANJaguar shooterWheel2;
 	DoubleSolenoid hoodActuator;
 	Encoder shooterWheelEncoder;
+	
+
+	
 	
 	
 	public Hood(){
@@ -39,10 +44,11 @@ public class Hood extends Subsystem {
 		shooterWheelEncoder.setDistancePerPulse(RobotMap.shooterEncoderDistPerTick);
 		shooterWheelEncoder.setMinRate(RobotMap.shooterEncoderMinRate);
 		shooterWheelEncoder.start();
+		
 	}
 	
 	protected void initDefaultCommand() {
-		setDefaultCommand(new DriveShooterWheel());
+		setDefaultCommand(new ShooterWheelJoystick());
 	}
 	
 	public void spinMotor(double speed){

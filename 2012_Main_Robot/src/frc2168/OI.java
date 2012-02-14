@@ -5,6 +5,7 @@ import edu.wpi.first.wpilibj.buttons.Button;
 import edu.wpi.first.wpilibj.buttons.JoystickButton;
 import frc2168.commands.BackFlapClose;
 import frc2168.commands.BackFlapOpen;
+import frc2168.commands.ShooterWheelJoystick;
 import frc2168.commands.DriveToSpeed;
 import frc2168.commands.LowerBridge;
 import frc2168.commands.LowerHood;
@@ -47,12 +48,16 @@ public class OI
 
 	public OI()
 	{
-		//driveButtonA.whenPressed(new DriveToSpeed());
+		//drive left axis = left drivetrain in DriveWithJoystick
+		//drive right axis = right drivetrain in DriveWithJoystick
+		driveButtonA.whenPressed(new DriveToSpeed());
 		driveButtonX.whenPressed(new LowerBridge());
 		driveButtonY.whenPressed(new RaiseBridge());
 		driveButtonLeftBumper.whenPressed(new ShiftGearsLowToHigh());
 		driveButtonRightBumper.whenPressed(new ShiftGearsHighToLow());
 		
+		//aux left axis = left DriveElevatorJoystick
+		//aux right axis = right ShooterWheelJoystick
 		auxButtonA.whenPressed(new LowerHood());
 		auxButtonB.whenPressed(new RaiseHood());
 		auxButtonX.whenPressed(new BackFlapOpen());

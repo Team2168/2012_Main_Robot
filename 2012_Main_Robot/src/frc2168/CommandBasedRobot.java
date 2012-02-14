@@ -54,9 +54,9 @@ public class CommandBasedRobot extends IterativeRobot {
     	//Autonomous = new commandGRoup Class
     	
     	// instantiate the command used for the teleop period
-        TeleopHoodDefault = new DriveShooterWheel();
+        TeleopHoodDefault = new ShooterWheelJoystick();
         TeleopDriveTrainDefault = new DriveWithJoystick();
-        TeleopDriveElevator = new DriveElevator();
+        TeleopDriveElevator = new DriveElevatorJoystick();
     	
     }
 

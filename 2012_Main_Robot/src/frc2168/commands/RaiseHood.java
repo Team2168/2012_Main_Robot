@@ -2,9 +2,15 @@ package frc2168.commands;
 
 
 public class RaiseHood extends CommandBase {
+	
+	public RaiseHood()
+	{
+		requires(hood);
+		
+	}
 
 	protected void initialize() {
-		requires(hood);
+		
 	}
 
 	protected void execute() {

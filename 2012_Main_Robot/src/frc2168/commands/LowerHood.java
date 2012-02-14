@@ -2,9 +2,14 @@ package frc2168.commands;
 
 
 public class LowerHood extends CommandBase {
+	
+	public LowerHood()
+	{
+		requires(hood);
+	}
 
 	protected void initialize() {
-		requires(hood);
+		
 	}
 
 	protected void execute() {

@@ -1,21 +1,26 @@
 package frc2168.commands;
 
-public class DriveShooterWheel extends CommandBase {
 
-	public DriveShooterWheel(){
+
+public class ShooterWheelJoystick extends CommandBase {
+
+	public ShooterWheelJoystick(){
 		requires(hood);
 	}
 	
 	protected void initialize(){
 
+
 	}
 
 	protected void execute(){
 		hood.spinMotor(oi.getAuxLeftStick());
+	
 	}
+		
+	
 
 	protected boolean isFinished() {
-		// TODO Auto-generated method stub
 		return false;
 	}
 

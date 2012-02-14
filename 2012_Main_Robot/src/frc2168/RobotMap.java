@@ -73,7 +73,7 @@ public class RobotMap {
 	
 	
 	//Compressor switch and relay
-	public static final int compressorSwitch = 8; //DIO 8, Digital Card
+	public static final int compressorSwitch = 7; //DIO 7, Digital Card
 	public static final int compressorRelay = 1; //Relay Port 1, Digital Card
 	
 	
@@ -88,9 +88,9 @@ public class RobotMap {
 	
 	public static final int shooterWheelCANID = 11, shooterWheel2CANID = 12; //Can Motor IDs
 	
-	//Encoder Digital IO Channels for Drivetrain;
+	//Encoder Digital IO Channels for Encoder;
 	public static final int shooterWheelEncoderID_A = 5; //DIO 5, Digital Card
-	public static final int shooterWheelEncoderID_B = 6; //DIO 6, Digital Card
+	public static final int shooterWheelEncoderID_B = 6; //DIO 7, Digital Card
 	
 	
 	//Solenoid Control of hood
