@@ -5,6 +5,8 @@ import edu.wpi.first.wpilibj.DoubleSolenoid;
 import edu.wpi.first.wpilibj.Victor;
 import edu.wpi.first.wpilibj.command.Subsystem;
 import frc2168.RobotMap;
+import frc2168.commands.DriveElevator;
+import frc2168.commands.DriveShooterWheel;
 
 public class ElevatorWithFlap extends Subsystem {
 	Victor lift1;   //2 motors on the lift that get balls and move them up
@@ -22,6 +24,7 @@ public class ElevatorWithFlap extends Subsystem {
 	protected void initDefaultCommand() {
 		
 		// TODO Auto-generated method stub
+		setDefaultCommand(new DriveElevator());
 
 	}
 	

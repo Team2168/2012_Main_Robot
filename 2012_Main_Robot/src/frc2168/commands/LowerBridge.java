@@ -1,9 +1,13 @@
 package frc2168.commands;
 
 public class LowerBridge extends CommandBase {
+	
+	public LowerBridge(){
+		requires(bridgeArm);
+	}
 
 	protected void initialize() {
-		requires(bridgeArm);
+		
 	}
 
 	protected void execute() {

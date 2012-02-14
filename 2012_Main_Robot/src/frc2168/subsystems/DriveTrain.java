@@ -197,7 +197,7 @@ public class DriveTrain extends Subsystem
     
     public boolean gearIsHigh()
     {
-    	return gearShifter.get()==DoubleSolenoid.Value.kForward;
+    	return gearShifter.get()==DoubleSolenoid.Value.kReverse;
     }
     
     public void shiftGearsLowToHigh(){
@@ -206,6 +206,6 @@ public class DriveTrain extends Subsystem
     
     public boolean gearIsLow()
     {
-    	return gearShifter.get()==DoubleSolenoid.Value.kReverse;
+    	return gearShifter.get()==DoubleSolenoid.Value.kForward;
     }
 }

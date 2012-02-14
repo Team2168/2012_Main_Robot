@@ -2,8 +2,12 @@ package frc2168.commands;
 
 public class RaiseBridge extends CommandBase {
 
-	protected void initialize() {
+	public RaiseBridge(){
 		requires(bridgeArm);
+	}
+	
+	protected void initialize() {
+		
 	}
 
 	protected void execute() {
