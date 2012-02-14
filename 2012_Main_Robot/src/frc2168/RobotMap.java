@@ -42,11 +42,11 @@ public class RobotMap {
 	 */
 
 	//gear shifting solenoid ports
-	public static final int shiftForwardChannel = 7; //Port 7, Solenoid Card
-	public static final int shiftReverseChannel = 8; //Port 8, Solenoid Card
+	public static final int shiftForwardChannel = 3; //Port 3, Solenoid Card
+	public static final int shiftReverseChannel = 4; //Port 4 , Solenoid Card
 	
 	//Creating Static CAN IDs for DriveTrain Motors
-	public static final int leftmotor1 = 12, rightmotor1 = 2;
+	public static final int leftmotor1 = 13, rightmotor1 = 2;
 	public static final int leftmotor2 = 17, rightmotor2 = 10;
 	
 	//Motor Invert Direction 
@@ -84,9 +84,9 @@ public class RobotMap {
 	public static final double D = -0.000130778888124088;
 	
 	
-	////////////////////////////ELEVATOR////////////////////////////////////////
+	////////////////////////////Hood////////////////////////////////////////
 	
-	public static final int shooterWheelCANID = 2, shooterWheel2CANID = 5; //Can Motor IDs
+	public static final int shooterWheelCANID = 11, shooterWheel2CANID = 12; //Can Motor IDs
 	
 	//Encoder Digital IO Channels for Drivetrain;
 	public static final int shooterWheelEncoderID_A = 5; //DIO 5, Digital Card
@@ -110,8 +110,8 @@ public class RobotMap {
 	///////////////////////////////BRIDGE ARM/////////////////////////////////////
 	
 	//Solenoid Control of Bridge Arm
-	public static final int bridgeArmSolenoidForwardChannel = 3; //Port 7, Solenoid Card
-	public static final int bridgeArmSolenoidReverseChannel = 4; //Port 8, Solenoid Card
+	public static final int bridgeArmSolenoidForwardChannel = 7; //Port 7, Solenoid Card
+	public static final int bridgeArmSolenoidReverseChannel = 8; //Port 8, Solenoid Card
 	
 	///////////////////////////////Elevator////////////////////////////////////
 	
