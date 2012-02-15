@@ -1,5 +1,6 @@
 package frc2168;
 
+import edu.wpi.first.wpilibj.AnalogChannel;
 import edu.wpi.first.wpilibj.Joystick;
 import edu.wpi.first.wpilibj.buttons.Button;
 import edu.wpi.first.wpilibj.buttons.JoystickButton;
@@ -26,6 +27,8 @@ import frc2168.commands.ShiftGearsLowToHigh;
  */
 public class OI
 {
+	public AnalogChannel ballDetector = new AnalogChannel(1);		//BallDetector
+	
 	public Joystick drivestick = new Joystick(RobotMap.driverJoystick);
 	public Button driveButtonA = new JoystickButton(drivestick, 1),
 			driveButtonB = new JoystickButton(drivestick, 2),
