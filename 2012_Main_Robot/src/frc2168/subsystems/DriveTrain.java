@@ -112,7 +112,8 @@ public class DriveTrain extends Subsystem
 		{
 			e.printStackTrace();
 			RobotMap.driverstation = DriverStationLCD.getInstance();
-			RobotMap.driverstation.println(DriverStationLCD.Line.kMain6, 1, "Error initializing Jag");
+			RobotMap.driverstation.println(DriverStationLCD.Line.kMain6, 1, "Error initializing");
+			RobotMap.driverstation.println(DriverStationLCD.Line.kUser2, 1, "Jag in Drivetrain");
 			RobotMap.driverstation.updateLCD();
             
             
@@ -177,7 +178,8 @@ public class DriveTrain extends Subsystem
 			// TODO Auto-generated catch block
 			e.printStackTrace();
 			RobotMap.driverstation = DriverStationLCD.getInstance();			
-			RobotMap.driverstation.println(DriverStationLCD.Line.kMain6, 1, "Error setting Jag");
+			RobotMap.driverstation.println(DriverStationLCD.Line.kMain6, 1, "Error setting");
+			RobotMap.driverstation.println(DriverStationLCD.Line.kUser2, 2, "Jag in Drivetrain");
 			RobotMap.driverstation.updateLCD();
 		} 
 	}
