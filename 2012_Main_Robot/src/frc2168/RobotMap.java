@@ -63,7 +63,7 @@ public class RobotMap {
 	public static final int rightDriveTrainEncoder_B=4; //DIO 4, Digital Card
 	
 	//Wheel Radius
-	public static final int driveWheelRadius=4; //Colson wheel radius
+	public static final int driveWheelRadius=2; //Colson wheel radius in inches
 	
 	//DriveTraincEncoder Parameters
 	public static final int driveEncoderPulsePerRot=250;
@@ -84,7 +84,7 @@ public class RobotMap {
 	public static final double D = -0.000130778888124088;
 	
 	
-	////////////////////////////Hood////////////////////////////////////////
+	////////////////////////////HOOD////////////////////////////////////////
 	
 	public static final int shooterWheelCANID = 11, shooterWheel2CANID = 12; //Can Motor IDs
 	
@@ -97,8 +97,8 @@ public class RobotMap {
 	public static final int hoodSolenoidPortFwd = 1; //Port 1, Solenoid Card
 	public static final int hoodSolenoidPortReverse = 2; //Port 2, Solenoid Card
 	
-	//Hood Wheel Radius
-	public static final int shooterWheelRadius=4;
+	//Hood Wheel Radius in inches
+	public static final int shooterWheelRadius=3;
 	
 	//HoodEncoder Parameters
 	public static final int shooterEncoderPulsePerRot=250;
