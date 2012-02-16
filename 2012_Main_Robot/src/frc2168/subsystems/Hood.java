@@ -18,7 +18,7 @@ public class Hood extends Subsystem {
 	CANJaguar shooterWheel;
 	CANJaguar shooterWheel2;
 	DoubleSolenoid hoodActuator;
-	Encoder shooterWheelEncoder;
+	public Encoder shooterWheelEncoder;
 	
 
 	
@@ -39,11 +39,14 @@ public class Hood extends Subsystem {
 			RobotMap.driverstation.println(DriverStationLCD.Line.kUser2, 1, "Jag in Hood");
 			RobotMap.driverstation.updateLCD();
 		}
-		shooterWheelEncoder = new Encoder(RobotMap.shooterWheelEncoderID_A, RobotMap.shooterWheelEncoderID_B);
+		
+		//instantiate encoder in 1x mode
+		shooterWheelEncoder = new Encoder(RobotMap.shooterWheelEncoderID_A, RobotMap.shooterWheelEncoderID_B,false,CounterBase.EncodingType.k1X);
 		
 		//Set Encoder Paramters
 		shooterWheelEncoder.setDistancePerPulse(RobotMap.shooterEncoderDistPerTick);
 		shooterWheelEncoder.setMinRate(RobotMap.shooterEncoderMinRate);
+		shooterWheelEncoder.setReverseDirection(RobotMap.shooterEncoderReverse);
 		shooterWheelEncoder.start();
 		
 	}

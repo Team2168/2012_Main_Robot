@@ -42,8 +42,8 @@ public class RobotMap {
 	 */
 
 	//gear shifting solenoid ports
-	public static final int shiftForwardChannel = 3; //Port 3, Solenoid Card
-	public static final int shiftReverseChannel = 4; //Port 4 , Solenoid Card
+	public static final int shiftForwardChannel = 5; //Port 5, Solenoid Card
+	public static final int shiftReverseChannel = 6; //Port 6 , Solenoid Card
 	
 	//Creating Static CAN IDs for DriveTrain Motors
 	public static final int leftmotor1 = 13, rightmotor1 = 2;
@@ -105,6 +105,7 @@ public class RobotMap {
 	public static final double shooterEncoderDistPerTick=(Math.PI*2*shooterWheelRadius)/shooterEncoderPulsePerRot;
 	public static final int shooterEncoderMinRate=10; 
 	public static final int shooterEncoderMinPeriod=10;
+	public static final boolean shooterEncoderReverse=true;
 	
 
 	///////////////////////////////BRIDGE ARM/////////////////////////////////////
@@ -120,7 +121,7 @@ public class RobotMap {
 	public static final int lift2Victor = 2; //PWM 2, Digital Card
 	
 	//Solenoid to Open/Close flap
-	public static final int backFlapSolenoidClose = 5; //Port 5, Solenoid Card
-	public static final int backFlapSolenoidOpen = 6; //Port 6, Solenoid Card
+	public static final int backFlapSolenoidClose = 3; //Port 3, Solenoid Card
+	public static final int backFlapSolenoidOpen = 4; //Port 4, Solenoid Card
 	////////////////////////////////////////////////////////////////////////////
 }

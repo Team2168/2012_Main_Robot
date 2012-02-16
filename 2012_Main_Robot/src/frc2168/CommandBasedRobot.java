@@ -15,6 +15,7 @@ import edu.wpi.first.wpilibj.IterativeRobot;
 import edu.wpi.first.wpilibj.command.Command;
 import edu.wpi.first.wpilibj.command.Scheduler;
 import frc2168.commands.*;
+import frc2168.dashboard.ShooterWheelDebugDashboard;
 
 /**
  * The VM is configured to automatically run this class, and to call the
@@ -31,6 +32,7 @@ public class CommandBasedRobot extends IterativeRobot {
     Command TeleopHoodDefault;
     Command TeleopDriveTrainDefault;
     Command TeleopDriveElevator;
+    Command dashboard;
     //Command autonomousCommand;
 
     /**
@@ -57,6 +59,7 @@ public class CommandBasedRobot extends IterativeRobot {
         TeleopHoodDefault = new ShooterWheelJoystick();
         TeleopDriveTrainDefault = new DriveWithJoystick();
         TeleopDriveElevator = new DriveElevatorJoystick();
+        dashboard = new ShooterWheelDebugDashboard();
     	
     }
 
@@ -80,9 +83,10 @@ public class CommandBasedRobot extends IterativeRobot {
 		// continue until interrupted by another command, remove
 		// this line or comment it out.
 		//autonomousCommand.cancel();
-    	TeleopHoodDefault.start();
-    	TeleopDriveTrainDefault.start();
+    	//TeleopHoodDefault.start();
+    	//TeleopDriveTrainDefault.start();
     	TeleopDriveElevator.start();
+    	dashboard.start();
     }
 
     /**

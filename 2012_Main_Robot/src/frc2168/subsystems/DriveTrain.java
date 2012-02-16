@@ -116,10 +116,6 @@ public class DriveTrain extends Subsystem
 			RobotMap.driverstation.println(DriverStationLCD.Line.kUser2, 1, "Jag in Drivetrain");
 			RobotMap.driverstation.updateLCD();
             
-            
-            //spawn new threads
-    		// TODO Auto-generated method stub
-	
 		} 
 		
 	}
