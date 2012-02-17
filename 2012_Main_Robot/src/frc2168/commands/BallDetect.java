@@ -1,11 +1,14 @@
 package frc2168.commands;
 
-import edu.wpi.first.wpilibj.command.Command;
+import frc2168.nPointAveragor;
 import edu.wpi.first.wpilibj.AnalogChannel;
 
 public class BallDetect extends CommandBase {
 	
+	nPointAveragor averager = new nPointAveragor(5);	
 	public BallDetect(){
+		
+		
 		
 	}
 
@@ -18,7 +21,20 @@ public class BallDetect extends CommandBase {
 
 	protected void execute() {
 		
-		System.out.println("Voltage " + oi.ballDetector.getVoltage());		//Print voltage value
+	//	System.out.println("Voltage " + oi.ballDetector.getVoltage());		//Print voltage value
+		
+		
+		averager.putData(oi.ballDetector.getVoltage());
+		
+		if(averager.getAverage()>2.0){		//when ball is present (at just below max value)
+			
+			elevatorFlap.setBallElevatorSpeed(0);
+			
+		} else if (averager.getAverage()<=2.0){
+			
+			elevatorFlap.setBallElevatorSpeed(.5);
+			
+		}
 		
 		
 		// TODO Auto-generated method stub
