@@ -70,6 +70,8 @@ public class RobotMap {
 	public static final double driveEencoderDistPerTick=(Math.PI*2*driveWheelRadius)/driveEncoderPulsePerRot;
 	public static final int driveEncoderMinRate=10; 
 	public static final int driveEncoderMinPeriod=10;
+	public static final boolean leftDriveTrainEncoderReverse=false;
+	public static final boolean rightDriveTrainEncoderReverse=false;
 	
 	
 	//Compressor switch and relay
@@ -78,12 +80,12 @@ public class RobotMap {
 	
 	
 	//period to run PID loops
-	long driveTrainPeriod =40;//40ms loop
+	public static final long driveTrainPeriod =40;//40ms loop
 	
 	//PID Gains for Left Side
 	
 	public static final double driveTrainP = 0.00574562908722711;
-	public static final double dirveTrainI = 0.000308064641742337; 
+	public static final double driveTrainI = 0.000308064641742337; 
 	public static final double driveTrainD = -0.000130778888124088;
 	
 	
