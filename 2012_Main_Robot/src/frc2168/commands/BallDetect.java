@@ -5,7 +5,9 @@ import edu.wpi.first.wpilibj.AnalogChannel;
 
 public class BallDetect extends CommandBase {
 	
-	nPointAveragor averager = new nPointAveragor(5);	
+	nPointAveragor averager = new nPointAveragor(5);
+	boolean ball = true;
+	
 	public BallDetect(){
 		
 		
@@ -29,6 +31,7 @@ public class BallDetect extends CommandBase {
 		if(averager.getAverage()>2.0){		//when ball is present (at just below max value)
 			
 			elevatorFlap.setBallElevatorSpeed(0);
+			ball = false;
 			
 		} else if (averager.getAverage()<=2.0){
 			
@@ -43,7 +46,7 @@ public class BallDetect extends CommandBase {
 
 	protected boolean isFinished() {
 		// TODO Auto-generated method stub
-		return false;
+		return ball;
 	}
 
 	protected void end() {

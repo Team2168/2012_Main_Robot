@@ -6,6 +6,7 @@ import edu.wpi.first.wpilibj.buttons.Button;
 import edu.wpi.first.wpilibj.buttons.JoystickButton;
 import frc2168.commands.BackFlapClose;
 import frc2168.commands.BackFlapOpen;
+import frc2168.commands.BallDetect;
 import frc2168.commands.ShooterWheelJoystick;
 import frc2168.commands.DriveToSpeed;
 import frc2168.commands.LowerBridge;
@@ -65,6 +66,8 @@ public class OI
 		auxButtonB.whenPressed(new RaiseHood());
 		auxButtonX.whenPressed(new BackFlapOpen());
 		auxButtonY.whenPressed(new BackFlapClose());
+		auxButtonRightBumper.whenPressed(new BallDetect());
+		
 	}
 
 	/**
