@@ -77,11 +77,14 @@ public class RobotMap {
 	public static final int compressorRelay = 1; //Relay Port 1, Digital Card
 	
 	
+	//period to run PID loops
+	long driveTrainPeriod =40;//40ms loop
+	
 	//PID Gains for Left Side
 	
-	public static final double P = 0.00574562908722711;
-	public static final double I = 0.000308064641742337; 
-	public static final double D = -0.000130778888124088;
+	public static final double driveTrainP = 0.00574562908722711;
+	public static final double dirveTrainI = 0.000308064641742337; 
+	public static final double driveTrainD = -0.000130778888124088;
 	
 	
 	////////////////////////////HOOD////////////////////////////////////////

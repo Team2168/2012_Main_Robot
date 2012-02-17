@@ -62,7 +62,7 @@ public class DriveTrain extends Subsystem
 	//PID Controllers
 		public PIDSpeed leftSpeedController;
 		public PIDSpeed rightSpeedController;		
-		long period =40;//40ms loop
+		
 
 	////////////////////////////////////////////////////////////////////
 	//Shifting solenoids
