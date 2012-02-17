@@ -4,6 +4,7 @@ import edu.wpi.first.wpilibj.buttons.InternalButton;
 import edu.wpi.first.wpilibj.command.Scheduler;
 import edu.wpi.first.wpilibj.networktables.NetworkTableKeyNotDefined;
 import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;
+import frc2168.RobotMap;
 import frc2168.commands.BackFlapClose;
 import frc2168.commands.BackFlapOpen;
 import frc2168.commands.CommandBase;
@@ -15,10 +16,10 @@ import frc2168.commands.RaiseHood;
 import frc2168.commands.ShooterWheelJoystick;
 import frc2168.commands.driveShooterPID;
 
-public class ShooterWheelDebugDashboard extends CommandBase
+public class ShooterWheelPIDDashboard extends CommandBase
 {
 	
-	public ShooterWheelDebugDashboard()
+	public ShooterWheelPIDDashboard()
 	{
         //Show what command your subsystem is running on the SmartDashboard
         SmartDashboard.putData(driveTrain);
@@ -33,7 +34,7 @@ public class ShooterWheelDebugDashboard extends CommandBase
 		SmartDashboard.putData(new RaiseHood());
 		SmartDashboard.putData(new BackFlapClose());
 		SmartDashboard.putData(new BackFlapOpen());
-		
+		SmartDashboard.putData(new driveShooterPID());
 		
 		
 		//show the scheduler
@@ -49,10 +50,18 @@ public class ShooterWheelDebugDashboard extends CommandBase
 		SmartDashboard.putDouble("elevatorVolatge", 0);
 		SmartDashboard.putDouble("shooterVoltage", 0);
 		
+		SmartDashboard.putDouble("shooterSetPoint", 0);
+		
+		//show shooter gains
+		SmartDashboard.putDouble("P", RobotMap.shooterP);
+		SmartDashboard.putDouble("I", RobotMap.shooterI);
+		SmartDashboard.putDouble("D", RobotMap.shooterD);
+		
+
 		
 		//require subsystems
-		requires(elevatorFlap);
-		requires(hood);
+		//requires(elevatorFlap);
+		//requires(hood);
 	
 		
 	}
@@ -70,12 +79,22 @@ public class ShooterWheelDebugDashboard extends CommandBase
 	
 		//put encoder data on screen
 		SmartDashboard.putDouble("shooterEncoder", hood.shooterWheelController.getEncoderRate());
+		SmartDashboard.putDouble("Controller Output", hood.shooterWheelController.getCo());
+		
 		
 		//drive shooter wheel
 		try
 		{
 			elevatorFlap.setBallElevatorSpeed(SmartDashboard.getDouble("elevatorVolatge"));
 			hood.spinMotor(SmartDashboard.getDouble("shooterVoltage"));
+			hood.shooterWheelController.setSp(SmartDashboard.getDouble("shooterSetPoint"));
+			
+			
+			//get shooter gains from dashboard
+			hood.shooterWheelController.setpGain(SmartDashboard.getDouble("P"));
+			hood.shooterWheelController.setiGain(SmartDashboard.getDouble("I"));
+			hood.shooterWheelController.setdGain(SmartDashboard.getDouble("D"));
+			
 		} catch (NetworkTableKeyNotDefined e)
 		{
 			// TODO Auto-generated catch block
@@ -104,7 +123,7 @@ public class ShooterWheelDebugDashboard extends CommandBase
 	protected void interrupted()
 	{
 		// TODO Auto-generated method stub
-		SmartDashboard.putData(new ShooterWheelDebugDashboard());
+		SmartDashboard.putData(new ShooterWheelPIDDashboard());
 	}
 
 }

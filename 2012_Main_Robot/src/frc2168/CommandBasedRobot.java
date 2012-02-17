@@ -16,6 +16,7 @@ import edu.wpi.first.wpilibj.command.Command;
 import edu.wpi.first.wpilibj.command.Scheduler;
 import frc2168.commands.*;
 import frc2168.dashboard.ShooterWheelDebugDashboard;
+import frc2168.dashboard.ShooterWheelPIDDashboard;
 
 /**
  * The VM is configured to automatically run this class, and to call the
@@ -59,7 +60,7 @@ public class CommandBasedRobot extends IterativeRobot {
         TeleopHoodDefault = new ShooterWheelJoystick();
         TeleopDriveTrainDefault = new DriveWithJoystick();
         TeleopDriveElevator = new DriveElevatorJoystick();
-        dashboard = new ShooterWheelDebugDashboard();
+        dashboard = new ShooterWheelPIDDashboard();
     	
     }
 
