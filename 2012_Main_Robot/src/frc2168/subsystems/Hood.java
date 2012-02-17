@@ -15,19 +15,34 @@ import edu.wpi.first.wpilibj.command.Subsystem;
 
 public class Hood extends Subsystem {
 	
+	//We instantiate all parameters to interface with the hardware of the DriveTrain
+	
+	//////////////////////////////////////////////////////////////////////
+	// Declare all CAN Motors associated with the Drive Train
+	// We use two motors to drive the shooter wheel
 	CANJaguar shooterWheel;
 	CANJaguar shooterWheel2;
+	
+	//////////////////////////////////////////////////////////////////////
+	//Declare Solenoid for hood
 	DoubleSolenoid hoodActuator;
-	public Encoder shooterWheelEncoder;
+	
+	//////////////////////////////////////////////////////////////////////
+	//Declare sensors
+	Encoder shooterWheelEncoder;
 	
 
-	
+	/////////////////////////////////////////////////////////////////////	
+	//PID Controllers
+	public PIDSpeed shooterWheelController;
 	
 	
 	public Hood(){
 		
+		//instantiate solenoid actuator
 		hoodActuator = new DoubleSolenoid(RobotMap.hoodSolenoidPortFwd,RobotMap.hoodSolenoidPortReverse); 
 		
+		//instantiate CAN motors
 		try{
 			shooterWheel = new CANJaguar(RobotMap.shooterWheelCANID);
 			shooterWheel2 = new CANJaguar(RobotMap.shooterWheel2CANID);
@@ -48,6 +63,9 @@ public class Hood extends Subsystem {
 		shooterWheelEncoder.setMinRate(RobotMap.shooterEncoderMinRate);
 		shooterWheelEncoder.setReverseDirection(RobotMap.shooterEncoderReverse);
 		shooterWheelEncoder.start();
+		
+		//Spawn New PID Speed Controller with PID Gains as specified in ROBOT MAP
+		shooterWheelController=new PIDSpeed("shooterController",RobotMap.shooterP,RobotMap.shooterI,RobotMap.shooterD, shooterWheelEncoder,RobotMap.shooterPIDPeriod);
 		
 	}
 	

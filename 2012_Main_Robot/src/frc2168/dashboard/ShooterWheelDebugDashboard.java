@@ -66,7 +66,7 @@ public class ShooterWheelDebugDashboard extends CommandBase
 	{
 	
 		//put encoder data on screen
-		SmartDashboard.putDouble("shooterEncoder", hood.shooterWheelEncoder.getRate());
+		SmartDashboard.putDouble("shooterEncoder", hood.shooterWheelController.getEncoderRate());
 		
 		//drive shooter wheel
 		try

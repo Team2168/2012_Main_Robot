@@ -54,9 +54,6 @@ public class DriveTrain extends Subsystem
 		Encoder leftMotorEncoder;	
 		Encoder	rightMotorEncoder;
 		
-	/////////////////////////////////////////////////////////////////////
-	//Enable smartDashboard	
-		
 	
 	/////////////////////////////////////////////////////////////////////	
 	//PID Controllers
@@ -107,8 +104,8 @@ public class DriveTrain extends Subsystem
 		rightMotorEncoder.start();
 		
 		//Spawn New PID Speed Controller with PID Gains as specified in ROBOT MAP
-		leftSpeedController=new PIDSpeed("LeftSpeedController",RobotMap.driveTrainP,RobotMap.driveTrainI,RobotMap.driveTrainD, leftMotorEncoder,RobotMap.driveTrainPeriod);
-		rightSpeedController=new PIDSpeed("RightSpeedController",RobotMap.driveTrainP,RobotMap.driveTrainI,RobotMap.driveTrainD, rightMotorEncoder,RobotMap.driveTrainPeriod);
+		leftSpeedController=new PIDSpeed("LeftSpeedController",RobotMap.driveTrainP,RobotMap.driveTrainI,RobotMap.driveTrainD, leftMotorEncoder,RobotMap.driveTrainPIDPeriod);
+		rightSpeedController=new PIDSpeed("RightSpeedController",RobotMap.driveTrainP,RobotMap.driveTrainI,RobotMap.driveTrainD, rightMotorEncoder,RobotMap.driveTrainPIDPeriod);
 		
 		// enable CAN Jag Motors using constant motor IDs specified in RobotMap
 		try
