@@ -13,7 +13,7 @@ import frc2168.commands.LowerHood;
 import frc2168.commands.RaiseBridge;
 import frc2168.commands.RaiseHood;
 import frc2168.commands.ShooterWheelJoystick;
-import frc2168.commands.driveShooterPID;
+import frc2168.commands.PID_DriveShooter;
 
 public class ShooterWheelDebugDashboard extends CommandBase
 {

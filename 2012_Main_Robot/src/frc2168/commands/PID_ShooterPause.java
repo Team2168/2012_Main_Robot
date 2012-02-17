@@ -2,40 +2,38 @@ package frc2168.commands;
 
 import edu.wpi.first.wpilibj.command.Command;
 
-public class driveShooterPID extends CommandBase
+public class PID_ShooterPause extends CommandBase
 {
 	
-	public driveShooterPID()
+	public PID_ShooterPause()
 	{
-		requires(hood);
 		
 	}
 
 	protected void initialize()
 	{
-		// TODO Auto-generated method stub
-		//start the PID controller if it is paused
-		hood.shooterWheelController.Enable();
+		hood.shooterWheelController.Pause();
 
 	}
 
 	protected void execute()
 	{
 		// TODO Auto-generated method stub
-		//drive wheel based on shooter controller output
-		hood.spinMotor(hood.shooterWheelController.getCo());
+		// TODO Auto-generated method stub
+
 	}
 
 	protected boolean isFinished()
 	{
 		// TODO Auto-generated method stub
-		return false;
+		
+		return hood.shooterWheelController.isEnabled()==false;
+		
 	}
 
 	protected void end()
 	{
 		// TODO Auto-generated method stub
-
 	}
 
 	protected void interrupted()

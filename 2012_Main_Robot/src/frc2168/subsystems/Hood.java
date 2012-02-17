@@ -37,9 +37,6 @@ public class Hood extends Subsystem {
 	//PID Controllers
 	public PIDSpeed shooterWheelController;
 	
-	///////
-	Victor lift1;
-	/////
 	
 	
 	public Hood(){
@@ -47,22 +44,19 @@ public class Hood extends Subsystem {
 		//instantiate solenoid actuator
 		hoodActuator = new DoubleSolenoid(RobotMap.hoodSolenoidPortFwd,RobotMap.hoodSolenoidPortReverse); 
 		
-		////
-		lift1 = new Victor(3);
-		////
 		
 		//instantiate CAN motors
-//		try{
-//			shooterWheel = new CANJaguar(RobotMap.shooterWheelCANID);
-//			shooterWheel2 = new CANJaguar(RobotMap.shooterWheel2CANID);
-//		}
-//		catch(CANTimeoutException e){
-//			e.printStackTrace();
-//			RobotMap.driverstation = DriverStationLCD.getInstance();
-//			RobotMap.driverstation.println(DriverStationLCD.Line.kMain6, 1, "Error initializing");
-//			RobotMap.driverstation.println(DriverStationLCD.Line.kUser2, 1, "Jag in Hood");
-//			RobotMap.driverstation.updateLCD();
-//		}
+		try{
+			shooterWheel = new CANJaguar(RobotMap.shooterWheelCANID);
+			shooterWheel2 = new CANJaguar(RobotMap.shooterWheel2CANID);
+		}
+		catch(CANTimeoutException e){
+			e.printStackTrace();
+			RobotMap.driverstation = DriverStationLCD.getInstance();
+			RobotMap.driverstation.println(DriverStationLCD.Line.kMain6, 1, "Error initializing");
+			RobotMap.driverstation.println(DriverStationLCD.Line.kUser2, 1, "Jag in Hood");
+			RobotMap.driverstation.updateLCD();
+		}
 		
 		//instantiate encoder in 1x mode
 		shooterWheelEncoder = new Encoder(RobotMap.shooterWheelEncoderID_A, RobotMap.shooterWheelEncoderID_B,false,CounterBase.EncodingType.k1X);
@@ -83,20 +77,18 @@ public class Hood extends Subsystem {
 	}
 	
 	public void spinMotor(double speed){
-//		try {
-//			shooterWheel.setX(speed);
-//			shooterWheel2.setX(speed);
-//		} catch (CANTimeoutException e) {
-//			e.printStackTrace();
-//			RobotMap.driverstation = DriverStationLCD.getInstance();
-//			RobotMap.driverstation.println(DriverStationLCD.Line.kMain6, 1, "Error setting");
-//			RobotMap.driverstation.println(DriverStationLCD.Line.kUser2, 2, "Jag in Hood");
-//			RobotMap.driverstation.updateLCD();
-//		}
+		try {
+			shooterWheel.setX(speed);
+			shooterWheel2.setX(speed);
+		} catch (CANTimeoutException e) {
+			e.printStackTrace();
+			RobotMap.driverstation = DriverStationLCD.getInstance();
+			RobotMap.driverstation.println(DriverStationLCD.Line.kMain6, 1, "Error setting");
+			RobotMap.driverstation.println(DriverStationLCD.Line.kUser2, 2, "Jag in Hood");
+			RobotMap.driverstation.updateLCD();
+		}
 		
-		//////
-		lift1.set(speed);
-		///////
+
 	}
 	
 	public void lowerHood(){

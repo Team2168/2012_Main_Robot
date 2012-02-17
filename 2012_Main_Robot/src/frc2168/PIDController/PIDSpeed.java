@@ -126,6 +126,13 @@ public class PIDSpeed
 	// Name of Thread
 	String name;
 	
+	//isfinsh double
+	private final int SIZE = 100;
+	private double[] atSpeed;
+	private int count;
+	private final double percent =0.2;
+
+	
 
 
 /**
@@ -199,6 +206,11 @@ public class PIDSpeed
 		this.debugEnabled=false;
 		this.enDerivFilter=false;
 		this.enGainSched=false;
+		this.isFinished=false;
+		
+		//at speed size
+		this.atSpeed = new double[SIZE];
+		this.count=0;
 		
 		//reset encoder
 		this.encoder.reset();
@@ -298,6 +310,14 @@ public class PIDSpeed
 	public synchronized boolean isEnGainSched()
 	{
 		return enGainSched;
+	}
+	
+	/**
+	 * @return the boolean flag indicating if the PID loop is enabled. PID is enabled when true, if false gain scheduling is not enabled. Gain Scheduling is set to false by default.
+	 */
+	public synchronized boolean isEnabled()
+	{
+		return enable;
 	}
 
 	/**
@@ -506,15 +526,40 @@ public class PIDSpeed
 	 * @param enable
 	 *            the enable to set
 	 */
-	public synchronized void Enable()
+	public  void Enable()
 	{
+	
 		this.enable = true;
 	}
 	
-	public synchronized void Pause()
+	public  void Pause()
 	{
+
+		//disable PID loop
 		this.enable = false;
+		
+		this.isFinished=false;
+
+		//zero all other parameters
+		this.acceptErrorDiff=0;
+		this.clock=0;
+		this.co=0;
+		this.coNotSaturated=0;
+		this.coOld=0;
+		this.cp=0;
+		this.prop=0;
+		this.deriv=0;
+		this.integ=0;
+		this.err=0;
+		this.errsum=0;
+		this.filterDerivOld=0;
+		this.olderr=0;
+		this.olderrsum=0;
+		
+		//give up CPU
+		Thread.yield();
 	}
+	
 	
 	public synchronized void enDebug()
 	{
@@ -640,9 +685,33 @@ public class PIDSpeed
 		this.name = name;
 	}
 	
-	public boolean isFinished()
+	public boolean atSpeed()
 	{
-		return isFinished;
+		
+		return this.isFinished;
+	}
+	
+	private void isFinished()
+	{
+		
+		if (count==this.atSpeed.length)
+			count=0;
+		
+		atSpeed[count]=co;
+		count++;
+		
+		int inRange=0;
+		for(int i=0,j=1; j<atSpeed.length; i++,j++)
+		{
+			if (Math.abs(atSpeed[j]) < Math.abs(atSpeed[i]+atSpeed[i]*percent) && Math.abs(atSpeed[j]) > Math.abs(atSpeed[i]-atSpeed[i]*percent))
+			 inRange++;
+			else
+				inRange=0;
+		}
+		if (inRange==atSpeed.length-1)
+		isFinished=true;
+		else
+			isFinished=false;
 	}
 	
 
@@ -820,10 +889,10 @@ public class PIDSpeed
 				{
 					co = coOld;
 					olderrsum = errsum;
-					isFinished=true;
+					
 				} else
 				{
-					isFinished=false;
+					
 					// there is still a significant error
 					// we now check if output signal is below
 					// the deadband, if it is, we increase the
@@ -843,10 +912,14 @@ public class PIDSpeed
 
 				coOld = co;
 				
+				//see if setpoint is reached
+				isFinished();
+				
 			}
 			//output to SmartDashboard if deBug field is enabled
 			if (debugEnabled)
 				this.debug();
+			
 		}
 	}
 

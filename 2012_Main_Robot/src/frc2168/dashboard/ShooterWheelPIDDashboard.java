@@ -11,10 +11,11 @@ import frc2168.commands.CommandBase;
 import frc2168.commands.DriveElevatorJoystick;
 import frc2168.commands.LowerBridge;
 import frc2168.commands.LowerHood;
+import frc2168.commands.PIDShootBall;
 import frc2168.commands.RaiseBridge;
 import frc2168.commands.RaiseHood;
 import frc2168.commands.ShooterWheelJoystick;
-import frc2168.commands.driveShooterPID;
+import frc2168.commands.PID_DriveShooter;
 
 public class ShooterWheelPIDDashboard extends CommandBase
 {
@@ -34,8 +35,12 @@ public class ShooterWheelPIDDashboard extends CommandBase
 		SmartDashboard.putData(new RaiseHood());
 		SmartDashboard.putData(new BackFlapClose());
 		SmartDashboard.putData(new BackFlapOpen());
-		SmartDashboard.putData(new driveShooterPID());
+		SmartDashboard.putData(new PID_DriveShooter());
 		
+		//create virtual button to hold
+		InternalButton shootBallButton = new InternalButton();
+		SmartDashboard.putData("shootBall",shootBallButton);
+		shootBallButton.whileHeld(new PIDShootBall());
 		
 		//show the scheduler
 		SmartDashboard.putData("Scheduler",Scheduler.getInstance());
@@ -47,23 +52,14 @@ public class ShooterWheelPIDDashboard extends CommandBase
 		
 		
 		//create text boxes for entry
-		SmartDashboard.putDouble("elevatorVolatge", 0);
-		SmartDashboard.putDouble("shooterVoltage", 0);
-		
+
 		SmartDashboard.putDouble("shooterSetPoint", 0);
 		
 		//show shooter gains
 		SmartDashboard.putDouble("P", RobotMap.shooterP);
 		SmartDashboard.putDouble("I", RobotMap.shooterI);
 		SmartDashboard.putDouble("D", RobotMap.shooterD);
-		
 
-		
-		//require subsystems
-		//requires(elevatorFlap);
-		//requires(hood);
-	
-		
 	}
 
 	//@Override
@@ -80,13 +76,13 @@ public class ShooterWheelPIDDashboard extends CommandBase
 		//put encoder data on screen
 		SmartDashboard.putDouble("shooterEncoder", hood.shooterWheelController.getEncoderRate());
 		SmartDashboard.putDouble("Controller Output", hood.shooterWheelController.getCo());
-		
-		
+		SmartDashboard.putBoolean("atSpeed", hood.shooterWheelController.atSpeed());
+		SmartDashboard.putBoolean("enable", hood.shooterWheelController.isEnabled());
+		SmartDashboard.putDouble("executionTime", hood.shooterWheelController.getExecutionTime());
 		//drive shooter wheel
 		try
 		{
-			elevatorFlap.setBallElevatorSpeed(SmartDashboard.getDouble("elevatorVolatge"));
-			hood.spinMotor(SmartDashboard.getDouble("shooterVoltage"));
+
 			hood.shooterWheelController.setSp(SmartDashboard.getDouble("shooterSetPoint"));
 			
 			
@@ -122,8 +118,7 @@ public class ShooterWheelPIDDashboard extends CommandBase
 	//@Override
 	protected void interrupted()
 	{
-		// TODO Auto-generated method stub
-		SmartDashboard.putData(new ShooterWheelPIDDashboard());
+
 	}
 
 }
