@@ -22,6 +22,7 @@ public class PID_DriveShooter extends CommandBase
 	{
 		// TODO Auto-generated method stub
 		//start the PID controller if it is paused
+		hood.shooterWheelController.reset();
 		hood.shooterWheelController.Enable();
 
 	}

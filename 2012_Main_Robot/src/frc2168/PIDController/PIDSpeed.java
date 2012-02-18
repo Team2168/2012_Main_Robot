@@ -540,6 +540,16 @@ public class PIDSpeed
 		
 		this.isFinished=false;
 
+		reset();
+		
+		//give up CPU
+		Thread.yield();
+	}
+	
+	public void reset()
+	{
+		this.isFinished=false;
+
 		//zero all other parameters
 		this.acceptErrorDiff=0;
 		this.clock=0;
@@ -556,10 +566,8 @@ public class PIDSpeed
 		this.olderr=0;
 		this.olderrsum=0;
 		
-		//give up CPU
-		Thread.yield();
+		
 	}
-	
 	
 	public synchronized void enDebug()
 	{

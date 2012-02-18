@@ -63,7 +63,7 @@ public class RobotMap {
 	public static final int rightDriveTrainEncoder_B=4; //DIO 4, Digital Card
 	
 	//Wheel Radius
-	public static final int driveWheelRadius=2; //Colson wheel radius in inches
+	public static final int driveWheelRadius=2;//Colson wheel radius in inches
 	
 	//DriveTraincEncoder Parameters
 	public static final int driveEncoderPulsePerRot=250;
@@ -119,8 +119,8 @@ public class RobotMap {
 	//PID Gains for shooter wheel
 	//Bandwidth =
 	//Phase Margin = 
-	public static final double shooterP = 0.00574562908722711;
-	public static final double shooterI = 0.000308064641742337; 
+	public static final double shooterP = 0.000974562908722711;
+	public static final double shooterI = 0.000108064641742337; 
 	public static final double shooterD = -0.000130778888124088;
 	
 
@@ -139,5 +139,9 @@ public class RobotMap {
 	//Solenoid to Open/Close flap
 	public static final int backFlapSolenoidClose = 3; //Port 3, Solenoid Card
 	public static final int backFlapSolenoidOpen = 4; //Port 4, Solenoid Card
+	
+	//Constant to drive elevator
+	public static final double constVoltage=-0.3;
 	////////////////////////////////////////////////////////////////////////////
+	
 }
