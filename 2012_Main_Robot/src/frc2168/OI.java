@@ -6,7 +6,8 @@ import edu.wpi.first.wpilibj.buttons.Button;
 import edu.wpi.first.wpilibj.buttons.JoystickButton;
 import frc2168.commands.BackFlapClose;
 import frc2168.commands.BackFlapOpen;
-import frc2168.commands.BallDetect;
+import frc2168.commands.DriveLiftUntilBall;
+import frc2168.commands.DriveLiftUntilNoBall;
 import frc2168.commands.ShooterWheelJoystick;
 import frc2168.commands.DriveToSpeed;
 import frc2168.commands.LowerBridge;
@@ -28,8 +29,6 @@ import frc2168.commands.ShiftGearsLowToHigh;
  */
 public class OI
 {
-	public AnalogChannel ballDetector = new AnalogChannel(1);		//BallDetector
-	
 	public Joystick drivestick = new Joystick(RobotMap.driverJoystick);
 	public Button driveButtonA = new JoystickButton(drivestick, 1),
 			driveButtonB = new JoystickButton(drivestick, 2),
@@ -66,7 +65,8 @@ public class OI
 		auxButtonB.whenPressed(new RaiseHood());
 		auxButtonX.whenPressed(new BackFlapOpen());
 		auxButtonY.whenPressed(new BackFlapClose());
-		auxButtonRightBumper.whenPressed(new BallDetect());
+		auxButtonRightBumper.whenPressed(new DriveLiftUntilBall());
+		auxButtonLeftBumper.whenPressed(new DriveLiftUntilNoBall());
 		
 	}
 
