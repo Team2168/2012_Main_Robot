@@ -65,6 +65,9 @@ public class RobotMap {
 	//Wheel Radius
 	public static final int driveWheelRadius=2;//Colson wheel radius in inches
 	
+	//average encoder
+	public static final int driveAvgEncoderVal = 10;
+	
 	//DriveTraincEncoder Parameters
 	public static final int driveEncoderPulsePerRot=250;
 	public static final double driveEencoderDistPerTick=(Math.PI*2*driveWheelRadius)/driveEncoderPulsePerRot;
@@ -112,6 +115,9 @@ public class RobotMap {
 	public static final int shooterEncoderMinRate=10; 
 	public static final int shooterEncoderMinPeriod=10;
 	public static final boolean shooterEncoderReverse=true;
+	
+	//average encoder
+	public static final int hoodAvgEncoderVal = 10;
 	
 	//period to run PID loops
 	public static final long shooterPIDPeriod =40;//40ms loop

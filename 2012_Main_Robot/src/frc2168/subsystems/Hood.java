@@ -60,7 +60,7 @@ public class Hood extends Subsystem {
 		}
 		
 		//instantiate encoder in 1x mode
-		shooterWheelEncoder = new AverageEncoder(RobotMap.shooterWheelEncoderID_A, RobotMap.shooterWheelEncoderID_B,false,CounterBase.EncodingType.k1X, 10);
+		shooterWheelEncoder = new AverageEncoder(RobotMap.shooterWheelEncoderID_A, RobotMap.shooterWheelEncoderID_B,false,CounterBase.EncodingType.k1X, RobotMap.hoodAvgEncoderVal);
 		
 		//Set Encoder Paramters
 		shooterWheelEncoder.setDistancePerPulse(RobotMap.shooterEncoderDistPerTick);
