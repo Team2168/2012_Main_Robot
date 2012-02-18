@@ -34,8 +34,11 @@ public class DriveLiftUntilNoBall extends CommandBase {
 		//SmartDashboard.putData("scheduler", Scheduler.getInstance());
 	}
 
+	double volt;
 	protected void execute() {
-		if(elevatorFlap.getBallDetector() >= ballPresentVoltage){	//if a ball is present
+		volt = elevatorFlap.getBallDetector();
+		
+		if(volt >= ballPresentVoltage){	//if a ball is present
 			elevatorFlap.setBallElevatorSpeed(liftVoltage);			//run the lift to get rid of ball
 			ball = true;
 		} else{												//if a ball isn't present

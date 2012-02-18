@@ -5,6 +5,7 @@ import edu.wpi.first.wpilibj.DoubleSolenoid;
 import edu.wpi.first.wpilibj.Victor;
 import edu.wpi.first.wpilibj.command.Subsystem;
 import frc2168.RobotMap;
+import frc2168.nPointAveragor;
 import frc2168.commands.DriveElevatorJoystick;
 import edu.wpi.first.wpilibj.AnalogChannel;
 
@@ -14,12 +15,19 @@ public class ElevatorWithFlap extends Subsystem {
 	DoubleSolenoid backFlap; //opens and closes flap at the back bottom end of the elevator
 	DigitalInput ballExitSensor;  //sensor that detects ball at the top of the elevator
 	private AnalogChannel ballDetector;
+	private nPointAveragor ballDetectorAvg;
 
 	public ElevatorWithFlap() {
 		lift1 = new Victor(RobotMap.lift1Victor);
 		lift2 = new Victor(RobotMap.lift2Victor);
 		backFlap = new DoubleSolenoid(RobotMap.backFlapSolenoidClose , RobotMap.backFlapSolenoidOpen);
 		ballDetector = new AnalogChannel(1);
+		ballDetectorAvg = new nPointAveragor(3);  //average the ball detector values, window size=3
+		
+		//preload the averager w/ data
+		ballDetectorAvg.putData(ballDetector.getVoltage());
+		ballDetectorAvg.putData(ballDetector.getVoltage());
+		ballDetectorAvg.putData(ballDetector.getVoltage());
 	}
 	
 	protected void initDefaultCommand() {
@@ -35,7 +43,13 @@ public class ElevatorWithFlap extends Subsystem {
 	 * @return the sensors voltage
 	 */
 	public double getBallDetector(){
-		return ballDetector.getVoltage();
+		double sensorVoltage = ballDetector.getVoltage();
+		
+		if(sensorVoltage < 4.0 && sensorVoltage > 0.0){	//dont add in bogus data points
+			ballDetectorAvg.putData(ballDetector.getVoltage());
+		}
+		
+		return ballDetectorAvg.getAverage();
 	}
 	
 	/**

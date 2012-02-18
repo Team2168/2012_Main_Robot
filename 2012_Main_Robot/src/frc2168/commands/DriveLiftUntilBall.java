@@ -38,7 +38,7 @@ public class DriveLiftUntilBall extends CommandBase {
 	protected void initialize() {
 		//SmartDashboard.putData("scheduler", Scheduler.getInstance());
 	}
-
+	double volt;
 	protected void execute() {
 		//Stop lift at one ball
 		//averager.putData(elevatorFlap.getBallDetector());
@@ -46,8 +46,10 @@ public class DriveLiftUntilBall extends CommandBase {
 		//Print Debug distance voltage data
 		//DriverStationLCD.getInstance().println(DriverStationLCD.Line.kMain6, 1, "BallDist = " + Double.toString(elevatorFlap.getBallDetector()));
 		//DriverStationLCD.getInstance().updateLCD();
+		volt = elevatorFlap.getBallDetector();
 		
-		if(elevatorFlap.getBallDetector() >= ballPresentVoltage){	//if a ball is present
+		
+		if(volt >= ballPresentVoltage){	//if a ball is present
 			elevatorFlap.setBallElevatorSpeed(0);			//stop the lift
 			ball = true;
 		} else{												//if a ball isn't present

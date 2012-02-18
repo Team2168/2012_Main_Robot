@@ -12,6 +12,7 @@ import frc2168.commands.DriveElevatorJoystick;
 import frc2168.commands.LowerBridge;
 import frc2168.commands.LowerHood;
 import frc2168.commands.PIDShootBall;
+import frc2168.commands.PID_ShooterPause;
 import frc2168.commands.RaiseBridge;
 import frc2168.commands.RaiseHood;
 import frc2168.commands.ShooterWheelJoystick;
@@ -41,6 +42,7 @@ public class ShooterWheelPIDDashboard extends CommandBase
 		InternalButton shootBallButton = new InternalButton();
 		SmartDashboard.putData("shootBall",shootBallButton);
 		shootBallButton.whenPressed(new PIDShootBall());
+
 		
 		//show the scheduler
 		SmartDashboard.putData("Scheduler",Scheduler.getInstance());

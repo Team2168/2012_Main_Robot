@@ -34,7 +34,7 @@ public class CommandBasedRobot extends IterativeRobot {
     Command TeleopDriveTrainDefault;
     Command TeleopDriveElevator;
     Command dashboard;
-    //Command autonomousCommand;
+    Command autonomousCommand;
 
     /**
      * This function is run when the robot is first started up and should be
@@ -54,7 +54,7 @@ public class CommandBasedRobot extends IterativeRobot {
         compressor.start();
     	
     	// instantiate the command used for the autonomous period
-    	//Autonomous = new commandGRoup Class
+        autonomousCommand = new KeyToTopAutoCommand();
     	
     	// instantiate the command used for the teleop period
         TeleopHoodDefault = new ShooterWheelJoystick();
@@ -66,7 +66,7 @@ public class CommandBasedRobot extends IterativeRobot {
 
     public void autonomousInit() {
         // schedule the autonomous command (example)
-        //autonomousCommand.start();
+        autonomousCommand.start();
     }
 
     /**
@@ -83,9 +83,9 @@ public class CommandBasedRobot extends IterativeRobot {
 		// teleop starts running. If you want the autonomous to 
 		// continue until interrupted by another command, remove
 		// this line or comment it out.
-		//autonomousCommand.cancel();
+		autonomousCommand.cancel();
     	//TeleopHoodDefault.start();
-    	//TeleopDriveTrainDefault.start();
+    	TeleopDriveTrainDefault.start();
     	TeleopDriveElevator.start();
     	dashboard.start();
     }

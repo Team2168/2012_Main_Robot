@@ -106,6 +106,15 @@ public class RobotMap {
 	public static final int shooterWheelEncoderID_B = 6; //DIO 7, Digital Card
 	
 	
+	//Constant value for shooter wheel
+	public static final double SIDE_KEY_TO_TOP = 825.0;
+	public static final double LOW_GOAL_FORWARD = 400.0;
+	public static final double MIDDLE_GOAL_FORWARD = 500.0;
+	public static final double HIGH_GOAL_FORWARD = 600.0;
+	
+	
+	
+	
 	//Solenoid Control of hood
 	public static final int hoodSolenoidPortFwd = 1; //Port 1, Solenoid Card
 	public static final int hoodSolenoidPortReverse = 2; //Port 2, Solenoid Card

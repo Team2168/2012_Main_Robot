@@ -14,19 +14,22 @@ import frc2168.RobotMap;
  */
 public class PIDShootBall extends CommandGroup
 {
-	public PIDShootBall()
+	public PIDShootBall(double setPoint)
 	{
 		//drive shooter wheel to PID speed
-		addParallel(new PID_DriveShooter());
-		
-		//get ball ready
-		addParallel(new DriveLiftUntilBall());
+		addParallel(new PID_DriveShooter(setPoint));
 		
 		//wait for shooter to be at speed
 		addSequential(new PID_ShooterAtSpeed());
 		
+		//get ball ready
+		addSequential(new DriveLiftUntilBall());
+		
 		//shoot ball
 		addSequential(new DriveLiftUntilNoBall());
+		
+		//shoot ball
+		addSequential(new DriveLiftUntilBall(),2);
 		
 		//end command
 		addSequential(new PID_ShooterPause());
