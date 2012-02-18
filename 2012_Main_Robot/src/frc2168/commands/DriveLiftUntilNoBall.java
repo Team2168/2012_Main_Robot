@@ -37,6 +37,7 @@ public class DriveLiftUntilNoBall extends CommandBase {
 	double volt;
 	protected void execute() {
 		volt = elevatorFlap.getBallDetector();
+		//System.out.println("xxx " + volt);
 		
 		if(volt >= ballPresentVoltage){	//if a ball is present
 			elevatorFlap.setBallElevatorSpeed(liftVoltage);			//run the lift to get rid of ball

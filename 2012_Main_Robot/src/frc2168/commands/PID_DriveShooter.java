@@ -5,6 +5,8 @@ import edu.wpi.first.wpilibj.command.Command;
 public class PID_DriveShooter extends CommandBase
 {
 	
+	private double driveWithMe;
+	
 	public PID_DriveShooter()
 	{
 		requires(hood);
@@ -14,7 +16,8 @@ public class PID_DriveShooter extends CommandBase
 	public PID_DriveShooter(double setPoint)
 	{
 		this();
-		hood.shooterWheelController.setSp(setPoint);
+		driveWithMe=setPoint;
+		
 		
 	}
 
@@ -31,6 +34,7 @@ public class PID_DriveShooter extends CommandBase
 	{
 		// TODO Auto-generated method stub
 		//drive wheel based on shooter controller output
+		hood.shooterWheelController.setSp(driveWithMe);
 		hood.spinMotor(hood.shooterWheelController.getCo());
 	}
 

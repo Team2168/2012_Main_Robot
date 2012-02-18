@@ -107,10 +107,10 @@ public class RobotMap {
 	
 	
 	//Constant value for shooter wheel
-	public static final double SIDE_KEY_TO_TOP = 825.0;
+	public static final double SIDE_KEY_TO_TOP = 830.0;
 	public static final double LOW_GOAL_FORWARD = 400.0;
-	public static final double MIDDLE_GOAL_FORWARD = 500.0;
-	public static final double HIGH_GOAL_FORWARD = 600.0;
+	public static final double MIDDLE_GOAL_FORWARD = 520.0;
+	public static final double HIGH_GOAL_FORWARD = 700.0;
 	
 	
 	
@@ -150,8 +150,8 @@ public class RobotMap {
 	///////////////////////////////BRIDGE ARM/////////////////////////////////////
 	
 	//Solenoid Control of Bridge Arm
-	public static final int bridgeArmSolenoidForwardChannel = 7; //Port 7, Solenoid Card
-	public static final int bridgeArmSolenoidReverseChannel = 8; //Port 8, Solenoid Card
+	public static final int bridgeArmSolenoidForwardChannel = 8; //Port 8, Solenoid Card
+	public static final int bridgeArmSolenoidReverseChannel = 7; //Port 7, Solenoid Card
 	
 	///////////////////////////////Elevator////////////////////////////////////
 	

@@ -14,7 +14,7 @@ public class ShooterWheelJoystick extends CommandBase {
 	}
 
 	protected void execute(){
-		hood.spinMotor(oi.getAuxLeftStick());
+		hood.spinMotor(-oi.getAuxRightStick());
 	
 	}
 		

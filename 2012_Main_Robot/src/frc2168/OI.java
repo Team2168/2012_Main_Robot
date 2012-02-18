@@ -72,8 +72,8 @@ public class OI
 		auxButtonStart.whenPressed(new RaiseHood());
 		auxButtonReset.whenPressed(new LowerHood());
 		
-		auxButtonRightBumper.whenPressed(new BackFlapOpen());
-		auxButtonLeftBumper.whenPressed(new BackFlapClose());
+		auxButtonRightBumper.whenPressed(new BackFlapClose());
+		auxButtonLeftBumper.whenPressed(new BackFlapOpen());
 		
 	}
 

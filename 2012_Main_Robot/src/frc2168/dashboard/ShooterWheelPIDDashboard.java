@@ -81,11 +81,13 @@ public class ShooterWheelPIDDashboard extends CommandBase
 		SmartDashboard.putBoolean("atSpeed", hood.shooterWheelController.atSpeed());
 		SmartDashboard.putBoolean("enable", hood.shooterWheelController.isEnabled());
 		SmartDashboard.putDouble("executionTime", hood.shooterWheelController.getExecutionTime());
+		SmartDashboard.putDouble("shooterSetPoint", hood.shooterWheelController.getSp());
+		
 		//drive shooter wheel
 		try
 		{
 
-			hood.shooterWheelController.setSp(SmartDashboard.getDouble("shooterSetPoint"));
+			//hood.shooterWheelController.setSp(SmartDashboard.getDouble("shooterSetPoint"));
 			
 			
 			//get shooter gains from dashboard

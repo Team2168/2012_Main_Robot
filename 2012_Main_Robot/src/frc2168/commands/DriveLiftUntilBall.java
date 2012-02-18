@@ -47,7 +47,7 @@ public class DriveLiftUntilBall extends CommandBase {
 		//DriverStationLCD.getInstance().println(DriverStationLCD.Line.kMain6, 1, "BallDist = " + Double.toString(elevatorFlap.getBallDetector()));
 		//DriverStationLCD.getInstance().updateLCD();
 		volt = elevatorFlap.getBallDetector();
-		
+		//System.out.println(volt);
 		
 		if(volt >= ballPresentVoltage){	//if a ball is present
 			elevatorFlap.setBallElevatorSpeed(0);			//stop the lift
