@@ -19,6 +19,8 @@ public class PIDShootBall extends CommandGroup
 		//drive shooter wheel to PID speed
 		addParallel(new PID_DriveShooter(setPoint));
 		
+		addSequential(new BackFlapClose());
+		
 		//wait for shooter to be at speed
 		addSequential(new PID_ShooterAtSpeed());
 		
