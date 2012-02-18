@@ -1,5 +1,6 @@
 package frc2168.commands;
 
+import frc2168.RobotMap;
 import frc2168.nPointAveragor;
 import edu.wpi.first.wpilibj.DriverStationLCD;
 import edu.wpi.first.wpilibj.command.Scheduler;
@@ -8,22 +9,23 @@ import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;
 
 public class DriveLiftUntilBall extends CommandBase {
 	
-	nPointAveragor averager;
 	boolean ball;
 	
 	//Balls being sensed -rough estimates- can range from 1.5" to 3" from sensor:
 	//			1.5" -->  ~2.9v
 	//			3"   -->  ~1.7v
 	//no ball	11"  -->  ~0.42v
-	private static double ballPresentVoltage = 1.6;	//the voltage threshold at
+	private static double ballPresentVoltage;	//the voltage threshold at
 													// which a ball is considered present
-	private static double liftVoltage = -0.25;
+	private static double liftVoltage;;
 	
 	
 	
 	public DriveLiftUntilBall(){
 		requires(elevatorFlap);
-		averager = new nPointAveragor(3); //create a new moving average of size n
+
+		ballPresentVoltage = RobotMap.ballPresentVoltage;
+		liftVoltage = RobotMap.liftVoltage;
 		
 		//Before doing anything, figure out if a ball is present
 		if(elevatorFlap.getBallDetector() > ballPresentVoltage){

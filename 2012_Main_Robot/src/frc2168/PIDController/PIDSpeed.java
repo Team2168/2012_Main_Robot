@@ -127,10 +127,10 @@ public class PIDSpeed
 	String name;
 	
 	//isfinsh double
-	private final int SIZE = 100;
+	private int SIZE;
 	private double[] atSpeed;
 	private int count;
-	private final double percent =0.2;
+	private double percent;
 
 	
 
@@ -679,6 +679,27 @@ public class PIDSpeed
 		this.encoder = encoder;
 	}
 	
+	public synchronized int getSIZE()
+	{
+		return SIZE;
+	}
+
+	public synchronized void setSIZE(int sIZE)
+	{
+		this.SIZE = sIZE;
+		this.atSpeed = new double[SIZE];
+	}
+
+	public synchronized void setPercent(double percent)
+	{
+		this.percent = percent;
+	}
+
+	public synchronized double getPercent()
+	{
+		return percent;
+	}
+
 	/**
 	 * @return the name
 	 */

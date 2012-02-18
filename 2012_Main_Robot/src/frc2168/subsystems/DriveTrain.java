@@ -107,6 +107,14 @@ public class DriveTrain extends Subsystem
 		leftSpeedController=new PIDSpeed("LeftSpeedController",RobotMap.driveTrainP,RobotMap.driveTrainI,RobotMap.driveTrainD, leftMotorEncoder,RobotMap.driveTrainPIDPeriod);
 		rightSpeedController=new PIDSpeed("RightSpeedController",RobotMap.driveTrainP,RobotMap.driveTrainI,RobotMap.driveTrainD, rightMotorEncoder,RobotMap.driveTrainPIDPeriod);
 		
+		//set steady state determination for left controller
+		leftSpeedController.setSIZE(RobotMap.drivetrainArraySize);
+		leftSpeedController.setPercent(RobotMap.drivetrainPercent);
+
+		//set steady state determination for left controller
+		rightSpeedController.setSIZE(RobotMap.drivetrainArraySize);
+		rightSpeedController.setPercent(RobotMap.drivetrainPercent);
+		
 		// enable CAN Jag Motors using constant motor IDs specified in RobotMap
 		try
 		{

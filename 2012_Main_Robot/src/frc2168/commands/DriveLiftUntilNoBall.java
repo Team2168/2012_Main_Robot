@@ -1,6 +1,7 @@
 package frc2168.commands;
 
 import edu.wpi.first.wpilibj.command.Command;
+import frc2168.RobotMap;
 import frc2168.nPointAveragor;
 
 public class DriveLiftUntilNoBall extends CommandBase {
@@ -11,12 +12,15 @@ public class DriveLiftUntilNoBall extends CommandBase {
 	//			1.5" -->  ~2.9v
 	//			3"   -->  ~1.7v
 	//no ball	11"  -->  ~0.42v
-	private static double ballPresentVoltage = 1.6;	//the voltage threshold at
+	private static double ballPresentVoltage;	//the voltage threshold at
 													// which a ball is considered present
-	private static double liftVoltage = -0.25;
+	private static double liftVoltage;
 	
 	public DriveLiftUntilNoBall(){
 		requires(elevatorFlap);
+
+		ballPresentVoltage = RobotMap.ballPresentVoltage;
+		liftVoltage = RobotMap.liftVoltage;
 		
 		//Before doing anything, figure out if a ball is present
 		if(elevatorFlap.getBallDetector() > ballPresentVoltage){

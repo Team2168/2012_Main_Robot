@@ -76,6 +76,10 @@ public class RobotMap {
 	public static final boolean leftDriveTrainEncoderReverse=false;
 	public static final boolean rightDriveTrainEncoderReverse=false;
 	
+	//drivetrain controller steady state determination
+	public static final int drivetrainArraySize = 50;
+	public static final double drivetrainPercent = 0.1;
+	
 	
 	//Compressor switch and relay
 	public static final int compressorSwitch = 7; //DIO 7, Digital Card
@@ -119,6 +123,10 @@ public class RobotMap {
 	//average encoder
 	public static final int hoodAvgEncoderVal = 10;
 	
+	//hood controller steady state determination
+	public static final int hoodArraySize = 50;
+	public static final double hoodPercent = 0.1;
+	
 	//period to run PID loops
 	public static final long shooterPIDPeriod =40;//40ms loop
 	
@@ -146,8 +154,12 @@ public class RobotMap {
 	public static final int backFlapSolenoidClose = 3; //Port 3, Solenoid Card
 	public static final int backFlapSolenoidOpen = 4; //Port 4, Solenoid Card
 	
+	//ball detected
+	public static final double ballPresentVoltage = 1.6;
+	
 	//Constant to drive elevator
-	public static final double constVoltage=-0.3;
+	public static final double liftVoltage = -0.25;
+
 	////////////////////////////////////////////////////////////////////////////
 	
 }
