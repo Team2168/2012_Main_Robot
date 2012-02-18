@@ -1,6 +1,7 @@
 package frc2168.subsystems;
 
 import frc2168.RobotMap;
+import frc2168.PIDController.AverageEncoder;
 import frc2168.PIDController.PIDSpeed;
 import frc2168.commands.ShooterWheelJoystick;
 import edu.wpi.first.wpilibj.CANJaguar;
@@ -30,7 +31,7 @@ public class Hood extends Subsystem {
 	
 	//////////////////////////////////////////////////////////////////////
 	//Declare sensors
-	Encoder shooterWheelEncoder;
+	AverageEncoder shooterWheelEncoder;
 	
 
 	/////////////////////////////////////////////////////////////////////	
@@ -59,7 +60,7 @@ public class Hood extends Subsystem {
 		}
 		
 		//instantiate encoder in 1x mode
-		shooterWheelEncoder = new Encoder(RobotMap.shooterWheelEncoderID_A, RobotMap.shooterWheelEncoderID_B,false,CounterBase.EncodingType.k1X);
+		shooterWheelEncoder = new AverageEncoder(RobotMap.shooterWheelEncoderID_A, RobotMap.shooterWheelEncoderID_B,false,CounterBase.EncodingType.k1X, 10);
 		
 		//Set Encoder Paramters
 		shooterWheelEncoder.setDistancePerPulse(RobotMap.shooterEncoderDistPerTick);
