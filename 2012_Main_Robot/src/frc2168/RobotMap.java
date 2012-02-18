@@ -107,10 +107,10 @@ public class RobotMap {
 	
 	
 	//Constant value for shooter wheel
-	public static final double SIDE_KEY_TO_TOP = 830.0;
+	public static final double SIDE_KEY_TO_TOP = 835.0;
 	public static final double LOW_GOAL_FORWARD = 400.0;
 	public static final double MIDDLE_GOAL_FORWARD = 520.0;
-	public static final double HIGH_GOAL_FORWARD = 700.0;
+	public static final double HIGH_GOAL_FORWARD = 740.0;
 	
 	
 	
@@ -130,10 +130,10 @@ public class RobotMap {
 	public static final boolean shooterEncoderReverse=true;
 	
 	//average encoder
-	public static final int hoodAvgEncoderVal = 10;
+	public static final int hoodAvgEncoderVal = 20;
 	
 	//hood controller steady state determination
-	public static final int hoodArraySize = 50;
+	public static final int hoodArraySize = 20;
 	public static final double hoodPercent = 0.1;
 	
 	//period to run PID loops

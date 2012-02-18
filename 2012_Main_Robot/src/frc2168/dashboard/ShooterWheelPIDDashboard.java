@@ -87,7 +87,8 @@ public class ShooterWheelPIDDashboard extends CommandBase
 		try
 		{
 
-			//hood.shooterWheelController.setSp(SmartDashboard.getDouble("shooterSetPoint"));
+			if (SmartDashboard.getDouble("shooterSetPoint")!=0)
+			hood.shooterWheelController.setSp(SmartDashboard.getDouble("shooterSetPoint"));
 			
 			
 			//get shooter gains from dashboard
