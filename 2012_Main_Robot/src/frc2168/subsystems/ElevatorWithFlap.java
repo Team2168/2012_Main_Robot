@@ -6,18 +6,20 @@ import edu.wpi.first.wpilibj.Victor;
 import edu.wpi.first.wpilibj.command.Subsystem;
 import frc2168.RobotMap;
 import frc2168.commands.DriveElevatorJoystick;
+import edu.wpi.first.wpilibj.AnalogChannel;
 
 public class ElevatorWithFlap extends Subsystem {
 	Victor lift1;   //2 motors on the lift that get balls and move them up
 	Victor lift2;   //both move at the same time
 	DoubleSolenoid backFlap; //opens and closes flap at the back bottom end of the elevator
 	DigitalInput ballExitSensor;  //sensor that detects ball at the top of the elevator
-	
+	private AnalogChannel ballDetector;
 
 	public ElevatorWithFlap() {
 		lift1 = new Victor(RobotMap.lift1Victor);
 		lift2 = new Victor(RobotMap.lift2Victor);
-		backFlap = new DoubleSolenoid(RobotMap.backFlapSolenoidClose , RobotMap.backFlapSolenoidOpen);	
+		backFlap = new DoubleSolenoid(RobotMap.backFlapSolenoidClose , RobotMap.backFlapSolenoidOpen);
+		ballDetector = new AnalogChannel(1);
 	}
 	
 	protected void initDefaultCommand() {
@@ -25,6 +27,15 @@ public class ElevatorWithFlap extends Subsystem {
 		// TODO Auto-generated method stub
 		setDefaultCommand(new DriveElevatorJoystick());
 
+	}
+	
+	/**
+	 * Returns the voltage on the ball detection sensor at the top of the lift
+	 * 
+	 * @return the sensors voltage
+	 */
+	public double getBallDetector(){
+		return ballDetector.getVoltage();
 	}
 	
 	/**
