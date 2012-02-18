@@ -41,7 +41,7 @@ public class ShooterWheelPIDDashboard extends CommandBase
 		//create virtual button to hold
 		InternalButton shootBallButton = new InternalButton();
 		SmartDashboard.putData("shootBall",shootBallButton);
-		shootBallButton.whenPressed(new PIDShootBall());
+		//shootBallButton.whenPressed(new PIDShootBall());
 
 		
 		//show the scheduler

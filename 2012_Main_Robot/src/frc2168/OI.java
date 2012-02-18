@@ -8,6 +8,10 @@ import frc2168.commands.BackFlapClose;
 import frc2168.commands.BackFlapOpen;
 import frc2168.commands.DriveLiftUntilBall;
 import frc2168.commands.DriveLiftUntilNoBall;
+import frc2168.commands.HighGoalAuto;
+import frc2168.commands.LowGoalAuto;
+import frc2168.commands.MiddleGoalAuto;
+import frc2168.commands.PIDShootBall;
 import frc2168.commands.ShooterWheelJoystick;
 import frc2168.commands.DriveToSpeed;
 import frc2168.commands.LowerBridge;
@@ -53,7 +57,7 @@ public class OI
 	{
 		//drive left axis = left drivetrain in DriveWithJoystick
 		//drive right axis = right drivetrain in DriveWithJoystick
-		driveButtonA.whenPressed(new DriveToSpeed());
+		
 		driveButtonX.whenPressed(new LowerBridge());
 		driveButtonY.whenPressed(new RaiseBridge());
 		driveButtonLeftBumper.whenPressed(new ShiftGearsLowToHigh());
@@ -61,12 +65,15 @@ public class OI
 		
 		//aux left axis = left DriveElevatorJoystick
 		//aux right axis = right ShooterWheelJoystick
-		auxButtonA.whenPressed(new LowerHood());
-		auxButtonB.whenPressed(new RaiseHood());
-		auxButtonX.whenPressed(new BackFlapOpen());
-		auxButtonY.whenPressed(new BackFlapClose());
-		auxButtonRightBumper.whenPressed(new DriveLiftUntilBall());
-		auxButtonLeftBumper.whenPressed(new DriveLiftUntilNoBall());
+		auxButtonA.whenPressed(new LowGoalAuto());
+		auxButtonB.whenPressed(new MiddleGoalAuto());
+		auxButtonY.whenPressed(new HighGoalAuto());
+		
+		auxButtonStart.whenPressed(new RaiseHood());
+		auxButtonReset.whenPressed(new LowerHood());
+		
+		auxButtonRightBumper.whenPressed(new BackFlapOpen());
+		auxButtonLeftBumper.whenPressed(new BackFlapClose());
 		
 	}
 
