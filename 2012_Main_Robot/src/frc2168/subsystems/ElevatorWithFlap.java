@@ -1,6 +1,5 @@
 package frc2168.subsystems;
 
-import edu.wpi.first.wpilibj.DigitalInput;
 import edu.wpi.first.wpilibj.DoubleSolenoid;
 import edu.wpi.first.wpilibj.Victor;
 import edu.wpi.first.wpilibj.command.Subsystem;
@@ -12,27 +11,33 @@ import edu.wpi.first.wpilibj.AnalogChannel;
 public class ElevatorWithFlap extends Subsystem {
 	Victor lift1;   //2 motors on the lift that get balls and move them up
 	Victor lift2;   //both move at the same time
-	DoubleSolenoid backFlap; //opens and closes flap at the back bottom end of the elevator
-	DigitalInput ballExitSensor;  //sensor that detects ball at the top of the elevator
-	private AnalogChannel ballDetector;
-	private nPointAveragor ballDetectorAvg;
-
+	DoubleSolenoid backFlap; 					//opens and closes flap at the back bottom end of the elevator
+	//DigitalInput ballExitSensor;  			//sensor that detects ball at the top of the elevator
+	private AnalogChannel topBallDetector;		//sensor that detects ball at the top of the elevator
+	private nPointAveragor topBallDetectorAvg;	//running average of the top ball detect sensor voltage
+	private AnalogChannel bottomBallDetector;	//sensor that detects ball made it into the lift
+	private nPointAveragor bottomBallDetectorAvg;//running average of the bot. ball detect sensor voltage
+	
 	public ElevatorWithFlap() {
 		lift1 = new Victor(RobotMap.lift1Victor);
 		lift2 = new Victor(RobotMap.lift2Victor);
 		backFlap = new DoubleSolenoid(RobotMap.backFlapSolenoidClose , RobotMap.backFlapSolenoidOpen);
-		ballDetector = new AnalogChannel(1);
-		ballDetectorAvg = new nPointAveragor(3);  //average the ball detector values, window size=3
+		
+		// initialize ball detection sensors
+		topBallDetector = new AnalogChannel(1);
+		topBallDetectorAvg = new nPointAveragor(3);  //average the ball detector values
+		bottomBallDetector = new AnalogChannel(2);
+		bottomBallDetectorAvg = new nPointAveragor(3); //average the ball detector values
+		
 		
 		//preload the averager w/ data
-		ballDetectorAvg.putData(ballDetector.getVoltage());
-		ballDetectorAvg.putData(ballDetector.getVoltage());
-		ballDetectorAvg.putData(ballDetector.getVoltage());
+		topBallDetectorAvg.putData(topBallDetector.getVoltage());
+		topBallDetectorAvg.putData(topBallDetector.getVoltage());
+		topBallDetectorAvg.putData(topBallDetector.getVoltage());
 	}
 	
 	protected void initDefaultCommand() {
 		
-		// TODO Auto-generated method stub
 		setDefaultCommand(new DriveElevatorJoystick());
 
 	}
@@ -42,14 +47,29 @@ public class ElevatorWithFlap extends Subsystem {
 	 * 
 	 * @return the sensors voltage
 	 */
-	public double getBallDetector(){
-		double sensorVoltage = ballDetector.getVoltage();
+	public double getTopBallDetector(){
+		double sensorVoltage = topBallDetector.getVoltage();
 		
 		if(sensorVoltage < 4.0 && sensorVoltage > 0.0){	//dont add in bogus data points
-			ballDetectorAvg.putData(ballDetector.getVoltage());
+			topBallDetectorAvg.putData(topBallDetector.getVoltage());
 		}
 		
-		return ballDetectorAvg.getAverage();
+		return topBallDetectorAvg.getAverage();
+	}
+	
+	/**
+	 * Returns the voltage on the ball detection sensor at the top of the lift
+	 * 
+	 * @return the sensors voltage
+	 */
+	public double getBottomBallDetector(){
+		double sensorVoltage = bottomBallDetector.getVoltage();
+		
+		if(sensorVoltage < 4.0 && sensorVoltage > 0.0){	//don't add in bogus data points
+			bottomBallDetectorAvg.putData(bottomBallDetector.getVoltage());
+		}
+		
+		return bottomBallDetectorAvg.getAverage();
 	}
 	
 	/**

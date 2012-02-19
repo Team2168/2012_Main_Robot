@@ -23,7 +23,7 @@ public class DriveLiftUntilNoBall extends CommandBase {
 		liftVoltage = RobotMap.liftVoltage;
 		
 		//Before doing anything, figure out if a ball is present
-		if(elevatorFlap.getBallDetector() > ballPresentVoltage){
+		if(elevatorFlap.getTopBallDetector() > ballPresentVoltage){
 			ball = true;
 		} else {
 			ball = false;
@@ -36,7 +36,7 @@ public class DriveLiftUntilNoBall extends CommandBase {
 
 	double volt;
 	protected void execute() {
-		volt = elevatorFlap.getBallDetector();
+		volt = elevatorFlap.getTopBallDetector();
 		//System.out.println("xxx " + volt);
 		
 		if(volt >= ballPresentVoltage){	//if a ball is present
