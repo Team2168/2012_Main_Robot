@@ -1,25 +1,9 @@
 package frc2168;
 
-import edu.wpi.first.wpilibj.AnalogChannel;
 import edu.wpi.first.wpilibj.Joystick;
 import edu.wpi.first.wpilibj.buttons.Button;
 import edu.wpi.first.wpilibj.buttons.JoystickButton;
-import frc2168.commands.BackFlapClose;
-import frc2168.commands.BackFlapOpen;
-import frc2168.commands.DriveLiftUntilBall;
-import frc2168.commands.DriveLiftUntilNoBall;
-import frc2168.commands.HighGoalAuto;
-import frc2168.commands.LowGoalAuto;
-import frc2168.commands.MiddleGoalAuto;
-import frc2168.commands.PIDShootBall;
-import frc2168.commands.ShooterWheelJoystick;
-import frc2168.commands.DriveToSpeed;
-import frc2168.commands.LowerBridge;
-import frc2168.commands.LowerHood;
-import frc2168.commands.RaiseBridge;
-import frc2168.commands.RaiseHood;
-import frc2168.commands.ShiftGearsHighToLow;
-import frc2168.commands.ShiftGearsLowToHigh;
+import frc2168.commands.*;
 
 /**
  * 

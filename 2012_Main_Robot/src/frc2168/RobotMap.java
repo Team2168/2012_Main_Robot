@@ -84,6 +84,7 @@ public class RobotMap {
 	//Compressor switch and relay
 	public static final int compressorSwitch = 7; //DIO 7, Digital Card
 	public static final int compressorRelay = 1; //Relay Port 1, Digital Card
+	public static final int ballPresentLight = 3; // Relay Port 3, Digital Card
 	
 	
 	//period to run PID loops

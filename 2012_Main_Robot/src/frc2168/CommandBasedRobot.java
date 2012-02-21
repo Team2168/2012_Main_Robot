@@ -35,7 +35,8 @@ public class CommandBasedRobot extends IterativeRobot {
     Command TeleopDriveElevator;
     Command dashboard;
     Command autonomousCommand;
-
+    Command lowBallSense;
+    
     /**
      * This function is run when the robot is first started up and should be
      * used for any initialization code.
@@ -61,7 +62,7 @@ public class CommandBasedRobot extends IterativeRobot {
         TeleopDriveTrainDefault = new DriveWithJoystick();
         TeleopDriveElevator = new DriveElevatorJoystick();
         dashboard = new ShooterWheelPIDDashboard();
-    	
+        lowBallSense = new LowBallSense();
     }
 
     public void autonomousInit() {

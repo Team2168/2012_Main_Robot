@@ -1,6 +1,5 @@
 package frc2168.commands;
 
-import edu.wpi.first.wpilibj.command.Command;
 import frc2168.RobotMap;
 import frc2168.nPointAveragor;
 

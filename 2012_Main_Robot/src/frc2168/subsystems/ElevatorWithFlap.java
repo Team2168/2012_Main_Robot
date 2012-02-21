@@ -1,6 +1,7 @@
 package frc2168.subsystems;
 
 import edu.wpi.first.wpilibj.DoubleSolenoid;
+import edu.wpi.first.wpilibj.Relay;
 import edu.wpi.first.wpilibj.Victor;
 import edu.wpi.first.wpilibj.command.Subsystem;
 import frc2168.RobotMap;
@@ -17,6 +18,7 @@ public class ElevatorWithFlap extends Subsystem {
 	private nPointAveragor topBallDetectorAvg;	//running average of the top ball detect sensor voltage
 	private AnalogChannel bottomBallDetector;	//sensor that detects ball made it into the lift
 	private nPointAveragor bottomBallDetectorAvg;//running average of the bot. ball detect sensor voltage
+	private Relay ballPresentLight;				//light at back of bot to indicate a ball is present
 	
 	public ElevatorWithFlap() {
 		lift1 = new Victor(RobotMap.lift1Victor);
@@ -29,17 +31,31 @@ public class ElevatorWithFlap extends Subsystem {
 		bottomBallDetector = new AnalogChannel(2);
 		bottomBallDetectorAvg = new nPointAveragor(3); //average the ball detector values
 		
+		//preload the topBall averager w/ data
+		topBallDetectorAvg.putData(topBallDetector.getVoltage());
+		topBallDetectorAvg.putData(topBallDetector.getVoltage());
+		topBallDetectorAvg.putData(topBallDetector.getVoltage());
 		
-		//preload the averager w/ data
-		topBallDetectorAvg.putData(topBallDetector.getVoltage());
-		topBallDetectorAvg.putData(topBallDetector.getVoltage());
-		topBallDetectorAvg.putData(topBallDetector.getVoltage());
+		ballPresentLight = new Relay(RobotMap.ballPresentLight);
 	}
 	
 	protected void initDefaultCommand() {
 		
 		setDefaultCommand(new DriveElevatorJoystick());
 
+	}
+	
+	/**
+	 * Turn the light at the back of the robot on and off
+	 * 
+	 * @param light the state of the light, true = on
+	 */
+	public void setBackLight(boolean light){
+		if(light){
+			ballPresentLight.set(Relay.Value.kOn);
+		} else {
+			ballPresentLight.set(Relay.Value.kOff);
+		}
 	}
 	
 	/**
