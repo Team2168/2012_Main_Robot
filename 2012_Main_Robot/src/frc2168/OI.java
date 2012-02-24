@@ -12,6 +12,7 @@ import frc2168.commands.HighGoalAuto;
 import frc2168.commands.LowGoalAuto;
 import frc2168.commands.MiddleGoalAuto;
 import frc2168.commands.PIDShootBall;
+import frc2168.commands.PID_ShooterPause;
 import frc2168.commands.ShooterWheelJoystick;
 import frc2168.commands.DriveToSpeed;
 import frc2168.commands.LowerBridge;
@@ -20,6 +21,7 @@ import frc2168.commands.RaiseBridge;
 import frc2168.commands.RaiseHood;
 import frc2168.commands.ShiftGearsHighToLow;
 import frc2168.commands.ShiftGearsLowToHigh;
+import frc2168.commands.shootSingleBall;
 
 /**
  * 
@@ -52,6 +54,8 @@ public class OI
 			auxButtonRightBumper = new JoystickButton(auxstick, 6),
 			auxButtonReset = new JoystickButton(auxstick, 7),
 			auxButtonStart = new JoystickButton(auxstick, 8);
+	
+			
 
 	public OI()
 	{
@@ -68,12 +72,16 @@ public class OI
 		auxButtonA.whenPressed(new LowGoalAuto());
 		auxButtonB.whenPressed(new MiddleGoalAuto());
 		auxButtonY.whenPressed(new HighGoalAuto());
+		auxButtonX.whenPressed(new PID_ShooterPause());
 		
-		auxButtonStart.whenPressed(new RaiseHood());
+		auxButtonStart.whenPressed(new shootSingleBall());
 		auxButtonReset.whenPressed(new LowerHood());
 		
 		auxButtonRightBumper.whenPressed(new BackFlapClose());
 		auxButtonLeftBumper.whenPressed(new BackFlapOpen());
+		
+		
+
 		
 	}
 

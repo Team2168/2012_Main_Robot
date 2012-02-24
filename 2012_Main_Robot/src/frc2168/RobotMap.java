@@ -107,10 +107,15 @@ public class RobotMap {
 	
 	
 	//Constant value for shooter wheel
-	public static final double SIDE_KEY_TO_TOP = 840.0;
-	public static final double LOW_GOAL_FORWARD = 400.0;
-	public static final double MIDDLE_GOAL_FORWARD = 520.0;
-	public static final double HIGH_GOAL_FORWARD = 720.0;
+	public static final double AUTO_KEY_TO_TOP = 840.0;
+	
+	public static final double MIDDLE_GOAL_SIDE = 550.0; //hood down
+	public static final double HIGH_GOAL_SIDE = 730.0; //hood down
+	
+	
+	public static final double LOW_GOAL_FORWARD = 430.0;
+	public static final double MIDDLE_GOAL_FORWARD = 540.0; //hood up
+	public static final double HIGH_GOAL_FORWARD = 650.0; //hood up
 	
 	
 	
@@ -133,8 +138,10 @@ public class RobotMap {
 	public static final int hoodAvgEncoderVal = 20;
 	
 	//hood controller steady state determination
-	public static final int hoodArraySize = 50;
-	public static final double hoodPercent = 0.1;
+	public static final int hoodArraySize = 60;
+	public static final double hoodPercent = 0.05;
+	
+	public static final double shooterError = 5; //inches per second error
 	
 	//period to run PID loops
 	public static final long shooterPIDPeriod =40;//40ms loop
@@ -167,7 +174,7 @@ public class RobotMap {
 	public static final double ballPresentVoltage = 1.6;
 	
 	//Constant to drive elevator
-	public static final double liftVoltage = -0.25;
+	public static final double liftVoltage = -0.20;
 
 	////////////////////////////////////////////////////////////////////////////
 	
