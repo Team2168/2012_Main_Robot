@@ -27,6 +27,19 @@ public class JoystickAnalogButton extends Button {
     }
     
     /**
+     * Create a button for triggering commands off a joystick's analog axis
+     * 
+     * @param joystick The GenericHID object that has the button (e.g. Joystick, KinectStick, etc)
+     * @param axisNumber The axis number
+     * @param threshold The threshold to trigger above (positive) or below (negative)
+     */
+    public JoystickAnalogButton(GenericHID joystick, int axisNumber, double threshold) {
+    	m_joystick = joystick;
+        m_axisNumber = axisNumber;
+        THRESHOLD = threshold;
+    }
+    
+    /**
      * Set the value above which triggers should occur (for positive thresholds)
      *  or below which triggers should occur (for negative thresholds)
      * The default threshold value is 0.5
