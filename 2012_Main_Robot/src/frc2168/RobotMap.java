@@ -121,8 +121,7 @@ public class RobotMap {
 	
 	public static final double MIDDLE_GOAL_SIDE = 550.0; //hood down
 	public static final double HIGH_GOAL_SIDE = 730.0; //hood up
-	
-	
+
 	public static final double LOW_GOAL_FORWARD = 430.0;
 	public static final double MIDDLE_GOAL_FORWARD = 540.0; //hood up
 	public static final double HIGH_GOAL_FORWARD = 650.0; //hood down

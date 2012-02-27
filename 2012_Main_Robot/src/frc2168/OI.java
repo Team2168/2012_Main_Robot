@@ -1,27 +1,25 @@
 package frc2168;
 
-import edu.wpi.first.wpilibj.AnalogChannel;
 import edu.wpi.first.wpilibj.Joystick;
 import edu.wpi.first.wpilibj.buttons.Button;
+import edu.wpi.first.wpilibj.buttons.DigitalIOButton;
 import edu.wpi.first.wpilibj.buttons.JoystickButton;
+import frc2168.advancedIO.IOAnalogButton;
+import frc2168.advancedIO.IOModule;
+import frc2168.advancedIO.JoystickAnalogButton;
 import frc2168.commands.BackFlapClose;
 import frc2168.commands.BackFlapOpen;
-import frc2168.commands.DriveLiftUntilBall;
-import frc2168.commands.DriveLiftUntilNoBall;
 import frc2168.commands.HighGoalAuto;
 import frc2168.commands.LowGoalAuto;
-import frc2168.commands.MiddleGoalAuto;
-import frc2168.commands.PIDShootBall;
-import frc2168.commands.PID_ShooterPause;
-import frc2168.commands.ShooterWheelJoystick;
-import frc2168.commands.DriveToSpeed;
 import frc2168.commands.LowerBridge;
 import frc2168.commands.LowerHood;
+import frc2168.commands.MiddleGoalAuto;
+import frc2168.commands.PID_ShooterPause;
 import frc2168.commands.RaiseBridge;
-import frc2168.commands.RaiseHood;
 import frc2168.commands.ShiftGearsHighToLow;
 import frc2168.commands.ShiftGearsLowToHigh;
 import frc2168.commands.shootSingleBall;
+
 
 /**
  * 
@@ -33,8 +31,10 @@ import frc2168.commands.shootSingleBall;
  *         The purpose of this object is to setup which commands are called by
  *         which buttons, and return the values of the joystick axis.
  */
-public class OI
-{
+
+public class OI {
+	
+	// Driver Joystick
 	public Joystick drivestick = new Joystick(RobotMap.driverJoystick);
 	public Button driveButtonA = new JoystickButton(drivestick, 1),
 			driveButtonB = new JoystickButton(drivestick, 2),
@@ -44,7 +44,12 @@ public class OI
 			driveButtonRightBumper = new JoystickButton(drivestick, 6),
 			driveButtonReset = new JoystickButton(drivestick, 7),
 			driveButtonStart = new JoystickButton(drivestick, 8);
+	public JoystickAnalogButton driveTriggerR = new JoystickAnalogButton(drivestick, 3, -0.5),
+			driveTriggerL = new JoystickAnalogButton(drivestick, 3, 0.5),
+			driveDPadL = new JoystickAnalogButton(drivestick, 6, -0.5),
+			driveDPadR = new JoystickAnalogButton(drivestick, 6, 0.5);
 	
+	// Auxiliary Joystick
 	public Joystick auxstick = new Joystick(RobotMap.auxJoystick);
 	public Button auxButtonA = new JoystickButton(auxstick, 1),
 			auxButtonB = new JoystickButton(auxstick, 2),
@@ -56,12 +61,43 @@ public class OI
 			auxButtonStart = new JoystickButton(auxstick, 8);
 	
 			
-
-	public OI()
-	{
+	public JoystickAnalogButton auxTriggerR = new JoystickAnalogButton(auxstick, 3, -0.5),
+			auxTriggerL = new JoystickAnalogButton(auxstick, 3, 0.5),
+			auxDPadL = new JoystickAnalogButton(auxstick, 6, -0.5),
+			auxDPadR = new JoystickAnalogButton(auxstick, 6, 0.5);
+	
+	// IO MODULE BUTTONS
+	public IOModule ioBoard = new IOModule();	//configure the IO module
+	public IOAnalogButton ioAnalog1 = new IOAnalogButton(1),		
+			ioAnalog2 = new IOAnalogButton(2),
+			ioAnalog3 = new IOAnalogButton(3),
+			ioAnalog4 = new IOAnalogButton(4),
+			ioAnalog5 = new IOAnalogButton(5),
+			ioAnalog6 = new IOAnalogButton(6),
+			ioAnalog7 = new IOAnalogButton(7),
+			ioAnalog8 = new IOAnalogButton(8);
+	
+	public DigitalIOButton ioDigital1 = new DigitalIOButton(1),	//"pressed" when shorted to ground
+			ioDigital2 = new DigitalIOButton(2),
+			ioDigital3 = new DigitalIOButton(3),
+			ioDigital4 = new DigitalIOButton(4),
+			ioDigital5 = new DigitalIOButton(5),
+			ioDigital6 = new DigitalIOButton(6),
+			ioDigital7 = new DigitalIOButton(7),
+			ioDigital8 = new DigitalIOButton(8),
+			ioDigital9 = new DigitalIOButton(9),
+			ioDigital10 = new DigitalIOButton(10),
+			ioDigital11 = new DigitalIOButton(11),
+			ioDigital12 = new DigitalIOButton(12),
+			ioDigital13 = new DigitalIOButton(13),
+			ioDigital14 = new DigitalIOButton(14),
+			ioDigital15 = new DigitalIOButton(15),
+			ioDigital16 = new DigitalIOButton(16);
+	
+	
+	public OI() {
 		//drive left axis = left drivetrain in DriveWithJoystick
 		//drive right axis = right drivetrain in DriveWithJoystick
-		
 		driveButtonA.whenPressed(new LowerBridge());
 		driveButtonY.whenPressed(new RaiseBridge());
 		driveButtonRightBumper.whenPressed(new ShiftGearsLowToHigh());
@@ -86,58 +122,46 @@ public class OI
 	}
 
 	/**
-	 * Returns the axis value of the Left DriverStick
+	 * Returns the axis value of the Left DriverStick adjusted 
+	 * 
+	 * @return the value of the left stick
 	 */
-	public double getDriveLeftAxis()
-	{
-		if (drivestick.getRawAxis(3) < 0)
-		{
-			return ((((-RobotMap.mod + 1) * drivestick.getRawAxis(3)) + 1) * drivestick
-					.getRawAxis(2)); // James' "Super Secret" Idea implemented
-										// on the left
-
-		} else
-		{
-
-			return drivestick.getRawAxis(2); // this is supposed to be the left
-												// axis stick
+	public double getDriveLeftAxis() {
+		if (drivestick.getRawAxis(3) < 0) {		//FALCON CLAW - use electronic braking
+			return ((((-RobotMap.mod + 1) * drivestick.getRawAxis(3)) + 1) * drivestick.getRawAxis(2));
+		} else {
+			return drivestick.getRawAxis(2);
 		}
 	}
 
 	/**
 	 * Returns the axis value of the Right DriverStick
 	 * 
-	 * @return
+	 * @return the value of the right axis
 	 */
-	public double getDriveRightAxis()
-	{
-		if (drivestick.getRawAxis(3) < 0)
-		{
-			return ((((-RobotMap.mod + 1) * drivestick.getRawAxis(3)) + 1) * drivestick
-					.getRawAxis(5)); // James' "Super Secret" Idea implemented
-										// on the right
-
-		} else
-		{
-
-			return drivestick.getRawAxis(5); // this is supposed to be the right
-												// axis stick
+	public double getDriveRightAxis() {
+		if (drivestick.getRawAxis(3) < 0) {		//FALCON CLAW - use electronic braking
+			return ((((-RobotMap.mod + 1) * drivestick.getRawAxis(3)) + 1) * drivestick.getRawAxis(5));
+		} else {
+			return drivestick.getRawAxis(5);
 		}
 	}
 
-	
-	public double getAuxLeftStick()
-	{
+	/**
+	 * Returns the axis value of the Left AuxiliaryStick
+	 * 
+	 * @return the value of the left stick
+	 */
+	public double getAuxLeftStick()	{
 		return auxstick.getRawAxis(2); // this is supposed to be the left
 	}
 
 	/**
-	 * Returns the axis value of the Right Auxillary Stick
+	 * Returns the axis value of the Right Auxiliary Stick
 	 * 
-	 * @return
+	 * @return the value of the right stick
 	 */
-	public double getAuxRightStick()
-	{
+	public double getAuxRightStick() {
 		return auxstick.getRawAxis(5); // this is supposed to be the right
 	}
 }
