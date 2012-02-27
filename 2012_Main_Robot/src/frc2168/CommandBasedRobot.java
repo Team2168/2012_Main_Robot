@@ -35,6 +35,7 @@ public class CommandBasedRobot extends IterativeRobot {
     Command TeleopDriveElevator;
     Command dashboard;
     Command autonomousCommand;
+    Command fire;
 
     /**
      * This function is run when the robot is first started up and should be
@@ -61,12 +62,14 @@ public class CommandBasedRobot extends IterativeRobot {
         TeleopDriveTrainDefault = new DriveWithJoystick();
         TeleopDriveElevator = new DriveElevatorJoystick();
         dashboard = new ShooterWheelPIDDashboard();
+
     	
     }
 
     public void autonomousInit() {
         // schedule the autonomous command (example)
         autonomousCommand.start();
+        dashboard.start();
     }
 
     /**
@@ -96,5 +99,6 @@ public class CommandBasedRobot extends IterativeRobot {
     public void teleopPeriodic() 
     {
         Scheduler.getInstance().run();
+        
     }
 }

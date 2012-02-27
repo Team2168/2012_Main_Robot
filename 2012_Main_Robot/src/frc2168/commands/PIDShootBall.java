@@ -30,7 +30,7 @@ public class PIDShootBall extends CommandGroup
 		//shoot ball
 		addSequential(new DriveLiftUntilNoBall());
 		
-		//shoot ball
+		//get another ball
 		addSequential(new DriveLiftUntilBall(),2);
 		
 		//end command

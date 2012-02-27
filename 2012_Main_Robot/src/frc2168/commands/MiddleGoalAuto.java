@@ -10,7 +10,7 @@ public class MiddleGoalAuto extends CommandGroup
 		
 		//Raising hood and then shooting at middle goal
 		addSequential(new RaiseHood());
-		addSequential(new PIDShootBall(RobotMap.MIDDLE_GOAL_FORWARD));
+		addSequential(new PID_DriveShooter(RobotMap.MIDDLE_GOAL_FORWARD));
 		
 		
 	}

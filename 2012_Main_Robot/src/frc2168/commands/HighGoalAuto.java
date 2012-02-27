@@ -9,8 +9,7 @@ public class HighGoalAuto extends CommandGroup
 		
 		//Lowering hood and then shooting at high goal
 		addSequential(new LowerHood());
-		addSequential(new PIDShootBall(RobotMap.HIGH_GOAL_FORWARD));
-		
+		addSequential(new PID_DriveShooter(RobotMap.HIGH_GOAL_FORWARD));
 		
 	}
 

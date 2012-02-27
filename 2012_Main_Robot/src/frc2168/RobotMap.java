@@ -10,21 +10,52 @@ import edu.wpi.first.wpilibj.DriverStationLCD;
  * floating around.
  */
 public class RobotMap {
-
-	//////////////////////////////////////////////////////////////////
+	
+	///////////////////////////SYSTEM CONSTANTS////////////////////////////
 	//DriverStation LCD
 	public static DriverStationLCD driverstation;
-	
-	///////////////////////////////////////////////////////////////////
-	//JOYSTICK MAPS
-	
+
+	//JOYSTICK MAPS	
 	public static final int driverJoystick=1; //USB Port 1
 	public static final int auxJoystick=2; //USB Port 2
 	
-
-	///////////////////////////////DRIVETRAIN////////////////////////////////////
-	//DRIVE TRAIN SUBSYSTEM CONSTANTS
+	/////////////////////////////CRIO MAP//////////////////////////////
+	///////////////////////Analog Card - Slot 1////////////////////////
+	//Analog IO 1-8
+	public static final int ballDetector = 1; //AIO 1, Analog Card
 	
+	///////////////////////Digital Card - Slot 2///////////////////////
+	//Digital IO 1-14
+	public static final int leftDriveTrainEncoder_A=1; //DIO 1, Digital Card
+	public static final int leftDriveTrainEncoder_B=2; //DIO 2, Digital Card
+	public static final int rightDriveTrainEncoder_A=3; //DIO 3, Digital Card
+	public static final int rightDriveTrainEncoder_B=4; //DIO 4, Digital Card
+	public static final int shooterWheelEncoderID_A = 5; //DIO 5, Digital Card
+	public static final int shooterWheelEncoderID_B = 6; //DIO 6, Digital Card
+	public static final int compressorSwitch = 7; //DIO 7, Digital Card
+	
+	//PWM 1-10
+	public static final int lift1Victor = 1; //PWM 1, Digital Card
+	public static final int lift2Victor = 2; //PWM 2, Digital Card
+	
+	//Relay 1-8
+	public static final int compressorRelay = 1; //Relay Port 1, Digital Card
+	
+	
+	///////////////////////Solenoid Card - Slot 3///////////////////////
+	//Solenoid 1-8
+	public static final int hoodSolenoidPortFwd = 1; //Port 1, Solenoid Card
+	public static final int hoodSolenoidPortReverse = 2; //Port 2, Solenoid Card
+	public static final int backFlapSolenoidClose = 3; //Port 3, Solenoid Card
+	public static final int backFlapSolenoidOpen = 4; //Port 4, Solenoid Card
+	public static final int shiftForwardChannel = 5; //Port 5, Solenoid Card
+	public static final int shiftReverseChannel = 6; //Port 6 , Solenoid Card
+	public static final int bridgeArmSolenoidReverseChannel = 7; //Port 7, Solenoid Card
+	public static final int bridgeArmSolenoidForwardChannel = 8; //Port 8, Solenoid Card
+	
+
+	///////////////////////////SUBSYSTEM CONSTANTS///////////////////////////////
+	///////////////////////////////DRIVETRAIN////////////////////////////////////	
 	/*
 	  The drivetrain uses four CAN motors. The image below represents a top view of the Chassis
 	  so that the location of each motor can be identified. This image is to be used as a key
@@ -41,10 +72,6 @@ public class RobotMap {
 	  |___________| 
 	 */
 
-	//gear shifting solenoid ports
-	public static final int shiftForwardChannel = 5; //Port 5, Solenoid Card
-	public static final int shiftReverseChannel = 6; //Port 6 , Solenoid Card
-	
 	//Creating Static CAN IDs for DriveTrain Motors
 	public static final int leftmotor1 = 13, rightmotor1 = 2;
 	public static final int leftmotor2 = 17, rightmotor2 = 10;
@@ -55,12 +82,6 @@ public class RobotMap {
 	
 	//Falcon Claw Brake Modifier
 	public static final double mod = 0.125;	// Low minimum/modifier for the "Falcon Claw Function" or James' "Super Secret" Idea
-	
-	//Encoder Digital IO Channels for Drivetrain;
-	public static final int leftDriveTrainEncoder_A=1; //DIO 1, Digital Card
-	public static final int leftDriveTrainEncoder_B=2; //DIO 2, Digital Card
-	public static final int rightDriveTrainEncoder_A=3; //DIO 3, Digital Card
-	public static final int rightDriveTrainEncoder_B=4; //DIO 4, Digital Card
 	
 	//Wheel Radius
 	public static final int driveWheelRadius=2;//Colson wheel radius in inches
@@ -80,12 +101,6 @@ public class RobotMap {
 	public static final int drivetrainArraySize = 50;
 	public static final double drivetrainPercent = 0.1;
 	
-	
-	//Compressor switch and relay
-	public static final int compressorSwitch = 7; //DIO 7, Digital Card
-	public static final int compressorRelay = 1; //Relay Port 1, Digital Card
-	
-	
 	//period to run PID loops
 	public static final long driveTrainPIDPeriod =40;//40ms loop
 	
@@ -98,26 +113,20 @@ public class RobotMap {
 	
 	
 	////////////////////////////HOOD////////////////////////////////////////
-	
-	public static final int shooterWheelCANID = 11, shooterWheel2CANID = 12; //Can Motor IDs
-	
-	//Encoder Digital IO Channels for Encoder;
-	public static final int shooterWheelEncoderID_A = 5; //DIO 5, Digital Card
-	public static final int shooterWheelEncoderID_B = 6; //DIO 7, Digital Card
-	
+	//Creating Static CAN IDs for Shooter Motors
+	public static final int shooterWheelCANID = 11, shooterWheel2CANID = 12; 
 	
 	//Constant value for shooter wheel
-	public static final double SIDE_KEY_TO_TOP = 840.0;
-	public static final double LOW_GOAL_FORWARD = 400.0;
-	public static final double MIDDLE_GOAL_FORWARD = 520.0;
-	public static final double HIGH_GOAL_FORWARD = 720.0;
+	public static final double AUTO_KEY_TO_TOP = 840.0;
+	
+	public static final double MIDDLE_GOAL_SIDE = 550.0; //hood down
+	public static final double HIGH_GOAL_SIDE = 730.0; //hood up
 	
 	
+	public static final double LOW_GOAL_FORWARD = 430.0;
+	public static final double MIDDLE_GOAL_FORWARD = 540.0; //hood up
+	public static final double HIGH_GOAL_FORWARD = 650.0; //hood down
 	
-	
-	//Solenoid Control of hood
-	public static final int hoodSolenoidPortFwd = 1; //Port 1, Solenoid Card
-	public static final int hoodSolenoidPortReverse = 2; //Port 2, Solenoid Card
 	
 	//Hood Wheel Radius in inches
 	public static final int shooterWheelRadius=3;
@@ -133,8 +142,10 @@ public class RobotMap {
 	public static final int hoodAvgEncoderVal = 20;
 	
 	//hood controller steady state determination
-	public static final int hoodArraySize = 50;
-	public static final double hoodPercent = 0.1;
+	public static final int hoodArraySize = 60;
+	public static final double hoodPercent = 0.05;
+	
+	public static final double shooterError = 5; //inches per second error
 	
 	//period to run PID loops
 	public static final long shooterPIDPeriod =40;//40ms loop
@@ -149,25 +160,14 @@ public class RobotMap {
 
 	///////////////////////////////BRIDGE ARM/////////////////////////////////////
 	
-	//Solenoid Control of Bridge Arm
-	public static final int bridgeArmSolenoidForwardChannel = 8; //Port 8, Solenoid Card
-	public static final int bridgeArmSolenoidReverseChannel = 7; //Port 7, Solenoid Card
+	//no other parameters
 	
 	///////////////////////////////Elevator////////////////////////////////////
-	
-	//Victors for driving elevator motors
-	public static final int lift1Victor = 1; //PWM 1, Digital Card
-	public static final int lift2Victor = 2; //PWM 2, Digital Card
-	
-	//Solenoid to Open/Close flap
-	public static final int backFlapSolenoidClose = 3; //Port 3, Solenoid Card
-	public static final int backFlapSolenoidOpen = 4; //Port 4, Solenoid Card
-	
 	//ball detected
 	public static final double ballPresentVoltage = 1.6;
 	
 	//Constant to drive elevator
-	public static final double liftVoltage = -0.25;
+	public static final double liftVoltage = -0.20;
 
 	////////////////////////////////////////////////////////////////////////////
 	

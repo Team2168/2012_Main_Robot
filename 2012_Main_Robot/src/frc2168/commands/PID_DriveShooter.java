@@ -10,6 +10,7 @@ public class PID_DriveShooter extends CommandBase
 	public PID_DriveShooter()
 	{
 		requires(hood);
+		driveWithMe=0;
 		
 	}
 	
@@ -34,6 +35,7 @@ public class PID_DriveShooter extends CommandBase
 	{
 		// TODO Auto-generated method stub
 		//drive wheel based on shooter controller output
+		if (driveWithMe!=0)
 		hood.shooterWheelController.setSp(driveWithMe);
 		hood.spinMotor(hood.shooterWheelController.getCo());
 	}

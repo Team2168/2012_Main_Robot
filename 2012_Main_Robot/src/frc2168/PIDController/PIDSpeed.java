@@ -131,6 +131,7 @@ public class PIDSpeed
 	private double[] atSpeed;
 	private int count;
 	private double percent;
+	private double temp =0;
 
 	
 
@@ -740,7 +741,11 @@ public class PIDSpeed
 		if (inRange==atSpeed.length-1)
 		isFinished=true;
 		else
+		{
 			isFinished=false;
+			temp=0;
+		}
+
 	}
 	
 

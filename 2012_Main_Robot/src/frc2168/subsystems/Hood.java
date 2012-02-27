@@ -70,6 +70,7 @@ public class Hood extends Subsystem {
 		
 		//Spawn New PID Speed Controller with PID Gains as specified in ROBOT MAP
 		shooterWheelController=new PIDSpeed("shooterController",RobotMap.shooterP,RobotMap.shooterI,RobotMap.shooterD, shooterWheelEncoder,RobotMap.shooterPIDPeriod);
+		shooterWheelController.setAcceptErrorDiff(RobotMap.shooterError);
 		shooterWheelController.setSIZE(RobotMap.hoodArraySize);
 		shooterWheelController.setPercent(RobotMap.hoodPercent);
 	}
