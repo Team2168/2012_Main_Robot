@@ -1,6 +1,7 @@
 package frc2168;
 
 import edu.wpi.first.wpilibj.DriverStationLCD;
+import edu.wpi.first.wpilibj.Ultrasonic;
 
 
 /**
@@ -118,6 +119,7 @@ public class RobotMap {
 	
 	//Constant value for shooter wheel
 	public static final double AUTO_KEY_TO_TOP = 840.0;
+	public static final double AUTO_KEY_TO_MIDDLE = 500; //still gotta test for what speed to set the shooter at
 	
 	public static final double MIDDLE_GOAL_SIDE = 550.0; //hood down
 	public static final double HIGH_GOAL_SIDE = 730.0; //hood up
@@ -168,6 +170,8 @@ public class RobotMap {
 	//Constant to drive elevator
 	public static final double liftVoltage = -0.20;
 
-	////////////////////////////////////////////////////////////////////////////
+	////////////////////////////////////Moving to Fender Autonomous//////////////
 	
+	public static final int ultraSonicSensorInput = 1;
+	public static final int ultraSonicSensorOutput = 2;
 }

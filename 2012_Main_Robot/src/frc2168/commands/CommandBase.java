@@ -7,6 +7,7 @@ import frc2168.subsystems.BridgeArm;
 import frc2168.subsystems.DriveTrain;
 import frc2168.subsystems.Hood;
 import frc2168.subsystems.ElevatorWithFlap;
+import frc2168.subsystems.UltraSonicSensor;
 
 
 /**
@@ -22,6 +23,7 @@ public abstract class CommandBase extends Command {
     public static OI oi;
     // Create a single static instance of all of your subsystems
     public static DriveTrain driveTrain = new DriveTrain ();
+    public static UltraSonicSensor ultraSonicSensor = new UltraSonicSensor();
     public static Hood hood = new Hood();
     public static BridgeArm bridgeArm = new BridgeArm();
     public static ElevatorWithFlap elevatorFlap = new ElevatorWithFlap ();
