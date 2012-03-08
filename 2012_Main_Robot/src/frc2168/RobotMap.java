@@ -24,6 +24,7 @@ public class RobotMap {
 	///////////////////////Analog Card - Slot 1////////////////////////
 	//Analog IO 1-8
 	public static final int ballDetector = 1; //AIO 1, Analog Card
+	public static final int InfraredSensor = 2; //AIO 2, Analog Card // only for the use of balancing
 	
 	///////////////////////Digital Card - Slot 2///////////////////////
 	//Digital IO 1-14
