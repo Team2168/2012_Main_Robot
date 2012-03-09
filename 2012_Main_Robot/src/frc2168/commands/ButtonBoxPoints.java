@@ -12,7 +12,7 @@ public class ButtonBoxPoints extends CommandBase {
 	static int firemethod = 0;
 	
 	public ButtonBoxPoints(int mode){
-		mode=firemethod;
+		mode=firemethod;			//firemethod: 0=front shot, 1=side shot, 2=key shot, 3=long shot.
 	}
 
 	protected void initialize() {
@@ -34,8 +34,8 @@ public class ButtonBoxPoints extends CommandBase {
 		}
 		
 		else if (oi.ioDigital10.get()==false) {
-			if(firemethod == 0){				//The firing method. High goal shot, side goal shot, key goal shot, long shot.
-				new HighGoalAuto();				//high front goal shot
+			if(firemethod == 0){				//The firing method. mid goal shot, side goal shot, key goal shot, long shot.
+				new HighGoalAuto();				//mid front goal shot
 			} else if (firemethod == 1){
 				new HighGoalAuto();				//mid side goal shot
 			} else if (firemethod == 2){

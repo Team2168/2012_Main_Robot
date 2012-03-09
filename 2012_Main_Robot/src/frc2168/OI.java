@@ -16,8 +16,10 @@ import frc2168.commands.LowGoalAuto;
 import frc2168.commands.LowerBridge;
 import frc2168.commands.LowerHood;
 import frc2168.commands.MiddleGoalAuto;
+import frc2168.commands.PID_DriveShooter;
 import frc2168.commands.PID_ShooterPause;
 import frc2168.commands.RaiseBridge;
+import frc2168.commands.RaiseHood;
 import frc2168.commands.ShiftGearsHighToLow;
 import frc2168.commands.ShiftGearsLowToHigh;
 import frc2168.commands.shootSingleBall;
@@ -128,9 +130,10 @@ public class OI {
 		ioDigital8.whenPressed(new ButtonBoxPoints(2)); //key shot
 		ioDigital9.whenPressed(new ButtonBoxPoints(3)); //long shot
 		//ioDigital10.whenPressed(); //Shooting mode switch
-		ioDigital11.whenPressed(new sleep()); //off  Not sure what command to put.
+		ioDigital11.whenPressed(new PID_DriveShooter(0)); //set shooter to zero/turn off shooter
 		ioDigital12.whenPressed(new shootSingleBall()); //fire
-//		ioDigital13.whenPressed();
+		ioDigital13.whenPressed(new RaiseHood()); //Switch13 position to raise hood
+		ioDigital13.whenReleased(new LowerHood()); //Switch13 position to lower hood
 //		ioDigital14.whenPressed();
 //		ioDigital15.whenPressed();
 //		ioDigital16.whenPressed();
