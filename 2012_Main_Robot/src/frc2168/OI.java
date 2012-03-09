@@ -9,6 +9,8 @@ import frc2168.advancedIO.IOModule;
 import frc2168.advancedIO.JoystickAnalogButton;
 import frc2168.commands.BackFlapClose;
 import frc2168.commands.BackFlapOpen;
+import frc2168.commands.ButtonBoxPoints;
+import frc2168.commands.DriveElevatorConst;
 import frc2168.commands.HighGoalAuto;
 import frc2168.commands.LowGoalAuto;
 import frc2168.commands.LowerBridge;
@@ -19,6 +21,7 @@ import frc2168.commands.RaiseBridge;
 import frc2168.commands.ShiftGearsHighToLow;
 import frc2168.commands.ShiftGearsLowToHigh;
 import frc2168.commands.shootSingleBall;
+import frc2168.commands.sleep;
 
 
 /**
@@ -116,7 +119,21 @@ public class OI {
 		auxButtonRightBumper.whenPressed(new BackFlapClose());
 		auxButtonLeftBumper.whenPressed(new BackFlapOpen());
 		
-		
+		ioDigital2.whenPressed(new DriveElevatorConst(RobotMap.liftVoltage)); //raise lift
+		ioDigital3.whenPressed(new DriveElevatorConst(-RobotMap.liftVoltage)); //lower lift
+		ioDigital4.whenPressed(new BackFlapOpen()); //Hopper Down
+		ioDigital5.whenPressed(new BackFlapClose()); //Hopper Up
+		ioDigital6.whenPressed(new ButtonBoxPoints(0)); //front goal shot. high/low determined by switch10
+		ioDigital7.whenPressed(new ButtonBoxPoints(1)); //side goal shot
+		ioDigital8.whenPressed(new ButtonBoxPoints(2)); //key shot
+		ioDigital9.whenPressed(new ButtonBoxPoints(3)); //long shot
+		//ioDigital10.whenPressed(); //Shooting mode switch
+		ioDigital11.whenPressed(new sleep()); //off  Not sure what command to put.
+		ioDigital12.whenPressed(new shootSingleBall()); //fire
+//		ioDigital13.whenPressed();
+//		ioDigital14.whenPressed();
+//		ioDigital15.whenPressed();
+//		ioDigital16.whenPressed();
 
 		
 	}
