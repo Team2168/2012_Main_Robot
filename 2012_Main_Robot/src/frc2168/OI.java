@@ -103,6 +103,13 @@ public class OI {
 		driveButtonRightBumper.whenPressed(new ShiftGearsLowToHigh());
 		driveButtonLeftBumper.whenPressed(new ShiftGearsHighToLow());
 		
+		//TODO: Verify this code works
+		//Note: back button = modded button on left handle
+		//		start button = modded button on right handle
+		driveButtonReset.whenPressed(new LowerBridge());
+		driveButtonReset.whenReleased(new RaiseBridge());
+		
+		
 		//aux left axis = left DriveElevatorJoystick
 		//aux right axis = right ShooterWheelJoystick
 		auxButtonA.whenPressed(new LowGoalAuto());
@@ -116,7 +123,7 @@ public class OI {
 		auxButtonRightBumper.whenPressed(new BackFlapClose());
 		auxButtonLeftBumper.whenPressed(new BackFlapOpen());
 		
-		
+		//TODO: add button map!
 
 		
 	}
