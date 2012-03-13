@@ -30,7 +30,7 @@ import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;
  * by the period value. The new thread will be paused and a call to the Objects start() method will allow the thread to start executing
  * the PID loop.
  * <br><br>
- * To use this class is simple, an example is below <br><br>
+ * To use this class is simple, an example is below: <br><br>
  * 
  * Encoder leftEncoder= new Encoder(1,2) //Encoder on DIO ports 1 and 2 <br>
  * double P = 1; //P gain <br>
@@ -258,7 +258,7 @@ public class PIDSpeed
 	}
 
 	/**
-	 * @return the Propotional Gain in type double
+	 * @return the Proportional Gain in type double
 	 */
 	public synchronized double getpGain()
 	{
@@ -533,6 +533,10 @@ public class PIDSpeed
 		this.enable = true;
 	}
 	
+	/**
+	 * Pauses the current PID loop execution
+	 */
+	
 	public  void Pause()
 	{
 
@@ -547,8 +551,12 @@ public class PIDSpeed
 		Thread.yield();
 	}
 	
+	/**
+	 * resets the values of the PID
+	 */
 	public void reset()
 	{
+		//no at setpoint
 		this.isFinished=false;
 
 		//zero all other parameters
@@ -570,11 +578,19 @@ public class PIDSpeed
 		
 	}
 	
+	/**
+	 * Enable debug mode for testing purposes
+	 * 
+	 * This method prints output vaules to the smart dashboard
+	 */
 	public synchronized void enDebug()
 	{
 		this.debugEnabled = true;
 	}
 
+	/**
+	 * Disable debug mode
+	 */
 	public synchronized void disableDebug()
 	{
 		this.debugEnabled = false;
@@ -680,11 +696,19 @@ public class PIDSpeed
 		this.encoder = encoder;
 	}
 	
+	/**
+	 * 
+	 * @return # of past values to use in determining if the output value is true
+	 */
 	public synchronized int getSIZE()
 	{
 		return SIZE;
 	}
 
+	/**
+	 * 
+	 * @param sIZE
+	 */
 	public synchronized void setSIZE(int sIZE)
 	{
 		this.SIZE = sIZE;
@@ -696,6 +720,10 @@ public class PIDSpeed
 		this.percent = percent;
 	}
 
+	/**
+	 * Return percent output must be within to determine the PID loop is finished
+	 * @return
+	 */
 	public synchronized double getPercent()
 	{
 		return percent;
@@ -715,6 +743,10 @@ public class PIDSpeed
 		this.name = name;
 	}
 	
+	/**
+	 * 
+	 * @return boolean if the control variable is at the setPoint
+	 */
 	public boolean atSpeed()
 	{
 		
@@ -739,12 +771,9 @@ public class PIDSpeed
 				inRange=0;
 		}
 		if (inRange==atSpeed.length-1)
-		isFinished=true;
+			isFinished=true;
 		else
-		{
 			isFinished=false;
-			temp=0;
-		}
 
 	}
 	

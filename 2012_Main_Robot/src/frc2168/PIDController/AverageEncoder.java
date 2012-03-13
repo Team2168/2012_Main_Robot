@@ -5,7 +5,7 @@ import edu.wpi.first.wpilibj.Encoder;
 /**
  * Encoder Averager Misspelling intentional. 
  *
- * @author Sultan Jilani
+ * @author Kevin Harrilal, Team 2168 The Aluminum Falcons
  *
  */
 public class AverageEncoder extends Encoder{
@@ -13,6 +13,8 @@ public class AverageEncoder extends Encoder{
 	private int averagorSize;
 	private double[] averagorArray;
 	private int arrayPos = 0;		//Next array position to put values to be averaged
+	private double clock;
+	private double oldCount;
 	
 	
 	/**
@@ -25,6 +27,8 @@ public class AverageEncoder extends Encoder{
 		
 		averagorSize = averageN;
 		averagorArray = new double[averagorSize];
+		clock = 0;
+		oldCount=0;
 	}
 	
 	
@@ -41,6 +45,7 @@ public class AverageEncoder extends Encoder{
 		}
 		
 		return holder/averagorSize;
+		
 		
 	}
 	
@@ -68,6 +73,24 @@ public class AverageEncoder extends Encoder{
 		
 		// TODO Auto-generated method stub
 		return getAverage();
+	}
+	
+	public double getRawRate()
+	{
+		if (clock==0 || oldCount==0)
+			return 0;
+		else
+		{
+			double deltaCount=super.getRaw()-oldCount;
+			double deltaTime=System.currentTimeMillis()-clock;
+			
+			oldCount=super.getRaw();
+			clock=System.currentTimeMillis();
+			
+			//
+			return (deltaCount/deltaTime)*1000;
+		}
+		
 	}
 	
 	

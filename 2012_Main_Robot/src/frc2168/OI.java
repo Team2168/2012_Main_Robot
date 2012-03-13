@@ -4,7 +4,22 @@ import edu.wpi.first.wpilibj.Joystick;
 import edu.wpi.first.wpilibj.buttons.Button;
 import edu.wpi.first.wpilibj.buttons.DigitalIOButton;
 import edu.wpi.first.wpilibj.buttons.JoystickButton;
-import frc2168.commands.*;
+import frc2168.advancedIO.IOAnalogButton;
+import frc2168.advancedIO.IOModule;
+import frc2168.advancedIO.JoystickAnalogButton;
+import frc2168.commands.BackFlapClose;
+import frc2168.commands.BackFlapOpen;
+import frc2168.commands.HighGoalAuto;
+import frc2168.commands.LowGoalAuto;
+import frc2168.commands.LowerBridge;
+import frc2168.commands.LowerHood;
+import frc2168.commands.MiddleGoalAuto;
+import frc2168.commands.PID_ShooterPause;
+import frc2168.commands.RaiseBridge;
+import frc2168.commands.ShiftGearsHighToLow;
+import frc2168.commands.ShiftGearsLowToHigh;
+import frc2168.commands.shootSingleBall;
+
 
 /**
  * 
@@ -16,6 +31,7 @@ import frc2168.commands.*;
  *         The purpose of this object is to setup which commands are called by
  *         which buttons, and return the values of the joystick axis.
  */
+
 public class OI {
 	
 	// Driver Joystick
@@ -43,13 +59,15 @@ public class OI {
 			auxButtonRightBumper = new JoystickButton(auxstick, 6),
 			auxButtonReset = new JoystickButton(auxstick, 7),
 			auxButtonStart = new JoystickButton(auxstick, 8);
+	
+			
 	public JoystickAnalogButton auxTriggerR = new JoystickAnalogButton(auxstick, 3, -0.5),
 			auxTriggerL = new JoystickAnalogButton(auxstick, 3, 0.5),
 			auxDPadL = new JoystickAnalogButton(auxstick, 6, -0.5),
 			auxDPadR = new JoystickAnalogButton(auxstick, 6, 0.5);
 	
 	// IO MODULE BUTTONS
-	public IOModule ioBoard = new IOModule();						//configure the IO module
+	public IOModule ioBoard = new IOModule();	//configure the IO module
 	public IOAnalogButton ioAnalog1 = new IOAnalogButton(1),		
 			ioAnalog2 = new IOAnalogButton(2),
 			ioAnalog3 = new IOAnalogButton(3),
@@ -58,7 +76,8 @@ public class OI {
 			ioAnalog6 = new IOAnalogButton(6),
 			ioAnalog7 = new IOAnalogButton(7),
 			ioAnalog8 = new IOAnalogButton(8);
-	public DigitalIOButton ioDigital1 = new DigitalIOButton(1),		//"pressed" when shorted to ground
+	
+	public DigitalIOButton ioDigital1 = new DigitalIOButton(1),	//"pressed" when shorted to ground
 			ioDigital2 = new DigitalIOButton(2),
 			ioDigital3 = new DigitalIOButton(3),
 			ioDigital4 = new DigitalIOButton(4),
@@ -96,6 +115,10 @@ public class OI {
 		
 		auxButtonRightBumper.whenPressed(new BackFlapClose());
 		auxButtonLeftBumper.whenPressed(new BackFlapOpen());
+		
+		
+
+		
 	}
 
 	/**
