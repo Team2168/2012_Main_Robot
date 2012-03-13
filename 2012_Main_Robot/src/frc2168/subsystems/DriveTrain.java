@@ -7,6 +7,7 @@ import edu.wpi.first.wpilibj.DriverStationLCD;
 import edu.wpi.first.wpilibj.Encoder;
 import edu.wpi.first.wpilibj.can.CANTimeoutException;
 import edu.wpi.first.wpilibj.command.Subsystem;
+import frc2168.PIDController.PIDPosition;
 import frc2168.PIDController.PIDSpeed;
 import frc2168.RobotMap;
 import frc2168.commands.DriveWithJoystick;
@@ -59,7 +60,8 @@ public class DriveTrain extends Subsystem
 	//PID Controllers
 		public PIDSpeed leftSpeedController;
 		public PIDSpeed rightSpeedController;		
-		
+		public PIDPosition leftPositionController;
+		public PIDPosition rightPositionController;	
 
 	////////////////////////////////////////////////////////////////////
 	//Shifting solenoids
