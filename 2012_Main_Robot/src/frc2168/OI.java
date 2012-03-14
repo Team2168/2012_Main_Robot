@@ -134,10 +134,10 @@ public class OI {
 		ioDigital12.whenPressed(new shootSingleBall()); //fire
 		ioDigital13.whenPressed(new RaiseHood()); //Switch13 position to raise hood
 		ioDigital13.whenReleased(new LowerHood()); //Switch13 position to lower hood
-//		ioDigital14.whenPressed();
-//		ioDigital15.whenPressed();
-//		ioDigital16.whenPressed();
-//		ioDigital1.whenPressed();
+//		ioDigital14.whenPressed();  //counter "2"
+//		ioDigital15.whenPressed();  //counter "4"
+//		ioDigital16.whenPressed();  //counter "8"
+//		ioDigital1.whenPressed();   //counter "1"
 
 		
 	}

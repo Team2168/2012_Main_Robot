@@ -118,6 +118,7 @@ public class RobotMap {
 	
 	//Constant value for shooter wheel
 	public static final double AUTO_KEY_TO_TOP = 840.0;
+	public static final double AUTO_KEY_TO_MIDDLE = 500;		//needs value. hood up or down?
 	
 	public static final double MIDDLE_GOAL_SIDE = 550.0; //hood down
 	public static final double HIGH_GOAL_SIDE = 730.0; //hood up
