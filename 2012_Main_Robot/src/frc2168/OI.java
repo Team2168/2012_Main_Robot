@@ -116,7 +116,7 @@ public class OI {
 		auxButtonRightBumper.whenPressed(new BackFlapClose());
 		auxButtonLeftBumper.whenPressed(new BackFlapOpen());
 		
-		
+	
 
 		
 	}
@@ -164,4 +164,9 @@ public class OI {
 	public double getAuxRightStick() {
 		return auxstick.getRawAxis(5); // this is supposed to be the right
 	}
+	
+	public void getTimeDelay(int channel, double maxValue, double minValue){
+		System.out.println(ioBoard.getTimeDelay(3, 6, 3));
+	}
+	
 }
