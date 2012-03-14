@@ -116,21 +116,21 @@ public class DriveTrain extends Subsystem
 		rightSpeedController.setPercent(RobotMap.drivetrainPercent);
 		
 		// enable CAN Jag Motors using constant motor IDs specified in RobotMap
-		try
-		{
-			 leftMotor1 = new CANJaguar(RobotMap.leftmotor1);
-			 rightMotor1 = new CANJaguar(RobotMap.rightmotor1);
-			 leftMotor2 = new CANJaguar (RobotMap.leftmotor2);
-			 rightMotor2 = new CANJaguar (RobotMap.rightmotor2);
-		} catch (CANTimeoutException e)
-		{
-			e.printStackTrace();
-			RobotMap.driverstation = DriverStationLCD.getInstance();
-			RobotMap.driverstation.println(DriverStationLCD.Line.kMain6, 1, "Error initializing");
-			RobotMap.driverstation.println(DriverStationLCD.Line.kUser2, 1, "Jag in Drivetrain");
-			RobotMap.driverstation.updateLCD();
-            
-		} 
+//		try
+//		{
+//			 leftMotor1 = new CANJaguar(RobotMap.leftmotor1);
+//			 rightMotor1 = new CANJaguar(RobotMap.rightmotor1);
+//			 leftMotor2 = new CANJaguar (RobotMap.leftmotor2);
+//			 rightMotor2 = new CANJaguar (RobotMap.rightmotor2);
+//		} catch (CANTimeoutException e)
+//		{
+//			e.printStackTrace();
+//			RobotMap.driverstation = DriverStationLCD.getInstance();
+//			RobotMap.driverstation.println(DriverStationLCD.Line.kMain6, 1, "Error initializing");
+//			RobotMap.driverstation.println(DriverStationLCD.Line.kUser2, 1, "Jag in Drivetrain");
+//			RobotMap.driverstation.updateLCD();
+//            
+//		} 
 	
 	}
 

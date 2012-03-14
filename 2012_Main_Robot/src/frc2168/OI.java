@@ -7,6 +7,7 @@ import edu.wpi.first.wpilibj.buttons.JoystickButton;
 import frc2168.advancedIO.IOAnalogButton;
 import frc2168.advancedIO.IOModule;
 import frc2168.advancedIO.JoystickAnalogButton;
+import frc2168.commands.AlignWithCamera;
 import frc2168.commands.BackFlapClose;
 import frc2168.commands.BackFlapOpen;
 import frc2168.commands.HighGoalAuto;
@@ -116,8 +117,8 @@ public class OI {
 		auxButtonRightBumper.whenPressed(new BackFlapClose());
 		auxButtonLeftBumper.whenPressed(new BackFlapOpen());
 		
-		
-
+	
+		ioDigital7.whenPressed(new AlignWithCamera());
 		
 	}
 
@@ -164,4 +165,9 @@ public class OI {
 	public double getAuxRightStick() {
 		return auxstick.getRawAxis(5); // this is supposed to be the right
 	}
+	
+	public void getTimeDelay(int channel, double maxValue, double minValue){
+		System.out.println(ioBoard.getTimeDelay(3, 6, 3));
+	}
+	
 }

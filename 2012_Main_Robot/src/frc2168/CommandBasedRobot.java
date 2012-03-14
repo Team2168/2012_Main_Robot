@@ -11,13 +11,16 @@ package frc2168;
  * Working Command Base Robot Code Template with CAN Drive
  */
 import edu.wpi.first.wpilibj.Compressor;
+
 import edu.wpi.first.wpilibj.IterativeRobot;
+import edu.wpi.first.wpilibj.Module;
 import edu.wpi.first.wpilibj.command.Command;
 import edu.wpi.first.wpilibj.command.Scheduler;
+import frc2168.advancedIO.IOModule;
 import frc2168.commands.*;
 import frc2168.dashboard.ShooterWheelDebugDashboard;
 import frc2168.dashboard.ShooterWheelPIDDashboard;
-
+import frc2168.*;
 /**
  * The VM is configured to automatically run this class, and to call the
  * functions corresponding to each mode, as described in the IterativeRobot
@@ -36,6 +39,8 @@ public class CommandBasedRobot extends IterativeRobot {
     Command dashboard;
     Command autonomousCommand;
     Command fire;
+	OI oi = new OI();
+
 
     /**
      * This function is run when the robot is first started up and should be
@@ -91,6 +96,8 @@ public class CommandBasedRobot extends IterativeRobot {
     	TeleopDriveTrainDefault.start();
     	TeleopDriveElevator.start();
     	dashboard.start();
+    
+    	
     }
 
     /**

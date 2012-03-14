@@ -47,17 +47,17 @@ public class Hood extends Subsystem {
 		
 		
 		//instantiate CAN motors
-		try{
-			shooterWheel = new CANJaguar(RobotMap.shooterWheelCANID);
-			shooterWheel2 = new CANJaguar(RobotMap.shooterWheel2CANID);
-		}
-		catch(CANTimeoutException e){
-			e.printStackTrace();
-			RobotMap.driverstation = DriverStationLCD.getInstance();
-			RobotMap.driverstation.println(DriverStationLCD.Line.kMain6, 1, "Error initializing");
-			RobotMap.driverstation.println(DriverStationLCD.Line.kUser2, 1, "Jag in Hood");
-			RobotMap.driverstation.updateLCD();
-		}
+//		try{
+//			shooterWheel = new CANJaguar(RobotMap.shooterWheelCANID);
+//			shooterWheel2 = new CANJaguar(RobotMap.shooterWheel2CANID);
+//		}
+//		catch(CANTimeoutException e){
+//			e.printStackTrace();
+//			RobotMap.driverstation = DriverStationLCD.getInstance();
+//			RobotMap.driverstation.println(DriverStationLCD.Line.kMain6, 1, "Error initializing");
+//			RobotMap.driverstation.println(DriverStationLCD.Line.kUser2, 1, "Jag in Hood");
+//			RobotMap.driverstation.updateLCD();
+//		}
 		
 		//instantiate encoder in 1x mode
 		shooterWheelEncoder = new AverageEncoder(RobotMap.shooterWheelEncoderID_A, RobotMap.shooterWheelEncoderID_B,false,CounterBase.EncodingType.k1X, RobotMap.hoodAvgEncoderVal);
