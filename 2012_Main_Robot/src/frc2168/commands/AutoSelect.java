@@ -23,19 +23,19 @@ public class AutoSelect extends CommandBase {		//Digital input. Divided into fou
 		} else if (getDialState()==1){
 			new KeyToMiddleAutoCommand();	//twoPointShot;
 		} else if (getDialState()==2){
-		//	new driveThreeShot;				//HighGoalAuto + Driving up.
+			new DriveThreeShot();				//HighGoalAuto + Driving up.
 		} else if (getDialState()==3){
-		//	new driveTwoShot;				//MiddleGoalAuto + Driving up.
+			new DriveTwoShot();				//MiddleGoalAuto + Driving up.
 		} else if (getDialState()==4){
-		//	new keyPlusBridge;				//KeyToTopAutoCommand + Drive away.
+			new KeyPlusBridge();				//KeyToTopAutoCommand + Drive away.
 		} else if (getDialState()==5){
-		//	new shootPlusBackLoad;			//KeyToTopAutoCommand + Loading pause.
+			new ShootPlusBackLoad();			//KeyToTopAutoCommand + Loading pause.
 		} else if (getDialState()==6){
-		//	new shootPlusFrontLoad;			//KeyToTopAutoCommand + LiftRunning.
+			new ShootPlusFrontLoad();			//KeyToTopAutoCommand + LiftRunning.
 		} else if (getDialState()==7){
-		//	new shootKinect;				//	>Kinect
+			new ShootKinect();				//	>Kinect
 		} else{
-		//	new threePointShot;				//OShit. Some error. So handy-dandy backup autonomous!! KeyToTopAutoCommand.
+			new KeyToTopAutoCommand();				//OShit. Some unforeseen error. So handy-dandy backup autonomous, just in case! KeyToTopAutoCommand.
 		}
 		
 	}

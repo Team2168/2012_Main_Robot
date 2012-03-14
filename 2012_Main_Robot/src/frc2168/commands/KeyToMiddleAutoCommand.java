@@ -6,7 +6,7 @@ import frc2168.RobotMap;
 public class KeyToMiddleAutoCommand extends CommandGroup
 {
 	public KeyToMiddleAutoCommand(){
-		//raise hood before shooting
+		//lower hood before shooting
 		addSequential(new LowerHood());
 		
 		//raise bridge arm
@@ -18,18 +18,15 @@ public class KeyToMiddleAutoCommand extends CommandGroup
 		//Shift the drive train to high gear
 		addSequential(new ShiftGearsLowToHigh());
 		
-		
 		//shoot one ball to middle goal from the key
 		addSequential(new PIDShootBall(RobotMap.AUTO_KEY_TO_MIDDLE));
+		
 		//shoot one ball to middle goal from the key
 		addSequential(new PIDShootBall(RobotMap.AUTO_KEY_TO_MIDDLE));
 		
 		addSequential(new sleep(),1);
 		
 		addSequential(new DriveToSpeed(0.6),1);
-		
-		
-		
 		
 	}
 	

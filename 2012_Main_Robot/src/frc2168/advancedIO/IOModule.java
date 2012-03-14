@@ -119,4 +119,8 @@ public class IOModule {
 			
 			return val;
 		}
+		
+		public double getTimeDelay(int channel, double maxValue, double minValue){
+			return ((maxValue-minValue)*getNormalizedAnalog(channel)+minValue);
+		}
 }
