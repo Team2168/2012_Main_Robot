@@ -34,12 +34,12 @@ public class ButtonBoxPoints extends CommandBase {
 		}
 		
 		else if (oi.ioDigital10.get()==false) {
-			if(firemethod == 0){				//The firing method. mid goal shot, side goal shot, key goal shot, long shot.
-				new HighGoalAuto();				//mid front goal shot
+			if(firemethod == 0){				//The firing method. mids goal shot, side goal shot, key goal shot, long shot.
+				new HighGoalAuto();				//mids front goal shot
 			} else if (firemethod == 1){
-				new HighGoalAuto();				//mid side goal shot
+				new HighGoalAuto();				//mids side goal shot
 			} else if (firemethod == 2){
-				new HighGoalAuto();				//mid key goal shot
+				new HighGoalAuto();				//mids key goal shot
 			} else if (firemethod == 3){
 				//new							//The long shot
 			}
