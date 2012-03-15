@@ -23,6 +23,8 @@ public class RobotMap {
 	///////////////////////Analog Card - Slot 1////////////////////////
 	//Analog IO 1-8
 	public static final int ballDetector = 1; //AIO 1, Analog Card
+	public static final int gyroBalance = 3; //AIO 3, Analog Card
+	public static final int infraredBalancing = 2;//AIO 2, Analog Card
 	
 	///////////////////////Digital Card - Slot 2///////////////////////
 	//Digital IO 1-14
@@ -168,6 +170,12 @@ public class RobotMap {
 	//Constant to drive elevator
 	public static final double liftVoltage = -0.20;
 
-	////////////////////////////////////////////////////////////////////////////
+	/////////////////////////Balancing////////////////////////////////////
 	
+	public static double setDistanceInch = 8; //will only run when the distance is within this number
+	public static final double deadBand = 1; //stop when it get to this number or less
+	public static double minDist = 3;
+	public static double maxDist = 12;
+
+	///////////////////////////////////////////////////////////////////////////
 }

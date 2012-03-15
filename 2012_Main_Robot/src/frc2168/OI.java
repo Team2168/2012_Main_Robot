@@ -10,12 +10,14 @@ import frc2168.advancedIO.JoystickAnalogButton;
 import frc2168.commands.BackFlapClose;
 import frc2168.commands.BackFlapOpen;
 import frc2168.commands.HighGoalAuto;
+import frc2168.commands.InfraredBalancing;
 import frc2168.commands.LowGoalAuto;
 import frc2168.commands.LowerBridge;
 import frc2168.commands.LowerHood;
 import frc2168.commands.MiddleGoalAuto;
 import frc2168.commands.PID_ShooterPause;
 import frc2168.commands.RaiseBridge;
+import frc2168.commands.ResetGyro;
 import frc2168.commands.ShiftGearsHighToLow;
 import frc2168.commands.ShiftGearsLowToHigh;
 import frc2168.commands.shootSingleBall;
@@ -98,10 +100,13 @@ public class OI {
 	public OI() {
 		//drive left axis = left drivetrain in DriveWithJoystick
 		//drive right axis = right drivetrain in DriveWithJoystick
-		driveButtonA.whenPressed(new LowerBridge());
-		driveButtonY.whenPressed(new RaiseBridge());
+		driveButtonA.whenPressed(new InfraredBalancing());
+		driveButtonY.whenPressed(new ResetGyro());
 		driveButtonRightBumper.whenPressed(new ShiftGearsLowToHigh());
 		driveButtonLeftBumper.whenPressed(new ShiftGearsHighToLow());
+		driveButtonReset.whenPressed(new LowerBridge());
+		driveButtonReset.whenReleased(new RaiseBridge());
+
 		
 		//aux left axis = left DriveElevatorJoystick
 		//aux right axis = right ShooterWheelJoystick

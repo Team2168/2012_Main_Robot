@@ -1,10 +1,14 @@
 package frc2168.subsystems;
 
+import com.sun.squawk.util.MathUtils;
+
+import edu.wpi.first.wpilibj.AnalogChannel;
 import edu.wpi.first.wpilibj.CANJaguar;
 import edu.wpi.first.wpilibj.CounterBase;
 import edu.wpi.first.wpilibj.DoubleSolenoid;
 import edu.wpi.first.wpilibj.DriverStationLCD;
 import edu.wpi.first.wpilibj.Encoder;
+import edu.wpi.first.wpilibj.Gyro;
 import edu.wpi.first.wpilibj.can.CANTimeoutException;
 import edu.wpi.first.wpilibj.command.Subsystem;
 import frc2168.PIDController.PIDSpeed;
@@ -65,7 +69,12 @@ public class DriveTrain extends Subsystem
 	//Shifting solenoids
 		DoubleSolenoid gearShifter;
 		
-	////////////////////////////////////////////////////////////////////
+	////////////////////////////////Gyro/////////////////////////
+		
+		AnalogChannel infrared;
+		Gyro gyro;
+		private double TILT_UP_ANGLE = 7.5;
+		private double TILT_DOWN_ANGLE= -7.5;
 
 	/**
 	 * Default Constructor for DriveTrain Subsystem. This Constructor instantiates
@@ -114,6 +123,12 @@ public class DriveTrain extends Subsystem
 		//set steady state determination for left controller
 		rightSpeedController.setSIZE(RobotMap.drivetrainArraySize);
 		rightSpeedController.setPercent(RobotMap.drivetrainPercent);
+		
+		//enable gyro
+		gyro = new Gyro(RobotMap.gyroBalance);
+		
+		//enable infrared sensor
+		infrared = new AnalogChannel(RobotMap.infraredBalancing);
 		
 		// enable CAN Jag Motors using constant motor IDs specified in RobotMap
 		try
@@ -220,4 +235,72 @@ public class DriveTrain extends Subsystem
     {
     	return gearShifter.get()==DoubleSolenoid.Value.kForward;
     }
+    
+    public boolean rampTiltUp(){
+		
+    	if(gyro.getAngle()> TILT_UP_ANGLE){
+    		return true;
+    	}
+    	else{
+    		return false;
+    	}
+    }
+    
+    public boolean rampTiltDown(){
+    	if(gyro.getAngle()< TILT_DOWN_ANGLE){
+    		return true;
+    	}
+    	else{
+    		return false;
+    	}
+    	
+    }
+    public void resetGyro(){
+    	gyro.reset();
+    }
+    
+    public double InfraredSensorRange(){
+		return 4.878 * MathUtils.pow(infrared.getVoltage(),-1.063);
+	}
+    	
+    public boolean driveBackward(){
+    	if(InfraredSensorRange() < RobotMap.setDistanceInch - RobotMap.deadBand){
+    		
+    		return true;
+    		}
+    	else{
+    		return false;
+    	}
+    }
+    public boolean driveForward(){
+    	if(InfraredSensorRange() > RobotMap.setDistanceInch + RobotMap.deadBand){
+    	
+    		return true;
+    		}
+    	else{
+    		return false;
+    	}
+    }
+    
+    public boolean RobotTiltUp(){
+    	if(gyro.getAngle()>7.5){
+    		return true;
+    	}
+    	else{
+    		return false;
+    	}
+    }
+    public boolean RobotTiltDown(){
+    	if(gyro.getAngle()<-7.5){
+    		return true;
+    	}
+    	else{
+    		return false;
+    	}
+    }
+    
+    	
+    
 }
+    
+
