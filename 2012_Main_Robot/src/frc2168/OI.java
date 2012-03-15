@@ -121,25 +121,42 @@ public class OI {
 		auxButtonRightBumper.whenPressed(new BackFlapClose());
 		auxButtonLeftBumper.whenPressed(new BackFlapOpen());
 		
-		ioDigital2.whenPressed(new DriveElevatorConst(RobotMap.liftVoltage)); //raise lift
-		ioDigital3.whenPressed(new DriveElevatorConst(-RobotMap.liftVoltage)); //lower lift
-		ioDigital4.whenPressed(new BackFlapOpen()); //Hopper Down
-		ioDigital5.whenPressed(new BackFlapClose()); //Hopper Up
-		ioDigital6.whenPressed(new ButtonBoxPoints(0)); //front goal shot. high/low determined by switch10
-		ioDigital7.whenPressed(new ButtonBoxPoints(1)); //side goal shot
-		ioDigital8.whenPressed(new ButtonBoxPoints(2)); //key shot
-		ioDigital9.whenPressed(new ButtonBoxPoints(3)); //long shot
-		//ioDigital10.whenPressed(); //Shooting mode switch
-		ioDigital11.whenPressed(new PID_DriveShooter(0)); //set shooter to zero/turn off shooter
-		ioDigital12.whenPressed(new shootSingleBall()); //fire
-		ioDigital13.whenPressed(new RaiseHood()); //Switch13 position to raise hood
+		/*
+		 * Note, All buttons on button box are pulled up. They see +V when they are not pressed. 
+		 * In the case of the switches. Down corresponds to the off state (switch open), +V seen at input module.
+		 * 
+		 * I'm pretty sure the DigitalIOButton class expects the buttons to be pulled up. So a button "pressed" condition is
+		 * true when the IO module sees a short to ground. So "pressed" in the software should correlate to "pressing down on
+		 * the button. (for switches, pressing is equivalent to moving it to the "up" position.
+		 * 
+		 */
+//		ioDigital1.whenPressed(); //Manual/Automatic mode select											//WIRED - JMC
+		ioDigital2.whenPressed(new DriveElevatorConst(RobotMap.liftVoltage)); //raise lift					//WIRED - JMC
+		ioDigital3.whenPressed(new DriveElevatorConst(-RobotMap.liftVoltage)); //lower lift					//WIRED - JMC
+		ioDigital4.whenPressed(new BackFlapOpen()); //Hopper Down											//WIRED - JMC
+		ioDigital5.whenPressed(new BackFlapClose()); //Hopper Up											//WIRED - JMC
+		ioDigital6.whenPressed(new ButtonBoxPoints(0)); //front goal shot. high/low determined by switch10	//WIRED - JMC
+		ioDigital7.whenPressed(new ButtonBoxPoints(1)); //side goal shot									//WIRED - JMC
+		ioDigital8.whenPressed(new ButtonBoxPoints(2)); //key shot											//WIRED - JMC
+		ioDigital9.whenPressed(new ButtonBoxPoints(3)); //camera shot										//WIRED - JMC
+		//ioDigital10.whenPressed(); //Shooting mode switch	(2pt/3pt)										//WIRED - JMC
+		ioDigital11.whenPressed(new PID_DriveShooter(0)); //set shooter to zero/turn off shooter			//WIRED - JMC
+		ioDigital12.whenPressed(new shootSingleBall()); //fire												//WIRED - JMC
+		ioDigital13.whenPressed(new RaiseHood()); //Switch13 position to raise hood							
 		ioDigital13.whenReleased(new LowerHood()); //Switch13 position to lower hood
-//		ioDigital14.whenPressed();  //counter "2"
-//		ioDigital15.whenPressed();  //counter "4"
-//		ioDigital16.whenPressed();  //counter "8"
-//		ioDigital1.whenPressed();   //counter "1"
+//		ioDigital14.whenPressed();  //Autonomous Mode - counter "1"											//WIRED - JMC
+//		ioDigital15.whenPressed();  //Autonomous Mode - counter "2"											//WIRED - JMC
+//		ioDigital16.whenPressed();  //Autonomous Mode - counter "4"											//WIRED - JMC
+									//Autonomous Mode - counter "8" is not wired							//WIRED - JMC
 
-		
+		//ioModule Analog1 - Voltage reference, VCC
+		//ioModule Analog2 - Manual Shooter Speed, fine control (top slide pot)
+		//ioModule Analog3 - Manual Shooter Speed, coarse control (bottom slide pot)
+		//ioModule Analog4
+		//ioModule Analog5
+		//ioModule Analog6
+		//ioModule Analog7 - Right Delay Potentiometer
+		//ioModule Analog8 - Left Delay Potentiometer
 	}
 
 	/**

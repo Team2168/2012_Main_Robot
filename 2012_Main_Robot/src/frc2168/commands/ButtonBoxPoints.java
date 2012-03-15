@@ -29,7 +29,7 @@ public class ButtonBoxPoints extends CommandBase {
 			} else if (firemethod == 2){
 				new HighGoalAuto();				//high key goal shot
 			} else if (firemethod == 3){
-				//new							//The long shot
+				//new							//The camera shot
 			}
 		}
 		
@@ -41,7 +41,7 @@ public class ButtonBoxPoints extends CommandBase {
 			} else if (firemethod == 2){
 				new HighGoalAuto();				//mids key goal shot
 			} else if (firemethod == 3){
-				//new							//The long shot
+				//new							//The camera shot
 			}
 		}
 		// TODO Auto-generated method stub
