@@ -21,18 +21,18 @@ public class AutonomousDriveAndShoot extends CommandGroup
 		
 		if(target == RobotMap.HIGH_GOAL){
 		//shoot one ball to high goal
-		addSequential(new HighGoalAuto());
+		addSequential(new highGoalFender());
 		
 		//shoot one ball to high goal
-		addSequential(new HighGoalAuto());
+		addSequential(new highGoalFender());
 		}
 		
 		if(target == RobotMap.MIDDLE_GOAL){
 			//shoot one ball to high goal
-			addSequential(new MiddleGoalAuto());
+			addSequential(new midGoalFender());
 			
 			//shoot one ball to high goal
-			addSequential(new MiddleGoalAuto());
+			addSequential(new midGoalFender());
 		}
 		
 		addSequential(new sleep(),1);

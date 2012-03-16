@@ -3,10 +3,10 @@ package frc2168.commands;
 import edu.wpi.first.wpilibj.command.CommandGroup;
 import frc2168.RobotMap;
 
-public class MiddleGoalAuto extends CommandGroup
+public class midGoalFender extends CommandGroup
 {
 	
-	public MiddleGoalAuto(){
+	public midGoalFender(){
 		
 		//Raising hood and then shooting at middle goal
 		addSequential(new RaiseHood());
