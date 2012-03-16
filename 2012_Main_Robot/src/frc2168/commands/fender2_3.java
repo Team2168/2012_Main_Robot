@@ -19,7 +19,7 @@ public class fender2_3 extends CommandBase {
 
 	protected void execute() {
 		// TODO Auto-generated method stub
-		if(oi.ioDigital1.get() == RobotMap.AUTO_MODE){
+		if(oi.ioDigital1.get()){
 			if(oi.ioDigital10.get() == RobotMap.HIGH_GOAL){
 				high = new highGoalFender();
 				high.start();
@@ -29,7 +29,7 @@ public class fender2_3 extends CommandBase {
 				mid.start();
 			}
 		}
-		if(oi.ioDigital1.get() == RobotMap.MANUAL_MODE){
+		else{
 			end();
 		}
 	}
