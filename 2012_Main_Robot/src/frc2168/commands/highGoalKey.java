@@ -8,7 +8,7 @@ public class highGoalKey extends CommandGroup {
 		
 		//Raising hood and then shooting at middle goal
 		addSequential(new RaiseHood());
-		addSequential(new PID_DriveShooter(RobotMap.HIGH_GOAL_FORWARD));
+		addSequential(new PID_DriveShooter(RobotMap.HIGH_GOAL_KEY));
 		
 		
 	}
