@@ -130,7 +130,7 @@ public class OI {
 		 * the button. (for switches, pressing is equivalent to moving it to the "up" position.
 		 * 
 		 */
-//		ioDigital1.whenPressed(); //Manual/Automatic mode select											//WIRED - JMC
+//		ioDigital1.whenPressed(); //Manual/Automatic mode select	auto up manual down										//WIRED - JMC
 		ioDigital2.whenPressed(new DriveElevatorConst(RobotMap.liftVoltage)); //raise lift					//WIRED - JMC
 		ioDigital3.whenPressed(new DriveElevatorConst(-RobotMap.liftVoltage)); //lower lift					//WIRED - JMC
 		ioDigital4.whenPressed(new BackFlapOpen()); //Hopper Down											//WIRED - JMC

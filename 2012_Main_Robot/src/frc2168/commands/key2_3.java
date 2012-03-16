@@ -4,12 +4,11 @@ import frc2168.RobotMap;
 
 public class key2_3 extends CommandBase {
 
-	private boolean target;
 	private highGoalKey high;
 	private midGoalKey mid;
-	
-	public key2_3(boolean target){
-		this.target = target;
+
+	public key2_3(){
+
 	}
 	protected void initialize() {
 		// TODO Auto-generated method stub
@@ -18,14 +17,19 @@ public class key2_3 extends CommandBase {
 
 	protected void execute() {
 		// TODO Auto-generated method stub
-		if(target == RobotMap.HIGH_GOAL){
-			high = new highGoalKey();
-			high.start();
+		if(oi.ioDigital1.get() == RobotMap.AUTO_MODE){
+			if(oi.ioDigital10.get() == RobotMap.HIGH_GOAL){
+				high = new highGoalKey();
+				high.start();
+			}
+
+			if(oi.ioDigital10.get() == RobotMap.MIDDLE_GOAL){
+				mid = new midGoalKey();
+				mid.start();
+			}
 		}
-		
-		if(target == RobotMap.MIDDLE_GOAL){
-			mid = new midGoalKey();
-			mid.start();
+		if(oi.ioDigital1.get() == RobotMap.MANUAL_MODE){
+			end();
 		}
 	}
 

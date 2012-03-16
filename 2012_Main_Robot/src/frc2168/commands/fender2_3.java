@@ -5,14 +5,13 @@ import frc2168.RobotMap;
 
 public class fender2_3 extends CommandBase {
 
-	private boolean target;
 	private highGoalFender high;
 	private midGoalFender mid;
-	
-	public fender2_3(boolean target){
-		this.target = target;
+
+	public fender2_3(){
+
 	}
-	
+
 	protected void initialize() {
 		// TODO Auto-generated method stub
 
@@ -20,13 +19,18 @@ public class fender2_3 extends CommandBase {
 
 	protected void execute() {
 		// TODO Auto-generated method stub
-		if(target == RobotMap.HIGH_GOAL){
-			high = new highGoalFender();
-			high.start();
+		if(oi.ioDigital1.get() == RobotMap.AUTO_MODE){
+			if(oi.ioDigital10.get() == RobotMap.HIGH_GOAL){
+				high = new highGoalFender();
+				high.start();
+			}
+			if(oi.ioDigital10.get() == RobotMap.MIDDLE_GOAL){
+				mid = new midGoalFender();
+				mid.start();
+			}
 		}
-		if(target == RobotMap.MIDDLE_GOAL){
-			mid = new midGoalFender();
-			mid.start();
+		if(oi.ioDigital1.get() == RobotMap.MANUAL_MODE){
+			end();
 		}
 	}
 
