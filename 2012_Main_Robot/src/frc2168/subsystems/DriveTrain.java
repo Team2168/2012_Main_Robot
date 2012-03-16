@@ -73,8 +73,8 @@ public class DriveTrain extends Subsystem
 		
 		AnalogChannel infrared;
 		Gyro gyro;
-		private double TILT_UP_ANGLE = 7.5;
-		private double TILT_DOWN_ANGLE= -7.5;
+		private double TILT_UP_ANGLE = 7.5;			//more positive values are considered tilted up
+		private double TILT_DOWN_ANGLE = -7.5;		//more negative values are considered tilted down
 
 	/**
 	 * Default Constructor for DriveTrain Subsystem. This Constructor instantiates
@@ -235,63 +235,49 @@ public class DriveTrain extends Subsystem
     {
     	return gearShifter.get()==DoubleSolenoid.Value.kForward;
     }
-    
-    public boolean rampTiltUp(){
-		
-    	if(gyro.getAngle()> TILT_UP_ANGLE){
-    		return true;
-    	}
-    	else{
-    		return false;
-    	}
-    }
-    
-    public boolean rampTiltDown(){
-    	if(gyro.getAngle()< TILT_DOWN_ANGLE){
-    		return true;
-    	}
-    	else{
-    		return false;
-    	}
-    	
-    }
+
     public void resetGyro(){
     	gyro.reset();
     }
     
-    public double InfraredSensorRange(){
+    public double getInfraredSensorInches(){
+    	//Is this the updated equation Shriji? I thought it was 30 something times our x^power
 		return 4.878 * MathUtils.pow(infrared.getVoltage(),-1.063);
 	}
-    	
+    
+    /**
+     * Determine if we need to drive backwards to maintain distance from another robot
+     * 
+     * @return true if we need to drive backward
+     */
     public boolean driveBackward(){
-    	if(InfraredSensorRange() < RobotMap.setDistanceInch - RobotMap.deadBand){
-    		
+    	if(getInfraredSensorInches() < RobotMap.setDistanceInch - RobotMap.deadBand){
     		return true;
-    		}
-    	else{
+    	} else {
     		return false;
     	}
     }
+    
+    /**
+     * Determine if we need to drive backwards to maintain distance from another robot
+     * 
+     * @return true if we need to drive forwards
+     */
     public boolean driveForward(){
-    	if(InfraredSensorRange() > RobotMap.setDistanceInch + RobotMap.deadBand){
-    	
+    	if(getInfraredSensorInches() > RobotMap.setDistanceInch + RobotMap.deadBand){
     		return true;
-    		}
-    	else{
+    	} else {
     		return false;
     	}
     }
     
-    public boolean RobotTiltUp(){
-    	if(gyro.getAngle()>7.5){
-    		return true;
-    	}
-    	else{
-    		return false;
-    	}
-    }
-    public boolean RobotTiltDown(){
-    	if(gyro.getAngle()<-7.5){
+    /**
+     * Is the robot chassis tilted up?
+     * 
+     * @return true if tilted up
+     */
+    public boolean tiltedUp(){
+    	if(gyro.getAngle() > TILT_UP_ANGLE){
     		return true;
     	}
     	else{
@@ -299,8 +285,19 @@ public class DriveTrain extends Subsystem
     	}
     }
     
-    	
-    
+    /**
+     * Is the robot chassis tilted down?
+     * 
+     * @return true if tilted down
+     */
+    public boolean tiltedDown(){
+    	if(gyro.getAngle() < TILT_DOWN_ANGLE){
+    		return true;
+    	}
+    	else{
+    		return false;
+    	}
+    }
 }
     
 
