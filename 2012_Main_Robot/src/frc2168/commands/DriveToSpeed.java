@@ -18,13 +18,22 @@ public class DriveToSpeed extends CommandBase {
 	 * on the DriveTrain singleton, so that only commands from this Object will be processed.
 	 */
 	
-	double setPoint;
+	double left;
+	double right;
 	
 	public DriveToSpeed(double speed)
 	{
 		//requires the driveTrain subsystems which was created in CommandBase
 		requires(driveTrain);
-		setPoint=speed;
+		left=right=speed;
+	}
+	
+	public DriveToSpeed(double speedL, double speedR)
+	{
+		//requires the driveTrain subsystems which was created in CommandBase
+		requires(driveTrain);
+		left=speedL;
+		right=speedR;
 	}
 	
 	protected void initialize() {
@@ -40,7 +49,7 @@ public class DriveToSpeed extends CommandBase {
 	{
 		//every time this command is called we drive the
 		//driveTrain with tank drive using the Driver Joysticks
-		driveTrain.TankDrive(setPoint,setPoint);
+		driveTrain.TankDrive(left,right);
 	}
 
 	/**

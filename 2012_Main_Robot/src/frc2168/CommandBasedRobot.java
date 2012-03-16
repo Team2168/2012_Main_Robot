@@ -55,7 +55,7 @@ public class CommandBasedRobot extends IterativeRobot {
         compressor.start();
     	
     	// instantiate the command used for the autonomous period
-        //autonomousCommand = new AutonomousSelect();
+
     	
     	// instantiate the command used for the teleop period
         TeleopHoodDefault = new ShooterWheelJoystick();

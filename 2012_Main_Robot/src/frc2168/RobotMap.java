@@ -53,6 +53,16 @@ public class RobotMap {
 	public static final int bridgeArmSolenoidReverseChannel = 7; //Port 7, Solenoid Card
 	public static final int bridgeArmSolenoidForwardChannel = 8; //Port 8, Solenoid Card
 	
+	///////////////////////Solenoid Card - Slot 3///////////////////////
+	//Analog 1-8
+	public static final int voltageRefPSOC = 1; //Voltage reference, VCC
+	public static final int shooterWheelFinePSOC = 2; //Manual Shooter Speed, fine control (top slide pot)
+	public static final int shooterWheelCoursePSOC = 3; //Manual Shooter Speed, coarse control (bottom slide pot)
+	//public static final int  Analog4;
+	//public static final int Analog5;
+	//public static final int Analog6;
+	public static final int rightDelayPot = 7; //Right Delay Potentiometer
+	public static final int leftDelayPot = 8; //Left Delay Potentiometer
 
 	///////////////////////////SUBSYSTEM CONSTANTS///////////////////////////////
 	///////////////////////////////DRIVETRAIN////////////////////////////////////	
