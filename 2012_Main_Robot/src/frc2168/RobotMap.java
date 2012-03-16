@@ -169,5 +169,6 @@ public class RobotMap {
 	public static final double liftVoltage = -0.20;
 
 	////////////////////////////////////////////////////////////////////////////
-	
+	public final int maxValue = 6;
+	public final int minValue = 4;
 }

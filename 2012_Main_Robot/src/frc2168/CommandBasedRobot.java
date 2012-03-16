@@ -39,7 +39,6 @@ public class CommandBasedRobot extends IterativeRobot {
     Command dashboard;
     Command autonomousCommand;
     Command fire;
-	OI oi = new OI();
 
 
     /**
@@ -105,6 +104,7 @@ public class CommandBasedRobot extends IterativeRobot {
      */
     public void teleopPeriodic() 
     {
+    	new TimerDelay(5);
     	Scheduler.getInstance().run();
         
     }

@@ -13,3 +13,4 @@
 *.war
 *.ear
 /resources
+/BSD_License_for_WPILib_code.txt
