@@ -105,7 +105,6 @@ public class CommandBasedRobot extends IterativeRobot {
      */
     public void teleopPeriodic() 
     {
-        oi.
     	Scheduler.getInstance().run();
         
     }
