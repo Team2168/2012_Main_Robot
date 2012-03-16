@@ -3,9 +3,19 @@ package frc2168.commands;
 
 public class RaiseHood extends CommandBase {
 	
+	private boolean calledFromShooter;
+	
 	public RaiseHood()
 	{
-		requires(hood);
+		//requires(hood);
+		this.calledFromShooter = false;
+		
+	}
+	
+	public RaiseHood(boolean calledFromShooter)
+	{
+		//requires(hood);
+		this.calledFromShooter = calledFromShooter;
 		
 	}
 
@@ -14,6 +24,7 @@ public class RaiseHood extends CommandBase {
 	}
 
 	protected void execute() {
+		if(!oi.ioDigital1.get()||calledFromShooter)
 		hood.raiseHood();
 	}
 

@@ -8,6 +8,7 @@ public class ShooterWheelWithPot extends CommandBase {
 
 	public ShooterWheelWithPot(){
 		requires(hood);
+		requires(buttonBox);
 	}
 	
 	protected void initialize(){
@@ -16,7 +17,7 @@ public class ShooterWheelWithPot extends CommandBase {
 	}
 
 	protected void execute(){
-		if(oi.ioDigital1.get())
+		if(!oi.ioDigital1.get())
 		hood.spinMotor(-(oi.ioBoard.getNormalizedAnalog(RobotMap.shooterWheelCoursePSOC)*.9+oi.ioBoard.getNormalizedAnalog(RobotMap.shooterWheelFinePSOC)*.1));
 	
 	}

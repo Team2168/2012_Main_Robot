@@ -68,7 +68,9 @@ public class CommandBasedRobot extends IterativeRobot {
 
     public void autonomousInit() {
         // schedule the autonomous command (example)
-        autonomousCommand.start();
+    	
+    	
+    	autonomousCommand.start();
         dashboard.start();
     }
 

@@ -8,7 +8,7 @@ public class highGoalFender extends CommandGroup
 	public highGoalFender(){
 		
 		//Lowering hood and then shooting at high goal
-		addSequential(new LowerHood());
+		addSequential(new LowerHood(true));
 		addSequential(new PID_DriveShooter(RobotMap.HIGH_GOAL_FORWARD));
 		
 	}

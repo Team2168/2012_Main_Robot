@@ -3,9 +3,20 @@ package frc2168.commands;
 
 public class LowerHood extends CommandBase {
 	
+private boolean calledFromShooter;
+	
 	public LowerHood()
 	{
-		requires(hood);
+		//requires(hood);
+		this.calledFromShooter = false;
+		
+	}
+	
+	public LowerHood(boolean calledFromShooter)
+	{
+		//requires(hood);
+		this.calledFromShooter = calledFromShooter;
+		
 	}
 
 	protected void initialize() {
@@ -13,6 +24,7 @@ public class LowerHood extends CommandBase {
 	}
 
 	protected void execute() {
+		if(!oi.ioDigital1.get()||calledFromShooter)
 		hood.lowerHood();
 	}
 

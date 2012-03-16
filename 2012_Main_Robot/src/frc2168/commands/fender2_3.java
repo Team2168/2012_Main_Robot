@@ -9,7 +9,9 @@ public class fender2_3 extends CommandBase {
 	private midGoalFender mid;
 
 	public fender2_3(){
-
+		high = new highGoalFender();
+		mid = new midGoalFender();
+		requires(buttonBox);
 	}
 
 	protected void initialize() {
@@ -21,11 +23,9 @@ public class fender2_3 extends CommandBase {
 		// TODO Auto-generated method stub
 		if(oi.ioDigital1.get()){
 			if(oi.ioDigital10.get()){
-				high = new highGoalFender();
 				high.start();
 			}
 			else{
-				mid = new midGoalFender();
 				mid.start();
 			}
 		}
@@ -43,11 +43,12 @@ public class fender2_3 extends CommandBase {
 		// TODO Auto-generated method stub
 		high.cancel();
 		mid.cancel();
+		this.cancel();
 	}
 
 	protected void interrupted() {
 		// TODO Auto-generated method stub
-
+		this.end();
 	}
 
 }

@@ -7,7 +7,7 @@ public class PID_ShooterPause extends CommandBase
 	
 	public PID_ShooterPause()
 	{
-		
+		requires(buttonBox);
 	}
 
 	protected void initialize()

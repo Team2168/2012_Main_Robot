@@ -76,7 +76,7 @@ public class Hood extends Subsystem {
 	}
 	
 	protected void initDefaultCommand() {
-		setDefaultCommand(new ShooterWheelJoystick());
+	
 	}
 	
 	public void spinMotor(double speed){
@@ -90,6 +90,7 @@ public class Hood extends Subsystem {
 			RobotMap.driverstation.println(DriverStationLCD.Line.kUser2, 2, "Jag in Hood");
 			RobotMap.driverstation.updateLCD();
 		}
+	
 		
 
 	}

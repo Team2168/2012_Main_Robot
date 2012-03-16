@@ -9,7 +9,9 @@ public class side2_3 extends CommandBase {
 	private midGoalSide mid;
 
 	public side2_3(){
-
+		high = new highGoalSide();
+		mid = new midGoalSide();
+		requires(buttonBox);
 	}
 
 	protected void initialize() {
@@ -21,12 +23,10 @@ public class side2_3 extends CommandBase {
 		// TODO Auto-generated method stub
 		if(oi.ioDigital1.get()){
 			if(oi.ioDigital10.get()){
-				high = new highGoalSide();
 				high.start();
 			}
 
 			else{
-				mid = new midGoalSide();
 				mid.start();
 			}
 		}
@@ -44,11 +44,12 @@ public class side2_3 extends CommandBase {
 		// TODO Auto-generated method stub
 		high.cancel();
 		mid.cancel();
+		this.cancel();
 	}
 
 	protected void interrupted() {
 		// TODO Auto-generated method stub
-
+		this.end();
 	}
 
 }

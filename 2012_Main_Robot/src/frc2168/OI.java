@@ -10,6 +10,7 @@ import frc2168.advancedIO.JoystickAnalogButton;
 import frc2168.commands.BackFlapClose;
 import frc2168.commands.BackFlapOpen;
 import frc2168.commands.DriveElevatorConst;
+import frc2168.commands.ShooterWheelWithPot;
 import frc2168.commands.camera2_3;
 import frc2168.commands.fender2_3;
 import frc2168.commands.highGoalFender;
@@ -102,6 +103,8 @@ public class OI {
 			ioDigital15 = new DigitalIOButton(15),
 			ioDigital16 = new DigitalIOButton(16);
 	
+	public IOAnalogButton wheelPots = new IOAnalogButton(RobotMap.shooterWheelCoursePSOC, 0.2);
+	
 	
 	public OI() {
 		//drive left axis = left drivetrain in DriveWithJoystick
@@ -134,16 +137,16 @@ public class OI {
 		 * 
 		 */
 //		ioDigital1.whenPressed(); //Manual/Automatic mode select	auto up manual down										//WIRED - JMC
-		ioDigital2.whenPressed(new DriveElevatorConst(RobotMap.liftVoltage)); //raise lift					//WIRED - JMC
-		ioDigital3.whenPressed(new DriveElevatorConst(-RobotMap.liftVoltage)); //lower lift					//WIRED - JMC
+		ioDigital2.whileHeld(new DriveElevatorConst(RobotMap.liftVoltage)); //raise lift					//WIRED - JMC
+		ioDigital3.whileHeld(new DriveElevatorConst(-RobotMap.liftVoltage)); //lower lift					//WIRED - JMC
 		ioDigital4.whenPressed(new BackFlapOpen()); //Hopper Down											//WIRED - JMC
 		ioDigital5.whenPressed(new BackFlapClose()); //Hopper Up											//WIRED - JMC
 		ioDigital6.whenPressed(new fender2_3()); //front goal shot. high/low determined by switch10	//WIRED - JMC
 		ioDigital7.whenPressed(new side2_3()); //side goal shot									//WIRED - JMC
 		ioDigital8.whenPressed(new key2_3()); //key shot											//WIRED - JMC
-		ioDigital9.whenPressed(new camera2_3()); //camera shot										//WIRED - JMC
+		//ioDigital9.whenPressed(new camera2_3()); //camera shot										//WIRED - JMC
 		//ioDigital10.whenPressed(); //Shooting mode switch	(2pt/3pt)										//WIRED - JMC
-		ioDigital11.whenPressed(new PID_DriveShooter(0)); //set shooter to zero/turn off shooter			//WIRED - JMC
+		ioDigital11.whenPressed(new PID_ShooterPause()); //set shooter to zero/turn off shooter			//WIRED - JMC
 		ioDigital12.whenPressed(new shootSingleBall()); //fire												//WIRED - JMC
 		ioDigital13.whenPressed(new RaiseHood()); //Switch13 position to raise hood							
 		ioDigital13.whenReleased(new LowerHood()); //Switch13 position to lower hood
@@ -152,6 +155,9 @@ public class OI {
 //		ioDigital16.whenPressed();  //Autonomous Mode - counter "4"											//WIRED - JMC
 									//Autonomous Mode - counter "8" is not wired							//WIRED - JMC
 
+		
+		wheelPots.whileHeld(new ShooterWheelWithPot());
+		
 		//ioModule Analog1 - Voltage reference, VCC
 		//ioModule Analog2 - Manual Shooter Speed, fine control (top slide pot)
 		//ioModule Analog3 - Manual Shooter Speed, coarse control (bottom slide pot)

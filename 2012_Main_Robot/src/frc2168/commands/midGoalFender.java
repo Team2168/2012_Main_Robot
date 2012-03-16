@@ -9,7 +9,7 @@ public class midGoalFender extends CommandGroup
 	public midGoalFender(){
 		
 		//Raising hood and then shooting at middle goal
-		addSequential(new RaiseHood());
+		addSequential(new RaiseHood(true));
 		addSequential(new PID_DriveShooter(RobotMap.MIDDLE_GOAL_FORWARD));
 		
 		
