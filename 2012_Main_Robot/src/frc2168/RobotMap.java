@@ -174,8 +174,12 @@ public class RobotMap {
 	
 	public static double setDistanceInch = 8; //will only run when the distance is within this number
 	public static final double deadBand = 1; //stop when it get to this number or less
-	public static double minDist = 3;
-	public static double maxDist = 12;
+	public static double minFollowDist = 3;
+	public static double maxFollowDist = 12;
+	public static double UPHILL_MAX_SPEED = 0.4; 		//TODO: Shriji Need to verify these match up with the numbers we collected
+	public static double UPHILL_MIN_SPEED = 0.2;		//TODO: Shriji Need to verify
+	public static double DOWNHILL_MAX_SPEED = 0.0;		//use gravity to travel down fast
+	public static double DOWNHILL_MIN_SPEED = -0.2;		//TODO: Shriji Need to verify
 
 	///////////////////////////////////////////////////////////////////////////
 }
