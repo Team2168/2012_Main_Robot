@@ -11,7 +11,10 @@ import frc2168.commands.BackFlapClose;
 import frc2168.commands.BackFlapOpen;
 import frc2168.commands.ButtonBoxPoints;
 import frc2168.commands.DriveElevatorConst;
+import frc2168.commands.camera2_3;
+import frc2168.commands.fender2_3;
 import frc2168.commands.highGoalFender;
+import frc2168.commands.key2_3;
 import frc2168.commands.lowGoalFender;
 import frc2168.commands.LowerBridge;
 import frc2168.commands.LowerHood;
@@ -23,6 +26,7 @@ import frc2168.commands.RaiseHood;
 import frc2168.commands.ShiftGearsHighToLow;
 import frc2168.commands.ShiftGearsLowToHigh;
 import frc2168.commands.shootSingleBall;
+import frc2168.commands.side2_3;
 import frc2168.commands.sleep;
 
 
@@ -135,10 +139,10 @@ public class OI {
 		ioDigital3.whenPressed(new DriveElevatorConst(-RobotMap.liftVoltage)); //lower lift					//WIRED - JMC
 		ioDigital4.whenPressed(new BackFlapOpen()); //Hopper Down											//WIRED - JMC
 		ioDigital5.whenPressed(new BackFlapClose()); //Hopper Up											//WIRED - JMC
-		ioDigital6.whenPressed(new ButtonBoxPoints(0)); //front goal shot. high/low determined by switch10	//WIRED - JMC
-		ioDigital7.whenPressed(new ButtonBoxPoints(1)); //side goal shot									//WIRED - JMC
-		ioDigital8.whenPressed(new ButtonBoxPoints(2)); //key shot											//WIRED - JMC
-		ioDigital9.whenPressed(new ButtonBoxPoints(3)); //camera shot										//WIRED - JMC
+		ioDigital6.whenPressed(new fender2_3()); //front goal shot. high/low determined by switch10	//WIRED - JMC
+		ioDigital7.whenPressed(new side2_3()); //side goal shot									//WIRED - JMC
+		ioDigital8.whenPressed(new key2_3()); //key shot											//WIRED - JMC
+		ioDigital9.whenPressed(new camera2_3()); //camera shot										//WIRED - JMC
 		//ioDigital10.whenPressed(); //Shooting mode switch	(2pt/3pt)										//WIRED - JMC
 		ioDigital11.whenPressed(new PID_DriveShooter(0)); //set shooter to zero/turn off shooter			//WIRED - JMC
 		ioDigital12.whenPressed(new shootSingleBall()); //fire												//WIRED - JMC

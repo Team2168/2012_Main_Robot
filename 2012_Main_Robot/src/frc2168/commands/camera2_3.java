@@ -4,10 +4,8 @@ import edu.wpi.first.wpilibj.command.Command;
 
 public class camera2_3 extends CommandBase {
 
-	private boolean target;
-	
-	public camera2_3(boolean target){
-		this.target = target;
+	public camera2_3(){
+		
 	}
 	
 	protected void initialize() {
