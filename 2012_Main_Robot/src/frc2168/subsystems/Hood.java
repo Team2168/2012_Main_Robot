@@ -90,7 +90,7 @@ public class Hood extends Subsystem {
 			RobotMap.driverstation.println(DriverStationLCD.Line.kUser2, 2, "Jag in Hood");
 			RobotMap.driverstation.updateLCD();
 		}
-	
+	System.out.println(speed);
 		
 
 	}

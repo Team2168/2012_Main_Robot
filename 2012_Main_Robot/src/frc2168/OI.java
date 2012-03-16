@@ -156,7 +156,7 @@ public class OI {
 									//Autonomous Mode - counter "8" is not wired							//WIRED - JMC
 
 		
-		wheelPots.whileHeld(new ShooterWheelWithPot());
+		//wheelPots.whileHeld(new ShooterWheelWithPot());
 		
 		//ioModule Analog1 - Voltage reference, VCC
 		//ioModule Analog2 - Manual Shooter Speed, fine control (top slide pot)

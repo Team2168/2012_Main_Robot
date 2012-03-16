@@ -19,7 +19,9 @@ public class ShooterWheelWithPot extends CommandBase {
 	protected void execute(){
 		if(!oi.ioDigital1.get())
 		hood.spinMotor(-(oi.ioBoard.getNormalizedAnalog(RobotMap.shooterWheelCoursePSOC)*.9+oi.ioBoard.getNormalizedAnalog(RobotMap.shooterWheelFinePSOC)*.1));
-	
+		else
+			end();
+		
 	}
 		
 	
@@ -30,12 +32,13 @@ public class ShooterWheelWithPot extends CommandBase {
 
 	protected void end() {
 		// TODO Auto-generated method stub
+		this.cancel();
 
 	}
 
 	protected void interrupted() {
 		// TODO Auto-generated method stub
-
+		end();
 	}
 
 }
