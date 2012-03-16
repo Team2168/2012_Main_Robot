@@ -20,12 +20,12 @@ public class side2_3 extends CommandBase {
 	protected void execute() {
 		// TODO Auto-generated method stub
 		if(oi.ioDigital1.get()){
-			if(oi.ioDigital10.get() == RobotMap.HIGH_GOAL){
+			if(oi.ioDigital10.get()){
 				high = new highGoalSide();
 				high.start();
 			}
 
-			if(oi.ioDigital10.get() == RobotMap.MIDDLE_GOAL){
+			else{
 				mid = new midGoalSide();
 				mid.start();
 			}

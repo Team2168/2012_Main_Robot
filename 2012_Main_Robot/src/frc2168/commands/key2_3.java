@@ -18,12 +18,12 @@ public class key2_3 extends CommandBase {
 	protected void execute() {
 		// TODO Auto-generated method stub
 		if(oi.ioDigital1.get()){
-			if(oi.ioDigital10.get() == RobotMap.HIGH_GOAL){
+			if(oi.ioDigital10.get()){
 				high = new highGoalKey();
 				high.start();
 			}
 
-			if(oi.ioDigital10.get() == RobotMap.MIDDLE_GOAL){
+			else{
 				mid = new midGoalKey();
 				mid.start();
 			}

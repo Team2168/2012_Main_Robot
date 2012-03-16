@@ -14,8 +14,6 @@ public class RobotMap {
 	///////////////////////////SYSTEM CONSTANTS////////////////////////////
 	//DriverStation LCD
 	public static DriverStationLCD driverstation;
-	public static final boolean HIGH_GOAL = true;
-	public static final boolean MIDDLE_GOAL = false;
 	
 	//JOYSTICK MAPS	
 	public static final int driverJoystick=1; //USB Port 1
