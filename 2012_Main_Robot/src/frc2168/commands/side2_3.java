@@ -6,6 +6,8 @@ import frc2168.RobotMap;
 public class side2_3 extends CommandBase {
 
 	private boolean target;
+	private highGoalSide high;
+	private midGoalSide mid;
 	
 	public side2_3(boolean target){
 		this.target = target;
@@ -19,11 +21,13 @@ public class side2_3 extends CommandBase {
 	protected void execute() {
 		// TODO Auto-generated method stub
 		if(target == RobotMap.HIGH_GOAL){
-			new highGoalSide();
+			high = new highGoalSide();
+			high.start();
 		}
 		
 		if(target == RobotMap.MIDDLE_GOAL){
-			new midGoalSide();
+			mid = new midGoalSide();
+			mid.start();
 		}
 	}
 
@@ -34,7 +38,8 @@ public class side2_3 extends CommandBase {
 
 	protected void end() {
 		// TODO Auto-generated method stub
-
+		high.cancel();
+		mid.cancel();
 	}
 
 	protected void interrupted() {

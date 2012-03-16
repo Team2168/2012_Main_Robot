@@ -1,11 +1,12 @@
 package frc2168.commands;
 
-import edu.wpi.first.wpilibj.command.Command;
 import frc2168.RobotMap;
 
 public class key2_3 extends CommandBase {
 
 	private boolean target;
+	private highGoalKey high;
+	private midGoalKey mid;
 	
 	public key2_3(boolean target){
 		this.target = target;
@@ -18,11 +19,13 @@ public class key2_3 extends CommandBase {
 	protected void execute() {
 		// TODO Auto-generated method stub
 		if(target == RobotMap.HIGH_GOAL){
-			new highGoalKey();
+			high = new highGoalKey();
+			high.start();
 		}
 		
 		if(target == RobotMap.MIDDLE_GOAL){
-			new midGoalKey();
+			mid = new midGoalKey();
+			mid.start();
 		}
 	}
 
@@ -33,7 +36,8 @@ public class key2_3 extends CommandBase {
 
 	protected void end() {
 		// TODO Auto-generated method stub
-
+		high.cancel();
+		mid.cancel();
 	}
 
 	protected void interrupted() {
