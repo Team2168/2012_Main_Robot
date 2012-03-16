@@ -171,7 +171,4 @@ public class RobotMap {
 
 	////////////////////////////////////////////////////////////////////////////
 	
-	public static double maxDelayValue = 6;			//Max and Min time delay used in autonomous.
-	public static double minDelayValue = 2;
-	
 }
