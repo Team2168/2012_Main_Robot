@@ -109,10 +109,11 @@ public class OI {
 	public OI() {
 		//drive left axis = left drivetrain in DriveWithJoystick
 		//drive right axis = right drivetrain in DriveWithJoystick
-		driveButtonA.whenPressed(new LowerBridge());
-		driveButtonY.whenPressed(new RaiseBridge());
+
 		driveButtonRightBumper.whenPressed(new ShiftGearsLowToHigh());
 		driveButtonLeftBumper.whenPressed(new ShiftGearsHighToLow());
+		driveButtonStart.whenPressed(new LowerBridge());
+		driveButtonStart.whenReleased(new RaiseBridge());
 		
 		//aux left axis = left DriveElevatorJoystick
 		//aux right axis = right ShooterWheelJoystick

@@ -7,7 +7,7 @@ public class KeyToTopAutoCommand extends CommandGroup
 {
 	public KeyToTopAutoCommand(){
 		//raise hood before shooting
-		addSequential(new RaiseHood());
+		addSequential(new RaiseHood(true));
 
 		//raise bridge arm
 		addSequential(new RaiseBridge());

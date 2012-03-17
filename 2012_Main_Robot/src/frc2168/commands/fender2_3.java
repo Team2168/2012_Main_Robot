@@ -12,6 +12,7 @@ public class fender2_3 extends CommandBase {
 		high = new highGoalFender();
 		mid = new midGoalFender();
 		requires(buttonBox);
+		requires(hood);
 	}
 
 	protected void initialize() {

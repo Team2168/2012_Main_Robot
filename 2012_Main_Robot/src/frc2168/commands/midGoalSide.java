@@ -7,7 +7,7 @@ public class midGoalSide extends CommandGroup {
 	public midGoalSide(){
 		
 		//Raising hood and then shooting at low goal
-		addSequential(new RaiseHood(true));
+		addSequential(new LowerHood(true));
 		addSequential(new PID_DriveShooter(RobotMap.MIDDLE_GOAL_SIDE));
 		
 		

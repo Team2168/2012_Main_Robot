@@ -22,7 +22,7 @@ public class DriveElevatorConst extends CommandBase
 
 	protected void execute()
 	{
-		if(oi.ioDigital1.get())
+		
 			elevatorFlap.setBallElevatorSpeed(constSpeed);
 		// TODO Auto-generated method stub
 	}
@@ -36,13 +36,13 @@ public class DriveElevatorConst extends CommandBase
 	protected void end()
 	{
 		// TODO Auto-generated method stub
-
+		elevatorFlap.setBallElevatorSpeed(0);
 	}
 
 	protected void interrupted()
 	{
 		// TODO Auto-generated method stub
-
+		end();
 	}
 
 }

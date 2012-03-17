@@ -58,10 +58,10 @@ public class CommandBasedRobot extends IterativeRobot {
 
     	
     	// instantiate the command used for the teleop period
-        TeleopHoodDefault = new ShooterWheelJoystick();
-        TeleopDriveTrainDefault = new DriveWithJoystick();
-        TeleopDriveElevator = new DriveElevatorJoystick();
-        //dashboard = new ShooterWheelPIDDashboard();
+//        TeleopHoodDefault = new ShooterWheelJoystick();
+//        TeleopDriveTrainDefault = new DriveWithJoystick();
+//        TeleopDriveElevator = new DriveElevatorJoystick();
+        dashboard = new ShooterWheelPIDDashboard();
 
     	autonomousCommand = new KeyToTopAutoCommand();
     }
@@ -71,7 +71,7 @@ public class CommandBasedRobot extends IterativeRobot {
     	
     	
     	autonomousCommand.start();
-        //dashboard.start();
+        dashboard.start();
     }
 
     /**
@@ -90,9 +90,9 @@ public class CommandBasedRobot extends IterativeRobot {
 		// this line or comment it out.
 		autonomousCommand.cancel();
     	//TeleopHoodDefault.start();
-    	TeleopDriveTrainDefault.start();
-    	TeleopDriveElevator.start();
-    	//dashboard.start();
+    	//TeleopDriveTrainDefault.start();
+    	//TeleopDriveElevator.start();
+    	dashboard.start();
     }
 
     /**

@@ -21,6 +21,8 @@ public class PIDShootBall extends CommandGroup
 		
 		addSequential(new BackFlapClose());
 		
+		addSequential(new sleep(),2);
+		
 		//wait for shooter to be at speed
 		addSequential(new PID_ShooterAtSpeed());
 		

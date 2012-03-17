@@ -12,6 +12,7 @@ public class side2_3 extends CommandBase {
 		high = new highGoalSide();
 		mid = new midGoalSide();
 		requires(buttonBox);
+		requires(hood);
 	}
 
 	protected void initialize() {

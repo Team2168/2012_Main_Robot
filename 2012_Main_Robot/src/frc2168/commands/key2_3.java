@@ -11,6 +11,7 @@ public class key2_3 extends CommandBase {
 		high = new highGoalKey();
 		mid = new midGoalKey();
 		requires(buttonBox);
+		requires(hood);
 	}
 	protected void initialize() {
 		// TODO Auto-generated method stub

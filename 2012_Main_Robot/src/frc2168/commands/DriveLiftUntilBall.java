@@ -64,11 +64,13 @@ public class DriveLiftUntilBall extends CommandBase {
 	}
 
 	protected void end() {
+		elevatorFlap.setBallElevatorSpeed(0);
 		
 	}
 
 	protected void interrupted() {
 		// TODO Auto-generated method stub
+		end();
 
 	}
 
