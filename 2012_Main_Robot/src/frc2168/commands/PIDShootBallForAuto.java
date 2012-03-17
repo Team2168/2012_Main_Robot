@@ -12,14 +12,17 @@ import frc2168.RobotMap;
  *shooter wheel to be at speed.
  *
  */
-public class PIDShootBall extends CommandGroup
+public class PIDShootBallForAuto extends CommandGroup
 {
-	public PIDShootBall(double setPoint)
+	public PIDShootBallForAuto(double setPoint)
 	{
 		//drive shooter wheel to PID speed
 		addParallel(new PID_DriveShooter(setPoint));
 		
 		addSequential(new BackFlapClose());
+		
+		//add delay
+		addSequential(new sleep(),2);
 		
 		
 		//wait for shooter to be at speed

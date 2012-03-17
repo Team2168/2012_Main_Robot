@@ -15,6 +15,7 @@ import edu.wpi.first.wpilibj.IterativeRobot;
 import edu.wpi.first.wpilibj.command.Command;
 import edu.wpi.first.wpilibj.command.Scheduler;
 import frc2168.commands.*;
+import frc2168.dashboard.CompetitionDashboard;
 import frc2168.dashboard.ShooterWheelDebugDashboard;
 import frc2168.dashboard.ShooterWheelPIDDashboard;
 
@@ -61,7 +62,7 @@ public class CommandBasedRobot extends IterativeRobot {
 //        TeleopHoodDefault = new ShooterWheelJoystick();
 //        TeleopDriveTrainDefault = new DriveWithJoystick();
 //        TeleopDriveElevator = new DriveElevatorJoystick();
-        dashboard = new ShooterWheelPIDDashboard();
+        dashboard = new CompetitionDashboard();
 
     	autonomousCommand = new KeyToTopAutoCommand();
     }

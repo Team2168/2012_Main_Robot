@@ -20,9 +20,9 @@ public class KeyToTopAutoCommand extends CommandGroup
 
 
 		//shoot one ball to top goal from the side of the key
-		addSequential(new PIDShootBall(RobotMap.HIGH_GOAL_KEY));
+		addSequential(new PIDShootBallForAuto(RobotMap.HIGH_GOAL_KEY));
 		//shoot one ball to top goal from the side of the key
-		addSequential(new PIDShootBall(RobotMap.HIGH_GOAL_KEY));
+		addSequential(new PIDShootBallForAuto(RobotMap.HIGH_GOAL_KEY));
 
 		addSequential(new sleep(),1);
 //		
