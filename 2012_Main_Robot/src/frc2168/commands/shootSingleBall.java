@@ -27,7 +27,7 @@ public class shootSingleBall extends CommandGroup
 	
 	//wait for some length of time
 	
-	addSequential(new sleep(), .200); //wait for 1 second;
+	addSequential(new sleep(), .200); //wait for 1/5 second;
 
 	
 	//verify shooter is at speed

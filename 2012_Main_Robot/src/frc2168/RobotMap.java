@@ -127,10 +127,10 @@ public class RobotMap {
 	public static final int shooterWheelCANID = 11, shooterWheel2CANID = 12; 
 	
 	//Constant value for shooter wheel
-	public static final double HIGH_GOAL_KEY = 840.0;
-	public static final double MIDDLE_GOAL_KEY = 700;		//hood down?
+	public static final double HIGH_GOAL_KEY = 850.0;
+	public static final double MIDDLE_GOAL_KEY = 700;		//robot should be places with 2nd drivetrain from back on key line 
 	
-	public static final double MIDDLE_GOAL_SIDE = 560.0; //hood down   550
+	public static final double MIDDLE_GOAL_SIDE = 550.0; //hood down   550
 	public static final double HIGH_GOAL_SIDE = 800.0; //hood down     730
 
 	public static final double LOW_GOAL_FORWARD = 430.0;

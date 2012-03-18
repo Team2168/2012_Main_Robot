@@ -2,6 +2,16 @@ package frc2168.commands;
 
 import edu.wpi.first.wpilibj.command.Command;
 
+/**
+ * 
+ * @author Kevin Harrilal, First Robotics Team 2168
+ *
+ *This is a macro command to automatically spin the shooter wheel at the given speed
+ *
+ *
+*/
+
+
 public class PID_DriveShooter extends CommandBase
 {
 	

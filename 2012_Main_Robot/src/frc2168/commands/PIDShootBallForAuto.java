@@ -11,6 +11,13 @@ import frc2168.RobotMap;
  *one after the next while waiting for the 
  *shooter wheel to be at speed.
  *
+ *
+ * @deprecated  As of Suffield Shakedown 2012, replaced by PID_DriveShooter and shootSingleBall
+ * 
+ * @see frc2168.commands.PID_DriveShooter#PID_DriveShooter(double) PID_DriveShooter(double speed)
+ * @see frc2168.commands.shootSingleBall#shootSingleBall() shootSingleBall() 
+ *
+ *
  */
 public class PIDShootBallForAuto extends CommandGroup
 {
@@ -21,21 +28,12 @@ public class PIDShootBallForAuto extends CommandGroup
 		
 		addSequential(new BackFlapClose());
 		
+		
 		//add delay
-		addSequential(new sleep(),2);
-		
-		
-		//wait for shooter to be at speed
-		addSequential(new PID_ShooterAtSpeed());
-		
-		//get ball ready
-		addSequential(new DriveLiftUntilBall());
+		addSequential(new sleep(),5);
 		
 		//shoot ball
-		addSequential(new DriveLiftUntilNoBall());
-		
-		//get another ball
-		addSequential(new DriveLiftUntilBall(),2);
+		addSequential(new shootSingleBall());
 		
 		//end command
 		addSequential(new PID_ShooterPause());
