@@ -7,27 +7,7 @@ import edu.wpi.first.wpilibj.buttons.JoystickButton;
 import frc2168.advancedIO.IOAnalogButton;
 import frc2168.advancedIO.IOModule;
 import frc2168.advancedIO.JoystickAnalogButton;
-import frc2168.commands.BackFlapClose;
-import frc2168.commands.BackFlapOpen;
-import frc2168.commands.DriveElevatorConst;
-import frc2168.commands.ShooterWheelWithPot;
-import frc2168.commands.camera2_3;
-import frc2168.commands.fender2_3;
-import frc2168.commands.highGoalFender;
-import frc2168.commands.key2_3;
-import frc2168.commands.lowGoalFender;
-import frc2168.commands.LowerBridge;
-import frc2168.commands.LowerHood;
-import frc2168.commands.midGoalFender;
-import frc2168.commands.PID_DriveShooter;
-import frc2168.commands.PID_ShooterPause;
-import frc2168.commands.RaiseBridge;
-import frc2168.commands.RaiseHood;
-import frc2168.commands.ShiftGearsHighToLow;
-import frc2168.commands.ShiftGearsLowToHigh;
-import frc2168.commands.shootSingleBall;
-import frc2168.commands.side2_3;
-import frc2168.commands.sleep;
+import frc2168.commands.*;
 
 
 /**
@@ -58,22 +38,25 @@ public class OI {
 			driveDPadL = new JoystickAnalogButton(drivestick, 6, -0.5),
 			driveDPadR = new JoystickAnalogButton(drivestick, 6, 0.5);
 	
-	// Auxiliary Joystick
+	// Auxiliary Arcade Joystick
+	// The button map for the arcade stick is goofy, names of button variables below correspond
+	//  to the numbers written on the stick and not the way the signals get reported.
 	public Joystick auxstick = new Joystick(RobotMap.auxJoystick);
-	public Button auxButtonA = new JoystickButton(auxstick, 1),
-			auxButtonB = new JoystickButton(auxstick, 2),
-			auxButtonX = new JoystickButton(auxstick, 3),
-			auxButtonY = new JoystickButton(auxstick, 4),
-			auxButtonLeftBumper = new JoystickButton(auxstick, 5),
-			auxButtonRightBumper = new JoystickButton(auxstick, 6),
-			auxButtonReset = new JoystickButton(auxstick, 7),
-			auxButtonStart = new JoystickButton(auxstick, 8);
+	public Button auxButton1 = new JoystickButton(auxstick, 5),
+			auxButton2 = new JoystickButton(auxstick, 3),
+			auxButton3 = new JoystickButton(auxstick, 2),
+			auxButton4 = new JoystickButton(auxstick, 6),
+			auxButton5 = new JoystickButton(auxstick, 7),
+			auxButton6 = new JoystickButton(auxstick, 4),
+			auxButton7 = new JoystickButton(auxstick, 1),
+			auxButton8 = new JoystickButton(auxstick, 8),
+			auxButton9 = new JoystickButton(auxstick, 10),
+			auxButton10 = new JoystickButton(auxstick, 9);
 	
-			
-	public JoystickAnalogButton auxTriggerR = new JoystickAnalogButton(auxstick, 3, -0.5),
-			auxTriggerL = new JoystickAnalogButton(auxstick, 3, 0.5),
-			auxDPadL = new JoystickAnalogButton(auxstick, 6, -0.5),
-			auxDPadR = new JoystickAnalogButton(auxstick, 6, 0.5);
+	public JoystickAnalogButton auxUp = new JoystickAnalogButton(auxstick, 2, -0.5),
+			auxDown = new JoystickAnalogButton(auxstick, 2, 0.5),
+			auxLeft = new JoystickAnalogButton(auxstick, 1, -0.5),
+			auxRight = new JoystickAnalogButton(auxstick, 1, 0.5);
 	
 	// IO MODULE BUTTONS
 	public IOModule ioBoard = new IOModule();	//configure the IO module
@@ -115,18 +98,19 @@ public class OI {
 		driveButtonStart.whenPressed(new LowerBridge());
 		driveButtonStart.whenReleased(new RaiseBridge());
 		
-		//aux left axis = left DriveElevatorJoystick
-		//aux right axis = right ShooterWheelJoystick
-		auxButtonA.whenPressed(new lowGoalFender());
-		auxButtonB.whenPressed(new midGoalFender());
-		auxButtonY.whenPressed(new highGoalFender());
-		auxButtonX.whenPressed(new PID_ShooterPause());
+		//This is the layout Niral requested 3/26/12, untested
+		auxButton1.whenPressed(new BackFlapClose());						//1 - gate close
+		auxButton5.whenPressed(new BackFlapOpen());							//5 - gate open
+		auxButton8.whenPressed(new shootSingleBall());						//8 - fire button
+		auxButton4.whenPressed(new PID_ShooterPause()); 					//4 - shooter off
+		auxButton6.whenPressed(new highGoalFender());						//6 - front fender 3pt
+		auxButton2.whenPressed(new midGoalFender());						//2 - front 2pt
+		auxButton7.whenPressed(new highGoalSide());							//7 - side fender 3pt
+		auxButton3.whenPressed(new midGoalSide());							//3 - side 2pt
+		auxButton10.whenPressed(new highGoalKey());							//10 - key shot (3pt for now)
 		
-		auxButtonStart.whenPressed(new shootSingleBall());
-		auxButtonReset.whenPressed(new LowerHood());
-		
-		auxButtonRightBumper.whenPressed(new BackFlapClose());
-		auxButtonLeftBumper.whenPressed(new BackFlapOpen());
+		auxUp.whileHeld(new DriveElevatorConst(RobotMap.liftVoltage));		//auxUp = drive lift up
+		auxDown.whileHeld(new DriveElevatorConst(-RobotMap.liftVoltage));	//auxDown = drive lift down
 		
 		/*
 		 * Note, All buttons on button box are pulled up. They see +V when they are not pressed. 
@@ -137,17 +121,17 @@ public class OI {
 		 * the button. (for switches, pressing is equivalent to moving it to the "up" position.
 		 * 
 		 */
-//		ioDigital1.whenPressed(); //Manual/Automatic mode select	auto up manual down										//WIRED - JMC
+//		ioDigital1.whenPressed(); //Manual/Automatic mode select	auto up manual down						//WIRED - JMC
 		ioDigital2.whileHeld(new DriveElevatorConst(RobotMap.liftVoltage)); //raise lift					//WIRED - JMC
 		ioDigital3.whileHeld(new DriveElevatorConst(-RobotMap.liftVoltage)); //lower lift					//WIRED - JMC
 		ioDigital4.whenPressed(new BackFlapOpen()); //Hopper Down											//WIRED - JMC
 		ioDigital5.whenPressed(new BackFlapClose()); //Hopper Up											//WIRED - JMC
 		ioDigital6.whenPressed(new fender2_3()); //front goal shot. high/low determined by switch10	//WIRED - JMC
-		ioDigital7.whenPressed(new side2_3()); //side goal shot									//WIRED - JMC
-		ioDigital8.whenPressed(new key2_3()); //key shot											//WIRED - JMC
-		//ioDigital9.whenPressed(new camera2_3()); //camera shot										//WIRED - JMC
+		ioDigital7.whenPressed(new side2_3()); //side goal shot												//WIRED - JMC
+		ioDigital8.whenPressed(new key2_3()); //key shot													//WIRED - JMC
+		//ioDigital9.whenPressed(new camera2_3()); //camera shot											//WIRED - JMC
 		//ioDigital10.whenPressed(); //Shooting mode switch	(2pt/3pt)										//WIRED - JMC
-		ioDigital11.whenPressed(new PID_ShooterPause()); //set shooter to zero/turn off shooter			//WIRED - JMC
+		ioDigital11.whenPressed(new PID_ShooterPause()); //set shooter to zero/turn off shooter				//WIRED - JMC
 		ioDigital12.whenPressed(new shootSingleBall()); //fire												//WIRED - JMC
 		ioDigital13.whenPressed(new RaiseHood()); //Switch13 position to raise hood							
 		ioDigital13.whenReleased(new LowerHood()); //Switch13 position to lower hood
