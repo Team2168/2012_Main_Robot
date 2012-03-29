@@ -33,7 +33,7 @@ public class ElevatorWithFlap extends Subsystem {
 	protected void initDefaultCommand() {
 		
 		// TODO Auto-generated method stub
-
+		setDefaultCommand(new DriveElevatorJoystick());
 
 	}
 	

@@ -27,7 +27,8 @@ public class Auto_MidGoalFromKey extends CommandGroup
 //			addSequential(new ShiftGearsLowToHigh());
 //
 //			addSequential(new DriveToSpeed(0.6),2);
+
 	}
-
-
 }
+
+

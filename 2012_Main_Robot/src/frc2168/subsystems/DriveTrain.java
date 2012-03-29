@@ -119,15 +119,52 @@ public class DriveTrain extends Subsystem
 		try
 		{
 			 leftMotor1 = new CANJaguar(RobotMap.leftmotor1);
+		} catch (CANTimeoutException e)
+		{
+			e.printStackTrace();
+			RobotMap.driverstation = DriverStationLCD.getInstance();
+			RobotMap.driverstation.println(DriverStationLCD.Line.kMain6, 1, "Error initializing");
+			RobotMap.driverstation.println(DriverStationLCD.Line.kUser2, 1, "Jag left 1");
+			RobotMap.driverstation.println(DriverStationLCD.Line.kUser3, 3, "in drivertrain");
+			RobotMap.driverstation.updateLCD();
+            
+		} 
+		try
+		{
 			 rightMotor1 = new CANJaguar(RobotMap.rightmotor1);
+		} catch (CANTimeoutException e)
+		{
+			e.printStackTrace();
+			RobotMap.driverstation = DriverStationLCD.getInstance();
+			RobotMap.driverstation.println(DriverStationLCD.Line.kMain6, 1, "Error initializing");
+			RobotMap.driverstation.println(DriverStationLCD.Line.kUser2, 1, "Jag right 1");
+			RobotMap.driverstation.println(DriverStationLCD.Line.kUser3, 3, "in drivertrain");
+			RobotMap.driverstation.updateLCD();
+            
+		} 
+		try
+		{
 			 leftMotor2 = new CANJaguar (RobotMap.leftmotor2);
+		} catch (CANTimeoutException e)
+		{
+			e.printStackTrace();
+			RobotMap.driverstation = DriverStationLCD.getInstance();
+			RobotMap.driverstation.println(DriverStationLCD.Line.kMain6, 1, "Error initializing");
+			RobotMap.driverstation.println(DriverStationLCD.Line.kUser2, 1, "Jag Drive left2");
+			RobotMap.driverstation.println(DriverStationLCD.Line.kUser3, 3, "in drivertrain");
+			RobotMap.driverstation.updateLCD();
+            
+		} 
+		try
+		{
 			 rightMotor2 = new CANJaguar (RobotMap.rightmotor2);
 		} catch (CANTimeoutException e)
 		{
 			e.printStackTrace();
 			RobotMap.driverstation = DriverStationLCD.getInstance();
 			RobotMap.driverstation.println(DriverStationLCD.Line.kMain6, 1, "Error initializing");
-			RobotMap.driverstation.println(DriverStationLCD.Line.kUser2, 1, "Jag in Drivetrain");
+			RobotMap.driverstation.println(DriverStationLCD.Line.kUser2, 1, "Jag right2");
+			RobotMap.driverstation.println(DriverStationLCD.Line.kUser3, 3, "in drivertrain");
 			RobotMap.driverstation.updateLCD();
             
 		} 
@@ -180,8 +217,44 @@ public class DriveTrain extends Subsystem
 		try
 		{
 			leftMotor1.setX(leftSpeed);
+		} catch (CANTimeoutException e)
+		{
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+			RobotMap.driverstation = DriverStationLCD.getInstance();			
+			RobotMap.driverstation.println(DriverStationLCD.Line.kMain6, 1, "Error setting");
+			RobotMap.driverstation.println(DriverStationLCD.Line.kUser2, 2, "Jag left 1");
+			RobotMap.driverstation.println(DriverStationLCD.Line.kUser3, 3, "in drivertrain");
+			RobotMap.driverstation.updateLCD();
+		} 
+		try
+		{
 			leftMotor2.setX(leftSpeed);
+		} catch (CANTimeoutException e)
+		{
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+			RobotMap.driverstation = DriverStationLCD.getInstance();			
+			RobotMap.driverstation.println(DriverStationLCD.Line.kMain6, 1, "Error setting");
+			RobotMap.driverstation.println(DriverStationLCD.Line.kUser2, 2, "Jag left 2");
+			RobotMap.driverstation.println(DriverStationLCD.Line.kUser3, 3, "in drivertrain");
+			RobotMap.driverstation.updateLCD();
+		} 
+		try
+		{
 			rightMotor1.setX(rightSpeed);
+		} catch (CANTimeoutException e)
+		{
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+			RobotMap.driverstation = DriverStationLCD.getInstance();			
+			RobotMap.driverstation.println(DriverStationLCD.Line.kMain6, 1, "Error setting");
+			RobotMap.driverstation.println(DriverStationLCD.Line.kUser2, 2, "Jag right 1");
+			RobotMap.driverstation.println(DriverStationLCD.Line.kUser3, 3, "in drivertrain");
+			RobotMap.driverstation.updateLCD();
+		} 
+		try
+		{
 			rightMotor2.setX(rightSpeed);
 		} catch (CANTimeoutException e)
 		{
@@ -189,7 +262,8 @@ public class DriveTrain extends Subsystem
 			e.printStackTrace();
 			RobotMap.driverstation = DriverStationLCD.getInstance();			
 			RobotMap.driverstation.println(DriverStationLCD.Line.kMain6, 1, "Error setting");
-			RobotMap.driverstation.println(DriverStationLCD.Line.kUser2, 2, "Jag in Drivetrain");
+			RobotMap.driverstation.println(DriverStationLCD.Line.kUser2, 2, "Jag right 2");
+			RobotMap.driverstation.println(DriverStationLCD.Line.kUser3, 3, "in drivertrain");
 			RobotMap.driverstation.updateLCD();
 		} 
 	}

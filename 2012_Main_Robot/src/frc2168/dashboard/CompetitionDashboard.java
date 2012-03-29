@@ -45,6 +45,26 @@ public class CompetitionDashboard extends CommandBase
 		SmartDashboard.putDouble("executionTime", hood.shooterWheelController.getExecutionTime());
 		SmartDashboard.putDouble("shooterSetPoint", hood.shooterWheelController.getSp());
 	
+		//drive shooter wheel
+		try
+		{
+
+	
+			//hood.shooterWheelController.setSp(SmartDashboard.getDouble("shooterSetPoint"));
+			
+			
+			//get shooter gains from dashboard
+			hood.shooterWheelController.setpGain(SmartDashboard.getDouble("P"));
+			hood.shooterWheelController.setiGain(SmartDashboard.getDouble("I"));
+			hood.shooterWheelController.setdGain(SmartDashboard.getDouble("D"));
+			
+		} catch (NetworkTableKeyNotDefined e)
+		{
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		
+		
 	}
 
 	
