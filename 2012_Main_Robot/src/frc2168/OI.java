@@ -10,6 +10,8 @@ import frc2168.advancedIO.JoystickAnalogButton;
 import frc2168.commands.BackFlapClose;
 import frc2168.commands.BackFlapOpen;
 import frc2168.commands.DriveElevatorConst;
+import frc2168.commands.PegLegDown;
+import frc2168.commands.PegLegUp;
 import frc2168.commands.ShooterWheelWithPot;
 import frc2168.commands.camera2_3;
 import frc2168.commands.fender2_3;
@@ -114,6 +116,10 @@ public class OI {
 		driveButtonLeftBumper.whenPressed(new ShiftGearsHighToLow());
 		driveButtonStart.whenPressed(new LowerBridge());
 		driveButtonStart.whenReleased(new RaiseBridge());
+		driveButtonReset.whenPressed(new PegLegDown());
+		driveButtonReset.whenReleased(new PegLegUp());
+		
+		
 		
 		//aux left axis = left DriveElevatorJoystick
 		//aux right axis = right ShooterWheelJoystick

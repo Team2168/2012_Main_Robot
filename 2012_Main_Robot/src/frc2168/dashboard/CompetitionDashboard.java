@@ -15,6 +15,7 @@ public class CompetitionDashboard extends CommandBase
         SmartDashboard.putData(hood);
         SmartDashboard.putData(bridgeArm);
         SmartDashboard.putData(elevatorFlap);
+        SmartDashboard.putData(pegleg);
         
 
 		
@@ -44,7 +45,12 @@ public class CompetitionDashboard extends CommandBase
 		SmartDashboard.putBoolean("enable", hood.shooterWheelController.isEnabled());
 		SmartDashboard.putDouble("executionTime", hood.shooterWheelController.getExecutionTime());
 		SmartDashboard.putDouble("shooterSetPoint", hood.shooterWheelController.getSp());
-	
+		
+		
+		SmartDashboard.putDouble("shooter Err", hood.shooterWheelController.getErr());
+		SmartDashboard.putDouble("shooter acceptErr", hood.shooterWheelController.getAcceptErrorDiff());
+		
+		
 		//drive shooter wheel
 		try
 		{

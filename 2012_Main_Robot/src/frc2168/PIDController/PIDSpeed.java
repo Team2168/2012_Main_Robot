@@ -4,6 +4,7 @@ import java.util.TimerTask;
 
 import edu.wpi.first.wpilibj.Encoder;
 import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;
+import frc2168.RobotMap;
 
 
 /**
@@ -723,7 +724,7 @@ public class PIDSpeed
 	
 	private void isFinished()
 	{
-		
+		//finish is based on verifying the voltage is constant
 		if (count==this.atSpeed.length)
 			count=0;
 		
@@ -734,7 +735,8 @@ public class PIDSpeed
 		for(int i=0,j=1; j<atSpeed.length; i++,j++)
 		{
 			if (Math.abs(atSpeed[j]) < Math.abs(atSpeed[i]+atSpeed[i]*percent) && Math.abs(atSpeed[j]) > Math.abs(atSpeed[i]-atSpeed[i]*percent))
-			 inRange++;
+			//if (Math.abs(atSpeed[j]) < Math.abs(atSpeed[i]+atSpeed[i]+RobotMap.shootErrForFinish) && Math.abs(atSpeed[j]) > Math.abs(atSpeed[i]-(atSpeed[i]-RobotMap.shootErrForFinish)))
+				inRange++;
 			else
 				inRange=0;
 		}

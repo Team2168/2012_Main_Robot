@@ -8,6 +8,7 @@ import frc2168.subsystems.ButtonBox;
 import frc2168.subsystems.DriveTrain;
 import frc2168.subsystems.Hood;
 import frc2168.subsystems.ElevatorWithFlap;
+import frc2168.subsystems.PegLeg;
 
 
 /**
@@ -27,6 +28,8 @@ public abstract class CommandBase extends Command {
     public static BridgeArm bridgeArm = new BridgeArm();
     public static ElevatorWithFlap elevatorFlap = new ElevatorWithFlap ();
     public static ButtonBox buttonBox = new ButtonBox();
+    public static PegLeg pegleg = new PegLeg();
+    
     
     public static void init() {
         // This MUST be here. If the OI creates Commands (which it very likely

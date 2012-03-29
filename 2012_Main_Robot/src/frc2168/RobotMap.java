@@ -46,6 +46,7 @@ public class RobotMap {
 	
 	//Relay 1-8
 	public static final int compressorRelay = 1; //Relay Port 1, Digital Card
+	public static final int PegLegRelay = 2; //Relay Port 2, Digital Card
 	
 	
 	///////////////////////Solenoid Card - Slot 3///////////////////////
@@ -158,10 +159,12 @@ public class RobotMap {
 	public static final int hoodAvgEncoderVal = 20;
 	
 	//hood controller steady state determination
-	public static final int hoodArraySize = 60;
-	public static final double hoodPercent = 0.05;
+	public static final int hoodArraySize = 30;
+	public static final double hoodPercent = 0.01;
 	
-	public static final double shooterError = 5; //inches per second error
+	public static final double shooterError = 0; //inches per second error
+	
+	
 	
 	//period to run PID loops
 	public static final long shooterPIDPeriod =40;//40ms loop
@@ -169,10 +172,14 @@ public class RobotMap {
 	//PID Gains for shooter wheel
 	//Bandwidth =
 	//Phase Margin = 
-	public static final double shooterP = 0.000974562908722711;
-	public static final double shooterI = 0.000108064641742337; 
-	public static final double shooterD = -0.000130778888124088;
+//	public static final double shooterP = 0.000974562908722711;
+//	public static final double shooterI = 0.000108064641742337; 
+//	public static final double shooterD = -0.000130778888124088;
+
 	
+	public static final double shooterP = 0.0;
+	public static final double shooterI = 0.000013126461742337; 
+	public static final double shooterD = -0.00130778888124088;
 
 	///////////////////////////////BRIDGE ARM/////////////////////////////////////
 	
