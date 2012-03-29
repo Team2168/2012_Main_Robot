@@ -20,20 +20,17 @@ public class side2_3 extends CommandBase {
 
 	}
 
-	protected void execute() {
+	protected void execute() 
+	{
 		// TODO Auto-generated method stub
-		if(oi.ioDigital1.get()){
-			if(oi.ioDigital10.get()){
+			if(!oi.auxButtonReset.get())
+			{
 				high.start();
 			}
-
-			else{
+			else
+			{
 				mid.start();
 			}
-		}
-		else{
-			end();
-		}
 	}
 
 	protected boolean isFinished() {

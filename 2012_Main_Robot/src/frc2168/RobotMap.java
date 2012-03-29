@@ -37,6 +37,12 @@ public class RobotMap {
 	//PWM 1-10
 	public static final int lift1Victor = 1; //PWM 1, Digital Card
 	public static final int lift2Victor = 2; //PWM 2, Digital Card
+	public static final int driveLeft1JagPWM = 3; //PWM 3, Digital Card
+	public static final int driveLeft2JagPWM = 4; //PWM 4, Digital Card
+	public static final int driveRight1JagPWM = 5; //PWM 5, Digital Card
+	public static final int driveRight2JagPWM = 6; //PWM 6, Digital Card
+	public static final int shooter1JagPWM = 7; //PWM 7, Digital Card
+	public static final int shooter2JagPWM = 8; //PWM 8, Digital Card
 	
 	//Relay 1-8
 	public static final int compressorRelay = 1; //Relay Port 1, Digital Card

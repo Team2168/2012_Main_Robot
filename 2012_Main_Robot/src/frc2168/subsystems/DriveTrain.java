@@ -5,6 +5,7 @@ import edu.wpi.first.wpilibj.CounterBase;
 import edu.wpi.first.wpilibj.DoubleSolenoid;
 import edu.wpi.first.wpilibj.DriverStationLCD;
 import edu.wpi.first.wpilibj.Encoder;
+import edu.wpi.first.wpilibj.Jaguar;
 import edu.wpi.first.wpilibj.can.CANTimeoutException;
 import edu.wpi.first.wpilibj.command.Subsystem;
 import frc2168.PIDController.PIDSpeed;
@@ -44,10 +45,10 @@ public class DriveTrain extends Subsystem
 	//////////////////////////////////////////////////////////////////////
 	// Declare all CAN Motors associated with the Drive Train
 	// We use two motors for each side of our drive train
-		CANJaguar leftMotor1;
-		CANJaguar rightMotor1;
-		CANJaguar leftMotor2;
-		CANJaguar rightMotor2;
+		Jaguar leftMotor1;
+		Jaguar rightMotor1;
+		Jaguar leftMotor2;
+		Jaguar rightMotor2;
 	
 	//////////////////////////////////////////////////////////////////////
 	//Declare Sensors
@@ -115,59 +116,13 @@ public class DriveTrain extends Subsystem
 		rightSpeedController.setSIZE(RobotMap.drivetrainArraySize);
 		rightSpeedController.setPercent(RobotMap.drivetrainPercent);
 		
-		// enable CAN Jag Motors using constant motor IDs specified in RobotMap
-		try
-		{
-			 leftMotor1 = new CANJaguar(RobotMap.leftmotor1);
-		} catch (CANTimeoutException e)
-		{
-			e.printStackTrace();
-			RobotMap.driverstation = DriverStationLCD.getInstance();
-			RobotMap.driverstation.println(DriverStationLCD.Line.kMain6, 1, "Error initializing");
-			RobotMap.driverstation.println(DriverStationLCD.Line.kUser2, 1, "Jag left 1");
-			RobotMap.driverstation.println(DriverStationLCD.Line.kUser3, 3, "in drivertrain");
-			RobotMap.driverstation.updateLCD();
-            
-		} 
-		try
-		{
-			 rightMotor1 = new CANJaguar(RobotMap.rightmotor1);
-		} catch (CANTimeoutException e)
-		{
-			e.printStackTrace();
-			RobotMap.driverstation = DriverStationLCD.getInstance();
-			RobotMap.driverstation.println(DriverStationLCD.Line.kMain6, 1, "Error initializing");
-			RobotMap.driverstation.println(DriverStationLCD.Line.kUser2, 1, "Jag right 1");
-			RobotMap.driverstation.println(DriverStationLCD.Line.kUser3, 3, "in drivertrain");
-			RobotMap.driverstation.updateLCD();
-            
-		} 
-		try
-		{
-			 leftMotor2 = new CANJaguar (RobotMap.leftmotor2);
-		} catch (CANTimeoutException e)
-		{
-			e.printStackTrace();
-			RobotMap.driverstation = DriverStationLCD.getInstance();
-			RobotMap.driverstation.println(DriverStationLCD.Line.kMain6, 1, "Error initializing");
-			RobotMap.driverstation.println(DriverStationLCD.Line.kUser2, 1, "Jag Drive left2");
-			RobotMap.driverstation.println(DriverStationLCD.Line.kUser3, 3, "in drivertrain");
-			RobotMap.driverstation.updateLCD();
-            
-		} 
-		try
-		{
-			 rightMotor2 = new CANJaguar (RobotMap.rightmotor2);
-		} catch (CANTimeoutException e)
-		{
-			e.printStackTrace();
-			RobotMap.driverstation = DriverStationLCD.getInstance();
-			RobotMap.driverstation.println(DriverStationLCD.Line.kMain6, 1, "Error initializing");
-			RobotMap.driverstation.println(DriverStationLCD.Line.kUser2, 1, "Jag right2");
-			RobotMap.driverstation.println(DriverStationLCD.Line.kUser3, 3, "in drivertrain");
-			RobotMap.driverstation.updateLCD();
-            
-		} 
+		// enable PWM Jag Motors using constant motor IDs specified in RobotMap
+	
+			 leftMotor1 = new Jaguar(RobotMap.driveLeft1JagPWM);
+			 rightMotor1 = new Jaguar(RobotMap.driveRight1JagPWM);
+			 leftMotor2 = new Jaguar (RobotMap.driveLeft2JagPWM);
+			 rightMotor2 = new Jaguar (RobotMap.driveRight2JagPWM);
+
 	
 	}
 
@@ -213,59 +168,16 @@ public class DriveTrain extends Subsystem
 			rightSpeed = -rightSpeed;
 		}
 		
-		// Driving CAN motors in Percent V Bus mode
-		try
-		{
-			leftMotor1.setX(leftSpeed);
-		} catch (CANTimeoutException e)
-		{
-			// TODO Auto-generated catch block
-			e.printStackTrace();
-			RobotMap.driverstation = DriverStationLCD.getInstance();			
-			RobotMap.driverstation.println(DriverStationLCD.Line.kMain6, 1, "Error setting");
-			RobotMap.driverstation.println(DriverStationLCD.Line.kUser2, 2, "Jag left 1");
-			RobotMap.driverstation.println(DriverStationLCD.Line.kUser3, 3, "in drivertrain");
-			RobotMap.driverstation.updateLCD();
-		} 
-		try
-		{
-			leftMotor2.setX(leftSpeed);
-		} catch (CANTimeoutException e)
-		{
-			// TODO Auto-generated catch block
-			e.printStackTrace();
-			RobotMap.driverstation = DriverStationLCD.getInstance();			
-			RobotMap.driverstation.println(DriverStationLCD.Line.kMain6, 1, "Error setting");
-			RobotMap.driverstation.println(DriverStationLCD.Line.kUser2, 2, "Jag left 2");
-			RobotMap.driverstation.println(DriverStationLCD.Line.kUser3, 3, "in drivertrain");
-			RobotMap.driverstation.updateLCD();
-		} 
-		try
-		{
-			rightMotor1.setX(rightSpeed);
-		} catch (CANTimeoutException e)
-		{
-			// TODO Auto-generated catch block
-			e.printStackTrace();
-			RobotMap.driverstation = DriverStationLCD.getInstance();			
-			RobotMap.driverstation.println(DriverStationLCD.Line.kMain6, 1, "Error setting");
-			RobotMap.driverstation.println(DriverStationLCD.Line.kUser2, 2, "Jag right 1");
-			RobotMap.driverstation.println(DriverStationLCD.Line.kUser3, 3, "in drivertrain");
-			RobotMap.driverstation.updateLCD();
-		} 
-		try
-		{
-			rightMotor2.setX(rightSpeed);
-		} catch (CANTimeoutException e)
-		{
-			// TODO Auto-generated catch block
-			e.printStackTrace();
-			RobotMap.driverstation = DriverStationLCD.getInstance();			
-			RobotMap.driverstation.println(DriverStationLCD.Line.kMain6, 1, "Error setting");
-			RobotMap.driverstation.println(DriverStationLCD.Line.kUser2, 2, "Jag right 2");
-			RobotMap.driverstation.println(DriverStationLCD.Line.kUser3, 3, "in drivertrain");
-			RobotMap.driverstation.updateLCD();
-		} 
+		// Driving PWM motors in Percent V Bus mode
+
+			leftMotor1.set(leftSpeed);
+
+			leftMotor2.set(leftSpeed);
+
+			rightMotor1.set(rightSpeed);
+
+			rightMotor2.set(rightSpeed);
+
 	}
 	
 	/**

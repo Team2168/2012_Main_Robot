@@ -117,13 +117,12 @@ public class OI {
 		
 		//aux left axis = left DriveElevatorJoystick
 		//aux right axis = right ShooterWheelJoystick
-		auxButtonA.whenPressed(new lowGoalFender());
-		auxButtonB.whenPressed(new midGoalFender());
-		auxButtonY.whenPressed(new highGoalFender());
+		auxButtonA.whenPressed(new key2_3());
+		auxButtonB.whenPressed(new side2_3());
+		auxButtonY.whenPressed(new fender2_3());
 		auxButtonX.whenPressed(new PID_ShooterPause());
 		
 		auxButtonStart.whenPressed(new shootSingleBall());
-		auxButtonReset.whenPressed(new LowerHood());
 		
 		auxButtonRightBumper.whenPressed(new BackFlapClose());
 		auxButtonLeftBumper.whenPressed(new BackFlapOpen());

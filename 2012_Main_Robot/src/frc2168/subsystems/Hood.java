@@ -12,6 +12,7 @@ import edu.wpi.first.wpilibj.DoubleSolenoid;
 import edu.wpi.first.wpilibj.DriverStation;
 import edu.wpi.first.wpilibj.DriverStationLCD;
 import edu.wpi.first.wpilibj.Encoder;
+import edu.wpi.first.wpilibj.Jaguar;
 import edu.wpi.first.wpilibj.Solenoid;
 import edu.wpi.first.wpilibj.Victor;
 import edu.wpi.first.wpilibj.can.CANTimeoutException;
@@ -24,8 +25,8 @@ public class Hood extends Subsystem {
 	//////////////////////////////////////////////////////////////////////
 	// Declare all CAN Motors associated with the Drive Train
 	// We use two motors to drive the shooter wheel
-	CANJaguar shooterWheel;
-	CANJaguar shooterWheel2;
+	Jaguar shooterWheel;
+	Jaguar shooterWheel2;
 	
 	//////////////////////////////////////////////////////////////////////
 	//Declare Solenoid for hood
@@ -48,18 +49,11 @@ public class Hood extends Subsystem {
 		hoodActuator = new DoubleSolenoid(RobotMap.hoodSolenoidPortFwd,RobotMap.hoodSolenoidPortReverse); 
 		
 		
-		//instantiate CAN motors
-		try{
-			shooterWheel = new CANJaguar(RobotMap.shooterWheelCANID);
-			shooterWheel2 = new CANJaguar(RobotMap.shooterWheel2CANID);
-		}
-		catch(CANTimeoutException e){
-			e.printStackTrace();
-			RobotMap.driverstation = DriverStationLCD.getInstance();
-			RobotMap.driverstation.println(DriverStationLCD.Line.kMain6, 1, "Error initializing");
-			RobotMap.driverstation.println(DriverStationLCD.Line.kUser2, 1, "Jag in Hood");
-			RobotMap.driverstation.updateLCD();
-		}
+		//instantiate PWM motors
+
+			shooterWheel = new Jaguar(RobotMap.shooter1JagPWM);
+			shooterWheel2 = new Jaguar(RobotMap.shooter2JagPWM);
+		
 		
 		//instantiate encoder in 1x mode
 		shooterWheelEncoder = new AverageEncoder(RobotMap.shooterWheelEncoderID_A, RobotMap.shooterWheelEncoderID_B,false,CounterBase.EncodingType.k1X, RobotMap.hoodAvgEncoderVal);
@@ -83,19 +77,11 @@ public class Hood extends Subsystem {
 	}
 	
 	public void spinMotor(double speed){
-		try {
-			shooterWheel.setX(speed);
-			shooterWheel2.setX(speed);
-		} catch (CANTimeoutException e) {
-			e.printStackTrace();
-			RobotMap.driverstation = DriverStationLCD.getInstance();
-			RobotMap.driverstation.println(DriverStationLCD.Line.kMain6, 1, "Error setting");
-			RobotMap.driverstation.println(DriverStationLCD.Line.kUser2, 2, "Jag in Hood");
-			RobotMap.driverstation.updateLCD();
-		}
-	//System.out.println(speed);
+	
+			shooterWheel.set(speed);
+			shooterWheel2.set(speed);
 		
-
+	//System.out.println(speed);
 	}
 	
 	public void lowerHood(){
