@@ -65,11 +65,14 @@ public class CommandBasedRobot extends IterativeRobot {
         dashboard = new CompetitionDashboard();
         //dashboard = new ShooterWheelPIDDashboard();
         
+        
+        
+        
         //shoot 2 points auto
-    	//autonomousCommand = new Auto_MidGoalFromKey();
+    	autonomousCommand = new Auto_MidGoalFromKey();
         
         //shoot 3 points auto
-        autonomousCommand = new KeyToTopAutoCommand();
+        //autonomousCommand = new KeyToTopAutoCommand();
     }
 
     public void autonomousInit() {

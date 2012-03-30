@@ -32,7 +32,8 @@ public class RobotMap {
 	public static final int rightDriveTrainEncoder_B=4; //DIO 4, Digital Card
 	public static final int shooterWheelEncoderID_A = 5; //DIO 5, Digital Card
 	public static final int shooterWheelEncoderID_B = 6; //DIO 6, Digital Card
-	public static final int compressorSwitch = 7; //DIO 7, Digital Card
+	public static final int compressorSwitch = 7;		//DIO 7, Digital Card
+	public static final int autoSwitch = 8;				//DIO 8, Digital Card
 	
 	//PWM 1-10
 	public static final int lift1Victor = 1; //PWM 1, Digital Card
@@ -159,8 +160,11 @@ public class RobotMap {
 	public static final int hoodAvgEncoderVal = 20;
 	
 	//hood controller steady state determination
-	public static final int hoodArraySize = 30;
-	public static final double hoodPercent = 0.01;
+//	public static final int hoodArraySize = 50;
+//	public static final double hoodPercent = 0.015;
+
+	public static final int hoodArraySize = 60;
+	public static final double hoodPercent = 0.05;
 	
 	public static final double shooterError = 0; //inches per second error
 	
@@ -172,14 +176,14 @@ public class RobotMap {
 	//PID Gains for shooter wheel
 	//Bandwidth =
 	//Phase Margin = 
-//	public static final double shooterP = 0.000974562908722711;
-//	public static final double shooterI = 0.000108064641742337; 
-//	public static final double shooterD = -0.000130778888124088;
+	public static final double shooterP = 0.000974562908722711;
+	public static final double shooterI = 0.000108064641742337; 
+	public static final double shooterD = -0.000130778888124088;
 
 	
-	public static final double shooterP = 0.0;
-	public static final double shooterI = 0.000013126461742337; 
-	public static final double shooterD = -0.00130778888124088;
+//	public static final double shooterP = 0.0;
+//	public static final double shooterI = 0.000013126461742337; 
+//	public static final double shooterD = -0.00130778888124088;
 
 	///////////////////////////////BRIDGE ARM/////////////////////////////////////
 	
