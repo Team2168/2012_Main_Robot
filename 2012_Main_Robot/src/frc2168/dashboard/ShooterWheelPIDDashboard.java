@@ -17,6 +17,7 @@ import frc2168.commands.RaiseBridge;
 import frc2168.commands.RaiseHood;
 import frc2168.commands.ShooterWheelJoystick;
 import frc2168.commands.PID_DriveShooter;
+import frc2168.commands.shootSingleBall;
 
 public class ShooterWheelPIDDashboard extends CommandBase
 {
@@ -41,7 +42,7 @@ public class ShooterWheelPIDDashboard extends CommandBase
 		//create virtual button to hold
 		InternalButton shootBallButton = new InternalButton();
 		SmartDashboard.putData("shootBall",shootBallButton);
-		//shootBallButton.whenPressed(new PIDShootBall());
+		shootBallButton.whenPressed(new shootSingleBall());
 
 		
 		//show the scheduler
@@ -81,14 +82,14 @@ public class ShooterWheelPIDDashboard extends CommandBase
 		SmartDashboard.putBoolean("atSpeed", hood.shooterWheelController.atSpeed());
 		SmartDashboard.putBoolean("enable", hood.shooterWheelController.isEnabled());
 		SmartDashboard.putDouble("executionTime", hood.shooterWheelController.getExecutionTime());
-		SmartDashboard.putDouble("shooterSetPoint", hood.shooterWheelController.getSp());
+		//SmartDashboard.putDouble("shooterSetPoint", hood.shooterWheelController.getSp());
 		
 		//drive shooter wheel
 		try
 		{
 
 	
-			//hood.shooterWheelController.setSp(SmartDashboard.getDouble("shooterSetPoint"));
+			hood.shooterWheelController.setSp(SmartDashboard.getDouble("shooterSetPoint"));
 			
 			
 			//get shooter gains from dashboard

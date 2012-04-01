@@ -163,8 +163,8 @@ public class RobotMap {
 //	public static final int hoodArraySize = 50;
 //	public static final double hoodPercent = 0.015;
 
-	public static final int hoodArraySize = 60;
-	public static final double hoodPercent = 0.05;
+	public static final int hoodArraySize = 10;
+	public static final double hoodPercent = 0.03;
 	
 	public static final double shooterError = 0; //inches per second error
 	
@@ -176,14 +176,29 @@ public class RobotMap {
 	//PID Gains for shooter wheel
 	//Bandwidth =
 	//Phase Margin = 
-	public static final double shooterP = 0.000974562908722711;
-	public static final double shooterI = 0.000108064641742337; 
-	public static final double shooterD = -0.000130778888124088;
+//	public static final double shooterP = 0.000974562908722711;
+//	public static final double shooterI = 0.000108064641742337; 
+//	public static final double shooterD = -0.000130778888124088;
 
 	
 //	public static final double shooterP = 0.0;
 //	public static final double shooterI = 0.000013126461742337; 
 //	public static final double shooterD = -0.00130778888124088;
+
+	
+	
+//	public static final double shooterP = 0.002;
+//	public static final double shooterI = 0.0001712646174233; 
+//	public static final double shooterD = 0.0030778888124088;
+
+	
+	
+	public static final double shooterP = 0.002;
+	public static final double shooterI = 0.0001412646174233; 
+	public static final double shooterD = 0.0074778888124088;
+	
+	
+	
 
 	///////////////////////////////BRIDGE ARM/////////////////////////////////////
 	

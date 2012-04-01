@@ -2,6 +2,7 @@ package frc2168.dashboard;
 
 import edu.wpi.first.wpilibj.networktables.NetworkTableKeyNotDefined;
 import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;
+import frc2168.CommandBasedRobot;
 import frc2168.RobotMap;
 import frc2168.commands.CommandBase;
 
@@ -47,28 +48,29 @@ public class CompetitionDashboard extends CommandBase
 		SmartDashboard.putDouble("shooterSetPoint", hood.shooterWheelController.getSp());
 		
 		
-//		SmartDashboard.putDouble("shooter Err", hood.shooterWheelController.getErr());
-//		SmartDashboard.putDouble("shooter acceptErr", hood.shooterWheelController.getAcceptErrorDiff());
-//		
-//		
-//		//drive shooter wheel
-//		try
-//		{
-//
-//	
-//			//hood.shooterWheelController.setSp(SmartDashboard.getDouble("shooterSetPoint"));
-//			
-//			
-//			//get shooter gains from dashboard
-//			hood.shooterWheelController.setpGain(SmartDashboard.getDouble("P"));
-//			hood.shooterWheelController.setiGain(SmartDashboard.getDouble("I"));
-//			hood.shooterWheelController.setdGain(SmartDashboard.getDouble("D"));
-//			
-//		} catch (NetworkTableKeyNotDefined e)
-//		{
-//			// TODO Auto-generated catch block
-//			e.printStackTrace();
-//		}
+		
+		SmartDashboard.putDouble("shooter Err", hood.shooterWheelController.getErr());
+		SmartDashboard.putDouble("shooter acceptErr", hood.shooterWheelController.getAcceptErrorDiff());
+		
+		
+		//drive shooter wheel
+		try
+		{
+
+	
+			//hood.shooterWheelController.setSp(SmartDashboard.getDouble("shooterSetPoint"));
+			
+			
+			//get shooter gains from dashboard
+			hood.shooterWheelController.setpGain(SmartDashboard.getDouble("P"));
+			hood.shooterWheelController.setiGain(SmartDashboard.getDouble("I"));
+			hood.shooterWheelController.setdGain(SmartDashboard.getDouble("D"));
+			
+		} catch (NetworkTableKeyNotDefined e)
+		{
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
 		
 		
 	}

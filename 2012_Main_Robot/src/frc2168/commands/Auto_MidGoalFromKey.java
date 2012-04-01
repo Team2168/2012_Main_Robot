@@ -10,15 +10,15 @@ public class Auto_MidGoalFromKey extends CommandGroup
 		addParallel(new midGoalKey());
 
 		//wait for 5 seconds then shoot first ball
-		addSequential(new sleep(),4);
+		addSequential(new sleep(),5);
 		addSequential(new shootSingleBall());
 		
 		//wait for 5 seconds then shoot second ball
-		addSequential(new sleep(),4);
+		addSequential(new sleep(),5);
 		addSequential(new shootSingleBall());		
 		
 		//wait 1 sec then stop shooter wheel
-		addSequential(new sleep(),1);
+		//addSequential(new sleep(),1);
 		addSequential(new PID_ShooterPause());
 			
 			

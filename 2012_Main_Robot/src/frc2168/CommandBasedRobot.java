@@ -63,10 +63,10 @@ public class CommandBasedRobot extends IterativeRobot {
 //        TeleopDriveTrainDefault = new DriveWithJoystick();
 //        TeleopDriveElevator = new DriveElevatorJoystick();
         dashboard = new CompetitionDashboard();
-        //dashboard = new ShooterWheelPIDDashboard();
+       // dashboard = new ShooterWheelPIDDashboard();
         
         
-        
+         
         
         //shoot 2 points auto
     	autonomousCommand = new Auto_MidGoalFromKey();
@@ -76,7 +76,7 @@ public class CommandBasedRobot extends IterativeRobot {
     }
 
     public void autonomousInit() {
-        // schedule the autonomous command (example)
+        // schedule the autonomous command (example).
     	
     	
     	autonomousCommand.start();

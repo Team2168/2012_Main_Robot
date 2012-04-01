@@ -553,7 +553,7 @@ public class PIDSpeed
 		this.isFinished=false;
 
 		//zero all other parameters
-		this.acceptErrorDiff=0;
+		//this.acceptErrorDiff=0;
 		this.clock=0;
 		this.co=0;
 		this.coNotSaturated=0;
@@ -734,7 +734,7 @@ public class PIDSpeed
 		int inRange=0;
 		for(int i=0,j=1; j<atSpeed.length; i++,j++)
 		{
-			if (Math.abs(atSpeed[j]) < Math.abs(atSpeed[i]+atSpeed[i]*percent) && Math.abs(atSpeed[j]) > Math.abs(atSpeed[i]-atSpeed[i]*percent))
+			if ((this.cp < this.sp+10) && (this.cp > this.sp-10))
 			//if (Math.abs(atSpeed[j]) < Math.abs(atSpeed[i]+atSpeed[i]+RobotMap.shootErrForFinish) && Math.abs(atSpeed[j]) > Math.abs(atSpeed[i]-(atSpeed[i]-RobotMap.shootErrForFinish)))
 				inRange++;
 			else

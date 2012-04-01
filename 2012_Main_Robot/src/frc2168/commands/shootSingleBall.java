@@ -34,6 +34,9 @@ public class shootSingleBall extends CommandGroup
 	addSequential(new PID_ShooterAtSpeed());
 
 	
+	//printSpeed
+	addSequential(new PrintSpeed());
+	
 	//shoot ball
 	addSequential(new DriveLiftUntilNoBall());
 

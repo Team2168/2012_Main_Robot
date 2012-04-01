@@ -30,7 +30,7 @@ public class PIDShootBallForAuto extends CommandGroup
 		
 		
 		//add delay
-		addSequential(new sleep(),5);
+		addSequential(new sleep(),4);
 		
 		//shoot ball
 		addSequential(new shootSingleBall());
