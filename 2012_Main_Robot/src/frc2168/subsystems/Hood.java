@@ -1,5 +1,6 @@
 package frc2168.subsystems;
 
+import frc2168.CommandBasedRobot;
 import frc2168.RobotMap;
 import frc2168.PIDController.AverageEncoder;
 import frc2168.PIDController.PIDSpeed;
@@ -25,8 +26,8 @@ public class Hood extends Subsystem {
 	//////////////////////////////////////////////////////////////////////
 	// Declare all CAN Motors associated with the Drive Train
 	// We use two motors to drive the shooter wheel
-	Jaguar shooterWheel;
-	Jaguar shooterWheel2;
+	CANJaguar shooterWheel;
+	CANJaguar shooterWheel2;
 	
 	//////////////////////////////////////////////////////////////////////
 	//Declare Solenoid for hood
@@ -41,6 +42,9 @@ public class Hood extends Subsystem {
 	//PID Controllers
 	public PIDSpeed shooterWheelController;
 	
+	//File Line Counter
+	int count =0;
+	
 	
 	
 	public Hood(){
@@ -49,11 +53,34 @@ public class Hood extends Subsystem {
 		hoodActuator = new DoubleSolenoid(RobotMap.hoodSolenoidPortFwd,RobotMap.hoodSolenoidPortReverse); 
 		
 		
+		try
+		{
+			shooterWheel = new CANJaguar(RobotMap.shooterWheelCANID);
+		} catch (CANTimeoutException e)
+		{
+			System.out.println("Error Initializing Shooter Jag");
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		try
+		{
+			shooterWheel2 = new CANJaguar(RobotMap.shooterWheel2CANID);
+		} catch (CANTimeoutException e)
+		{
+			System.out.println("Error Initializing Shooter Jag");
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+	
+		
+		
 		//instantiate PWM motors
 
-			shooterWheel = new Jaguar(RobotMap.shooter1JagPWM);
-			shooterWheel2 = new Jaguar(RobotMap.shooter2JagPWM);
+//			shooterWheel = new Jaguar(RobotMap.shooter1JagPWM);
+//			shooterWheel2 = new Jaguar(RobotMap.shooter2JagPWM);
+//		
 		
+
 		
 		//instantiate encoder in 1x mode
 		shooterWheelEncoder = new AverageEncoder(RobotMap.shooterWheelEncoderID_A, RobotMap.shooterWheelEncoderID_B,false,CounterBase.EncodingType.k1X, RobotMap.hoodAvgEncoderVal);
@@ -72,14 +99,27 @@ public class Hood extends Subsystem {
 	}
 	
 	protected void initDefaultCommand() {
-		
+		setDefaultCommand(new ShooterWheelJoystick());
 	
 	}
 	
 	public void spinMotor(double speed){
 	
-			shooterWheel.set(speed);
-			shooterWheel2.set(speed);
+			count++;
+			try
+			{
+				shooterWheel.setX(speed);
+				shooterWheel2.setX(speed);
+				CommandBasedRobot.out.println(count + "\t" + System.currentTimeMillis() + "\t" + shooterWheel.getOutputVoltage() + "\t" + shooterWheel2.getOutputVoltage() + "\t" + shooterWheel.getOutputCurrent() + "\t" + shooterWheel2.getOutputCurrent() + "\t" + shooterWheelEncoder.getRate());
+			} catch (CANTimeoutException e)
+			{
+				
+				System.out.println("error setting jag");
+				// TODO Auto-generated catch block
+				e.printStackTrace();
+			}
+			
+			
 		
 	//System.out.println(speed);
 	}

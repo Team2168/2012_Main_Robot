@@ -10,6 +10,17 @@ package frc2168;
 /**
  * Working Command Base Robot Code Template with CAN Drive
  */
+import java.io.DataOutputStream;
+import java.io.OutputStream;
+import java.io.OutputStreamWriter;
+import java.io.PrintStream;
+import java.io.Writer;
+
+import javax.microedition.io.Connector;
+
+import com.sun.squawk.io.BufferedWriter;
+import com.sun.squawk.microedition.io.FileConnection;
+
 import edu.wpi.first.wpilibj.Compressor;
 import edu.wpi.first.wpilibj.IterativeRobot;
 import edu.wpi.first.wpilibj.command.Command;
@@ -37,6 +48,10 @@ public class CommandBasedRobot extends IterativeRobot {
     Command dashboard;
     Command autonomousCommand;
     Command fire;
+    
+	public static PrintStream out;
+	public DataOutputStream theFile;
+	public FileConnection fc;
 
     /**
      * This function is run when the robot is first started up and should be
@@ -81,6 +96,7 @@ public class CommandBasedRobot extends IterativeRobot {
     	
     	autonomousCommand.start();
         dashboard.start();
+        
     }
 
     /**
@@ -102,6 +118,22 @@ public class CommandBasedRobot extends IterativeRobot {
     	//TeleopDriveTrainDefault.start();
     	//TeleopDriveElevator.start();
     	dashboard.start();
+    	
+
+    	
+    	try{
+    		fc= (FileConnection)Connector.open("file:///"+System.currentTimeMillis()+"_PIDoutput.txt", Connector.WRITE);
+    		
+    		fc.create();
+    		theFile = fc.openDataOutputStream();
+    		out = new PrintStream(theFile);
+    	} catch (Exception e){
+    	
+    	}
+    	
+    	
+    	
+    	out.println("count" + "\t" + "time(milsec)" + "\t" + "shooterWheel1Voltage" + "\t" + "shooterWheel2Voltage" +"\t" + "shooterWheel1Current"+ "\t" + "shooterWheel2Current" + "\t" + "encoderRate(in/sec)");
     }
 
     /**

@@ -22,7 +22,7 @@ public class ElevatorWithFlap extends Subsystem {
 		lift2 = new Victor(RobotMap.lift2Victor);
 		backFlap = new DoubleSolenoid(RobotMap.backFlapSolenoidClose , RobotMap.backFlapSolenoidOpen);
 		ballDetector = new AnalogChannel(RobotMap.ballDetector);
-		ballDetectorAvg = new nPointAveragor(3);  //average the ball detector values, window size=3
+		ballDetectorAvg = new nPointAveragor(1);  //average the ball detector values, window size=3
 		
 		//preload the averager w/ data
 		ballDetectorAvg.putData(ballDetector.getVoltage());

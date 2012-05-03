@@ -198,7 +198,6 @@ public class RobotMap {
 	public static final double shooterD = 0.0074778888124088;
 	
 	
-	
 
 	///////////////////////////////BRIDGE ARM/////////////////////////////////////
 	
@@ -209,7 +208,7 @@ public class RobotMap {
 	public static final double ballPresentVoltage = 1.6;
 	
 	//Constant to drive elevator
-	public static final double liftVoltage = -0.20;
+	public static final double liftVoltage = -0.65;
 
 	////////////////////////////////////////////////////////////////////////////
 	
