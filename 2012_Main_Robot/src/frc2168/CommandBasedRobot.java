@@ -36,6 +36,7 @@ public class CommandBasedRobot extends IterativeRobot {
     Command dashboard;
     Command autonomousCommand;
     Command fire;
+    Command ballLight;
 
     /**
      * This function is run when the robot is first started up and should be
@@ -62,6 +63,7 @@ public class CommandBasedRobot extends IterativeRobot {
         TeleopDriveTrainDefault = new DriveWithJoystick();
         TeleopDriveElevator = new DriveElevatorJoystick();
         dashboard = new ShooterWheelPIDDashboard();
+        ballLight = new LightIfBall();
 
     	
     }
@@ -70,6 +72,7 @@ public class CommandBasedRobot extends IterativeRobot {
         // schedule the autonomous command (example)
         autonomousCommand.start();
         dashboard.start();
+        ballLight.start();
     }
 
     /**
@@ -91,6 +94,7 @@ public class CommandBasedRobot extends IterativeRobot {
     	TeleopDriveTrainDefault.start();
     	TeleopDriveElevator.start();
     	dashboard.start();
+    	ballLight.start();
     }
 
     /**

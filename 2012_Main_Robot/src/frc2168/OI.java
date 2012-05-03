@@ -1,5 +1,9 @@
 package frc2168;
 
+import edu.wpi.first.wpilibj.AnalogChannel;
+import edu.wpi.first.wpilibj.DigitalInput;
+import edu.wpi.first.wpilibj.DigitalModule;
+import edu.wpi.first.wpilibj.DigitalOutput;
 import edu.wpi.first.wpilibj.Joystick;
 import edu.wpi.first.wpilibj.buttons.Button;
 import edu.wpi.first.wpilibj.buttons.DigitalIOButton;
@@ -115,7 +119,6 @@ public class OI {
 		
 		auxButtonRightBumper.whenPressed(new BackFlapClose());
 		auxButtonLeftBumper.whenPressed(new BackFlapOpen());
-		
 		
 
 		
