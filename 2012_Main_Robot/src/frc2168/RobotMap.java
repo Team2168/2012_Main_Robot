@@ -23,6 +23,7 @@ public class RobotMap {
 	///////////////////////Analog Card - Slot 1////////////////////////
 	//Analog IO 1-8
 	public static final int ballDetector = 1; //AIO 1, Analog Card
+	public static final int ballLight = 2; //AIO 2, Analog Card
 	
 	///////////////////////Digital Card - Slot 2///////////////////////
 	//Digital IO 1-14
@@ -48,6 +49,7 @@ public class RobotMap {
 	//Relay 1-8
 	public static final int compressorRelay = 1; //Relay Port 1, Digital Card
 	public static final int PegLegRelay = 2; //Relay Port 2, Digital Card
+	public static final int backLight = 3; //Relay Port 1, Digital Card
 	
 	
 	///////////////////////Solenoid Card - Slot 3///////////////////////

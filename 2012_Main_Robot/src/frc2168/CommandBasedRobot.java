@@ -48,6 +48,7 @@ public class CommandBasedRobot extends IterativeRobot {
     Command dashboard;
     Command autonomousCommand;
     Command fire;
+    Command ballLight;
     
 	public static PrintStream out;
 	public DataOutputStream theFile;
@@ -88,6 +89,8 @@ public class CommandBasedRobot extends IterativeRobot {
         
         //shoot 3 points auto
         //autonomousCommand = new KeyToTopAutoCommand();
+    	
+    	ballLight = new LightIfBall();
     }
 
     public void autonomousInit() {
@@ -96,6 +99,7 @@ public class CommandBasedRobot extends IterativeRobot {
     	
     	autonomousCommand.start();
         dashboard.start();
+        ballLight.start();
         
     }
 
@@ -119,6 +123,7 @@ public class CommandBasedRobot extends IterativeRobot {
     	//TeleopDriveElevator.start();
     	dashboard.start();
     	
+    	ballLight.start();
 
     	
     	try{
