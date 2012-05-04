@@ -14,7 +14,7 @@ public class LightIfBall extends Command {
 	int prevState; 
 	
 	public LightIfBall(){
-		System.out.println("LightIfBall Class Started");
+		//System.out.println("LightIfBall Class Started");
 	}
 
 	protected void initialize() {
@@ -28,11 +28,11 @@ public class LightIfBall extends Command {
 		if(ballLight.getVoltage() >= RobotMap.ballPresentVoltage
 				|| prevState<LIGHT_CYCLES && prevState>0){
 			backLight.set(Relay.Value.kForward);
-			System.out.println("Set kForward");
+			//System.out.println("Set kForward");
 			prevState--;
 		} else {
 			backLight.set(Relay.Value.kOff);
-			System.out.println("Set kOff");
+			//System.out.println("Set kOff");
 			prevState=LIGHT_CYCLES;
 		}
 		

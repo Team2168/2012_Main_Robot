@@ -210,7 +210,7 @@ public class RobotMap {
 	public static final double ballPresentVoltage = 1.6;
 	
 	//Constant to drive elevator
-	public static final double liftVoltage = -0.65;
+	public static final double liftVoltage = -0.50;
 
 	////////////////////////////////////////////////////////////////////////////
 	
