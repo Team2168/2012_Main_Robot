@@ -140,12 +140,12 @@ public class RobotMap {
 	public static final double HIGH_GOAL_KEY = 850.0;
 	public static final double MIDDLE_GOAL_KEY = 700;		//robot should be places with 2nd drivetrain from back on key line 
 	
-	public static final double MIDDLE_GOAL_SIDE = 550.0; //hood down   550
-	public static final double HIGH_GOAL_SIDE = 800.0; //hood down     730
+	public static final double MIDDLE_GOAL_SIDE = 520.0; //hood down   550
+	public static final double HIGH_GOAL_SIDE = 720.0; //hood down     730
 
 	public static final double LOW_GOAL_FORWARD = 430.0;
 	public static final double MIDDLE_GOAL_FORWARD = 540.0; //hood up
-	public static final double HIGH_GOAL_FORWARD = 650.0; //hood down
+	public static final double HIGH_GOAL_FORWARD = 720.0; //hood down
 	
 	
 	//Hood Wheel Radius in inches
