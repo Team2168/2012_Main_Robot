@@ -23,7 +23,8 @@ public class DriveLiftUntilNoBall extends CommandBase {
 		liftVoltage = RobotMap.liftVoltage;
 		
 		//Before doing anything, figure out if a ball is present
-		if(elevatorFlap.getBallDetector() > ballPresentVoltage){
+		if(elevatorFlap.getBallDetectorLower() > ballPresentVoltage
+				|| elevatorFlap.getBallDetectorUpper() > ballPresentVoltage){
 			ball = true;
 		} else {
 			ball = false;
@@ -34,16 +35,18 @@ public class DriveLiftUntilNoBall extends CommandBase {
 		//SmartDashboard.putData("scheduler", Scheduler.getInstance());
 	}
 
-	double volt;
+	double volt1, volt2;
 	protected void execute() {
-		volt = elevatorFlap.getBallDetector();
+		volt1 = elevatorFlap.getBallDetectorUpper();
+		volt2 = elevatorFlap.getBallDetectorLower();
 		//System.out.println("xxx " + volt);
 		
-		if(volt >= ballPresentVoltage){	//if a ball is present
-			elevatorFlap.setBallElevatorSpeed(liftVoltage);			//run the lift to get rid of ball
+		if(volt1 >= ballPresentVoltage || 
+				volt2 >= ballPresentVoltage){				//if a ball is present
+			elevatorFlap.setBallElevatorSpeed(liftVoltage);	//run the lift to get rid of ball
 			ball = true;
-		} else{												//if a ball isn't present
-			elevatorFlap.setBallElevatorSpeed(0);	//drive up
+		} else{										//if a ball isn't present
+			elevatorFlap.setBallElevatorSpeed(0);	//stop driving up
 			ball = false;
 		}
 	}

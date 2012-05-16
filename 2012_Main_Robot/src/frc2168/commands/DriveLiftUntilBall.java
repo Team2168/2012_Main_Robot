@@ -28,7 +28,8 @@ public class DriveLiftUntilBall extends CommandBase {
 		liftVoltage = RobotMap.liftVoltage;
 		
 		//Before doing anything, figure out if a ball is present
-		if(elevatorFlap.getBallDetector() > ballPresentVoltage){
+		if(elevatorFlap.getBallDetectorUpper() > ballPresentVoltage
+				|| elevatorFlap.getBallDetectorLower() > ballPresentVoltage){
 			ball = true;
 		} else {
 			ball = false;
@@ -38,7 +39,8 @@ public class DriveLiftUntilBall extends CommandBase {
 	protected void initialize() {
 		//SmartDashboard.putData("scheduler", Scheduler.getInstance());
 	}
-	double volt;
+	double volt; //Upper Ultrasonic Sensor
+	double volt2; //Lower Ultrasonic Sensor
 	protected void execute() {
 		//Stop lift at one ball
 		//averager.putData(elevatorFlap.getBallDetector());
@@ -46,10 +48,11 @@ public class DriveLiftUntilBall extends CommandBase {
 		//Print Debug distance voltage data
 		//DriverStationLCD.getInstance().println(DriverStationLCD.Line.kMain6, 1, "BallDist = " + Double.toString(elevatorFlap.getBallDetector()));
 		//DriverStationLCD.getInstance().updateLCD();
-		volt = elevatorFlap.getBallDetector();
+		volt = elevatorFlap.getBallDetectorUpper();
+		volt2 = elevatorFlap.getBallDetectorLower();
 		//System.out.println(volt);
 		
-		if(volt >= ballPresentVoltage){	//if a ball is present
+		if(volt >= ballPresentVoltage || volt2 >= ballPresentVoltage){	//if a ball is present at either sensor
 			elevatorFlap.setBallElevatorSpeed(0);			//stop the lift
 			ball = true;
 		} else{												//if a ball isn't present
