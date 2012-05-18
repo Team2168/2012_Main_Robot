@@ -24,6 +24,9 @@ public class CompetitionDashboard extends CommandBase
 		SmartDashboard.putDouble("P", RobotMap.shooterP);
 		SmartDashboard.putDouble("I", RobotMap.shooterI);
 		SmartDashboard.putDouble("D", RobotMap.shooterD);
+		
+		//add clock
+		SmartDashboard.putString("compTime", "");
 	
 		
 	}
@@ -56,10 +59,10 @@ public class CompetitionDashboard extends CommandBase
 		//drive shooter wheel
 		try
 		{
-
-	
-			//hood.shooterWheelController.setSp(SmartDashboard.getDouble("shooterSetPoint"));
 			
+		    
+			//hood.shooterWheelController.setSp(SmartDashboard.getDouble("shooterSetPoint"));
+			//System.out.println(SmartDashboard.getString("compTime"));
 			
 			//get shooter gains from dashboard
 			hood.shooterWheelController.setpGain(SmartDashboard.getDouble("P"));

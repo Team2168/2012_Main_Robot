@@ -26,8 +26,8 @@ public class Hood extends Subsystem {
 	//////////////////////////////////////////////////////////////////////
 	// Declare all CAN Motors associated with the Drive Train
 	// We use two motors to drive the shooter wheel
-	CANJaguar shooterWheel;
-	CANJaguar shooterWheel2;
+	Jaguar shooterWheel;
+	Jaguar shooterWheel2;
 	
 	//////////////////////////////////////////////////////////////////////
 	//Declare Solenoid for hood
@@ -53,31 +53,31 @@ public class Hood extends Subsystem {
 		hoodActuator = new DoubleSolenoid(RobotMap.hoodSolenoidPortFwd,RobotMap.hoodSolenoidPortReverse); 
 		
 		
-		try
-		{
-			shooterWheel = new CANJaguar(RobotMap.shooterWheelCANID);
-		} catch (CANTimeoutException e)
-		{
-			System.out.println("Error Initializing Shooter Jag");
-			// TODO Auto-generated catch block
-			e.printStackTrace();
-		}
-		try
-		{
-			shooterWheel2 = new CANJaguar(RobotMap.shooterWheel2CANID);
-		} catch (CANTimeoutException e)
-		{
-			System.out.println("Error Initializing Shooter Jag");
-			// TODO Auto-generated catch block
-			e.printStackTrace();
-		}
+//		try
+//		{
+//			shooterWheel = new CANJaguar(RobotMap.shooterWheelCANID);
+//		} catch (CANTimeoutException e)
+//		{
+//			System.out.println("Error Initializing Shooter Jag");
+//			// TODO Auto-generated catch block
+//			e.printStackTrace();
+//		}
+//		try
+//		{
+//			shooterWheel2 = new CANJaguar(RobotMap.shooterWheel2CANID);
+//		} catch (CANTimeoutException e)
+//		{
+//			System.out.println("Error Initializing Shooter Jag");
+//			// TODO Auto-generated catch block
+//			e.printStackTrace();
+//		}
 	
 		
 		
 		//instantiate PWM motors
 
-//			shooterWheel = new Jaguar(RobotMap.shooter1JagPWM);
-//			shooterWheel2 = new Jaguar(RobotMap.shooter2JagPWM);
+			shooterWheel = new Jaguar(RobotMap.shooter1JagPWM);
+			shooterWheel2 = new Jaguar(RobotMap.shooter2JagPWM);
 //		
 		
 
@@ -96,6 +96,8 @@ public class Hood extends Subsystem {
 		shooterWheelController.setAcceptErrorDiff(RobotMap.shooterError);
 		shooterWheelController.setSIZE(RobotMap.hoodArraySize);
 		shooterWheelController.setPercent(RobotMap.hoodPercent);
+		shooterWheelController.setR(0.2);
+		shooterWheelController.setEnDerivFilter(true);
 	}
 	
 	protected void initDefaultCommand() {
@@ -106,21 +108,11 @@ public class Hood extends Subsystem {
 	public void spinMotor(double speed){
 	
 			count++;
-			try
-			{
-				shooterWheel.setX(speed);
-				shooterWheel2.setX(speed);
-				CommandBasedRobot.out.println(count + "\t" + System.currentTimeMillis() + "\t" + shooterWheel.getOutputVoltage() + "\t" + shooterWheel2.getOutputVoltage() + "\t" + shooterWheel.getOutputCurrent() + "\t" + shooterWheel2.getOutputCurrent() + "\t" + shooterWheelEncoder.getRate());
-			} catch (CANTimeoutException e)
-			{
-				
-				System.out.println("error setting jag");
-				// TODO Auto-generated catch block
-				e.printStackTrace();
-			}
-			
-			
-		
+
+			shooterWheel.set(speed);
+			shooterWheel2.set(speed);
+			//CommandBasedRobot.out.println(count + "\t" + System.currentTimeMillis() + "\t" + shooterWheel.getOutputVoltage() + "\t" + shooterWheel2.getOutputVoltage() + "\t" + shooterWheel.getOutputCurrent() + "\t" + shooterWheel2.getOutputCurrent() + "\t" + shooterWheelEncoder.getRate());
+
 	//System.out.println(speed);
 	}
 	
