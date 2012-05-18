@@ -9,6 +9,7 @@ import edu.wpi.first.wpilibj.Jaguar;
 import edu.wpi.first.wpilibj.can.CANTimeoutException;
 import edu.wpi.first.wpilibj.command.Subsystem;
 import frc2168.PIDController.PIDSpeed;
+import frc2168.CommandBasedRobot;
 import frc2168.RobotMap;
 import frc2168.commands.DriveWithJoystick;
 
@@ -45,10 +46,17 @@ public class DriveTrain extends Subsystem
 	//////////////////////////////////////////////////////////////////////
 	// Declare all CAN Motors associated with the Drive Train
 	// We use two motors for each side of our drive train
-		Jaguar leftMotor1;
-		Jaguar rightMotor1;
-		Jaguar leftMotor2;
-		Jaguar rightMotor2;
+//		CANJaguar leftMotor1;
+//		CANJaguar rightMotor1;
+//		CANJaguar leftMotor2;
+//		CANJaguar rightMotor2;
+
+	//Declare PWM Motors
+	Jaguar leftMotor1;
+	Jaguar rightMotor1;
+	Jaguar leftMotor2;
+	Jaguar rightMotor2;
+	
 	
 	//////////////////////////////////////////////////////////////////////
 	//Declare Sensors
@@ -66,6 +74,8 @@ public class DriveTrain extends Subsystem
 	//Shifting solenoids
 		DoubleSolenoid gearShifter;
 		
+	//File Line Counter
+	int count =0;	
 	////////////////////////////////////////////////////////////////////
 
 	/**
@@ -117,11 +127,57 @@ public class DriveTrain extends Subsystem
 		rightSpeedController.setPercent(RobotMap.drivetrainPercent);
 		
 		// enable PWM Jag Motors using constant motor IDs specified in RobotMap
-	
-			 leftMotor1 = new Jaguar(RobotMap.driveLeft1JagPWM);
-			 rightMotor1 = new Jaguar(RobotMap.driveRight1JagPWM);
-			 leftMotor2 = new Jaguar (RobotMap.driveLeft2JagPWM);
-			 rightMotor2 = new Jaguar (RobotMap.driveRight2JagPWM);
+		//enable can jaguars
+
+			leftMotor1 = new Jaguar(RobotMap.driveLeft1JagPWM);
+
+			rightMotor1 = new Jaguar(RobotMap.driveRight1JagPWM);
+
+			leftMotor2 = new Jaguar (RobotMap.driveLeft2JagPWM);
+
+			rightMotor2 = new Jaguar (RobotMap.driveRight2JagPWM);
+
+
+
+//			//enable can jaguars
+//			try
+//			{
+//				leftMotor1 = new CANJaguar(RobotMap.leftmotor1);
+//			} catch (CANTimeoutException e)
+//			{
+//				// TODO Auto-generated catch block
+//				e.printStackTrace();
+//			}
+//			 
+//			 try
+//			{
+//				rightMotor1 = new CANJaguar(RobotMap.rightmotor1);
+//			} catch (CANTimeoutException e)
+//			{
+//				// TODO Auto-generated catch block
+//				e.printStackTrace();
+//			}
+//			 
+//			 try
+//			{
+//				leftMotor2 = new CANJaguar (RobotMap.leftmotor2);
+//			} catch (CANTimeoutException e)
+//			{
+//				// TODO Auto-generated catch block
+//				e.printStackTrace();
+//			}
+//			 
+//			 try
+//			{
+//				rightMotor2 = new CANJaguar (RobotMap.rightmotor2);
+//			} catch (CANTimeoutException e)
+//			{
+//				// TODO Auto-generated catch block
+//				e.printStackTrace();
+//			}
+			 
+			 
+			 
 			 
 
 	
@@ -159,6 +215,28 @@ public class DriveTrain extends Subsystem
 	 */
 	public void TankDrive(double leftSpeed, double rightSpeed)
 	{
+		
+//		//write speeds to file	when using CAN
+//		try
+//		{
+//			count++;
+//			CommandBasedRobot.out.println(count + "\t" + System.currentTimeMillis() + "\t" + leftSpeed + "\t" + rightSpeed+ "\t" + leftMotor1.getOutputVoltage() + "\t" + rightMotor1.getOutputVoltage() + "\t" + leftMotor1.getOutputCurrent() + "\t" + rightMotor1.getOutputCurrent());
+//			System.out.println(count + "\t" + System.currentTimeMillis() + "\t" + leftSpeed + "\t" + rightSpeed+ "\t" + leftMotor1.getOutputVoltage() + "\t" + rightMotor1.getOutputVoltage() + "\t" + leftMotor1.getOutputCurrent() + "\t" + rightMotor1.getOutputCurrent());
+//		} catch (CANTimeoutException e1)
+//		{
+//			// TODO Auto-generated catch block
+//			e1.printStackTrace();
+//		}
+		
+		//If we wand to record... write output to files
+    	if (CommandBasedRobot.playback=="Record")
+    	{
+			//write speeds to file when using PWM
+			count++;
+			CommandBasedRobot.out.println(count + "\t" + System.currentTimeMillis() + "\t" + leftSpeed + "\t" + rightSpeed);//+ "\t" + leftMotor1.getOutputVoltage() + "\t" + rightMotor1.getOutputVoltage() + "\t" + leftMotor1.getOutputCurrent() + "\t" + rightMotor1.getOutputCurrent());
+			System.out.println(count + "\t" + System.currentTimeMillis() + "\t" + leftSpeed + "\t" + rightSpeed);//+ "\t" + leftMotor1.getOutputVoltage() + "\t" + rightMotor1.getOutputVoltage() + "\t" + leftMotor1.getOutputCurrent() + "\t" + rightMotor1.getOutputCurrent());
+    	}
+		
 		//Determine which Motors need to be inverted
 		if (RobotMap.invertLeft)
 		{
@@ -172,13 +250,33 @@ public class DriveTrain extends Subsystem
 		// Driving PWM motors in Percent V Bus mode
 
 			leftMotor1.set(leftSpeed);
-
 			leftMotor2.set(leftSpeed);
-
 			rightMotor1.set(rightSpeed);
-
 			rightMotor2.set(rightSpeed);
 
+		
+		
+		
+		
+//		//Driving Can Motors in Percent V Bus Mode
+//		try
+//		{
+//			leftMotor1.setX(leftSpeed);
+//			leftMotor2.setX(leftSpeed);
+//			rightMotor1.setX(rightSpeed);
+//			rightMotor2.setX(rightSpeed);
+//
+//			
+//			
+//			
+//		} catch (CANTimeoutException e)
+//		{
+//			// TODO Auto-generated catch block
+//			e.printStackTrace();
+//		}
+			
+			
+		
 	}
 	
 	/**

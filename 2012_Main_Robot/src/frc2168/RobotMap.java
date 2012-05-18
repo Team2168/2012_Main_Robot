@@ -12,8 +12,12 @@ import edu.wpi.first.wpilibj.DriverStationLCD;
 public class RobotMap {
 	
 	///////////////////////////SYSTEM CONSTANTS////////////////////////////
+	//Autonomous file to run
+	public static String filename = "myauto1.txt";
+	
 	//DriverStation LCD
 	public static DriverStationLCD driverstation;
+
 	
 	//JOYSTICK MAPS	
 	public static final int driverJoystick=1; //USB Port 1
@@ -50,7 +54,7 @@ public class RobotMap {
 	//Relay 1-8
 	public static final int compressorRelay = 1; //Relay Port 1, Digital Card
 	public static final int PegLegRelay = 2; //Relay Port 2, Digital Card
-	public static final int backLight = 3; //Relay Port 1, Digital Card
+	public static final int backLight = 3; //Relay Port 3, Digital Card
 	
 	
 	///////////////////////Solenoid Card - Slot 3///////////////////////
@@ -139,13 +143,13 @@ public class RobotMap {
 	
 	//Constant value for shooter wheel
 	public static final double HIGH_GOAL_KEY = 850.0;
-	public static final double MIDDLE_GOAL_KEY = 700;		//robot should be places with 2nd drivetrain from back on key line 
+	public static final double MIDDLE_GOAL_KEY = 700;		//robot should be placed with 2nd drivetrain from back on key line 
 	
 	public static final double MIDDLE_GOAL_SIDE = 520.0; //hood down   550
 	public static final double HIGH_GOAL_SIDE = 720.0; //hood down     730
 
 	public static final double LOW_GOAL_FORWARD = 430.0;
-	public static final double MIDDLE_GOAL_FORWARD = 540.0; //hood up
+	public static final double MIDDLE_GOAL_FORWARD = 500.0; //hood up
 	public static final double HIGH_GOAL_FORWARD = 720.0; //hood down
 	
 	
