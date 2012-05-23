@@ -4,6 +4,7 @@ import edu.wpi.first.wpilibj.command.Command;
 import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;
 import frc2168.OI;
 import frc2168.subsystems.BridgeArm;
+import frc2168.subsystems.Camera;
 import frc2168.subsystems.DriveTrain;
 import frc2168.subsystems.Hood;
 import frc2168.subsystems.ElevatorWithFlap;
@@ -24,7 +25,8 @@ public abstract class CommandBase extends Command {
     public static DriveTrain driveTrain = new DriveTrain ();
     public static Hood hood = new Hood();
     public static BridgeArm bridgeArm = new BridgeArm();
-    public static ElevatorWithFlap elevatorFlap = new ElevatorWithFlap ();
+    public static ElevatorWithFlap elevatorFlap = new ElevatorWithFlap();
+    public static Camera camera = new Camera();
 
     public static void init() {
         // This MUST be here. If the OI creates Commands (which it very likely

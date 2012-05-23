@@ -8,8 +8,8 @@ public class GetCameraDistance extends CommandBase {
 	//distance, speed
 	private double[][] distanceToSpeed = {
 			{0.00, 0.00},
-			{1.00, 1.00}
-			
+			{1.00, 1.00},
+			{2.00, 2.00}
 	};
 	
 	public GetCameraDistance(){
@@ -25,9 +25,19 @@ public class GetCameraDistance extends CommandBase {
 		//return the distance to the top hoop
 		double distance = camera.getDistance(RobotMap.kTop);
 		int tableLength = distanceToSpeed.length;
-		for(int i=0; i<tableLength; i++){
-			if(distance == distanceToSpeed[i][0]){
-				hood.shooterWheelController.setSp(distanceToSpeed[i][1]);
+		for(int i=1; i<tableLength; i++){
+			//linera interpolation
+			//if distance is less than the distance of array i in the lookup table, use values i and i-1 to interpolate
+			//x is distance (independent variable), y is speed (dependent)
+			if(distance < distanceToSpeed[i][0]){
+				double x1 = distanceToSpeed[i-1][0];
+				double x2 = distanceToSpeed[i][0];
+				double y1 = distanceToSpeed[i-1][1];
+				double y2 = distanceToSpeed[i][1];
+				double slope = (y2 - y1)/(x2 - x1);
+				double yIntercept = y1 - slope*x1;
+				double desiredSpeed = slope*distance + yIntercept;
+				hood.shooterWheelController.setSp(desiredSpeed);
 				hood.spinMotor(hood.shooterWheelController.getCo());
 			}
 		}

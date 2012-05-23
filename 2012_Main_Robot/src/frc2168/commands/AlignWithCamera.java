@@ -1,6 +1,6 @@
 package frc2168.commands;
 
-import frc2168.Camera.Camera;
+import frc2168.subsystems.Camera;
 import frc2168.RobotMap;
 
 public class AlignWithCamera extends CommandBase {
