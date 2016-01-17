@@ -32,13 +32,13 @@ public class RobotMap {
 	
 	///////////////////////Digital Card - Slot 2///////////////////////
 	//Digital IO 1-14
-	public static final int leftDriveTrainEncoder_A=1; //DIO 1, Digital Card
+	public static final int leftDriveTrainEncoder_A=7; //DIO 1, Digital Card
 	public static final int leftDriveTrainEncoder_B=2; //DIO 2, Digital Card
 	public static final int rightDriveTrainEncoder_A=3; //DIO 3, Digital Card
 	public static final int rightDriveTrainEncoder_B=4; //DIO 4, Digital Card
 	public static final int shooterWheelEncoderID_A = 5; //DIO 5, Digital Card
 	public static final int shooterWheelEncoderID_B = 6; //DIO 6, Digital Card
-	public static final int compressorSwitch = 7;		//DIO 7, Digital Card
+	public static final int compressorSwitch = 1;		//DIO 7, Digital Card
 	public static final int autoSwitch = 8;				//DIO 8, Digital Card
 	
 	//PWM 1-10
@@ -53,7 +53,7 @@ public class RobotMap {
 	
 	//Relay 1-8
 	public static final int compressorRelay = 1; //Relay Port 1, Digital Card
-	public static final int PegLegRelay = 2; //Relay Port 2, Digital Card
+	public static final int PegLegRelay = 4; //Relay Port 2, Digital Card
 	public static final int backLight = 3; //Relay Port 3, Digital Card
 	
 	

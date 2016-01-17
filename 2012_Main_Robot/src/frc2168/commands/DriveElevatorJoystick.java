@@ -23,7 +23,8 @@ public class DriveElevatorJoystick extends CommandBase {
 	
 	protected void execute() {
 		
-		elevatorFlap.setBallElevatorSpeed(oi.getAuxLeftStick());
+		
+		elevatorFlap.setBallElevatorSpeed(-oi.getAuxLeftStick());
 
 	}
 

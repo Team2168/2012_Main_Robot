@@ -31,6 +31,8 @@ import com.sun.squawk.util.StringTokenizer;
 
 import edu.wpi.first.wpilibj.Compressor;
 import edu.wpi.first.wpilibj.IterativeRobot;
+import edu.wpi.first.wpilibj.Relay;
+import edu.wpi.first.wpilibj.Relay.Value;
 import edu.wpi.first.wpilibj.command.Command;
 import edu.wpi.first.wpilibj.command.Scheduler;
 import edu.wpi.first.wpilibj.networktables.NetworkTable;
@@ -100,12 +102,23 @@ public class CommandBasedRobot extends IterativeRobot {
     	// This init() function basically calls OI.Java
     	CommandBase.init();
     	
-    	//enable the network table
-    	NetworkTable.initialize();
+//    	//enable the network table
+//    	try {
+//			//NetworkTable.initialize();
+//		} catch (IOException e) {
+//			// TODO Auto-generated catch block
+//			e.printStackTrace();
+//		}
+    	
+    	Relay comp = new Relay(2);
+    	comp.set(Value.kForward);
     	
     	//start compressor
     	compressor = new Compressor(RobotMap.compressorSwitch, RobotMap.compressorRelay);
         compressor.start();
+        
+        
+        
     	
         //Initialize auto mode chooser
         autoSelectInit();
@@ -159,7 +172,8 @@ public class CommandBasedRobot extends IterativeRobot {
 		// this line or comment it out.
 		if (autonomousCommand!=null)
 			autonomousCommand.cancel();
-
+		System.out.println("Teleop Init");
+		
     	//start dashboard
     	dashboard = (Command) dashChooser.getSelected();
     	dashboard.start();
